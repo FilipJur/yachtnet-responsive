@@ -75,3 +75,9 @@ _downloads.html
 # chartrovky/*
 # clenstvi-a-certifikaty/*
 # ext/*
+
+# OpenCode editor configuration
+.opencode/
+
+# Research and analysis files
+kimi-analysis/
