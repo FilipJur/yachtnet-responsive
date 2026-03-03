@@ -1,0 +1,77 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Cache
+cache/
+
+# Logs
+*.log
+
+# Images (downloaded from site, not source code)
+img/
+
+# Documents and binary files
+*.pdf
+doc/
+
+# External dependencies (if we add Node.js tooling later)
+node_modules/
+
+# Build artifacts (if we add a build process)
+dist/
+build/
+
+# IDE files
+.vscode/
+.idea/
+.zed/
+*.swp
+*.swo
+*~
+
+# Editor backup files
+*.bak
+*.orig
+
+# Temporary files
+.tmp/
+temp/
+
+# Archives and compressed files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# Source maps (if generated during build)
+*.map
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# SiteSucker metadata
+_downloads.html
+
+# Query parameter files (search results with filters)
+# Standard question mark
+*\?from=*
+*\?page=*
+*\?destination=*
+*\?sortb=*
+# Unicode full-width question mark variants
+*﹖from=*
+*﹖page=*
+*﹖destination=*
+*﹖sortb=*
+# Generic query parameter patterns (covers any query string)
+*\?*
+*﹖*
+
+# Keep directory structure but ignore contents for some folders
+# (uncomment if needed)
+# chartrovky/*
+# clenstvi-a-certifikaty/*
+# ext/*
