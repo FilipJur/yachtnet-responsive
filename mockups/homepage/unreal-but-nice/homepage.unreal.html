@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>YachtNet.cz - Pronájem lodí</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+    
+    :root {
+      --primary-blue: #006ab2;
+      --dark-blue: #00508a;
+      --bg-light: #f8f9fa;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #e5e7eb;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    
+    .app-container {
+      background-color: var(--bg-light);
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    /* Hide scrollbar for cleaner mobile look */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Touch-friendly inputs */
+    input, select, button {
+      font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container max-w-[450px] mx-auto min-h-screen relative flex flex-col font-sans">
+    
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[450px] bg-white z-50 h-14 flex items-center justify-between px-4 border-b border-gray-100">
+      <!-- Logo area -->
+      <a href="#" id="header-logo" class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-gray-900 rounded-md flex items-center justify-center">
+          <iconify-icon icon="lucide:ship" class="text-white text-lg"></iconify-icon>
+        </div>
+        <span class="text-[17px] font-extrabold text-[#006ab2] tracking-tight">YachtNet.cz</span>
+      </a>
+      
+      <!-- Hamburger -->
+      <button id="mobile-menu-btn" class="p-2 -mr-2 text-gray-800">
+        <iconify-icon icon="lucide:menu" class="text-2xl"></iconify-icon>
+      </button>
+    </header>
+
+    <!-- Main Content (padding bottom accounts for fixed nav) -->
+    <main class="pt-14 pb-4 flex-1 relative z-0">
+      
+      <!-- Hero Section -->
+      <section class="relative h-[320px] w-full">
+        <img 
+          src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80" 
+          alt="Yacht sailing"
+          class="w-full h-full object-cover"
+        >
+        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60"></div>
+        <div class="absolute inset-0 pt-10 px-6">
+          <h1 class="text-white font-extrabold text-[28px] leading-tight tracking-tight drop-shadow-md">
+            Dovolená na lodi<br>již 26 let s<br>YachtNetem
+          </h1>
+          <p class="text-white/90 text-sm mt-3 font-medium">
+            Nejširší výběr prověřených jachet online
+          </p>
+        </div>
+      </section>
+
+      <!-- Search Form -->
+      <section class="px-4 relative z-10 -mt-24">
+        <div class="bg-white rounded-2xl shadow-[0_8px_25px_rgba(0,0,0,0.08)] overflow-hidden border border-gray-100">
+          <!-- Form Header -->
+          <div class="bg-[#006ab2] px-4 py-3.5 flex items-center gap-2">
+            <iconify-icon icon="lucide:search" class="text-white text-lg"></iconify-icon>
+            <h2 class="text-white font-bold text-[17px]">Vyhledat loď</h2>
+          </div>
+          
+          <!-- Form Body -->
+          <form class="p-4 space-y-4">
+            <!-- Země -->
+            <div>
+              <label class="block text-[10px] font-extrabold text-gray-500 uppercase tracking-widest mb-1.5">
+                Země / Oblast
+              </label>
+              <div class="relative flex items-center border border-gray-200 rounded-lg h-[46px] px-3 focus-within:border-[#006ab2] focus-within:ring-1 focus-within:ring-[#006ab2] transition-colors">
+                <iconify-icon icon="lucide:map" class="text-gray-400 text-lg"></iconify-icon>
+                <input 
+                  type="text"
+                  placeholder="např. Chorvatsko, Split"
+                  class="w-full h-full pl-3 text-sm font-medium text-gray-800 placeholder:text-gray-400 placeholder:font-normal outline-none bg-transparent"
+                >
+              </div>
+            </div>
+
+            <!-- Row: Termín & Osob -->
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-[10px] font-extrabold text-gray-500 uppercase tracking-widest mb-1.5">
+                  Termín
+                </label>
+                <div class="relative flex items-center border border-gray-200 rounded-lg h-[46px] px-3">
+                  <iconify-icon icon="lucide:calendar" class="text-gray-400 text-lg"></iconify-icon>
+                  <input 
+                    type="text"
+                    placeholder="Vyberte datum"
+                    class="w-full h-full pl-2 text-sm font-medium text-gray-800 placeholder:text-gray-400 placeholder:font-normal outline-none bg-transparent"
+                    readonly
+                  >
+                </div>
+              </div>
+              <div>
+                <label class="block text-[10px] font-extrabold text-gray-500 uppercase tracking-widest mb-1.5">
+                  Počet osob
+                </label>
+                <div class="relative flex items-center border border-gray-200 rounded-lg h-[46px] px-3">
+                  <iconify-icon icon="lucide:users" class="text-gray-400 text-lg"></iconify-icon>
+                  <input 
+                    type="text"
+                    placeholder="Min. 2"
+                    class="w-full h-full pl-2 text-sm font-medium text-gray-800 placeholder:text-gray-400 placeholder:font-normal outline-none bg-transparent"
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Přístav -->
+            <div>
+              <label class="block text-[10px] font-extrabold text-gray-500 uppercase tracking-widest mb-1.5">
+                Přístav
+              </label>
+              <div class="relative flex items-center border border-gray-200 rounded-lg h-[46px] px-3">
+                <iconify-icon icon="lucide:anchor" class="text-gray-400 text-lg"></iconify-icon>
+                <select class="w-full h-full pl-2 pr-6 text-sm font-medium text-gray-800 outline-none bg-transparent appearance-none">
+                  <option>Nerozhoduje</option>
+                  <option>Split</option>
+                  <option>Zadar</option>
+                </select>
+                <iconify-icon icon="lucide:chevron-down" class="absolute right-3 text-gray-400 pointer-events-none"></iconify-icon>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <button 
+              type="button"
+              class="w-full h-[48px] bg-[#00508a] text-white rounded-lg font-bold text-[15px] mt-2 active:bg-[#003d6a] transition-colors"
+            >
+              VYHLEDAT DOVOLENOU
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Trust Section -->
+      <section class="px-4 mt-8">
+        <div class="inline-block bg-[#f0f5fa] text-[#006ab2] text-[11px] font-extrabold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+          Důvěra
+        </div>
+        
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Card 1 -->
+          <div class="bg-[#f4f7fb] border border-blue-100 rounded-xl p-4 flex flex-col items-center justify-center text-center">
+            <div class="flex items-center text-gray-300 gap-0.5">
+              <iconify-icon icon="lucide:star" class="fill-current"></iconify-icon>
+              <iconify-icon icon="lucide:star" class="fill-current"></iconify-icon>
+              <iconify-icon icon="lucide:star" class="fill-current"></iconify-icon>
+              <iconify-icon icon="lucide:star" class="fill-current"></iconify-icon>
+              <iconify-icon icon="lucide:star" class="fill-current"></iconify-icon>
+            </div>
+            <div class="text-xl font-extrabold text-[#006ab2] mt-1">4,84 z 5</div>
+            <div class="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">Průměrné hodnocení</div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="bg-[#f4f7fb] border border-blue-100 rounded-xl p-4 flex flex-col items-center justify-center text-center">
+            <iconify-icon icon="lucide:life-buoy" class="text-gray-400 text-xl"></iconify-icon>
+            <div class="text-xl font-extrabold text-[#006ab2] mt-1">96,8 %</div>
+            <div class="text-[9px] font-bold text-gray-500 uppercase tracking-widest mt-1">Zákazníků doporučuje</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Categories Section -->
+      <section class="px-4 mt-10">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-xl font-extrabold text-gray-900 tracking-tight">Oblíbené kategorie</h2>
+          <a href="#" class="text-[#006ab2] text-sm font-bold flex items-center">
+            všechny <iconify-icon icon="lucide:chevron-right" class="ml-0.5"></iconify-icon>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <!-- Cat 1 -->
+          <a href="#" class="block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 active:scale-[0.98] transition-transform">
+            <div class="h-28 relative">
+              <img src="https://images.unsplash.com/photo-1542157585-ef20bbcce178?w=400&q=80" class="w-full h-full object-cover" alt="Kapitánské kurzy">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#00305a]/90 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 flex items-center gap-2">
+                <iconify-icon icon="lucide:graduation-cap" class="text-white"></iconify-icon>
+                <span class="text-white font-bold text-[13px] leading-tight shadow-sm">Kapitánské kurzy</span>
+              </div>
+            </div>
+            <div class="p-3 h-[68px]">
+              <p class="text-[11px] text-gray-500 leading-snug">
+                Získejte průkaz a vyrazte na moře sami.
+              </p>
+            </div>
+          </a>
+
+          <!-- Cat 2 -->
+          <a href="#" class="block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 active:scale-[0.98] transition-transform">
+            <div class="h-28 relative">
+              <img src="https://images.unsplash.com/photo-1520114013821-6927a0572e90?w=400&q=80" class="w-full h-full object-cover" alt="Říční lodě">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#00305a]/90 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 flex items-center gap-2">
+                <iconify-icon icon="lucide:waves" class="text-white"></iconify-icon>
+                <span class="text-white font-bold text-[13px] leading-tight shadow-sm">Říční lodě</span>
+              </div>
+            </div>
+            <div class="p-3 h-[68px]">
+              <p class="text-[11px] text-gray-500 leading-snug">
+                Pohoda na kanálech Francie a Holandska.
+              </p>
+            </div>
+          </a>
+
+          <!-- Cat 3 -->
+          <a href="#" class="block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 active:scale-[0.98] transition-transform">
+            <div class="h-28 relative">
+              <img src="https://images.unsplash.com/photo-1534088568595-a066f410cbda?w=400&q=80" class="w-full h-full object-cover" alt="Plavba Flotila">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#00305a]/90 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 flex items-center gap-2">
+                <iconify-icon icon="lucide:navigation" class="text-white"></iconify-icon>
+                <span class="text-white font-bold text-[13px] leading-tight shadow-sm">Plavba Flotila</span>
+              </div>
+            </div>
+            <div class="p-3 h-[68px]">
+              <p class="text-[11px] text-gray-500 leading-snug">
+                Společná dobrodružství v Chorvatsku.
+              </p>
+            </div>
+          </a>
+
+          <!-- Cat 4 -->
+          <a href="#" class="block bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 active:scale-[0.98] transition-transform">
+            <div class="h-28 relative">
+              <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=400&q=80" class="w-full h-full object-cover" alt="Chartrovky">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#00305a]/90 via-black/20 to-transparent"></div>
+              <div class="absolute bottom-3 left-3 flex items-center gap-2">
+                <iconify-icon icon="lucide:anchor" class="text-white"></iconify-icon>
+                <span class="text-white font-bold text-[13px] leading-tight shadow-sm">Chartrovky</span>
+              </div>
+            </div>
+            <div class="p-3 h-[68px]">
+              <p class="text-[11px] text-gray-500 leading-snug">
+                Prověřené lodě po celém světě.
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- News Section -->
+      <section class="px-4 mt-10">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-1.5 h-6 bg-[#006ab2] rounded-full"></div>
+          <h2 class="text-xl font-extrabold text-gray-900 tracking-tight">Aktuálně z moře</h2>
+        </div>
+
+        <div class="space-y-3">
+          <!-- News 1 -->
+          <article class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+            <div class="inline-block bg-[#f0f5fa] text-[#006ab2] text-[10px] font-extrabold px-2 py-1 rounded mb-2">
+              15. 5. 2024
+            </div>
+            <h3 class="text-[15px] font-bold text-gray-900 leading-snug">
+              Nové lodě v marině Split
+            </h3>
+            <p class="text-[13px] text-gray-500 mt-1.5">
+              Rozšiřujeme naši nabídku o 5 zbrusu nových modelů Bavaria.
+            </p>
+          </article>
+
+          <!-- News 2 -->
+          <article class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+            <div class="inline-block bg-[#f0f5fa] text-[#006ab2] text-[10px] font-extrabold px-2 py-1 rounded mb-2">
+              10. 5. 2024
+            </div>
+            <h3 class="text-[15px] font-bold text-gray-900 leading-snug">
+              Sleva na last-minute v červnu
+            </h3>
+            <p class="text-[13px] text-gray-500 mt-1.5">
+              Ušetřete až 25 % na pronájmu plachetnic v Řecku.
+            </p>
+          </article>
+        </div>
+
+        <button class="w-full h-[46px] border border-gray-200 text-[#006ab2] font-bold text-[14px] rounded-xl mt-4 bg-white active:bg-gray-50">
+          Další novinky
+        </button>
+      </section>
+
+      <!-- Footer -->
+      <footer class="mt-10 bg-[#f0f4f8] px-6 py-10 border-t border-gray-200">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 bg-[#006ab2] rounded-md flex items-center justify-center">
+            <iconify-icon icon="lucide:ship" class="text-white text-lg"></iconify-icon>
+          </div>
+          <span class="text-lg font-extrabold text-[#006ab2] tracking-tight">YachtNet.cz</span>
+        </div>
+        
+        <p class="text-[13px] text-gray-600 leading-relaxed mb-8">
+          Jsme vaším spolehlivým partnerem pro pronájem lodí již od roku 1998. Nabízíme přes 10 000 jachet v 45 zemích světa.
+        </p>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-extrabold text-[11px] text-gray-900 uppercase tracking-widest mb-3">
+              Destinace
+            </h4>
+            <ul class="space-y-2.5 text-[13px] text-gray-600 font-medium">
+              <li><a href="#" class="hover:text-[#006ab2]">Chorvatsko</a></li>
+              <li><a href="#" class="hover:text-[#006ab2]">Řecko</a></li>
+              <li><a href="#" class="hover:text-[#006ab2]">Itálie</a></li>
+              <li><a href="#" class="hover:text-[#006ab2]">Francie</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-extrabold text-[11px] text-gray-900 uppercase tracking-widest mb-3">
+              O nás
+            </h4>
+            <ul class="space-y-2.5 text-[13px] text-gray-600 font-medium">
+              <li><a href="#" class="hover:text-[#006ab2]">Kontakty</a></li>
+              <li><a href="#" class="hover:text-[#006ab2]">Časté dotazy</a></li>
+              <li><a href="#" class="hover:text-[#006ab2]">Obchodní podmínky</a></li>
+              <li><a href="#" class="hover:text-[#006ab2]">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Certifications placeholder -->
+        <div class="flex items-center justify-center gap-4 mt-10">
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-gray-200 shadow-sm">
+            <iconify-icon icon="lucide:award" class="text-xl text-[#006ab2]"></iconify-icon>
+          </div>
+          <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center border border-gray-200 shadow-sm">
+            <iconify-icon icon="lucide:shield-check" class="text-xl text-[#006ab2]"></iconify-icon>
+          </div>
+        </div>
+
+        <div class="text-center mt-8 text-[9px] font-bold text-gray-400 uppercase tracking-widest">
+          © 2024 YACHTNET S.R.O. • VŠECHNA PRÁVA VYHRAZENA
+        </div>
+      </footer>
+
+    </main>
+
+    <!-- Mobile Menu Overlay (Hidden by default) -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/60 z-50 hidden opacity-0 transition-opacity duration-200">
+      <div id="mobile-menu-panel" class="absolute right-0 top-0 h-full w-[280px] bg-white shadow-xl transform translate-x-full transition-transform duration-200 flex flex-col">
+        <div class="flex items-center justify-between p-4 border-b border-gray-100">
+          <span class="text-[17px] font-extrabold text-[#006ab2]">Menu</span>
+          <button id="mobile-menu-close" class="p-2 -mr-2 rounded-lg hover:bg-gray-100 text-gray-500">
+            <iconify-icon icon="lucide:x" class="text-2xl"></iconify-icon>
+          </button>
+        </div>
+        <nav class="p-4 flex-1 overflow-y-auto">
+          <ul class="space-y-1">
+            <li><a href="#" class="block py-3 px-4 text-[15px] font-bold text-gray-800 hover:bg-gray-50 rounded-lg">Pronájem lodí</a></li>
+            <li><a href="#" class="block py-3 px-4 text-[15px] font-bold text-gray-800 hover:bg-gray-50 rounded-lg">Kapitánské kurzy</a></li>
+            <li><a href="#" class="block py-3 px-4 text-[15px] font-bold text-gray-800 hover:bg-gray-50 rounded-lg">E-shop</a></li>
+            <li><a href="#" class="block py-3 px-4 text-[15px] font-bold text-gray-800 hover:bg-gray-50 rounded-lg">Prodej lodí</a></li>
+            <li><a href="#" class="block py-3 px-4 text-[15px] font-bold text-gray-800 hover:bg-gray-50 rounded-lg">Pro jachtaře</a></li>
+            <li class="pt-4 mt-2 border-t border-gray-100">
+              <a href="#" class="block py-3 px-4 text-[15px] font-extrabold text-[#006ab2] bg-[#f0f5fa] rounded-lg">Kontakt</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Mobile menu toggle logic
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const menuOverlay = document.getElementById('mobile-menu-overlay');
+    const menuPanel = document.getElementById('mobile-menu-panel');
+    const menuClose = document.getElementById('mobile-menu-close');
+
+    function openMenu() {
+      menuOverlay.classList.remove('hidden');
+      // Small delay to allow display:block to apply before animating opacity
+      setTimeout(() => {
+        menuOverlay.classList.remove('opacity-0');
+        menuPanel.classList.remove('translate-x-full');
+      }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      menuOverlay.classList.add('opacity-0');
+      menuPanel.classList.add('translate-x-full');
+      // Wait for animation to finish before hiding
+      setTimeout(() => {
+        menuOverlay.classList.add('hidden');
+      }, 200);
+      document.body.style.overflow = '';
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', (e) => {
+      if (e.target === menuOverlay) closeMenu();
+    });
+  </script>
+</body>
+</html>
