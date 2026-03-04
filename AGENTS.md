@@ -34,42 +34,80 @@ yachtnet.cz/
 
 ## Technical Constraints
 
-- Target: `@media (max-width: 949px)` only
-- CSS overrides via `@layer` (8 layers defined)
-- Original CSS files untouched
+- Target: Mobile viewports < 950px only
+- Desktop CSS blocked via `media="(min-width: 950px)"` on link tag
+- Original CSS files untouched (separate responsive CSS file)
 - Browser support: Chrome 105+, Safari 15.4+, Firefox 121+
+- Base font size: 16px (1rem = 16px for predictable calculations)
 
-## CSS Architecture
+## CSS Architecture (Atomic)
 
-```css
-@layer reset, containers, navigation, layouts, components, tables, footer, utilities;
+```
+src/css/
+├── tokens.css          # Design tokens (colors, spacing, typography)
+├── reset.css           # Base reset with 16px foundation
+├── typography.css      # Text styles
+├── layout.css          # Core layout structures
+├── components/         # Modular components
+│   ├── header.css
+│   ├── navigation.css
+│   ├── hero.css
+│   ├── search-form.css
+│   ├── content.css
+│   └── footer.css
+├── utilities.css       # Helper classes
+└── main.css            # Imports all modules
 ```
 
-**Enabled features**: `@layer`, `@container`, `:has()`, nesting (Lightning CSS), `clamp()`
+**Design Tokens (CSS Custom Properties)**:
+```css
+--color-primary: #006ab2
+--color-secondary: #ee7f00
+--color-text: #58585a
+--color-bg: #eceded
+--space-md: 1rem      /* 16px */
+--font-base: 1rem     /* 16px */
+```
 
-## Key Classes
-
-**Containers**: `.page-content-wrapper`, `header div`, `.main-nav`, `.claim`, `.footer-section-wrapper`  
-**Layout**: `.main-column`, `.hp-main-column`, `.search-main-column`, `aside`, `.hp-aside`  
-**Search**: `.search-form-wrapper`, `.search-form-left-column`, `.search-form-right-column`, `.search-result-table`  
-
-**Palette**: `#006ab2` (primary), `#ee7f00` (secondary), `#eceded` (bg), `#58585a` (text)
+**Key Classes**:
+- **Containers**: `.wrapper`, `.page-content-wrapper`, `.main-column`, `aside`
+- **Layout**: `.hp-main-column`, `.search-main-column`, `.hp-aside`
+- **Search**: `.search-form-wrapper`, `.search-form-tabs`, `.SlectBox`
+- **Navigation**: `.main-nav`, `.main-menu-item`
 
 ## Development
 
 ```bash
 npm run dev        # Live Server + CSS watch
-npm run css:build  # Build once
+npm run css:build  # Build once (Lightning CSS bundles imports)
 ```
 
-**Source**: `src/css/main.css` → **Output**: `css/responsive-mobile.css`
+**Source**: `src/css/main.css` (atomic imports) → **Output**: `css/responsive-mobile.css` (bundled)
 
 ## Modified Files
 
-16 HTML files updated with:
-- Viewport: `width=device-width, initial-scale=1.0`
-- CSS link: `<link rel="stylesheet" href="css/responsive-mobile.css">`
+**index.html**:
+- Added `media="(min-width: 950px)"` to desktop CSS link
+- Added `data-mobile-responsive` attribute to body
+
+## Implementation Strategy
+
+1. **Desktop CSS blocked** for mobile viewports via media query
+2. **Clean foundation**: 16px base font, predictable rem units
+3. **Atomic CSS**: Modular files for easy multi-page refactoring
+4. **Design tokens**: All colors/spacing via CSS custom properties
+5. **Mobile-first**: Components built for mobile, will enhance for larger screens if needed
 
 ## Dependencies
 
 jQuery, Fancybox, SumoSelect (don't break existing functionality)
+
+## Current Status
+
+✅ Atomic CSS architecture implemented
+✅ 16px base font with predictable rem units
+✅ Design tokens extracted from original CSS
+✅ Desktop CSS blocked for mobile viewports
+✅ Basic mobile layout structure in place
+
+🔄 Next: UI mockup reference → component refinements → multi-page rollout
