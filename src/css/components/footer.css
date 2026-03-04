@@ -1,0 +1,35 @@
+/* ========================================
+   FOOTER COMPONENT
+   ======================================== */
+footer {
+  width: 100%;
+  padding: var(--space-lg) var(--space-md);
+  background: var(--color-bg);
+}
+
+.footer-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+footer h5 {
+  font-size: var(--font-sm);
+  margin-bottom: var(--space-sm);
+  color: var(--color-primary);
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer li {
+  margin-bottom: var(--space-xs);
+}
+
+footer a {
+  font-size: var(--font-sm);
+  color: var(--color-text);
+}

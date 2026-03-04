@@ -1,0 +1,28 @@
+/* ========================================
+   LAYOUT
+   Core layout structures
+   ======================================== */
+.wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.page-content-wrapper {
+  width: 100%;
+  max-width: 100%;
+  padding: var(--space-md);
+}
+
+.main-column,
+.hp-main-column {
+  width: 100%;
+  margin-bottom: var(--space-lg);
+}
+
+aside,
+.hp-aside {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--color-bg);
+}

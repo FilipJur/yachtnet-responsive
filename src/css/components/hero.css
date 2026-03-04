@@ -1,0 +1,32 @@
+/* ========================================
+   HERO COMPONENT
+   ======================================== */
+#carousel {
+  width: 100%;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.claim {
+  width: 100%;
+  min-height: 200px;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.claim h1 {
+  font-size: var(--font-xl);
+  margin: 0;
+  padding: var(--space-lg) var(--space-md);
+  text-align: center;
+  color: var(--color-bg-white);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.claim h1 span {
+  display: block;
+  font-size: 0.8em;
+  margin-top: var(--space-xs);
+}

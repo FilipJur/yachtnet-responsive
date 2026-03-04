@@ -1,75 +1,27 @@
-/* YachtNet Responsive CSS
- * Mobile-first overrides for < 950px
- * Desktop styles remain untouched
- */
-
 /* ========================================
-   Layer Order Declaration
+   YACHTNET MOBILE CSS
+   Atomic architecture for multi-page refactor
    ======================================== */
 
-@layer reset, containers, navigation, layouts, components, tables, footer, utilities;
+/* Design tokens (colors, spacing, typography) */
+@import url("tokens.css");
 
-/* ========================================
-   @layer reset - Viewport and Base Fixes
-   ======================================== */
+/* Base reset */
+@import url("reset.css");
 
-@layer reset {
-  /* Only apply below 950px */
-  @media (max-width: 949px) {
-    
-    /* Ensure proper box-sizing */
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-    
-    /* Prevent horizontal overflow */
-    html {
-      overflow-x: hidden;
-    }
-    
-    body {
-      overflow-x: hidden;
-      min-width: 320px;
-    }
-    
-    /* Fluid images */
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  }
-}
+/* Typography system */
+@import url("typography.css");
 
-/* ========================================
-   PLACEHOLDER LAYERS - To be implemented
-   ======================================== */
+/* Layout foundations */
+@import url("layout.css");
 
-@layer containers {
-  /* Container width overrides for < 950px */
-}
+/* Components */
+@import url("components/header.css");
+@import url("components/navigation.css");
+@import url("components/hero.css");
+@import url("components/search-form.css");
+@import url("components/content.css");
+@import url("components/footer.css");
 
-@layer navigation {
-  /* Mobile navigation transformations */
-}
-
-@layer layouts {
-  /* Two-column to single column stacking */
-}
-
-@layer components {
-  /* Component-specific responsive styles */
-}
-
-@layer tables {
-  /* Table to card conversions */
-}
-
-@layer footer {
-  /* Footer stacking */
-}
-
-@layer utilities {
-  /* Helper classes */
-}
+/* Utility classes */
+@import url("utilities.css");

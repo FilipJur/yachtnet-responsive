@@ -1,0 +1,62 @@
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "texgyreadventorregular", "Arial CE", "Helvetica CE", Arial, Helvetica,
+    sans-serif;
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin: 0 0 var(--space-md) 0;
+  font-weight: normal;
+}
+
+h1 { font-size: var(--font-2xl); }
+h2 { font-size: var(--font-xl); }
+h3 { font-size: var(--font-lg); }
+h4 { font-size: var(--font-base); }
+h5,
+h6 { font-size: var(--font-sm); }
+
+p {
+  margin: 0 0 var(--space-md) 0;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong,
+b {
+  font-family:
+    "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica,
+    sans-serif;
+  font-weight: normal;
+}
+
+em,
+i {
+  font-family:
+    "texgyreadventoritalic", "Arial CE", "Helvetica CE", Arial, Helvetica,
+    sans-serif;
+}
+
+ul,
+ol {
+  margin: 0 0 var(--space-md) 0;
+  padding-left: var(--space-lg);
+}
+
+li {
+  margin-bottom: var(--space-xs);
+}

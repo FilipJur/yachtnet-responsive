@@ -1,0 +1,31 @@
+/* ========================================
+   CONTENT COMPONENTS
+   Sections, articles, sidebars
+   ======================================== */
+section h2 {
+  font-size: var(--font-lg);
+  margin-bottom: var(--space-md);
+  color: var(--color-primary);
+}
+
+aside h4 {
+  font-size: var(--font-base);
+  margin-bottom: var(--space-md);
+  color: var(--color-primary);
+}
+
+article {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+article:last-child {
+  border-bottom: none;
+}
+
+article h3 {
+  font-size: var(--font-base);
+  margin-bottom: var(--space-xs);
+  color: var(--color-primary);
+}

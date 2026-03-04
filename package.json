@@ -5,14 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "npm run css:build && concurrently \"npm run css:watch\" \"npm run serve\"",
-    "serve": "live-server --port=3000 --open=\"index.html\" --watch=\"css,*.html\"",
+    "serve": "browser-sync start --server --port 3000 --startPath \"index.html\" --files \"css/*.css,*.html\" --no-notify",
     "css:build": "lightningcss --minify --bundle src/css/main.css -o css/responsive-mobile.css",
-    "css:watch": "chokidar \"src/css/**/*.css\" -c \"npm run css:build\""
+    "css:watch": "nodemon --watch src/css --ext css --delay 0.5 --exec \"npm run css:build\""
   },
   "devDependencies": {
-    "chokidar": "^5.0.0",
+    "browser-sync": "^3.0.4",
     "concurrently": "^8.2.2",
     "lightningcss-cli": "^1.24.1",
-    "live-server": "^1.2.2"
+    "nodemon": "^3.1.14"
   }
 }
