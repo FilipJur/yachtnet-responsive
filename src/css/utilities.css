@@ -8,3 +8,8 @@
 .bg-primary { background-color: var(--color-primary); }
 .bg-secondary { background-color: var(--color-secondary); }
 .bg-light { background-color: var(--color-bg); }
+
+/* Page content padding adjustment for dock */
+body:not(:has(.dock.is-empty)) #page-content {
+  padding-bottom: 80px;
+}

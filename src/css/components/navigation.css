@@ -1,16 +1,33 @@
 /* ========================================
    NAVIGATION COMPONENT
+   Fixed navigation below header for mobile (< 950px)
    ======================================== */
+
 .main-nav {
-  padding: var(--space-sm) var(--space-md);
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  height: 48px;
   background: var(--color-bg-white);
-  border-bottom: 1px solid var(--color-bg);
+  border-bottom: 1px solid #e5e5e5;
+  z-index: 999;
+  padding: 0 var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/* Logo sizing - target logo image within main-nav */
+.main-nav img {
+  height: 32px;
+  width: auto;
+}
+
+/* Main menu list */
 .main-nav > ul {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs) var(--space-sm);
+  gap: var(--space-md);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -20,15 +37,23 @@
   position: relative;
 }
 
-/* Hide nested dropdowns on mobile */
-.main-nav > ul > li > ul {
+/* Menu links styling */
+.main-menu-item {
+  display: block;
+  color: #333;
+  font-size: var(--font-base);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 48px;
+}
+
+/* Hide nested dropdown menus on mobile */
+.main-nav ul ul {
   display: none;
 }
 
-.main-menu-item {
-  display: block;
-  padding: var(--space-xs) var(--space-sm);
-  font-size: var(--font-sm);
+/* Active/current page indicator - using primary color */
+.main-menu-item[href="index.html"] {
   color: var(--color-primary);
-  white-space: nowrap;
 }

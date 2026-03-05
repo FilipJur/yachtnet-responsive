@@ -3,33 +3,84 @@
    ======================================== */
 footer {
   width: 100%;
-  padding: var(--space-lg) var(--space-md);
-  background: var(--color-bg);
+  background: #1a3a5c;
+  color: var(--color-bg-white);
+  padding: var(--space-xl) var(--space-md);
+  margin-top: var(--space-md);
 }
 
+/* Footer sections wrapper */
 .footer-section-wrapper {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
 }
 
-footer h5 {
-  font-size: var(--font-sm);
-  margin-bottom: var(--space-sm);
-  color: var(--color-primary);
+/* Individual footer sections */
+footer section {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 20px;
 }
 
+footer section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Footer headings */
+footer h5 {
+  font-size: var(--font-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 12px 0;
+  color: var(--color-bg-white);
+}
+
+/* Footer lists */
 footer ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
+/* Footer list items */
 footer li {
-  margin-bottom: var(--space-xs);
+  font-size: var(--font-base);
 }
 
+/* Footer links */
 footer a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
   font-size: var(--font-sm);
-  color: var(--color-text);
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: var(--color-bg-white);
+}
+
+/* Certification image */
+footer img#ypchlogo {
+  max-width: 120px;
+  height: auto;
+}
+
+/* Copyright wrapper */
+.footer-copyright-wrapper {
+  margin-top: var(--space-lg);
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+/* Copyright text */
+.footer-copyright-wrapper small,
+.footer-copyright-wrapper small a {
+  font-size: var(--font-sm);
+  color: rgba(255, 255, 255, 0.6);
 }

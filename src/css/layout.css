@@ -8,10 +8,12 @@
   overflow-x: hidden;
 }
 
+#page-content,
 .page-content-wrapper {
   width: 100%;
   max-width: 100%;
   padding: var(--space-md);
+  background: #f5f5f5;
 }
 
 .main-column,
@@ -23,6 +25,4 @@
 aside,
 .hp-aside {
   width: 100%;
-  padding: var(--space-md);
-  background: var(--color-bg);
 }
