@@ -1,13 +1,12 @@
 /* ========================================
-   HERO COMPONENT
-   Mobile carousel matching desktop behavior
+   HERO COMPONENT - Modern Maritime Editorial
    ======================================== */
 
 /* Hero/Carousel Container */
 #carousel {
   position: relative;
   width: 100%;
-  height: 280px;
+  height: 420px;
   margin-top: 104px;
   overflow: hidden;
 }
@@ -19,6 +18,21 @@
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+}
+
+/* Subtle overlay gradient for better text readability */
+.claim::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    rgba(0, 40, 80, 0.2) 0%,
+    rgba(0, 30, 60, 0.4) 50%,
+    rgba(0, 20, 40, 0.7) 100%
+  );
+  pointer-events: none;
 }
 
 /* Slide background images */
@@ -34,7 +48,7 @@
   background-image: url('../img/claim3.jpg');
 }
 
-/* Retina display support for slides */
+/* Retina display support */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .slide1 {
     background-image: url('../img/claim12x.jpg');
@@ -49,56 +63,81 @@
   }
 }
 
-/* Text overlay box - similar to desktop but adapted for mobile */
+/* Modern text overlay - Editorial asymmetric layout */
 .claim div {
   position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 106, 178, 0.35);
-  padding: var(--space-md) var(--space-lg);
-  max-width: 80%;
+  left: var(--space-md);
+  right: var(--space-md);
+  bottom: 80px;
+  z-index: 2;
 }
 
-/* Hero text styling */
+/* Modern H1 styling - Bold maritime editorial */
 .claim div h1 {
   font-family: 'texgyreadventorbold', 'Arial CE', 'Helvetica CE', Arial, Helvetica, sans-serif;
-  font-size: var(--font-xl);
-  color: #fff;
-  line-height: 1.2;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+  font-size: clamp(2rem, 8vw, 2.75rem);
+  color: #ffffff;
+  line-height: 1.1;
+  text-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.2);
   margin: 0;
+  letter-spacing: -0.02em;
 }
 
+/* Subtitle - Elegant refinement */
 .claim div h1 span {
-  font-family: 'texgyreadventorregular', 'Arial CE', 'Helvetica CE', Arial, Helvetica, sans-serif;
-  font-size: var(--font-lg);
-  color: #d9dadb;
   display: block;
-  margin-top: var(--space-xs);
+  font-family: 'texgyreadventorregular', 'Arial CE', 'Helvetica CE', Arial, Helvetica, sans-serif;
+  font-size: clamp(1.125rem, 4vw, 1.375rem);
+  color: rgba(255, 255, 255, 0.92);
+  margin-top: var(--space-sm);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+  font-weight: 400;
 }
 
-/* Carousel Pager */
+/* Decorative accent line */
+.claim div::before {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--color-secondary);
+  margin-bottom: var(--space-md);
+  border-radius: 2px;
+}
+
+/* Carousel Pager Container */
 .carousel-pager {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-sm);
   padding: var(--space-md);
   background: #f5f5f5;
 }
 
-.carousel-pager::before {
-  content: '';
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-primary);
+/* Pager list */
+.carousel-pager ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.carousel-pager::after {
-  content: '';
+/* Individual pager dots */
+.carousel-pager li {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ccc;
+  background: rgba(0, 106, 178, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Active pager dot */
+.carousel-pager li.cycle-pager-active {
+  width: 32px;
+  border-radius: 4px;
+  background: var(--color-primary);
 }

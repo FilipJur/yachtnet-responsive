@@ -59,18 +59,33 @@
   margin-bottom: 12px;
 }
 
+/* Star rating - Desktop CSS ported to mobile */
 .star-rating-wrapper {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 8px;
+  font-size: 0;
+  height: 26px;
+  line-height: 0;
+  margin: 12px auto 8px;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 150px;
+  background: url('../img/star-sprite.png') repeat-x;
 }
 
-/* Star rating using CSS content */
-.star-rating-wrapper::before {
-  content: '★★★★★';
-  color: #ffc107;
-  font-size: 24px;
-  letter-spacing: 2px;
+.star-rating-wrapper .star-rating {
+  background: url('../img/star-sprite.png') repeat-x;
+  background-position: 0 100%;
+  display: block;
+  float: left;
+  height: 26px;
+}
+
+/* Retina display support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .star-rating-wrapper,
+  .star-rating-wrapper .star-rating {
+    background-image: url('../img/star-sprite2x.png');
+    background-size: 30px 52px;
+  }
 }
 
 .rating-stars-wrapper p {
