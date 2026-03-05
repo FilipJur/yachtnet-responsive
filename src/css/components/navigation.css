@@ -1,6 +1,6 @@
 /* ========================================
    NAVIGATION COMPONENT
-   Fixed navigation below header for mobile (< 950px)
+   Mobile navigation with hamburger menu
    ======================================== */
 
 .main-nav {
@@ -18,42 +18,113 @@
   justify-content: space-between;
 }
 
-/* Logo sizing - target logo image within main-nav */
+/* Hamburger Menu Button */
+.hamburger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  gap: 5px;
+  order: 2;
+  z-index: 1001;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger animation when active */
+.hamburger-menu.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-menu.is-active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Logo positioning - move to start */
+.main-nav > a[href="index.html"] {
+  order: -1;
+}
+
 .main-nav img {
   height: 32px;
   width: auto;
 }
 
-/* Main menu list */
+/* Main menu - Hidden by default, full screen overlay with animation */
 .main-nav > ul {
-  display: flex;
-  gap: var(--space-md);
-  margin: 0;
-  padding: 0;
+  position: fixed;
+  top: 104px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--color-bg-white);
+  flex-direction: column;
+  gap: 0;
   list-style: none;
+  margin: 0;
+  padding: var(--space-md);
+  overflow-y: auto;
+  z-index: 998;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  /* Animation properties */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  display: flex;
+  pointer-events: none;
+}
+
+/* Show menu when open */
+.main-nav > ul.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .main-nav > ul > li {
-  position: relative;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-/* Menu links styling */
+.main-nav > ul > li:last-child {
+  border-bottom: none;
+}
+
+/* Menu links */
 .main-menu-item {
   display: block;
   color: #333;
   font-size: var(--font-base);
   font-weight: 600;
   text-decoration: none;
+  padding: var(--space-md) var(--space-sm);
   white-space: nowrap;
-  line-height: 48px;
+}
+
+/* Active/current page indicator */
+.main-menu-item[href="index.html"] {
+  color: var(--color-primary);
 }
 
 /* Hide nested dropdown menus on mobile */
 .main-nav ul ul {
-  display: none;
-}
-
-/* Active/current page indicator - using primary color */
-.main-menu-item[href="index.html"] {
-  color: var(--color-primary);
+  display: none !important;
 }
