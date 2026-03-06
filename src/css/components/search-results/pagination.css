@@ -1,0 +1,52 @@
+/* ========================================
+   SEARCH RESULTS - PAGINATION
+   Pagination controls styling
+   ======================================== */
+
+/* Hide first pagination, keep only bottom one */
+.search-main-column > section > div:first-of-type > .pagination-control {
+  display: none;
+}
+
+/* Pagination container */
+.pagination-control {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-md) 0;
+}
+
+.pagination-control a,
+.pagination-control span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 var(--space-sm);
+  font-size: var(--font-sm);
+  border-radius: var(--space-xs);
+  text-decoration: none;
+}
+
+.pagination-control a {
+  background: var(--color-bg-white);
+  color: var(--color-primary);
+  border: 1px solid var(--color-border);
+}
+
+.pagination-control span.disabled {
+  background: var(--color-bg-light);
+  color: var(--color-text-muted);
+}
+
+.pagination-control a.step {
+  padding: 0 var(--space-md);
+}
+
+/* Ellipsis styling */
+.pagination-control .ellipses {
+  color: var(--color-text-muted);
+  pointer-events: none;
+}

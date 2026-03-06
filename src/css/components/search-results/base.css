@@ -1,0 +1,125 @@
+/* ========================================
+   SEARCH RESULTS - BASE
+   Table reset and card grid structure
+   ======================================== */
+
+/* Reset table structure */
+.search-result-table,
+.search-result-table tbody,
+.search-result-table thead,
+.search-result-table tfoot {
+  display: block;
+  width: 100%;
+}
+
+/* Main container styling */
+.search-main-column > div {
+  background: var(--color-bg-white);
+  border-radius: var(--space-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Transform each row into a card using CSS Grid */
+.search-result-table tr {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas:
+    "header header header price"
+    "specs specs specs specs"
+    "status status status status"
+    "actions actions actions actions";
+  gap: var(--space-md);
+  background: var(--color-bg-white);
+  border-radius: var(--space-md);
+  padding: var(--space-md);
+  margin-bottom: calc(var(--space-md) * 2);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  position: relative;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Hide <br> tags inside cards */
+.search-result-table tr br {
+  display: none;
+}
+
+/* Recommended badge using :has() */
+.search-result-table tr:has(.recommended-company) {
+  border: 2px solid rgba(238, 127, 0, 0.3);
+  padding-top: calc(var(--space-md) + 32px);
+}
+
+.search-result-table tr:has(.recommended-company)::before {
+  content: "DOPORUČUJEME";
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  background: var(--color-secondary);
+  color: var(--color-bg-white);
+  letter-spacing: 0.5px;
+  border-radius: var(--space-xs);
+  padding: 6px 12px;
+  font-size: var(--font-xs);
+  font-weight: 700;
+}
+
+/* Hide the original SSR recommended-company element to avoid duplication */
+.search-result-table .recommended-company,
+.search-result-table .search-result-label {
+  display: none !important;
+}
+
+/* First cell: Header (name, instance, location) - spans 3 columns */
+.search-result-table td:nth-child(1) {
+  grid-area: header;
+  grid-column: 1 / 4;
+  padding: 0;
+  border: none;
+}
+
+.search-result-table td:nth-child(1) strong {
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+.search-result-table td:nth-child(1) strong a {
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Boat instance name (text after <br>) */
+.search-result-table td:nth-child(1) br + * {
+  font-size: var(--font-sm);
+  color: var(--color-text-muted);
+}
+
+/* Location styling */
+.search-result-table td:nth-child(1) .loc-map,
+.search-result-table td:nth-child(1) a[href="#"][data-lat] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-primary);
+  font-size: var(--font-sm);
+  text-decoration: none;
+  margin-top: var(--space-xs);
+}
+
+/* Location pin icon */
+.search-result-table td:nth-child(1) .loc-map::before,
+.search-result-table td:nth-child(1) a[href="#"][data-lat]::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23006ab2' stroke-width='2'%3E%3Cpath d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E")
+    center/contain no-repeat;
+  flex-shrink: 0;
+}

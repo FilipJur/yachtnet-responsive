@@ -1,0 +1,129 @@
+/* ========================================
+   SEARCH RESULTS - LAYOUT
+   Filter pills, sorting bar, and general layout
+   ======================================== */
+
+/* Main container adjustments */
+.main-column {
+  width: 100%;
+}
+
+/* Search form area inherits from search-form.css */
+/* Sorting links */
+.main-column > div > p:first-of-type {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  align-items: center;
+  font-size: var(--font-sm);
+  margin-bottom: var(--space-md);
+}
+
+.main-column > div > p:first-of-type a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.main-column > div > p:first-of-type a:hover {
+  text-decoration: underline;
+}
+
+/* Active sort indicator */
+.main-column > div > p:first-of-type strong {
+  color: var(--color-secondary);
+}
+
+/* ========================================
+   SEARCH MAIN COLUMN - MOBILE LAYOUT
+   ======================================== */
+
+/* Show aside as filter pills */
+.search-main-column aside {
+  display: block;
+  margin-top: var(--space-md);
+  background: var(--color-bg-light);
+  border-radius: var(--space-md);
+  padding: var(--space-md);
+}
+
+.search-main-column aside h4 {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.search-main-column aside > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.search-main-column aside p {
+  background: var(--color-bg-white);
+  padding: 6px 12px;
+  border-radius: var(--space-md);
+  font-size: var(--font-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  border: 1px solid var(--color-border);
+}
+
+.search-main-column aside p span {
+  color: var(--color-text-muted);
+  font-size: var(--font-xs);
+  font-weight: 500;
+}
+
+/* Sorting links as scrollable filter bar */
+.search-main-column > section > div:first-of-type > p:first-of-type {
+  display: flex;
+  gap: var(--space-xs);
+  overflow-x: auto;
+  padding-bottom: var(--space-xs);
+  margin-bottom: var(--space-md);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  font-size: 0;
+}
+
+.search-main-column > section > div:first-of-type > p:first-of-type::-webkit-scrollbar {
+  display: none;
+}
+
+.search-main-column > section > div:first-of-type > p:first-of-type a,
+.search-main-column > section > div:first-of-type > p:first-of-type strong {
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  padding: 6px 14px;
+  border-radius: var(--space-xl);
+  font-size: var(--font-sm);
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--color-text);
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+}
+
+.search-main-column > section > div:first-of-type > p:first-of-type a.active,
+.search-main-column > section > div:first-of-type > p:first-of-type strong {
+  background: var(--color-primary);
+  color: var(--color-bg-white);
+  border-color: var(--color-primary);
+  font-weight: 500;
+}
+
+.search-main-column > section > div:first-of-type > p:first-of-type a:hover {
+  border-color: var(--color-primary);
+  background: var(--color-bg-light);
+}
+
+/* Hide sidebar on mobile (override for search-main-column aside) */
+.sidebar,
+.complementary {
+  display: none;
+}

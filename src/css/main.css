@@ -22,6 +22,12 @@
 @import url("components/search-form.css");
 @import url("components/content.css");
 @import url("components/dock.css");
+@import url("components/search-results/base.css");
+@import url("components/search-results/specs.css");
+@import url("components/search-results/cards.css");
+@import url("components/search-results/status.css");
+@import url("components/search-results/pagination.css");
+@import url("components/search-results/layout.css");
 @import url("components/footer.css");
 
 /* Utility classes */
