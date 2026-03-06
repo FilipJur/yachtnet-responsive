@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "task": {
+      "*": "deny",
+      "css-audit": "allow",
+      "css-audit *": "allow"
+    }
+  },
+  "instructions": ["AGENTS.md"]
+}
