@@ -1,0 +1,32 @@
+/* ========================================
+   SEARCH FORM - DETAILED SEARCH
+   ======================================== */
+.detailed-search-wrapper {
+  display: none;
+  margin-top: var(--space-md);
+}
+
+.detailed-search-wrapper .search-form-left-column {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.detailed-search-wrapper .search-form-built-sign,
+.detailed-search-wrapper .search-form-built-year {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+@media (min-width: 600px) {
+  .detailed-search-wrapper .search-form-left-column {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .detailed-search-wrapper .search-form-built-sign,
+  .detailed-search-wrapper .search-form-built-year {
+    grid-column: span 1;
+  }
+}

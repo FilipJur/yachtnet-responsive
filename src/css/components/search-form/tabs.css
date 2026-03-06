@@ -1,0 +1,47 @@
+/* ========================================
+   SEARCH FORM - TAB PILLS
+   ======================================== */
+.search-form-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin: 0 0 var(--space-lg) 0;
+  padding: 0;
+  list-style: none;
+}
+
+.search-form-tabs li {
+  flex: 0 0 auto;
+}
+
+.search-form-tabs a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-bg-light);
+  border-radius: var(--space-xl);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.search-form-tabs a:hover {
+  background: var(--color-bg-hover);
+  color: var(--color-primary);
+}
+
+.search-form-tabs a.active {
+  background: var(--color-primary);
+  color: var(--color-bg-white);
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 106, 178, 0.3);
+}
+
+.search-form-tabs a:focus-visible {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 2px;
+}

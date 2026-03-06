@@ -5,12 +5,11 @@
 
 .main-nav {
   position: fixed;
-  top: 56px;
+  top: 0;
   left: 0;
   right: 0;
-  height: 48px;
+  height: var(--navbar-height);
   background: var(--color-bg-white);
-  border-bottom: 1px solid #e5e5e5;
   z-index: 999;
   padding: 0 var(--space-md);
   display: flex;
@@ -18,9 +17,9 @@
   justify-content: space-between;
 }
 
-/* Hamburger Menu Button */
+/* Hamburger Menu Button - overrides inline display:none */
 .hamburger-menu {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -39,7 +38,7 @@
   display: block;
   width: 24px;
   height: 2px;
-  background: #333;
+  background: var(--color-text);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -57,20 +56,10 @@
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Logo positioning - move to start */
-.main-nav > a[href="index.html"] {
-  order: -1;
-}
-
-.main-nav img {
-  height: 32px;
-  width: auto;
-}
-
-/* Main menu - Hidden by default, full screen overlay with animation */
+/* Mobile menu overlay */
 .main-nav > ul {
   position: fixed;
-  top: 104px;
+  top: var(--navbar-height);
   left: 0;
   right: 0;
   bottom: 0;
@@ -82,7 +71,6 @@
   padding: var(--space-md);
   overflow-y: auto;
   z-index: 998;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   /* Animation properties */
   opacity: 0;
   visibility: hidden;
@@ -100,18 +88,24 @@
   pointer-events: auto;
 }
 
-.main-nav > ul > li {
-  border-bottom: 1px solid #f0f0f0;
+.main-nav ul ul {
+  display: none !important;
 }
 
-.main-nav > ul > li:last-child {
-  border-bottom: none;
+/* Logo positioning - move to start */
+.main-nav > a[href="index.html"] {
+  order: -1;
+}
+
+.main-nav img {
+  height: 32px;
+  width: auto;
 }
 
 /* Menu links */
 .main-menu-item {
   display: block;
-  color: #333;
+  color: var(--color-text);
   font-size: var(--font-base);
   font-weight: 600;
   text-decoration: none;
@@ -122,9 +116,4 @@
 /* Active/current page indicator */
 .main-menu-item[href="index.html"] {
   color: var(--color-primary);
-}
-
-/* Hide nested dropdown menus on mobile */
-.main-nav ul ul {
-  display: none !important;
 }

@@ -1,56 +1,11 @@
 /* ========================================
    SEARCH FORM COMPONENT
+   Split into atomic sub-components
    ======================================== */
-#searchForm {
-  width: 100%;
-}
 
-.search-form-wrapper {
-  padding: var(--space-md);
-  background: var(--color-primary);
-}
-
-.search-form-tabs {
-  display: flex;
-  gap: var(--space-xs);
-  margin: 0 0 var(--space-md) 0;
-  padding: 0;
-  list-style: none;
-}
-
-.search-form-tabs li {
-  flex: 1;
-}
-
-.search-form-tabs a {
-  display: block;
-  padding: var(--space-sm);
-  text-align: center;
-  font-size: var(--font-sm);
-  color: var(--color-bg-white);
-  background: rgba(255, 255, 255, 0.2);
-  border-bottom: 2px solid transparent;
-}
-
-.search-form-tabs a.active {
-  background: rgba(255, 255, 255, 0.3);
-  border-bottom-color: var(--color-secondary);
-}
-
-.group-label {
-  display: block;
-  font-size: var(--font-sm);
-  font-weight: 600;
-  color: var(--color-bg-white);
-  text-transform: uppercase;
-  margin-bottom: var(--space-xs);
-}
-
-.SlectBox {
-  width: 100%;
-  padding: var(--space-sm);
-  font-size: var(--font-base);
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: var(--color-bg-white);
-}
+@import url("search-form/tabs.css");
+@import url("search-form/layout.css");
+@import url("search-form/sumoselect/base.css");
+@import url("search-form/sumoselect/multiple.css");
+@import url("search-form/detailed.css");
+@import url("search-form/submit.css");

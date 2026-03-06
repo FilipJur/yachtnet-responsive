@@ -3,7 +3,7 @@
    ======================================== */
 footer {
   width: 100%;
-  background: #1a3a5c;
+  background: var(--color-dark-blue);
   color: var(--color-bg-white);
   padding: var(--space-xl) var(--space-md);
   margin-top: var(--space-md);
@@ -19,7 +19,7 @@ footer {
 /* Individual footer sections */
 footer section {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 20px;
+  padding-bottom: var(--space-md);
 }
 
 footer section:last-child {
@@ -33,7 +33,7 @@ footer h5 {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin: 0 0 12px 0;
+  margin: 0 0 var(--space-sm) 0;
   color: var(--color-bg-white);
 }
 
@@ -73,7 +73,7 @@ footer img#ypchlogo {
 /* Copyright wrapper */
 .footer-copyright-wrapper {
   margin-top: var(--space-lg);
-  padding-top: 20px;
+  padding-top: var(--space-md);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }

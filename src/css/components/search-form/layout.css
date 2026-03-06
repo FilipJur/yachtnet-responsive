@@ -1,0 +1,103 @@
+/* ========================================
+   SEARCH FORM - LAYOUT
+   ======================================== */
+
+/* Form Container */
+.hp-main-column > section:first-child {
+  background: var(--color-bg-white);
+  border-radius: var(--space-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.hp-main-column > section:first-child h2 {
+  font-size: var(--font-xl);
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  margin: 0 0 var(--space-lg) 0;
+  padding-left: var(--space-md);
+  border-left: 4px solid var(--color-secondary);
+  letter-spacing: -0.3px;
+}
+
+/* Main Form Layout */
+#searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.search-form-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 500px), 1fr));
+  gap: var(--space-md);
+}
+
+.search-form-left-column,
+.search-form-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  width: 100%;
+}
+
+/* Form Groups */
+.search-form-period,
+.search-form-pax {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.group-label {
+  display: block;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--space-xs);
+}
+
+/* Input Wrappers */
+.search-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.search-form-label.search-form-from,
+.search-form-label.search-form-till,
+.search-form-label.search-form-pax-min,
+.search-form-label.search-form-pax-max {
+  font-size: var(--font-sm);
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (min-width: 600px) {
+  .search-form-wrapper {
+    gap: var(--space-md);
+  }
+
+  .search-form-left-column,
+  .search-form-right-column {
+    flex: 1;
+    min-width: 280px;
+  }
+
+  .search-form-period,
+  .search-form-pax {
+    flex-direction: row;
+    gap: var(--space-md);
+  }
+
+  .search-form-period .search-form-label,
+  .search-form-pax .search-form-label {
+    flex: 1;
+  }
+}

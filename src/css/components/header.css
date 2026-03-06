@@ -1,29 +1,4 @@
-/* ========================================
-   HEADER COMPONENT
-   Fixed header for mobile viewports (< 950px)
-   ======================================== */
-
+/* Hide header completely on mobile - contact info available in footer */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 56px;
-  background: var(--color-bg-white);
-  border-bottom: 1px solid #e5e5e5;
-  z-index: 1000;
-  padding: 0 var(--space-md);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Hide top contact bar on mobile */
-header > div:first-child {
   display: none;
-}
-
-/* Ensure header content doesn't interfere with fixed positioning */
-header > div {
-  height: 100%;
 }
