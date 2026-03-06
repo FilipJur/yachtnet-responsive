@@ -1,0 +1,62 @@
+/* Gallery Component - Responsive Styles
+ * Overrides desktop sidebar gallery layout for mobile
+ * Full-width single column layout matching mockup
+ */
+
+/* Mobile-first: Remove fixed heights and convert to full-width stack */
+.aside-gallery {
+  width: 100%;
+  margin-top: var(--space-md);
+  background: var(--color-bg-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.aside-gallery h3 {
+  font-size: 1.125rem; /* 18px */
+  background-color: var(--color-primary);
+  color: var(--color-bg-white);
+  padding: var(--space-sm) var(--space-md);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.aside-gallery h4 {
+  display: none; /* Hide boat name in gallery header, already shown above */
+}
+
+/* Override desktop's fixed inline height with important */
+.aside-gallery .gallery {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible;
+  padding: var(--space-sm);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
+  gap: var(--space-sm);
+}
+
+/* Gallery items - 2 column grid */
+.aside-gallery .gallery a {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.aside-gallery .gallery a img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+/* Hide the h5.hidden element inside gallery */
+.aside-gallery .gallery h5.hidden {
+  display: none;
+}

@@ -28,6 +28,8 @@
 @import url("components/search-results/status.css");
 @import url("components/search-results/pagination.css");
 @import url("components/search-results/layout.css");
+@import url("components/gallery.css");
+@import url("components/boat-detail.css");
 @import url("components/footer.css");
 
 /* Utility classes */

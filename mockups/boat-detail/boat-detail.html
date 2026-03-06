@@ -1,0 +1,804 @@
+
+Page: YachtNet Boat Detail - CSS-Only Mobile
+
+```html
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sun Odyssey 30i - YachtNet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap">
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=satoshi@500,700&display=swap');
+    
+    :root {
+      --color-primary: #006ab2;
+      --color-primary-dark: #005a9e;
+      --color-secondary: #ee7f00;
+      --color-secondary-dark: #d97100;
+      --color-text: #58585a;
+      --color-text-light: #9c9e9f;
+      --color-bg: #eceded;
+      --color-bg-white: #ffffff;
+      --color-success: #449d09;
+      --color-border: #f0f0f0;
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --font-xs: 0.75rem;
+      --font-sm: 0.875rem;
+      --font-base: 1rem;
+      --font-lg: 1.125rem;
+      --font-xl: 1.25rem;
+      --font-2xl: 1.5rem;
+    }
+    
+    body {
+      font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+    
+    .section-header {
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      font-weight: 700;
+      font-size: var(--font-sm);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .info-card {
+      background: var(--color-bg-white);
+      margin-bottom: var(--space-md);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    
+    .spec-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+      padding: var(--space-md);
+    }
+    
+    .spec-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    
+    .spec-label {
+      font-size: var(--font-xs);
+      color: var(--color-text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+    
+    .spec-value {
+      font-size: var(--font-sm);
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    
+    .price-original {
+      text-decoration: line-through;
+      color: var(--color-text-light);
+      font-size: var(--font-sm);
+    }
+    
+    .price-discount {
+      color: var(--color-secondary);
+      font-weight: 700;
+      font-size: var(--font-lg);
+    }
+    
+    .price-final {
+      color: var(--color-success);
+      font-weight: 700;
+      font-size: var(--font-xl);
+    }
+    
+    .input-field {
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      font-size: var(--font-base);
+      background: var(--color-bg-white);
+    }
+    
+    .input-field:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(0,106,178,0.1);
+    }
+    
+    .btn-primary {
+      width: 100%;
+      min-height: 48px;
+      background: var(--color-success);
+      color: white;
+      font-weight: 700;
+      font-size: var(--font-lg);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+    
+    .btn-primary:active {
+      transform: scale(0.98);
+    }
+    
+    .gallery-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--color-success);
+      font-weight: 600;
+      font-size: var(--font-sm);
+    }
+    
+    /* ========================================
+       BOAT DETAIL PAGE - CSS-ONLY TRANSFORMATION
+       Targeting exact HTML structure from yachtnet.cz
+       ======================================== */
+    
+    /* Main column becomes full-width container */
+    .boat-main-column {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 var(--space-md);
+    }
+    
+    /* Boat title - h2 styling */
+    .boat-main-column > h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin: var(--space-md) 0 var(--space-sm);
+      line-height: 1.2;
+    }
+    
+    /* Location paragraph with flex layout */
+    .boat-main-column > p {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-xs);
+      font-size: var(--font-sm);
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+    }
+    
+    .boat-main-column > p a.loc-map {
+      color: var(--color-primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .boat-main-column > p a.loc-map::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23006ab2' stroke-width='2'%3E%3Cpath d='M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
+    
+    /* Card sections styling */
+    .boat-tech-wrapper,
+    .boat-condition-wrapper,
+    .boat-recap-wrapper {
+      background: var(--color-bg-white);
+      border-radius: 8px;
+      margin-bottom: var(--space-md);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    
+    /* Section headers */
+    .boat-tech-wrapper h3,
+    .boat-condition-wrapper h3,
+    .boat-recap-wrapper h3 {
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+    
+    /* Definition lists - transform to 2-column grid */
+    .boat-tech-wrapper dl,
+    .boat-condition-wrapper dl,
+    .boat-recap-wrapper dl {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm) var(--space-md);
+      padding: var(--space-md);
+      margin: 0;
+    }
+    
+    .boat-tech-wrapper dt,
+    .boat-condition-wrapper dt,
+    .boat-recap-wrapper dt {
+      font-size: var(--font-xs);
+      color: var(--color-text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      font-weight: 500;
+    }
+    
+    .boat-tech-wrapper dd,
+    .boat-condition-wrapper dd,
+    .boat-recap-wrapper dd {
+      font-size: var(--font-sm);
+      color: var(--color-text);
+      font-weight: 600;
+      margin: 0;
+      margin-top: 2px;
+    }
+    
+    /* Rental conditions specific styling */
+    .boat-condition-wrapper dl {
+      display: block;
+      padding: var(--space-md);
+    }
+    
+    .boat-condition-wrapper dt {
+      font-size: var(--font-sm);
+      color: var(--color-text);
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      margin-top: var(--space-md);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .boat-condition-wrapper dt:first-child {
+      margin-top: 0;
+    }
+    
+    .boat-condition-wrapper dd {
+      margin: 0;
+    }
+    
+    .boat-condition-wrapper dd ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .boat-condition-wrapper dd li {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: var(--space-sm) 0;
+      font-size: var(--font-sm);
+      color: var(--color-text);
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .boat-condition-wrapper dd li:last-child {
+      border-bottom: none;
+    }
+    
+    /* Booking summary price styling */
+    .boat-recap-wrapper p {
+      margin: var(--space-xs) 0;
+      font-size: var(--font-sm);
+    }
+    
+    .boat-recap-wrapper .discount-wrapper {
+      color: var(--color-secondary);
+      font-weight: 700;
+    }
+    
+    .boat-recap-wrapper p strong {
+      color: var(--color-success);
+      font-size: var(--font-lg);
+    }
+    
+    /* Gallery sidebar transformation */
+    .aside-gallery {
+      width: 100%;
+      max-width: 100%;
+      margin-top: var(--space-md);
+      background: var(--color-bg-white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    
+    .aside-gallery h3 {
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 0;
+    }
+    
+    .aside-gallery h4 {
+      display: none;
+    }
+    
+    .aside-gallery .gallery {
+      height: auto !important;
+    }
+    
+    .aside-gallery .gallery a {
+      display: block;
+      width: 100%;
+    }
+    
+    .aside-gallery .gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    /* Booking form styling */
+    .booking-form {
+      background: var(--color-bg-white);
+      border-radius: 8px;
+      padding: var(--space-md);
+      margin-top: var(--space-md);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    
+    .booking-form div {
+      margin-bottom: var(--space-md);
+    }
+    
+    .booking-form label {
+      display: block;
+      font-size: var(--font-sm);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .booking-form label.required::after {
+      content: ' *';
+      color: var(--color-secondary);
+    }
+    
+    .booking-form input[type="text"],
+    .booking-form input[type="email"],
+    .booking-form input[type="tel"],
+    .booking-form textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      font-size: var(--font-base);
+      font-family: inherit;
+      background: var(--color-bg-white);
+      box-sizing: border-box;
+    }
+    
+    .booking-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .booking-form input:focus,
+    .booking-form textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(0,106,178,0.1);
+    }
+    
+    .booking-form .message {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm);
+      background: rgba(68,157,9,0.1);
+      border-radius: 6px;
+      margin: var(--space-md) 0;
+    }
+    
+    .booking-form .message strong {
+      color: var(--color-success);
+      font-weight: 700;
+    }
+    
+    .booking-form .message .strong {
+      color: var(--color-text-light);
+      font-size: var(--font-xs);
+      margin-left: var(--space-xs);
+    }
+    
+    .booking-form button[type="submit"] {
+      width: 100%;
+      min-height: 48px;
+      background: var(--color-success);
+      color: white;
+      font-weight: 700;
+      font-size: var(--font-lg);
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+    
+    .booking-form button[type="submit"]:active {
+      transform: scale(0.98);
+    }
+    
+    .booking-form .hint {
+      font-size: var(--font-xs);
+      color: var(--color-text-light);
+      text-align: center;
+      margin: 0;
+    }
+    
+    .booking-form .hint a {
+      color: var(--color-primary);
+      text-decoration: underline;
+    }
+    
+    /* Comparison dock at bottom */
+    .dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-bg-white);
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      z-index: 100;
+    }
+    
+    .dock img {
+      width: 32px;
+      height: auto;
+    }
+    
+    .dock p {
+      margin: 0;
+      font-size: var(--font-sm);
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    
+    .dock p span {
+      background: var(--color-secondary);
+      color: white;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 10px;
+      min-width: 18px;
+      text-align: center;
+    }
+    
+    .dock a {
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: var(--font-sm);
+      font-weight: 600;
+    }
+    
+    /* Page wrapper adjustments for fixed dock */
+    .page-content-wrapper {
+      padding-bottom: 70px;
+    }
+  </style>
+</head>
+<body>
+  <div class="w-full h-screen flex flex-col">
+    <!-- Fixed Header -->
+    <header class="shrink-0 bg-white border-b border-gray-200 z-50">
+      <div class="flex items-center justify-between px-4 py-3">
+        <a href="/" class="text-xl font-bold" style="color: var(--color-primary);">YachtNet</a>
+        <button class="p-2" aria-label="Menu">
+          <iconify-icon icon="lucide:menu" class="text-2xl" style="color: var(--color-text);"></iconify-icon>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Sticky Booking Bar -->
+    <div class="shrink-0 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+      <div>
+        <div class="font-bold text-lg" style="color: var(--color-primary);">Sun Odyssey 30i</div>
+        <div class="text-sm" style="color: var(--color-text-light);">476,- EUR / týden</div>
+      </div>
+      <div class="status-badge">
+        <iconify-icon icon="lucide:check-circle" class="text-lg"></iconify-icon>
+        <span>volná</span>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto">
+      <!-- Hero Section -->
+      <div class="px-4 py-4 bg-white">
+        <h1 class="text-2xl font-bold mb-1" style="color: var(--color-primary);">Sun Odyssey 30i</h1>
+        <p class="text-sm flex items-center gap-2 flex-wrap" style="color: var(--color-text);">
+          <span>Chorvatsko</span>
+          <span style="color: var(--color-text-light);">|</span>
+          <a href="#" class="flex items-center gap-1" style="color: var(--color-primary);">
+            <iconify-icon icon="lucide:map-pin" class="text-sm"></iconify-icon>
+            Murter, marina Betina
+          </a>
+          <span style="color: var(--color-text-light);">|</span>
+          <span>AYC</span>
+        </p>
+      </div>
+      
+      <!-- Technical Specs -->
+      <div class="px-4 mb-3">
+        <div class="info-card">
+          <div class="section-header">Technické údaje</div>
+          <div class="spec-grid">
+            <div class="spec-item">
+              <span class="spec-label">Jméno lodě</span>
+              <span class="spec-value">ESPRESSO II</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Typ</span>
+              <span class="spec-value">Plachetnice</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Rok výroby</span>
+              <span class="spec-value">2009</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Kajuty</span>
+              <span class="spec-value">2 + Salon</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Lůžka</span>
+              <span class="spec-value">6 (4+2)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Délka</span>
+              <span class="spec-value">8.79 m</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Šířka</span>
+              <span class="spec-value">3.18 m</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Ponor</span>
+              <span class="spec-value">1.75 m</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Koupelny</span>
+              <span class="spec-value">1</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Motor</span>
+              <span class="spec-value">21 PS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Rental Conditions -->
+      <div class="px-4 mb-3">
+        <div class="info-card">
+          <div class="section-header">Podmínky pronájmu</div>
+          <div class="p-4 space-y-4">
+            <!-- Deposit -->
+            <div class="flex justify-between items-center py-2 border-b" style="border-color: var(--color-border);">
+              <span class="font-semibold text-sm">Kauce</span>
+              <span class="text-sm">1.500,- EUR</span>
+            </div>
+            
+            <!-- Base Fees -->
+            <div>
+              <div class="font-semibold text-sm mb-2">Poplatky na základně</div>
+              <div class="space-y-2 text-sm" style="color: var(--color-text);">
+                <div class="flex justify-between">
+                  <span>Base fee (Check-in/-out)</span>
+                  <span class="font-medium">40,- EUR</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Boravišna pristojba</span>
+                  <span class="font-medium">1,35,- EUR</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="truncate max-w-[200px]">Transit log 2 cabins</span>
+                  <span class="font-medium">270,- EUR</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Optional Add-ons -->
+            <div class="pt-2 border-t" style="border-color: var(--color-border);">
+              <div class="font-semibold text-sm mb-2">Lze přiobjednat</div>
+              <div class="space-y-2 text-sm" style="color: var(--color-text);">
+                <div class="flex justify-between">
+                  <span>Extra Bed linen</span>
+                  <span class="font-medium">10,- EUR</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Extra Towels</span>
+                  <span class="font-medium">10,- EUR</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Outboard engine</span>
+                  <span class="font-medium">100,- EUR</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>Stand up paddle (SUP)</span>
+                  <span class="font-medium">120,- EUR</span>
+                </div>
+                <div class="flex justify-between">
+                  <span>WIFI</span>
+                  <span class="font-medium">40,- EUR</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Booking Summary -->
+      <div class="px-4 mb-3">
+        <div class="info-card">
+          <div class="section-header">Rekapitulace rezervace</div>
+          <div class="p-4">
+            <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+              <div>
+                <span class="block text-xs" style="color: var(--color-text-light);">Termín</span>
+                <span class="font-medium">7. 3. - 14. 3. 2026</span>
+              </div>
+              <div>
+                <span class="block text-xs" style="color: var(--color-text-light);">Délka</span>
+                <span class="font-medium">1 týden</span>
+              </div>
+              <div>
+                <span class="block text-xs" style="color: var(--color-text-light);">Země</span>
+                <span class="font-medium">Chorvatsko</span>
+              </div>
+              <div>
+                <span class="block text-xs" style="color: var(--color-text-light);">Charter</span>
+                <span class="font-medium">AYC</span>
+              </div>
+              <div>
+                <span class="block text-xs" style="color: var(--color-text-light);">Kajuty / Lůžka</span>
+                <span class="font-medium">2 / 6</span>
+              </div>
+            </div>
+            
+            <!-- Price Block -->
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <div class="price-original mb-1">Ceníková cena: 590,- EUR</div>
+              <div class="price-discount mb-2">- 19% sleva</div>
+              <div class="price-final">476,- EUR</div>
+              <div class="text-xs mt-2" style="color: var(--color-text-light);">Cena za týden</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Gallery -->
+      <div class="px-4 mb-3">
+        <div class="info-card">
+          <div class="section-header">Fotogalerie</div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop" alt="Sun Odyssey 30i" class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=800&h=600&fit=crop" alt="Boat interior" class="gallery-img">
+            <img src="https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2?w=800&h=600&fit=crop" alt="Boat deck" class="gallery-img">
+          </div>
+        </div>
+      </div>
+      
+      <!-- Booking Form -->
+      <div class="px-4 pb-6">
+        <div class="info-card">
+          <div class="section-header">Rezervace</div>
+          <div class="p-4 space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-1" style="color: var(--color-text);">
+                Jméno a příjmení <span style="color: var(--color-secondary);">*</span>
+              </label>
+              <input type="text" class="input-field" placeholder="Jan Novák">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-1" style="color: var(--color-text);">
+                E-mail <span style="color: var(--color-secondary);">*</span>
+              </label>
+              <input type="email" class="input-field" placeholder="jan@email.cz">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-1" style="color: var(--color-text);">
+                Telefon <span style="color: var(--color-secondary);">*</span>
+              </label>
+              <input type="tel" class="input-field" placeholder="+420 123 456 789">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium mb-1" style="color: var(--color-text);">Poznámka</label>
+              <textarea class="input-field" rows="3" placeholder="Vaše poznámka..."></textarea>
+            </div>
+            
+            <!-- Availability Message -->
+            <div class="flex items-center justify-center gap-2 py-2 bg-green-50 rounded-lg">
+              <iconify-icon icon="lucide:check-circle" style="color: var(--color-success);"></iconify-icon>
+              <span class="text-sm font-semibold" style="color: var(--color-success);">Loď je volná</span>
+              <span class="text-xs" style="color: var(--color-text-light);">ověřeno 6. 3. 2026</span>
+            </div>
+            
+            <!-- Submit Button -->
+            <button class="btn-primary">
+              <iconify-icon icon="lucide:shopping-cart"></iconify-icon>
+              Rezervovat
+            </button>
+            
+            <p class="text-xs text-center" style="color: var(--color-text-light);">
+              Odesláním formuláře souhlasíte s <a href="#" style="color: var(--color-primary); text-decoration: underline;">podmínkami</a> o zpracování osobních údajů.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Comparison Dock -->
+    <div class="shrink-0 bg-white border-t border-gray-200 px-4 py-3 flex items-center justify-between" style="box-shadow: 0 -2px 10px rgba(0,0,0,0.05);">
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <iconify-icon icon="lucide:scale" class="text-2xl" style="color: var(--color-primary);"></iconify-icon>
+          <span class="absolute -top-1 -right-1 w-5 h-5 rounded-full text-white text-xs flex items-center justify-center font-bold" style="background: var(--color-secondary);">2</span>
+        </div>
+        <span class="text-sm font-medium">k porovnání</span>
+      </div>
+      <a href="#" class="px-4 py-2 rounded-lg text-sm font-semibold text-white" style="background: var(--color-primary);">
+        Porovnat
+      </a>
+    </div>
+  </div>
+</body>
+</html>
+```
+
+Please reference this design and implement it into our codebase; Try to understand the structure, which part of our codebase is relevant and implement
