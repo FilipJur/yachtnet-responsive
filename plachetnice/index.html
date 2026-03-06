@@ -5,7 +5,7 @@
   <meta name="og:image" content="https://www.yachtnet.cz/img/gallery/default/01-default.jpg">
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=950">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="YachtNet">
   <meta name="dcterms.rightsHolder" content="YachtNet">
   <meta name="robots" content="index, follow">
@@ -20,11 +20,13 @@
   <link rel="apple-touch-icon" sizes="152x152" href="../img/apple-icon-152x152.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../img/apple-icon-180x180.png">
   <link rel="apple-touch-icon-precomposed" href="../img/apple-icon-precomposed.png">
-  <link rel="stylesheet" href="../css/main.min%EF%B9%96v=2.1.1.css">
+  <link rel="stylesheet" href="../css/main.min%EF%B9%96v=2.1.1.css" media="(min-width: 950px)">
   <link rel="stylesheet" href="../font/texgyreadventor/stylesheet.min.css">
   <link rel="stylesheet" href="../css/jquery.fancybox.min.css">
   <link rel="stylesheet" href="../css/jquery.fancybox-thumbs.min.css">
-  <link href="../css/combo.min.css" media="screen" rel="stylesheet" type="text/css"><!-- Google Tag Manager -->
+  <link href="../css/combo.min.css" media="screen" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../css/responsive-mobile.css" media="(max-width: 949px)">
+  <script src="../js/responsive.js" defer></script><!-- Google Tag Manager -->
 
   <script src="https://connect.facebook.net/signals/config/1347824545799005?v=2.9.274&amp;r=stable&amp;domain=www.yachtnet.cz&amp;hme=8830461b0a3fda5230edea4335366eb6d682f53a525e54f7adf6ff7b70c96c39&amp;ex_m=100%2C193%2C142%2C22%2C69%2C70%2C135%2C65%2C64%2C11%2C150%2C86%2C16%2C129%2C122%2C72%2C75%2C128%2C147%2C152%2C8%2C4%2C5%2C7%2C6%2C3%2C87%2C97%2C153%2C158%2C207%2C59%2C174%2C175%2C52%2C251%2C30%2C71%2C219%2C218%2C217%2C23%2C32%2C99%2C58%2C10%2C60%2C93%2C94%2C95%2C101%2C125%2C31%2C29%2C127%2C124%2C123%2C143%2C73%2C146%2C144%2C145%2C47%2C57%2C118%2C15%2C149%2C42%2C239%2C240%2C238%2C26%2C27%2C28%2C45%2C136%2C74%2C108%2C18%2C20%2C41%2C37%2C39%2C38%2C80%2C88%2C92%2C106%2C134%2C137%2C43%2C107%2C24%2C21%2C114%2C66%2C35%2C139%2C138%2C140%2C131%2C130%2C25%2C34%2C56%2C105%2C148%2C67%2C17%2C141%2C110%2C78%2C63%2C19%2C81%2C82%2C111%2C33%2C264%2C200%2C189%2C190%2C188%2C267%2C259%2C49%2C201%2C103%2C126%2C77%2C116%2C51%2C44%2C46%2C109%2C115%2C121%2C55%2C61%2C50%2C53%2C96%2C151%2C1%2C119%2C14%2C117%2C12%2C2%2C54%2C89%2C62%2C113%2C85%2C84%2C154%2C155%2C90%2C91%2C9%2C120%2C98%2C48%2C132%2C83%2C76%2C68%2C112%2C102%2C40%2C133%2C0%2C79%2C36%2C104%2C13%2C156" async></script>
   <script async src="https://connect.facebook.net/en_US/fbevents.js"></script>
@@ -72,7 +74,7 @@
   <link rel="stylesheet" type="text/css" href="https://static.mailerlite.com/css/universal.css?v4" media="all">
   <script type="text/javascript" async src="https://app.mailerlite.com/proxy/abdata/?url=/969/969954/universal/q2h9j9k1i0_popups.js&amp;v=1772536438"></script>
 </head>
-<body style="">
+<body data-mobile-responsive>
   <!-- Google Tag Manager (noscript) -->
   <!-- End Google Tag Manager (noscript) -->
   <div class="wrapper">
@@ -92,6 +94,11 @@
       </div>
     </header>
     <nav class="main-nav">
+      <button class="hamburger-menu" aria-label="Menu" aria-expanded="false" style="display: none;">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <ul>
         <li>
           <a href="../index.html" class="main-menu-item">Pronájem lodí</a>
