@@ -23,3 +23,6 @@
     }
   });
 })();
+
+// Note: Detailed search toggle is handled by original desktop JS
+// We style both states (closed/open) in the CSS
