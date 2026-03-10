@@ -1,11 +1,33 @@
 // Responsive Mobile Menu
 (function() {
   'use strict';
-  
-  const hamburger = document.querySelector('.hamburger-menu');
-  const menu = document.querySelector('.main-nav > ul');
-  
-  if (!hamburger || !menu) return;
+
+  const nav = document.querySelector('.main-nav');
+  const menu = nav ? nav.querySelector('ul') : null;
+
+  if (!menu) return;
+
+  // Check if hamburger already exists
+  let hamburger = document.querySelector('.hamburger-menu');
+
+  // Inject hamburger if not present
+  if (!hamburger && nav) {
+    hamburger = document.createElement('button');
+    hamburger.className = 'hamburger-menu';
+    hamburger.setAttribute('aria-label', 'Menu');
+    hamburger.setAttribute('aria-expanded', 'false');
+
+    // Create the three spans for the hamburger icon
+    for (let i = 0; i < 3; i++) {
+      const span = document.createElement('span');
+      hamburger.appendChild(span);
+    }
+
+    // Insert before the menu
+    nav.insertBefore(hamburger, menu);
+  }
+
+  if (!hamburger) return;
   
   hamburger.addEventListener('click', function(e) {
     e.stopPropagation();

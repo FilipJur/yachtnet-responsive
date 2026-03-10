@@ -290,11 +290,6 @@
   margin-bottom: var(--space-xs);
 }
 
-.booking-form label.required::after {
-  content: " *";
-  color: var(--color-secondary);
-}
-
 .booking-form input[type="text"],
 .booking-form input[type="email"],
 .booking-form input[type="tel"],
@@ -411,7 +406,7 @@
 
 /* Privacy hint */
 .booking-form .hint {
-  font-size: var(--font-base); /* 16px */
+  font-size: 12px;
   color: var(--color-text-light);
   text-align: center;
   margin: 0;

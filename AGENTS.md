@@ -172,6 +172,7 @@ npm run css:build  # Build once (Lightning CSS bundles imports)
 **File**: `js/responsive.js`
 
 Mobile menu toggle functionality for hamburger navigation:
+- **Auto-injects hamburger button** if not present in HTML (no manual HTML changes needed)
 - Toggles `.is-open` class on menu
 - Toggles `.is-active` class on hamburger button
 - Closes menu when clicking outside
@@ -188,9 +189,10 @@ Mobile menu toggle functionality for hamburger navigation:
 | Initial | Desktop CSS media query | 23 | Added `media="(min-width: 950px)"` to desktop CSS link to block it on mobile |
 | Initial | Body attribute | 77 | Added `data-mobile-responsive` attribute to body |
 | 2024-03-05 | Star rating fix | ~10727 | Added `<span style="width:93%" class="star-rating"></span>` inside `.star-rating-wrapper` for proper rating display |
-| 2024-03-05 | Hamburger menu | ~97 | Added hamburger button HTML before `<ul>`: `<button class="hamburger-menu" aria-label="Menu" aria-expanded="false" style="display: none;"><span></span><span></span><span></span></button>` |
+| 2024-03-05 | Hamburger menu | ~97 | ~~Added hamburger button HTML~~ **DEPRECATED** - Now auto-injected by `js/responsive.js` |
 | 2024-03-05 | Responsive JS | ~28 | Added `<script src="js/responsive.js" defer></script>` before Google Tag Manager |
 | 2024-03-05 | Detailed search toggle | ~10726 | Styled existing link for both states ("podrobné vyhledávání" and "základní vyhledávání"); preserves desktop JS toggle behavior |
+| 2025-03-06 | Hamburger auto-injection | ~97 | **REMOVED** hardcoded hamburger button; now dynamically created by `js/responsive.js` if not present |
 
 ## Implementation Strategy
 
