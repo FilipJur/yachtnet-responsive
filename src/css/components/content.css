@@ -21,7 +21,7 @@
 
 /* Section headings with colored left border */
 .hp-main-column > section h2 {
-  font-size: var(--font-xl);
+  font-size: var(--font-lg);
   font-weight: 800;
   color: var(--color-dark-blue);
   margin: 0 0 var(--space-md) 0;

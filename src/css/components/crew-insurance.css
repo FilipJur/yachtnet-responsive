@@ -1,0 +1,318 @@
+/* ========================================
+   CREW INSURANCE FORM - Yacht-Pool
+   Mobile responsive styles for insurance form
+   ======================================== */
+
+/* Main container */
+.crew-insurance-main-column {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page title */
+.crew-insurance-main-column > h2 {
+  font-size: 1.5rem !important;
+  color: var(--color-primary) !important;
+  font-weight: 700;
+  margin: var(--space-md) 0 var(--space-xs);
+  line-height: 1.2;
+}
+
+/* Intro text */
+.crew-insurance-main-column > p {
+  font-size: var(--font-base);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+/* Yacht-Pool logo */
+.crew-insurance-main-column .logo-yp {
+  display: block;
+  margin: var(--space-md) 0;
+  max-width: 170px;
+  height: auto;
+}
+
+/* Form container */
+.crew-insurance-main-column form {
+  width: 100%;
+}
+
+/* Fieldset styling - white card with border */
+.crew-insurance-main-column .fieldset {
+  background: var(--color-bg-white);
+  border-radius: var(--space-sm);
+  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+/* Fieldset heading */
+.crew-insurance-main-column .fieldset > h3 {
+  font-size: var(--font-lg);
+  color: var(--color-primary);
+  font-weight: 700;
+  margin: 0 0 var(--space-md) 0;
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Contact section - stacked inputs */
+.crew-insurance-contact > div {
+  margin-bottom: var(--space-md);
+}
+
+.crew-insurance-contact label {
+  display: block;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.crew-insurance-contact input[type="text"],
+.crew-insurance-contact input[type="email"] {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--space-xs);
+  font-size: var(--font-base);
+  background: var(--color-bg-input);
+  color: var(--color-text);
+  box-sizing: border-box;
+  min-height: 44px;
+}
+
+.crew-insurance-contact input[type="text"]:focus,
+.crew-insurance-contact input[type="email"]:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  background: var(--color-bg-white);
+}
+
+/* City/Zip inline layout */
+.crew-insurance-contact > div:has(#city) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.crew-insurance-contact > div:has(#city) label {
+  width: 100%;
+}
+
+.crew-insurance-contact #city {
+  flex: 2;
+  min-width: 120px;
+}
+
+.crew-insurance-contact #zip {
+  flex: 1;
+  min-width: 80px;
+}
+
+/* Radio button groups */
+.crew-insurance-main-column .radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-right: var(--space-lg);
+  cursor: pointer;
+  font-size: var(--font-base);
+  color: var(--color-text);
+}
+
+.crew-insurance-main-column .radio input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+/* Accordion wrapper */
+.form-accordion-wrapper {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.form-accordion-wrapper p {
+  font-size: var(--font-sm);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+}
+
+.form-accordion-wrapper a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Insurance tables */
+.crew-insurance-main-column table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-md) 0;
+  font-size: var(--font-sm);
+}
+
+.crew-insurance-main-column td {
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.crew-insurance-main-column td.left-cell {
+  text-align: left;
+  font-weight: 600;
+  background: var(--color-bg-light);
+}
+
+.crew-insurance-main-column tr.highlight td {
+  background: var(--color-bg-light);
+}
+
+.crew-insurance-main-column tr.highlight td:not(.left-cell) {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Radio buttons in tables */
+.crew-insurance-main-column table .radio {
+  margin: 0;
+  justify-content: center;
+}
+
+.crew-insurance-main-column table input[type="radio"] {
+  width: 24px;
+  height: 24px;
+}
+
+/* Skipper table specific - 8 columns */
+.crew-insurance-skipper table {
+  font-size: var(--font-xs);
+}
+
+.crew-insurance-skipper td {
+  padding: var(--space-xs);
+}
+
+/* Date input styling */
+.crew-insurance-check input[type="text"][data-toggle="datepicker"] {
+  width: 100%;
+  max-width: 200px;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--space-xs);
+  font-size: var(--font-base);
+  background: var(--color-bg-input);
+  color: var(--color-text);
+  min-height: 44px;
+}
+
+/* Agreement checkbox/radio */
+.crew-insurance-check .agreement {
+  background: var(--color-bg-light);
+  padding: var(--space-md);
+  border-radius: var(--space-xs);
+  margin: var(--space-md) 0;
+}
+
+.crew-insurance-check .agreement label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--font-sm);
+  line-height: 1.5;
+}
+
+.crew-insurance-check .agreement input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+}
+
+/* Submit button - standard pattern */
+.crew-insurance-main-column button[type="submit"] {
+  width: 100%;
+  min-height: 48px;
+  background: var(--color-success);
+  color: white;
+  font-weight: 700;
+  font-size: var(--font-lg);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.crew-insurance-main-column button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+/* Table wrapper for horizontal scroll on mobile */
+.form-accordion-wrapper:has(table) {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 0 calc(-1 * var(--space-md));
+  padding: 0 var(--space-md);
+}
+
+.form-accordion-wrapper table {
+  min-width: 600px;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 600px) {
+  .crew-insurance-main-column table {
+    font-size: var(--font-xs);
+  }
+  
+  .crew-insurance-main-column td {
+    padding: var(--space-xs);
+  }
+  
+  .crew-insurance-skipper td {
+    padding: 4px;
+  }
+  
+  .crew-insurance-main-column .radio {
+    margin-right: var(--space-md);
+  }
+  
+  /* Make tables horizontally scrollable */
+  .form-accordion-wrapper:has(table) {
+    overflow-x: auto;
+    margin: 0 -16px;
+    padding: 0 16px;
+  }
+}
+
+/* Desktop adjustments */
+@media only screen and (min-width: 600px) and (max-width: 949px) {
+  .crew-insurance-contact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  
+  .crew-insurance-contact > div:has(#street) {
+    grid-column: 1 / -1;
+  }
+  
+  .crew-insurance-contact > div:has(#city) {
+    grid-column: 1 / -1;
+  }
+}
