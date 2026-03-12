@@ -9,7 +9,22 @@ cache/
 *.log
 
 # Images (downloaded from site, not source code)
+# Ignore all images by default
 img/
+ext/img/
+
+# Critical UI images - referenced in CSS/HTML (unignore)
+!img/claim*.jpg
+!img/icon-sprite*.png
+!img/hp-banner-sprite*.jpg
+!img/star-sprite*.png
+!img/courses-*.jpg
+!img/favicon.ico
+!img/logo.svg
+!img/apple-icon*.png
+!img/iso_cz2022.jpg
+!img/helena.jpg
+!img/hitt.jpg
 
 # Documents and binary files
 *.pdf
