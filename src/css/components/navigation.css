@@ -17,9 +17,9 @@
   justify-content: space-between;
 }
 
-/* Hamburger Menu Button - overrides inline display:none */
+/* Hamburger Menu Button - only visible on mobile */
 .hamburger-menu {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -116,4 +116,11 @@
 /* Active/current page indicator */
 .main-menu-item[href="index.html"] {
   color: var(--color-primary);
+}
+
+/* Hide hamburger on desktop */
+@media only screen and (min-width: 950px) {
+  .hamburger-menu {
+    display: none !important;
+  }
 }

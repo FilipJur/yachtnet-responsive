@@ -26,6 +26,9 @@ ext/img/
 !img/helena.jpg
 !img/hitt.jpg
 
+# Responsive background images (crucial for CSS)
+!img/responsive/bg-*.jpg
+
 # Documents and binary files
 *.pdf
 doc/
