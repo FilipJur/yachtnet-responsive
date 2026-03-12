@@ -68,7 +68,6 @@ _downloads.html
 *﹖sortb=*
 # Generic query parameter patterns (covers any query string)
 *\?*
-*﹖*
 
 # Keep directory structure but ignore contents for some folders
 # (uncomment if needed)
