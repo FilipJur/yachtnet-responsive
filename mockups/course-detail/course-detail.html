@@ -1,0 +1,969 @@
+Page: YachtNet Courses - Compact Vertical List
+
+```html
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kapitánské kurzy - YachtNet</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap">
+  <style>
+    @import url('https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap');
+    
+    :root {
+      --color-primary: #006ab2;
+      --color-primary-dark: #005a9e;
+      --color-secondary: #ee7f00;
+      --color-text: #58585a;
+      --color-text-light: #9c9e9f;
+      --color-bg: #eceded;
+      --color-bg-white: #ffffff;
+      --color-success: #449d09;
+      --color-border: #f0f0f0;
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --font-sm: 0.875rem;
+      --font-base: 1rem;
+      --font-lg: 1.125rem;
+      --font-xl: 1.25rem;
+      --font-2xl: 1.5rem;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* ========================================
+       MAIN LAYOUT - Courses Pages
+       ======================================== */
+    
+    .courses-main-column,
+    .courses-sea-column,
+    .general-main-column {
+      width: 100%;
+      max-width: 100%;
+      padding: 0 var(--space-md);
+    }
+    
+    /* Hide carousel on mobile */
+    #carousel {
+      display: none;
+    }
+    
+    /* Sections stack vertically */
+    .courses-main-column > section,
+    .courses-sea-column > section,
+    .general-main-column > section {
+      margin-bottom: var(--space-lg);
+    }
+    
+    /* ========================================
+       SECTION HEADERS (h2)
+       ======================================== */
+    
+    .courses-main-column > section > h2,
+    .courses-sea-column > section > h2,
+    .general-main-column > section > h2,
+    .courses-main-column > h2,
+    .courses-sea-column > h2 {
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+      margin: 0 0 var(--space-md) 0;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    
+    /* ========================================
+       ARTICLE CARDS
+       ======================================== */
+    
+    section > article {
+      background: var(--color-bg-white);
+      border-radius: 8px;
+      padding: var(--space-md);
+      margin-bottom: var(--space-md);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    
+    section > article h3 {
+      font-size: var(--font-lg);
+      color: var(--color-primary);
+      margin: 0 0 var(--space-sm) 0;
+      font-weight: 700;
+    }
+    
+    section > article h3 a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    
+    section > article p {
+      font-size: var(--font-sm);
+      color: var(--color-text);
+      margin: 0 0 var(--space-sm) 0;
+      line-height: 1.6;
+    }
+    
+    section > article p a {
+      color: var(--color-text);
+      text-decoration: none;
+    }
+    
+    /* ========================================
+       TABLE TRANSFORMATION - Compact Vertical List
+       ======================================== */
+    
+    /* Table container - full width no scroll */
+    table {
+      display: block;
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+    
+    /* Hide table headers on mobile */
+    thead {
+      display: none;
+    }
+    
+    /* Vertical stack layout */
+    tbody {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    
+    /* Each row as horizontal grid line */
+    tbody tr {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: var(--space-md);
+      align-items: center;
+      padding: var(--space-md);
+      background: var(--color-bg-white);
+      border-radius: 4px;
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+    
+    tbody tr:hover {
+      background: var(--color-bg-light);
+    }
+    
+    /* VIP courses - subtle orange tint */
+    tbody tr:has(td:nth-child(1):contains('VIP')),
+    tbody tr:has(td:nth-child(1) *:contains('VIP')) {
+      background: #fff9f5;
+    }
+    
+    tbody tr:has(td:nth-child(1):contains('VIP')):hover,
+    tbody tr:has(td:nth-child(1) *:contains('VIP')):hover {
+      background: #fff4eb;
+    }
+    
+    /* Cell base styling - definition list format */
+    tbody td {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 0;
+      border: none;
+    }
+    
+    /* Small gray labels above values */
+    tbody td::before {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--color-text-light);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      display: block;
+    }
+    
+    /* Column 1: Date */
+    tbody td:nth-child(1) {
+      grid-column: 1;
+    }
+    
+    tbody td:nth-child(1)::before {
+      content: 'Termín';
+    }
+    
+    tbody td:nth-child(1) {
+      font-weight: 600;
+      color: var(--color-text);
+      font-size: 14px;
+      line-height: 1.3;
+    }
+    
+    /* Column 2: Price */
+    tbody td:nth-child(2) {
+      grid-column: 2;
+      text-align: right;
+    }
+    
+    tbody td:nth-child(2)::before {
+      content: 'Cena';
+    }
+    
+    tbody td:nth-child(2) {
+      font-weight: 700;
+      color: var(--color-text);
+      font-size: 15px;
+      white-space: nowrap;
+    }
+    
+    /* VIP price in orange */
+    tbody tr:has(td:nth-child(1):contains('VIP')) td:nth-child(2),
+    tbody tr:has(td:nth-child(1) *:contains('VIP')) td:nth-child(2) {
+      color: var(--color-secondary);
+    }
+    
+    /* Column 3: Availability */
+    tbody td:nth-child(3) {
+      grid-column: 3;
+      text-align: center;
+    }
+    
+    tbody td:nth-child(3)::before {
+      content: 'Místa';
+    }
+    
+    /* Availability badges */
+    tbody td:nth-child(3) {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    /* Available badge - green */
+    tbody td:nth-child(3):not(:contains('OBSAZENO')) span,
+    tbody td:nth-child(3):not(:contains('OBSAZENO')) {
+      display: inline-block;
+      background: #e8f5e9;
+      color: var(--color-success);
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    
+    /* Booked badge - gray */
+    tbody td:nth-child(3):contains('OBSAZENO') span,
+    tbody td:nth-child(3):contains('OBSAZENO') {
+      display: inline-block;
+      background: #f5f5f5;
+      color: #999;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    
+    /* Column 4: Boat type (hidden on mobile - not essential) */
+    tbody td:nth-child(4) {
+      display: none;
+    }
+    
+    /* Column 5: Action button */
+    tbody td:nth-child(5) {
+      grid-column: 4;
+    }
+    
+    tbody td:nth-child(5)::before {
+      content: '';
+      display: none;
+    }
+    
+    tbody td:nth-child(5) a,
+    tbody td a[href*='Rezervovat'],
+    tbody td a[href*='forms.gle'],
+    tbody td a[target='_blank'] {
+      padding: 8px 12px;
+      background: var(--color-success);
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      display: inline-block;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    
+    tbody td:nth-child(5) a:hover,
+    tbody td a[href*='Rezervovat']:hover {
+      background: #3a8a08;
+      transform: translateY(-1px);
+    }
+    
+    /* ========================================
+       ACCORDION STYLING
+       ======================================== */
+    
+    section.accordion {
+      margin-bottom: var(--space-md);
+    }
+    
+    section.accordion h3 {
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-md);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin: 0 0 var(--space-sm) 0;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    
+    section.accordion h3::after {
+      content: '+';
+      width: 20px;
+      font-size: 20px;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    
+    section.accordion h3.expanded::after,
+    section.accordion h3.active::after,
+    section.accordion h3:not(.collapsed)::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    
+    section.accordion > div {
+      background: var(--color-bg-white);
+      padding: 0 var(--space-md);
+      border-radius: 4px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      font-size: var(--font-sm);
+      line-height: 1.6;
+    }
+    
+    section.accordion > div.show,
+    section.accordion h3.expanded + div,
+    section.accordion h3:not(.collapsed) + div {
+      max-height: 999px;
+      padding: var(--space-md);
+    }
+    
+    /* Accordion content styling */
+    section.accordion > div p {
+      margin: 0 0 var(--space-sm) 0;
+    }
+    
+    section.accordion > div p:last-child {
+      margin-bottom: 0;
+    }
+    
+    /* ========================================
+       CONTACT FORM (.contact-form)
+       ======================================== */
+    
+    .courses-contact-form,
+    section.contact-form {
+      background: var(--color-bg-white);
+      border-radius: 8px;
+      padding: var(--space-md);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      margin-top: var(--space-lg);
+    }
+    
+    .courses-contact-form h2,
+    section.contact-form h2 {
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+      margin: calc(-1 * var(--space-md)) calc(-1 * var(--space-md)) var(--space-md) calc(-1 * var(--space-md));
+      border-radius: 8px 8px 0 0;
+    }
+    
+    .contact-form form > div,
+    .courses-contact-form form > div {
+      margin-bottom: var(--space-md);
+    }
+    
+    .contact-form label,
+    .courses-contact-form label {
+      display: block;
+      font-size: var(--font-sm);
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+    
+    .contact-form label.required::after,
+    .courses-contact-form label.required::after {
+      content: ' *';
+      color: var(--color-secondary);
+    }
+    
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form input[type="tel"],
+    .contact-form textarea,
+    .courses-contact-form input[type="text"],
+    .courses-contact-form input[type="email"],
+    .courses-contact-form input[type="tel"],
+    .courses-contact-form textarea {
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      font-size: var(--font-base);
+      font-family: inherit;
+      background: var(--color-bg-white);
+    }
+    
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .courses-contact-form input:focus,
+    .courses-contact-form textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 2px rgba(0,106,178,0.1);
+    }
+    
+    .contact-form textarea,
+    .courses-contact-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .contact-form button[type="submit"],
+    .contact-form #submit,
+    .courses-contact-form button[type="submit"] {
+      width: 100%;
+      min-height: 48px;
+      background: var(--color-success);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: var(--font-base);
+      cursor: pointer;
+      font-family: inherit;
+    }
+    
+    /* ========================================
+       GALLERY (aside.aside-gallery)
+       ======================================== */
+    
+    aside.aside-gallery {
+      width: 100%;
+      display: block;
+      margin-top: var(--space-lg);
+    }
+    
+    aside.aside-gallery h3 {
+      background: var(--color-primary);
+      color: white;
+      padding: var(--space-sm) var(--space-md);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 12px;
+      margin: 0 0 var(--space-md) 0;
+      border-radius: 4px;
+    }
+    
+    aside.aside-gallery section.gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-sm);
+    }
+    
+    aside.aside-gallery section.gallery a {
+      display: block;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    aside.aside-gallery section.gallery img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 6px;
+    }
+    
+    /* ========================================
+       QUOTE/TESTIMONIAL BLOCKS
+       ======================================== */
+    
+    div[style*="margin-left: 75px"],
+    div[style*="margin-left: 65px"],
+    .quote-block {
+      background: #f8f9fa;
+      border-left: 3px solid var(--color-primary);
+      padding: var(--space-md);
+      margin: var(--space-md) 0;
+      font-style: italic;
+      font-size: var(--font-sm);
+      line-height: 1.7;
+    }
+    
+    div[style*="margin-left: 75px"] p,
+    div[style*="margin-left: 65px"] p,
+    .quote-block p {
+      margin: 0 0 var(--space-sm) 0;
+    }
+    
+    /* ========================================
+       YOUTUBE IFRAME RESPONSIVE
+       ======================================== */
+    
+    article iframe,
+    section iframe {
+      width: 100% !important;
+      height: auto !important;
+      aspect-ratio: 16/9;
+      border-radius: 8px;
+      margin: var(--space-md) 0;
+    }
+    
+    /* ========================================
+       VIP COURSE HIGHLIGHTING
+       ======================================== */
+    
+    tbody tr:contains('VIP'),
+    tbody tr:has(td:contains('VIP')) {
+      border-left-color: var(--color-secondary);
+    }
+    
+    tbody tr:contains('VIP') td:first-child,
+    tbody tr:has(td:contains('VIP')) td:first-child {
+      color: var(--color-secondary);
+    }
+    
+    /* ========================================
+       DOCK (comparison bar)
+       ======================================== */
+    
+    .dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--color-bg-white);
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      z-index: 100;
+    }
+    
+    .dock.is-empty {
+      display: none;
+    }
+    
+    .dock img {
+      width: 32px;
+      height: auto;
+    }
+    
+    .dock p {
+      margin: 0;
+      font-size: var(--font-sm);
+      font-weight: 600;
+    }
+    
+    .dock a {
+      background: var(--color-primary);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: var(--font-sm);
+    }
+    
+    /* ========================================
+       FLOATING MESSAGE BUTTON
+       ======================================== */
+    
+    .btn-message {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--color-primary);
+      color: white;
+      padding: 12px 16px;
+      border-radius: 8px 0 0 8px;
+      font-size: var(--font-sm);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: -2px 2px 8px rgba(0,0,0,0.15);
+      z-index: 100;
+      cursor: pointer;
+    }
+    
+    /* ========================================
+       IMAGES WRAPPER
+       ======================================== */
+    
+    .images-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-sm);
+      margin: var(--space-md) 0;
+    }
+    
+    .images-wrapper a {
+      display: block;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    
+    .images-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    /* ========================================
+       INFO BOXES
+       ======================================== */
+    
+    p strong:contains('Skupina'),
+    div[style*="background-color:#eceded"] + p,
+    p:has(strong:contains('VIP')) {
+      background: #f0f7ff;
+      padding: var(--space-md);
+      border-radius: 8px;
+      border-left: 3px solid var(--color-primary);
+      margin: var(--space-md) 0;
+    }
+    
+    /* ========================================
+       DATE UPDATE INFO
+       ======================================== */
+    
+    p:contains('Datum aktualizace'),
+    p:contains('dárkový poukaz') {
+      font-size: var(--font-xs);
+      color: var(--color-text-light);
+      margin: var(--space-sm) 0;
+    }
+    
+    /* ========================================
+       LINKS STYLING
+       ======================================== */
+    
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+    
+    a.fancy {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+    
+    /* ========================================
+       DIVIDERS
+       ======================================== */
+    
+    div[name="divider"],
+    div[style*="background-color:#eceded"][style*="height:2px"] {
+      height: 2px;
+      background: var(--color-border);
+      margin: var(--space-md) 0;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="w-full h-screen flex flex-col">
+    <!-- Fixed Header -->
+    <header class="shrink-0 bg-white border-b" style="border-color: var(--color-border); z-index: 50;">
+      <div class="flex items-center justify-between px-4 py-3">
+        <a href="/" class="text-xl font-bold" style="color: var(--color-primary);">YachtNet</a>
+        <button class="p-2" aria-label="Menu">
+          <iconify-icon icon="lucide:menu" class="text-2xl" style="color: var(--color-text);"></iconify-icon>
+        </button>
+      </div>
+    </header>
+    
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto" style="background: var(--color-bg);">
+      <!-- Hero Banner -->
+      <div class="relative w-full h-48 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800');">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative h-full flex flex-col justify-center px-4">
+          <h1 class="text-white text-2xl font-bold mb-1">Dovolená na lodi</h1>
+          <p class="text-white/90 text-sm">již 26 let s YachtNetem</p>
+        </div>
+      </div>
+      
+      <!-- Page Content -->
+      <div class="courses-main-column py-5">
+        <!-- Page Title -->
+        <h2 class="text-xl font-bold mb-1" style="color: var(--color-primary);">Kapitánský kurz v Chorvatsku</h2>
+        <p class="text-sm mb-4" style="color: var(--color-text-light);">týdenní praktický výcvik na moři - kapitánský průkaz MDČR "C" / chorvatský průkaz</p>
+        
+        <!-- Intro Text -->
+        <div class="mb-5 text-sm" style="color: var(--color-text); line-height: 1.7;">
+          <p class="mb-3">Na našich kurzech Vám zajistíme kvalitní přípravu. YachtNet je školící středisko zapsané do seznamu školících středisek <strong>Ministerstva dopravy ČR</strong> a má pověření k ověřování praktických dovedností při vedení malého plavidla od Státní plavební správy. Školení a kurzy pořádáme úspěšně již od roku 2000 a v roce 2004 jsme získali <a href="#" class="fancy">certifikát kvality ISO 9001</a> pro obor "Školení a kurzy v oblasti jachtingu".</p>
+          <p class="mb-3">Při výuce používáme vlastní barevnou knihu <a href="#" style="color: var(--color-primary); font-weight: 600;">"Staňte se kapitánem"</a>, které se prodalo již 8.000 výtisků. Vzhledem k přehlednosti zpracování kniha poslouží kapitánům i jako příručka, kterou si mohou vzít s sebou na každou další plavbu.</p>
+          <p>Týdenní kurz je zakončený <strong>praktickou zkouškou</strong> a následně v ČR <a href="#">teoretickou zkouškou</a> pro získání průkazu vydávaného MD ČR, nebo pro zájemce o chorvatský průkaz zkouškou na chorvatském kapitanátu.</p>
+        </div>
+        
+        <!-- Testimonial Quote -->
+        <div class="quote-block">
+          <p class="mb-2">"Chtěla bych Vám z celého srdce poděkovat za náš praktický kurz. Byla to neuvěřitelná jízda, zkušenost, kapitán, posádka, loď a souhra všech okolností. Jste v YachtNetu prostě všichni jedineční. Krásné velikonoce. Markéta Z. ❤️⛵️🌊 Děkuji..., 9. 4. 2023"</p>
+        </div>
+        
+        <!-- Section: Schedule -->
+        <section id="terminy">
+          <h2>Týdenní kapitánské kurzy 2026 - praxe na lodi</h2>
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Termín</th>
+                <th>Cena</th>
+                <th>Volná místa</th>
+                <th>Loď</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>4. 4. 2026 - 11. 4. 2026</td>
+                <td>12 900,- Kč</td>
+                <td>OBSAZENO</td>
+                <td>Plachetnice</td>
+                <td><a href="#" class="btn-reserve">Rezervovat</a></td>
+              </tr>
+              <tr>
+                <td>11. 4. 2026 - 18. 4. 2026</td>
+                <td>12 900,- Kč</td>
+                <td>OBSAZENO</td>
+                <td>Plachetnice</td>
+                <td><a href="#" class="btn-reserve">Rezervovat</a></td>
+              </tr>
+              <tr>
+                <td>18. 4. 2026 - 25. 4. 2026</td>
+                <td>12 900,- Kč</td>
+                <td>VOLNÁ MÍSTA</td>
+                <td>Plachetnice</td>
+                <td><a href="#" class="btn-reserve">Rezervovat</a></td>
+              </tr>
+              <tr>
+                <td>25. 4. 2026 - 2. 5. 2026</td>
+                <td>12 900,- Kč</td>
+                <td>4 místa</td>
+                <td>Plachetnice</td>
+                <td><a href="#" class="btn-reserve">Rezervovat</a></td>
+              </tr>
+              <tr style="border-left-color: var(--color-secondary);">
+                <td>2. 5. 2026 - 9. 5. 2026 - VIP</td>
+                <td style="color: var(--color-secondary); font-weight: 700;">24 900,- Kč</td>
+                <td>OBSAZENO</td>
+                <td>Plachetnice</td>
+                <td><a href="#" class="btn-reserve">Rezervovat</a></td>
+              </tr>
+              <tr>
+                <td>2. 5. 2026 - 9. 5. 2026</td>
+                <td>13 900,- Kč</td>
+                <td>OBSAZENO</td>
+                <td>Plachetnice</td>
+                <td><a href="#" class="btn-reserve">Rezervovat</a></td>
+              </tr>
+              <tr>
+                <td>9. 5. 2026 - 16. 5. 2026</td>
+                <td>13 900,- Kč</td>
+                <td>3 místa</td>
+                <td>Plachetnice</td>
+                <td><a href="#" class="btn-reserve">Rezervovat</a></td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p style="margin-top: var(--space-md);"><strong>Pokud jste skupina alespoň 4 osob</strong>, rádi pro Vás vypíšeme kapitánský kurz v termínu, který se Vám bude hodit. Prosím kontaktujte nás na emailu: <a href="mailto:info@yachtnet.cz">info@yachtnet.cz</a> nebo na tel. čísle: <a href="tel:+420733577142">+420 733 577 142</a></p>
+          
+          <p style="font-size: var(--font-xs); color: var(--color-text-light); margin-top: var(--space-sm);">Datum aktualizace: 10. 03. 2026<br>Na kapitánský kurz vám rádi vystavíme dárkový poukaz.</p>
+        </section>
+        
+        <!-- Accordions -->
+        <section class="accordion">
+          <h3 class="collapsed">Hodnocení kurzu yachtingu účastníky</h3>
+          <div>
+            <div class="quote-block">
+              <p>"Dobrý den, pane Voženílku, děkuji za e-mail a rád s odstupem píši recenzi. Kurz byl opravdu super a předčil má očekávání."</p>
+              <p style="text-align: right; font-size: 12px; color: var(--color-text-light); margin-top: var(--space-sm);">Milan V., 23. 7. 2024</p>
+            </div>
+            <div class="quote-block">
+              <p>"Krásný den, kurz na moři byl naprosto perfektní, nemám jedinou věc, co bych k tomu vytkla."</p>
+              <p style="text-align: right; font-size: 12px; color: var(--color-text-light); margin-top: var(--space-sm);">K.P., 22. 7. 2024</p>
+            </div>
+            <a href="#" style="color: var(--color-primary); font-weight: 600; font-size: var(--font-sm);">Další hodnocení →</a>
+          </div>
+        </section>
+        
+        <section class="accordion">
+          <h3 class="collapsed">Pro koho je kapitánský kurz určen</h3>
+          <div>
+            <p>Pro úplné začátečníky, kteří se chtějí naučit samostatně vést na moři plachetnici, nebo motorovou loď. Kurz je zaměřen prakticky tak, abyste si po jeho absolvování a získání průkazu mohli sami vypůjčit charterovou plachetnici nebo motorovou loď nebo vést svou vlastní loď.</p>
+          </div>
+        </section>
+        
+        <section class="accordion">
+          <h3 class="collapsed">Jaký kapitánský průkaz</h3>
+          <div>
+            <p>Jaký průkaz k vedení lodi potřebuji? Po novele vyhlášky 315/2000 Sb., která rozšířila platnost průkazu způsobilosti "C" (16 m délka lodi, 20 NM od břehu) se domníváme, že pro plavbu na moři je nejvýhodnější usilovat právě o tento průkaz.</p>
+          </div>
+        </section>
+        
+        <section class="accordion">
+          <h3 class="collapsed">Kapitánský průkaz vydávaný MDČR</h3>
+          <div>
+            <p>Pro zájemce o průkaz vydávaný MDČR je provedena předepsaná praktická zkouška "na moři na lodi" a vystaveny protokoly potřebné pro následné provedení teoretické zkoušky v ČR.</p>
+            <div class="images-wrapper">
+              <a href="#"><img src="https://via.placeholder.com/250x180/006ab2/ffffff?text=Průkaz+MDČR+1" alt="Průkaz MDČR"></a>
+              <a href="#"><img src="https://via.placeholder.com/250x180/006ab2/ffffff?text=Průkaz+MDČR+2" alt="Průkaz MDČR"></a>
+            </div>
+          </div>
+        </section>
+        
+        <section class="accordion">
+          <h3 class="collapsed">Chorvatský kapitánský průkaz</h3>
+          <div>
+            <p>Pro zájemce o chorvatský průkaz je na závěr kurzu zajištěn termín ke zkoušce na chorvatském kapitanátu. Po úspěšném vykonání zkoušky je do týdne vystaven průkaz "Boat Skipper Category B".</p>
+          </div>
+        </section>
+        
+        <section class="accordion">
+          <h3 class="collapsed">Individuální kapitánské kurzy</h3>
+          <div>
+            <p>Pro skupiny 1 - 8 zájemců zorganizujeme kurs v termínu přesně podle vašich požadavků včetně možnosti výběru lodě (plachetnice, katamaranu nebo motorového člunu).</p>
+          </div>
+        </section>
+        
+        <section class="accordion">
+          <h3 class="collapsed">Podmínky kapitánských kurzů</h3>
+          <div>
+            <p class="mb-2"><strong>V ceně kapitánského kurzu je zahrnuto:</strong> pronájem místa na lodi, pojištění lodi, výuka jachtingu (kapitánem lodi), kniha "Staňte se kapitánem", "Jachtařská knížka" pro potvrzení naplutých NM, lůžkoviny, závěrečný úklid lodi, závěrečný certifikát o absolvování kurzu, protokol o praktické zkoušce a potvrzení o naplutých NM, kupón na slevu 1000 Kč na pronájem lodi u YachtNetu.</p>
+            <p class="mb-2"><strong>Cena nezahrnuje:</strong> stravu - připravuje se ze společných zásob tak jak je na lodi běžné, posádka zajišťuje stravu i pro kapitána, dopravu do místa konání kurzu (individuálně po dohodě účastníků), posádka zajišťuje rovněž dopravu pro kapitána pokud není dohodnuto jinak, eventuální poplatky za kotvení v marinách.</p>
+            <p><strong>Platební podmínky:</strong> záloha 50% do 7-mi dnů od přihlášení, doplatek 50% dva měsíce před odjezdem.</p>
+          </div>
+        </section>
+        
+        <!-- Gallery -->
+        <aside class="aside-gallery">
+          <h3>Fotogalerie</h3>
+          <section class="gallery">
+            <a href="#"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop" alt="Kurz na lodi"></a>
+            <a href="#"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=800&h=600&fit=crop" alt="Posádka"></a>
+            <a href="#"><img src="https://images.unsplash.com/photo-1500930287596-c1ecaa373bb2?w=800&h=600&fit=crop" alt="Plachtění"></a>
+            <a href="#"><img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=800&h=600&fit=crop" alt="Kapitán"></a>
+          </section>
+        </aside>
+        
+        <!-- Contact Form -->
+        <div class="courses-contact-form">
+          <section class="contact-form">
+            <h2>Kontaktní formulář</h2>
+            <form id="contactForm" method="post">
+              <div>
+                <label for="name" class="required">Jméno a příjmení</label>
+                <input type="text" name="name" id="name" placeholder="Jan Novák">
+              </div>
+              <div>
+                <label for="mail" class="required">E-mail</label>
+                <input type="email" name="mail" id="mail" placeholder="jan@email.cz">
+              </div>
+              <div>
+                <label for="phone">Telefon</label>
+                <input type="tel" name="phone" id="phone" placeholder="+420 123 456 789">
+              </div>
+              <div>
+                <label for="text" class="required">Text vaší zprávy</label>
+                <textarea name="text" id="text" rows="4" placeholder="Napište nám..."></textarea>
+              </div>
+              <div>
+                <button type="submit" id="submit">Odeslat zprávu</button>
+              </div>
+            </form>
+          </section>
+        </div>
+        
+        <!-- Footer Spacer -->
+        <div style="height: 80px;"></div>
+      </div>
+    </main>
+    
+    <!-- Floating Message Button -->
+    <div class="btn-message">
+      <iconify-icon icon="lucide:message-square"></iconify-icon>
+      <span style="display: none;">Pošlete nám zprávu</span>
+    </div>
+    
+    <!-- Dock (hidden by default) -->
+    <div class="dock is-empty">
+      <img src="https://via.placeholder.com/40x36/006ab2/ffffff?text=S" alt="k porovnání">
+      <p>k porovnání: <span>0</span></p>
+      <a href="porovnani-lodi.html">Porovnat</a>
+    </div>
+  </div>
+  
+  <script>
+    // Simple accordion toggle
+    document.querySelectorAll('.accordion h3').forEach(header => {
+      header.addEventListener('click', function() {
+        this.classList.toggle('collapsed');
+        this.classList.toggle('expanded');
+        const content = this.nextElementSibling;
+        if (content) {
+          content.classList.toggle('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+```
+
+Please reference this design and implement it into our codebase; Try to understand the structure, which part of our codebase is relevant and implement

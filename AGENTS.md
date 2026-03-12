@@ -187,7 +187,7 @@ Mobile menu toggle functionality for hamburger navigation:
 | Date | Change | Line(s) | Description |
 |------|--------|---------|-------------|
 | Initial | Desktop CSS media query | 23 | Added `media="(min-width: 950px)"` to desktop CSS link to block it on mobile |
-| Initial | Body attribute | 77 | Added `data-mobile-responsive` attribute to body |
+| Initial | Body attribute | 77 | ~~Added `data-mobile-responsive` attribute to body~~ **REMOVED** - legacy attribute, not needed |
 | 2024-03-05 | Star rating fix | ~10727 | Added `<span style="width:93%" class="star-rating"></span>` inside `.star-rating-wrapper` for proper rating display |
 | 2024-03-05 | Hamburger menu | ~97 | ~~Added hamburger button HTML~~ **DEPRECATED** - Now auto-injected by `js/responsive.js` |
 | 2024-03-05 | Responsive JS | ~28 | Added `<script src="js/responsive.js" defer></script>` before Google Tag Manager |

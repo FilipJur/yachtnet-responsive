@@ -18,9 +18,6 @@
   border-radius: var(--space-md);
   padding: var(--space-lg);
   margin-bottom: var(--space-md);
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.1),
-    0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 /* Transform each row into a card using CSS Grid */
@@ -37,7 +34,7 @@
   border-radius: var(--space-md);
   padding: var(--space-md);
   margin-bottom: calc(var(--space-md) * 2);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
   position: relative;
   width: 100% !important;
   max-width: 100% !important;

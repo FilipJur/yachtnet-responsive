@@ -1,0 +1,879 @@
+/* Course Detail Page - Mobile Responsive Styles
+ * Transforms desktop course pages into mobile-friendly card layouts
+ * Pattern: White cards with blue headers, similar to boat-detail
+ */
+
+/* ========================================
+   MAIN CONTAINER
+   ======================================== */
+
+.courses-main-column,
+.courses-sea-column,
+.courses-river-column,
+.courses-training-column,
+.general-main-column,
+.sailors-main-column,
+.sailors-insurance-column,
+.sailors-links-column,
+.sailors-weather-column,
+.contact-main-column,
+.comparison-main-column,
+.canalboats-main-column,
+.membership-main-column {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ========================================
+   COURSE PAGE HEADERS
+   ======================================== */
+
+.general-main-column > h1,
+.courses-sea-column > h1,
+.courses-river-column > h1,
+.courses-training-column > h1,
+.sailors-main-column > h1,
+.sailors-insurance-column > h1,
+.sailors-links-column > h1,
+.sailors-weather-column > h1,
+.contact-main-column > h1,
+.comparison-main-column > h1,
+.canalboats-main-column > h1,
+.membership-main-column > h1 {
+  font-size: 1.5rem !important;
+  color: var(--color-primary) !important;
+  font-weight: 700;
+  margin: var(--space-md) 0 var(--space-xs);
+  line-height: 1.2;
+}
+
+.general-main-column > h2,
+.courses-sea-column > h2,
+.courses-river-column > h2,
+.courses-training-column > h2,
+.sailors-main-column > h2,
+.sailors-insurance-column > h2,
+.sailors-links-column > h2,
+.sailors-weather-column > h2,
+.contact-main-column > h2,
+.comparison-main-column > h2,
+.canalboats-main-column > h2,
+.membership-main-column > h2 {
+  font-size: var(--font-base) !important;
+  color: var(--color-text) !important;
+  font-weight: 600 !important;
+  margin: 0 0 var(--space-md);
+  line-height: 1.4;
+}
+
+/* Intro paragraphs */
+.general-main-column > p,
+.courses-sea-column > p,
+.courses-river-column > p,
+.courses-training-column > p,
+.sailors-main-column > p,
+.sailors-insurance-column > p,
+.sailors-links-column > p,
+.sailors-weather-column > p,
+.contact-main-column > p,
+.comparison-main-column > p,
+.canalboats-main-column > p,
+.membership-main-column > p {
+  font-size: var(--font-base);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+/* Featured testimonial */
+.general-main-column > div:has(> i),
+.courses-sea-column > div:has(> i),
+.courses-river-column > div:has(> i),
+.courses-training-column > div:has(> i),
+.sailors-main-column > div:has(> i),
+.sailors-insurance-column > div:has(> i),
+.sailors-links-column > div:has(> i),
+.sailors-weather-column > div:has(> i),
+.contact-main-column > div:has(> i),
+.comparison-main-column > div:has(> i),
+.canalboats-main-column > div:has(> i),
+.membership-main-column > div:has(> i) {
+  background: var(--color-bg-white);
+  border-radius: var(--space-sm);
+  padding: var(--space-lg);
+  margin: var(--space-md) 0;
+  border-left: var(--space-xs) solid var(--color-primary);
+}
+
+/* ========================================
+   SECTION HEADERS (H2)
+   ======================================== */
+
+section > h2 {
+  background: var(--color-primary) !important;
+  color: white !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  font-size: var(--font-xs);
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin: 0 0 var(--space-md) 0 !important;
+  border-radius: var(--space-xs) !important;
+}
+
+/* ========================================
+   TABLE → CARD TRANSFORMATION
+   ======================================== */
+
+@media only screen and (max-width: 949px) {
+  /* Container for course dates section - transparent so gray page bg shows as gaps */
+  section:has(> table) {
+    margin-bottom: var(--space-lg);
+  }
+
+  /* Hide table structure entirely, rebuild as cards */
+  section > table {
+    display: block;
+    width: 100%;
+  }
+
+  section > table thead {
+    display: none;
+  }
+
+  section > table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  /* Each row becomes a card */
+  section > table tbody tr {
+    display: block;
+    background: var(--color-bg-white);
+    border-radius: var(--space-sm);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    margin-bottom: var(--space-sm);
+  }
+
+  section > table tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  /* VIP rows - orange accent on left border */
+  section > table tbody tr:has(td:first-child):has-text("VIP") {
+    border-left: var(--space-xs) solid var(--color-secondary);
+  }
+
+  /* Card header - Date */
+  section > table tbody td:nth-child(1) {
+    display: block;
+    background: var(--color-primary);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    font-weight: 600;
+    font-size: var(--font-sm);
+  }
+
+  section > table tbody td:nth-child(1)::before {
+    display: none; /* Hide label in header */
+  }
+
+  /* Card content area */
+  section > table tbody td:nth-child(2),
+  section > table tbody td:nth-child(3),
+  section > table tbody td:nth-child(4),
+  section > table tbody td:nth-child(5) {
+    display: block;
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  /* Price row */
+  section > table tbody td:nth-child(2) {
+    border-bottom: 1px solid var(--color-border);
+    font-weight: 700;
+    font-size: var(--font-lg);
+    color: var(--color-text);
+  }
+
+  section > table tbody td:nth-child(2)::before {
+    content: 'Cena';
+    display: block;
+    font-size: 0.625rem; /* 10px - no token available */
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px; /* Micro spacing - exception allowed */
+  }
+
+  /* Availability row */
+  section > table tbody td:nth-child(3) {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  section > table tbody td:nth-child(3)::before {
+    content: 'Volná místa';
+    display: block;
+    font-size: 0.625rem; /* 10px - no token available */
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px; /* Micro spacing - exception allowed */
+  }
+
+  /* Boat type row (shows on tablet+) */
+  section > table tbody td:nth-child(4) {
+    border-bottom: 1px solid var(--color-border);
+    display: none; /* Hidden on mobile */
+  }
+
+  section > table tbody td:nth-child(4)::before {
+    content: 'Loď';
+    display: block;
+    font-size: 0.625rem; /* 10px - no token available */
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px; /* Micro spacing - exception allowed */
+  }
+
+  /* Action button row */
+  section > table tbody td:nth-child(5) {
+    padding: var(--space-md);
+    background: white;
+  }
+
+  section > table tbody td:nth-child(5)::before {
+    display: none;
+  }
+
+  /* Reserve button */
+  section > table tbody td:nth-child(5) a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.75rem 1.25rem; /* 12px 20px - custom spacing */
+    background: var(--color-success);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px; /* Custom radius - no token available */
+    font-weight: 700;
+    font-size: 0.9375rem; /* 15px - no token available */
+    text-align: center;
+    min-height: 44px; /* Touch target - exception allowed */
+  }
+
+  /* ========================================
+     AVAILABILITY BADGES
+     ======================================== */
+
+  /* Available - green badge */
+  section > table tbody td:nth-child(3):not(:has-text("OBSAZENO")):not(:has-text("PROBĚHL")) {
+    color: var(--color-success);
+    font-weight: 600;
+  }
+
+  /* Booked/Past - gray */
+  section > table tbody td:nth-child(3):has-text("OBSAZENO"),
+  section > table tbody td:nth-child(3):has-text("PROBĚHL") {
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+}
+
+/* ========================================
+   TABLET+ LAYOUT (600px+)
+   ======================================== */
+
+@media only screen and (min-width: 600px) and (max-width: 949px) {
+  /* True horizontal table-like layout */
+  section > table tbody tr {
+    display: grid;
+    grid-template-columns: 2fr auto auto 1fr auto;
+    grid-template-rows: auto;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* All in one row */
+  section > table tbody td:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+    background: transparent;
+    color: var(--color-text);
+    font-size: var(--font-sm);
+  }
+
+  section > table tbody td:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+    border-right: 1px solid var(--color-border);
+    text-align: right;
+    border-bottom: none;
+  }
+
+  section > table tbody td:nth-child(3) {
+    grid-column: 3;
+    grid-row: 1;
+    border-right: 1px solid var(--color-border);
+    border-bottom: none;
+  }
+
+  section > table tbody td:nth-child(4) {
+    display: block;
+    grid-column: 4;
+    grid-row: 1;
+    text-align: right;
+    border-bottom: none;
+  }
+
+  section > table tbody td:nth-child(5) {
+    grid-column: 5;
+    grid-row: 1;
+    background: transparent;
+  }
+
+  /* Add labels back for tablet+ */
+  section > table tbody td:nth-child(1)::before {
+    content: 'Termín';
+    display: block;
+    font-size: 0.625rem; /* 10px - no token available */
+    text-transform: uppercase;
+    color: var(--color-text-light);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+}
+
+/* ========================================
+   INFO SECTIONS AFTER TABLE
+   ======================================== */
+
+section + p,
+section ~ p {
+  font-size: var(--font-base);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: var(--space-md) 0;
+}
+
+/* ========================================
+   ACCORDION SECTIONS
+   ======================================== */
+
+section.accordion {
+  background: var(--color-bg-white);
+  border-radius: var(--space-sm);
+  margin-bottom: var(--space-md);
+
+  overflow: hidden;
+}
+
+section.accordion > h3 {
+  background: var(--color-bg-white);
+  color: var(--color-primary);
+  padding: var(--space-md);
+  margin: 0;
+  font-size: var(--font-base);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid transparent;
+}
+
+section.accordion > h3::after {
+  content: '';
+  display: inline-block;
+  width: 24px; /* Icon size - exception allowed */
+  height: 24px; /* Icon size - exception allowed */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23006ab2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+  transition: transform 0.2s ease;
+}
+
+section.accordion > h3.collapsed::after {
+  transform: rotate(-90deg);
+}
+
+section.accordion > h3:not(.collapsed) {
+  border-bottom-color: var(--color-border);
+}
+
+section.accordion > div {
+  padding: var(--space-md);
+}
+
+section.accordion > h3.collapsed + div {
+  display: none;
+}
+
+/* ========================================
+   TESTIMONIALS
+   ======================================== */
+
+section.accordion > div > div {
+  margin: 0 0 var(--space-md) 0;
+  padding: var(--space-md);
+}
+
+section.accordion > div > div:last-child {
+  margin-bottom: 0;
+}
+
+section.accordion > div > div > i {
+  font-style: normal;
+  font-size: var(--font-base);
+  color: var(--color-text);
+  line-height: 1.6;
+  display: block;
+}
+
+section.accordion > div > div > i b {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+section.accordion > div > div > p {
+  text-align: right;
+  font-size: var(--font-sm);
+  color: var(--color-text-light);
+  margin: var(--space-sm) 0 0;
+  font-style: italic;
+}
+
+/* Divider between testimonials */
+section.accordion > div > div[name="divider"],
+section.accordion > div > div[style*="divider"] {
+  height: 2px;
+  background: var(--color-bg);
+  margin: var(--space-md) 0;
+  padding: 0;
+}
+
+/* ========================================
+   INFO CONTENT IN ACCORDIONS
+   ======================================== */
+
+section.accordion > div > p {
+  font-size: var(--font-base);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0 0 var(--space-md);
+}
+
+section.accordion > div > p:last-child {
+  margin-bottom: 0;
+}
+
+section.accordion .images-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
+  justify-content: center;
+}
+
+section.accordion .images-wrapper a {
+  display: block;
+  border-radius: var(--space-sm);
+  overflow: hidden;
+
+}
+
+section.accordion .images-wrapper img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   YOUTUBE VIDEOS
+   ======================================== */
+
+section.accordion iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+/* ========================================
+   COURSE LISTINGS (Alternative layouts)
+   ======================================== */
+
+section > article {
+  background: var(--color-bg-white);
+  border-radius: var(--space-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+
+}
+
+section > article h3 {
+  font-size: var(--font-lg);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-sm) 0;
+  font-weight: 700;
+}
+
+section > article h3 a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+section > article p {
+  font-size: var(--font-sm);
+  color: var(--color-text);
+  margin: 0 0 var(--space-sm) 0;
+  line-height: 1.6;
+}
+
+/* ========================================
+   CONTACT FORM
+   ======================================== */
+
+.general-main-column form,
+.courses-sea-column form,
+.courses-river-column form,
+.courses-training-column form,
+.sailors-main-column form,
+.sailors-insurance-column form,
+.sailors-links-column form,
+.sailors-weather-column form,
+.contact-main-column form,
+.comparison-main-column form,
+.canalboats-main-column form,
+.membership-main-column form {
+  background: var(--color-bg-white);
+  border-radius: 8px;
+  padding: var(--space-lg);
+  margin-top: var(--space-lg);
+
+}
+
+.general-main-column form > div,
+.courses-sea-column form > div,
+.courses-river-column form > div,
+.courses-training-column form > div,
+.sailors-main-column form > div,
+.sailors-insurance-column form > div,
+.sailors-links-column form > div,
+.sailors-weather-column form > div,
+.contact-main-column form > div,
+.comparison-main-column form > div,
+.canalboats-main-column form > div,
+.membership-main-column form > div {
+  margin-bottom: var(--space-md);
+}
+
+.general-main-column form label,
+.courses-sea-column form label,
+.courses-river-column form label,
+.courses-training-column form label,
+.sailors-main-column form label,
+.sailors-insurance-column form label,
+.sailors-links-column form label,
+.sailors-weather-column form label,
+.contact-main-column form label,
+.comparison-main-column form label,
+.canalboats-main-column form label,
+.membership-main-column form label {
+  display: block;
+  font-size: var(--font-base);
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.general-main-column form label.required::after,
+.courses-sea-column form label.required::after,
+.courses-river-column form label.required::after,
+.courses-training-column form label.required::after,
+.sailors-main-column form label.required::after,
+.sailors-insurance-column form label.required::after,
+.sailors-links-column form label.required::after,
+.sailors-weather-column form label.required::after,
+.contact-main-column form label.required::after,
+.comparison-main-column form label.required::after,
+.canalboats-main-column form label.required::after,
+.membership-main-column form label.required::after {
+  content: '*';
+  color: var(--color-secondary);
+  margin-left: var(--space-xs);
+}
+
+.general-main-column form input[type="text"],
+.general-main-column form input[type="email"],
+.general-main-column form input[type="tel"],
+.general-main-column form textarea,
+.courses-sea-column form input[type="text"],
+.courses-sea-column form input[type="email"],
+.courses-sea-column form input[type="tel"],
+.courses-sea-column form textarea,
+.courses-river-column form input[type="text"],
+.courses-river-column form input[type="email"],
+.courses-river-column form input[type="tel"],
+.courses-river-column form textarea,
+.courses-training-column form input[type="text"],
+.courses-training-column form input[type="email"],
+.courses-training-column form input[type="tel"],
+.courses-training-column form textarea,
+.sailors-main-column form input[type="text"],
+.sailors-main-column form input[type="email"],
+.sailors-main-column form input[type="tel"],
+.sailors-main-column form textarea,
+.sailors-insurance-column form input[type="text"],
+.sailors-insurance-column form input[type="email"],
+.sailors-insurance-column form input[type="tel"],
+.sailors-insurance-column form textarea,
+.sailors-links-column form input[type="text"],
+.sailors-links-column form input[type="email"],
+.sailors-links-column form input[type="tel"],
+.sailors-links-column form textarea,
+.sailors-weather-column form input[type="text"],
+.sailors-weather-column form input[type="email"],
+.sailors-weather-column form input[type="tel"],
+.sailors-weather-column form textarea,
+.contact-main-column form input[type="text"],
+.contact-main-column form input[type="email"],
+.contact-main-column form input[type="tel"],
+.contact-main-column form textarea,
+.comparison-main-column form input[type="text"],
+.comparison-main-column form input[type="email"],
+.comparison-main-column form input[type="tel"],
+.comparison-main-column form textarea,
+.canalboats-main-column form input[type="text"],
+.canalboats-main-column form input[type="email"],
+.canalboats-main-column form input[type="tel"],
+.canalboats-main-column form textarea,
+.membership-main-column form input[type="text"],
+.membership-main-column form input[type="email"],
+.membership-main-column form input[type="tel"],
+.membership-main-column form textarea {
+  width: 100%;
+  min-height: 44px; /* Touch target - exception allowed */
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: 6px; /* Custom radius - no token available */
+  font-size: var(--font-base);
+  font-family: inherit;
+  background: var(--color-bg-white);
+  box-sizing: border-box;
+}
+
+.general-main-column form textarea,
+.courses-sea-column form textarea,
+.courses-river-column form textarea,
+.courses-training-column form textarea,
+.sailors-main-column form textarea,
+.sailors-insurance-column form textarea,
+.sailors-links-column form textarea,
+.sailors-weather-column form textarea,
+.contact-main-column form textarea,
+.comparison-main-column form textarea,
+.canalboats-main-column form textarea,
+.membership-main-column form textarea {
+  min-height: 120px; /* Custom height for textarea - exception allowed */
+  resize: vertical;
+}
+
+.general-main-column form input:focus,
+.general-main-column form textarea:focus,
+.courses-sea-column form input:focus,
+.courses-sea-column form textarea:focus,
+.courses-river-column form input:focus,
+.courses-river-column form textarea:focus,
+.courses-training-column form input:focus,
+.courses-training-column form textarea:focus,
+.sailors-main-column form input:focus,
+.sailors-main-column form textarea:focus,
+.sailors-insurance-column form input:focus,
+.sailors-insurance-column form textarea:focus,
+.sailors-links-column form input:focus,
+.sailors-links-column form textarea:focus,
+.sailors-weather-column form input:focus,
+.sailors-weather-column form textarea:focus,
+.contact-main-column form input:focus,
+.contact-main-column form textarea:focus,
+.comparison-main-column form input:focus,
+.comparison-main-column form textarea:focus,
+.canalboats-main-column form input:focus,
+.canalboats-main-column form textarea:focus,
+.membership-main-column form input:focus,
+.membership-main-column form textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+
+}
+
+.general-main-column form button[type="submit"],
+.courses-sea-column form button[type="submit"],
+.courses-river-column form button[type="submit"],
+.courses-training-column form button[type="submit"],
+.sailors-main-column form button[type="submit"],
+.sailors-insurance-column form button[type="submit"],
+.sailors-links-column form button[type="submit"],
+.sailors-weather-column form button[type="submit"],
+.contact-main-column form button[type="submit"],
+.comparison-main-column form button[type="submit"],
+.canalboats-main-column form button[type="submit"],
+.membership-main-column form button[type="submit"] {
+  width: 100%;
+  min-height: 48px; /* Touch target - exception allowed */
+  background: var(--color-success);
+  color: white;
+  font-weight: 700;
+  font-size: var(--font-lg);
+  border: none;
+  border-radius: 6px; /* Custom radius - no token available */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.general-main-column form button[type="submit"]:active,
+.courses-sea-column form button[type="submit"]:active,
+.courses-river-column form button[type="submit"]:active,
+.courses-training-column form button[type="submit"]:active,
+.sailors-main-column form button[type="submit"]:active,
+.sailors-insurance-column form button[type="submit"]:active,
+.sailors-links-column form button[type="submit"]:active,
+.sailors-weather-column form button[type="submit"]:active,
+.contact-main-column form button[type="submit"]:active,
+.comparison-main-column form button[type="submit"]:active,
+.canalboats-main-column form button[type="submit"]:active,
+.membership-main-column form button[type="submit"]:active {
+  transform: scale(0.98);
+}
+
+.general-main-column form .hint,
+.courses-sea-column form .hint,
+.courses-river-column form .hint,
+.courses-training-column form .hint,
+.sailors-main-column form .hint,
+.sailors-insurance-column form .hint,
+.sailors-links-column form .hint,
+.sailors-weather-column form .hint,
+.contact-main-column form .hint,
+.comparison-main-column form .hint,
+.canalboats-main-column form .hint,
+.membership-main-column form .hint {
+  font-size: var(--font-xs);
+  color: var(--color-text-light);
+  text-align: center;
+  margin: 0;
+}
+
+.general-main-column form .hint a,
+.courses-sea-column form .hint a,
+.courses-river-column form .hint a,
+.courses-training-column form .hint a,
+.sailors-main-column form .hint a,
+.sailors-insurance-column form .hint a,
+.sailors-links-column form .hint a,
+.sailors-weather-column form .hint a,
+.contact-main-column form .hint a,
+.comparison-main-column form .hint a,
+.canalboats-main-column form .hint a,
+.membership-main-column form .hint a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* ========================================
+   SECTION & ARTICLE STYLES FOR ALL COLUMN TYPES
+   ======================================== */
+
+/* Section containers */
+.sailors-main-column > section,
+.contact-main-column > section,
+.canalboats-main-column > section,
+.membership-main-column > section {
+  background: var(--color-bg-white);
+  border-radius: var(--space-sm);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border);
+}
+
+/* Section headings */
+.sailors-main-column > section > h2,
+.contact-main-column > section > h2,
+.canalboats-main-column > section > h2,
+.membership-main-column > section > h2 {
+  font-size: var(--font-xl);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-md) 0;
+  padding-left: var(--space-md);
+  border-left: 4px solid var(--color-secondary);
+}
+
+/* Article cards (like on sailors/pro-jachtare page) */
+.sailors-main-column > section > article,
+.contact-main-column > section > article,
+.canalboats-main-column > section > article,
+.membership-main-column > section > article {
+  background: var(--color-bg-white);
+  border-radius: var(--space-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border);
+}
+
+.sailors-main-column > section > article:last-child,
+.contact-main-column > section > article:last-child,
+.canalboats-main-column > section > article:last-child,
+.membership-main-column > section > article:last-child {
+  margin-bottom: 0;
+}
+
+/* Article headings */
+.sailors-main-column > section > article h3,
+.contact-main-column > section > article h3,
+.canalboats-main-column > section > article h3,
+.membership-main-column > section > article h3 {
+  font-size: var(--font-lg);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-sm) 0;
+  font-weight: 700;
+}
+
+.sailors-main-column > section > article h3 a,
+.contact-main-column > section > article h3 a,
+.canalboats-main-column > section > article h3 a,
+.membership-main-column > section > article h3 a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* Article paragraphs */
+.sailors-main-column > section > article p,
+.contact-main-column > section > article p,
+.canalboats-main-column > section > article p,
+.membership-main-column > section > article p {
+  font-size: var(--font-base);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.sailors-main-column > section > article p a,
+.contact-main-column > section > article p a,
+.canalboats-main-column > section > article p a,
+.membership-main-column > section > article p a {
+  color: var(--color-text);
+  text-decoration: none;
+}

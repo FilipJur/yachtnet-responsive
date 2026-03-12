@@ -70,14 +70,14 @@
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: var(--space-sm);
-  box-shadow: 0 4px 12px rgba(238, 127, 0, 0.3);
+
 }
 
 #searchForm button[type="submit"]:hover,
 #searchForm input[type="submit"]:hover {
   background: var(--color-secondary-dark);
   transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(238, 127, 0, 0.4);
+
 }
 
 #searchForm button[type="submit"]:active,
@@ -86,7 +86,7 @@
 #searchForm input[type="submit"]:focus-visible {
   background: var(--color-secondary-darker);
   transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(238, 127, 0, 0.3);
+
   outline: 2px dashed var(--color-primary);
   outline-offset: 2px;
 }
