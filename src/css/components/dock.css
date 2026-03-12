@@ -1,0 +1,89 @@
+/* ========================================
+   COMPARISON DOCK - Mobile Styles
+   Fixed bottom bar for boat comparison
+   ======================================== */
+
+.dock {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  height: auto;
+  min-height: 60px;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+/* Show dock when displayed class is added */
+.dock.displayed {
+  display: flex;
+}
+
+/* Hide dock when empty */
+.dock.is-empty {
+  display: none !important;
+}
+
+/* Scale icon */
+.dock img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Comparison count text */
+.dock p {
+  margin: 0;
+  font-size: var(--font-sm);
+  color: white;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.dock p span {
+  font-weight: 700;
+  font-size: var(--font-lg);
+}
+
+/* Compare button */
+.dock a {
+  background: white;
+  color: var(--color-primary);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--space-xs);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: var(--font-sm);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.dock a:hover {
+  background: var(--color-bg-light);
+}
+
+/* Adjust page content padding when dock is visible */
+body:has(.dock.displayed:not(.is-empty)) #page-content,
+body:has(.dock:not(.is-empty)) #page-content {
+  padding-bottom: 80px;
+}
+
+/* Override desktop dock styles */
+.dock {
+  margin-left: 0 !important;
+  padding-left: var(--space-md) !important;
+  padding-top: var(--space-sm) !important;
+  height: auto !important;
+}
