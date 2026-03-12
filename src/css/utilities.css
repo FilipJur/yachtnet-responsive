@@ -13,3 +13,39 @@
 body:not(:has(.dock.is-empty)) #page-content {
   padding-bottom: 80px;
 }
+
+/* ========================================
+   RESPONSIVE IFRAMES (YouTube, etc.)
+   ======================================== */
+
+/* Make all iframes responsive by default */
+section iframe,
+article iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  max-width: 100%;
+  display: block;
+  margin: var(--space-md) 0;
+  border: none;
+}
+
+/* Container for multiple iframes */
+section article:has(iframe) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Remove fixed dimensions from iframe attributes via CSS */
+section iframe[width],
+article iframe[width] {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+section iframe[height],
+article iframe[height] {
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+}
