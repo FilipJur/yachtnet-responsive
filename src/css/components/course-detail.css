@@ -794,14 +794,18 @@ section:has(> h2:first-child + article) > article.isocer {
 .sailors-links-column form,
 .sailors-weather-column form,
 .contact-main-column form,
-.comparison-main-column form,
-.canalboats-main-column form,
-.membership-main-column form {
+.courses-contact-form section.contact-form form {
+  width: 100%;
   background: var(--color-bg-white);
-  border-radius: 8px;
-  padding: var(--space-lg);
-  margin-top: var(--space-lg);
+  border-radius: var(--space-sm);
+  border: 1px solid var(--color-border);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
 
+/* Remove padding for contactForm specifically */
+#contactForm {
+  padding: 0;
 }
 
 .general-main-column form > div,

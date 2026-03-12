@@ -133,8 +133,6 @@
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: var(--space-md);
-
   min-height: 180px;
   display: flex;
   flex-direction: column;
