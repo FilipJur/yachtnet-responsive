@@ -13,7 +13,7 @@
 
 /* Page title */
 .crew-insurance-main-column > h2 {
-  font-size: 1.5rem !important;
+  font-size: var(--font-2xl) !important;
   color: var(--color-primary) !important;
   font-weight: 700;
   margin: var(--space-md) 0 var(--space-xs);

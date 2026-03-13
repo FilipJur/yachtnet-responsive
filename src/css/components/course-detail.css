@@ -115,7 +115,7 @@ section > h2 {
   background: var(--color-primary) !important;
   color: white !important;
   padding: var(--space-sm) var(--space-md) !important;
-  font-size: var(--font-xl);
+  font-size: var(--font-lg);
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
@@ -646,7 +646,7 @@ section > article p {
 }
 
 .courses-contact-form section.contact-form h2 {
-  font-size: var(--font-xl);
+  font-size: var(--font-lg);
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
   padding-left: var(--space-md);
@@ -807,7 +807,6 @@ section:has(> h2:first-child + article) > article.isocer {
   width: 100%;
   background: var(--color-bg-white);
   border-radius: var(--space-sm);
-  border: 1px solid var(--color-border);
   padding: var(--space-md);
   margin-bottom: var(--space-md);
 }
@@ -1070,7 +1069,7 @@ section:has(> h2:first-child + article) > article.isocer {
 .contact-main-column > section > h2,
 .canalboats-main-column > section > h2,
 .membership-main-column > section > h2 {
-  font-size: var(--font-xl);
+  font-size: var(--font-lg);
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
   padding-left: var(--space-md);

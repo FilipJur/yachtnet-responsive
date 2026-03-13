@@ -11,7 +11,7 @@
 
 /* Boat title - h2 should be larger on mobile */
 .boat-main-column > h2 {
-  font-size: 1.5rem; /* 24px */
+  font-size: var(--font-2xl); /* 24px */
   font-weight: 700;
   color: var(--color-primary);
   margin: var(--space-md) 0 var(--space-sm);
