@@ -88,14 +88,10 @@ body:has(.dock:not(.is-empty)) #page-content {
   height: auto !important;
 }
 
-/* Hide dock completely on mobile - no comparisons on mobile */
+/* Dock is now enabled on mobile for comparison functionality */
 @media only screen and (max-width: 949px) {
-  .dock {
-    display: none !important;
-  }
-  
-  /* Remove padding adjustment since dock is hidden */
-  body:has(.dock) #page-content {
-    padding-bottom: var(--space-md);
+  /* Keep page content padding when dock is displayed */
+  body:has(.dock.displayed:not(.is-empty)) #page-content {
+    padding-bottom: 80px;
   }
 }
