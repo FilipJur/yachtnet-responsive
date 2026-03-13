@@ -181,11 +181,14 @@ section > h2 {
     margin-bottom: 0;
   }
 
-  /* VIP rows - orange accent on left border */
-  .general-main-column section > table tbody tr:has(td:first-child):has-text("VIP"),
-  .courses-sea-column section > table tbody tr:has(td:first-child):has-text("VIP"),
-  .courses-river-column section > table tbody tr:has(td:first-child):has-text("VIP"),
-  .courses-training-column section > table tbody tr:has(td:first-child):has-text("VIP") {
+  /* VIP rows - orange accent on left border
+   * NOTE: Requires .vip-row class on tr elements in HTML
+   * Cannot use :has-text() - not valid CSS
+   */
+  .general-main-column section > table tbody tr.vip-row,
+  .courses-sea-column section > table tbody tr.vip-row,
+  .courses-river-column section > table tbody tr.vip-row,
+  .courses-training-column section > table tbody tr.vip-row {
     border-left: var(--space-xs) solid var(--color-secondary);
   }
 
@@ -326,24 +329,30 @@ section > h2 {
      AVAILABILITY BADGES
      ======================================== */
 
-  /* Available - green badge */
-  .general-main-column section > table tbody td:nth-child(3):not(:has-text("OBSAZENO")):not(:has-text("PROBĚHL")),
-  .courses-sea-column section > table tbody td:nth-child(3):not(:has-text("OBSAZENO")):not(:has-text("PROBĚHL")),
-  .courses-river-column section > table tbody td:nth-child(3):not(:has-text("OBSAZENO")):not(:has-text("PROBĚHL")),
-  .courses-training-column section > table tbody td:nth-child(3):not(:has-text("OBSAZENO")):not(:has-text("PROBĚHL")) {
+  /* Available - green badge
+   * NOTE: Requires .available class on td elements in HTML
+   * Cannot use :has-text() - not valid CSS
+   */
+  .general-main-column section > table tbody td:nth-child(3).available,
+  .courses-sea-column section > table tbody td:nth-child(3).available,
+  .courses-river-column section > table tbody td:nth-child(3).available,
+  .courses-training-column section > table tbody td:nth-child(3).available {
     color: var(--color-success);
     font-weight: 600;
   }
 
-  /* Booked/Past - gray */
-  .general-main-column section > table tbody td:nth-child(3):has-text("OBSAZENO"),
-  .general-main-column section > table tbody td:nth-child(3):has-text("PROBĚHL"),
-  .courses-sea-column section > table tbody td:nth-child(3):has-text("OBSAZENO"),
-  .courses-sea-column section > table tbody td:nth-child(3):has-text("PROBĚHL"),
-  .courses-river-column section > table tbody td:nth-child(3):has-text("OBSAZENO"),
-  .courses-river-column section > table tbody td:nth-child(3):has-text("PROBĚHL"),
-  .courses-training-column section > table tbody td:nth-child(3):has-text("OBSAZENO"),
-  .courses-training-column section > table tbody td:nth-child(3):has-text("PROBĚHL") {
+  /* Booked/Past - gray
+   * NOTE: Requires .booked or .past class on td elements in HTML
+   * Cannot use :has-text() - not valid CSS
+   */
+  .general-main-column section > table tbody td:nth-child(3).booked,
+  .general-main-column section > table tbody td:nth-child(3).past,
+  .courses-sea-column section > table tbody td:nth-child(3).booked,
+  .courses-sea-column section > table tbody td:nth-child(3).past,
+  .courses-river-column section > table tbody td:nth-child(3).booked,
+  .courses-river-column section > table tbody td:nth-child(3).past,
+  .courses-training-column section > table tbody td:nth-child(3).booked,
+  .courses-training-column section > table tbody td:nth-child(3).past {
     color: var(--color-text-muted);
     font-weight: 600;
   }
@@ -1197,3 +1206,5 @@ section:has(> h2:first-child + article) > article.isocer {
   line-height: 1.5;
   display: block;
 }
+
+/* Note: Comparison page styles moved to comparison-page.css */

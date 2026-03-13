@@ -97,7 +97,7 @@
 .rating-claim-wrapper {
   text-align: center;
   padding: var(--space-sm);
-  background: #f8f9fa;
+  background: var(--color-bg-light);
   border-radius: 8px;
 }
 
@@ -211,7 +211,7 @@ aside.hp-aside > section {
   border-radius: var(--space-md);
   padding: var(--space-lg);
   margin-bottom: var(--space-md);
-  border: 1px solid #f0f0f0;
+  border: 1px solid var(--color-border);
 }
 
 /* Aside headings */
@@ -251,7 +251,7 @@ aside.hp-aside ul {
 /* List items */
 aside.hp-aside li {
   padding: var(--space-md) 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 aside.hp-aside li:last-child {

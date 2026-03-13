@@ -285,7 +285,7 @@
   }
   
   .crew-insurance-skipper td {
-    padding: 4px;
+    padding: var(--space-xs);
   }
   
   .crew-insurance-main-column .radio {
@@ -295,8 +295,8 @@
   /* Make tables horizontally scrollable */
   .form-accordion-wrapper:has(table) {
     overflow-x: auto;
-    margin: 0 -16px;
-    padding: 0 16px;
+    margin: 0 calc(-1 * var(--space-md));
+    padding: 0 var(--space-md);
   }
 }
 
