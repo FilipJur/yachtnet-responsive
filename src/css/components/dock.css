@@ -29,11 +29,6 @@
   display: flex;
 }
 
-/* Hide dock when empty */
-.dock.is-empty {
-  display: none !important;
-}
-
 /* Scale icon */
 .dock img {
   width: 32px;
