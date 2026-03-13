@@ -441,13 +441,6 @@
   margin-bottom: var(--space-xs);
 }
 
-.compare-send-to-email-form section form label.required::after,
-.batch-option-form section form label.required::after {
-  content: "*";
-  color: var(--color-secondary);
-  margin-left: var(--space-xs);
-}
-
 .compare-send-to-email-form section form input,
 .compare-send-to-email-form section form textarea,
 .batch-option-form section form input,
