@@ -27,6 +27,11 @@ ext/img/
 !img/hitt.jpg
 !img/scales.png
 !img/yp_checked2026.png
+!img/martin.jpg
+!img/monika.jpg
+!img/petrak.jpg
+!img/jarmila.jpg
+!img/marta.jpg
 
 # Responsive background images (crucial for CSS)
 !img/responsive/bg-*.jpg
@@ -105,4 +110,5 @@ kimi-analysis/
 screenshots/
 
 # Generated CSS (built from src/css/)
-css/responsive-mobile.css
+# NOTE: We commit the built CSS for Netlify deployment
+# css/responsive-mobile.css
