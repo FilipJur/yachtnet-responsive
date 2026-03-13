@@ -61,14 +61,24 @@
   font-size: var(--font-sm);
   color: var(--color-text-light);
   padding: var(--space-sm);
-  background: linear-gradient(90deg, transparent, var(--color-bg-light), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-bg-light),
+    transparent
+  );
   margin-bottom: var(--space-sm);
   animation: fadeHint 3s ease-in-out 2;
 }
 
 @keyframes fadeHint {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 /* Boat counter */
@@ -172,8 +182,8 @@
 }
 
 /* Alternating row backgrounds for readability */
-.comparison-main-column section dl > *:nth-child(4n+1),
-.comparison-main-column section dl > *:nth-child(4n+2) {
+.comparison-main-column section dl > *:nth-child(4n + 1),
+.comparison-main-column section dl > *:nth-child(4n + 2) {
   background: var(--color-bg-light);
 }
 
@@ -352,6 +362,7 @@
   left: auto !important;
   z-index: 10;
   box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .comparison-main-column aside.tool-box div {
