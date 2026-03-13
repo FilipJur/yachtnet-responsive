@@ -112,3 +112,20 @@ screenshots/
 # Generated CSS (built from src/css/)
 # NOTE: We commit the built CSS for Netlify deployment
 # css/responsive-mobile.css
+
+# Contact person images
+!img/jarmila.jpg
+!img/marta.jpg
+!img/martin.jpg
+!img/monika.jpg
+!img/petrak.jpg
+
+# Content images - referenced in course and boat pages
+!img/jersey_marina2_yachtnet.jpg
+!img/locaboat1.jpg
+!img/majak_red_yachtnet.jpg
+!img/nicols1.jpg
+!img/stmalo_port_yachtnet.jpg
+!img/stmalo_yachtnet.jpg
+!img/Radiostanice_rozhovor-Yacht-1.jpg
+!img/Radiostanice_rozhovor-Yacht-2.jpg
