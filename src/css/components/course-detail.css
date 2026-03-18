@@ -42,7 +42,7 @@
 .comparison-main-column > h1,
 .canalboats-main-column > h1,
 .membership-main-column > h1 {
-  font-size: 1.5rem !important;
+  font-size: var(--font-2xl) !important;
   color: var(--color-primary) !important;
   font-weight: 700;
   margin: var(--space-md) 0 var(--space-xs);
@@ -101,26 +101,53 @@
 .canalboats-main-column > div:has(> i),
 .membership-main-column > div:has(> i) {
   background: var(--color-bg-white);
-  border-radius: var(--space-sm);
+  border-radius: 0;
   padding: var(--space-lg);
   margin: var(--space-md) 0;
   border-left: var(--space-xs) solid var(--color-primary);
 }
 
 /* ========================================
-   SECTION HEADERS (H2)
+   SECTION HEADERS (H2) - Page Content Only
    ======================================== */
 
-section > h2 {
-  background: var(--color-primary) !important;
-  color: white !important;
-  padding: var(--space-sm) var(--space-md) !important;
-  font-size: var(--font-lg);
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.5px !important;
-  margin: 0 0 var(--space-md) 0 !important;
-  border-radius: var(--space-xs) !important;
+/* Sidebar/newsletter sections only - blue bar style */
+.hp-aside > section > h2,
+aside > section > h2,
+.newsletter-section > h2 {
+  background: var(--color-primary);
+  color: white;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 var(--space-md) 0;
+  border-radius: 0;
+}
+
+/* Page content headings - desktop h2 style (28px blue text, no background) */
+.general-main-column > section > h2,
+.courses-sea-column > section > h2,
+.courses-river-column > section > h2,
+.courses-training-column > section > h2,
+.sailors-main-column > section > h2,
+.sailors-insurance-column > section > h2,
+.sailors-links-column > section > h2,
+.sailors-weather-column > section > h2,
+.contact-main-column > section > h2,
+.comparison-main-column > section > h2,
+.canalboats-main-column > section > h2,
+.membership-main-column > section > h2 {
+  font-size: 28px;
+  color: var(--color-primary);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1;
+  font-weight: 700;
+  /* NO background color */
+  /* NO uppercase */
+  /* NO border-left */
+  /* NO white text */
 }
 
 /* ========================================
@@ -168,7 +195,7 @@ section > h2 {
   .courses-training-column section > table tbody tr {
     display: block;
     background: var(--color-bg-white);
-    border-radius: var(--space-sm);
+    border-radius: 0;
     border: 1px solid var(--color-border);
     overflow: hidden;
     margin-bottom: var(--space-sm);
@@ -306,24 +333,24 @@ section > h2 {
   }
 
   /* Reserve button */
-  .general-main-column section > table tbody td:nth-child(5) a,
-  .courses-sea-column section > table tbody td:nth-child(5) a,
-  .courses-river-column section > table tbody td:nth-child(5) a,
-  .courses-training-column section > table tbody td:nth-child(5) a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0.75rem 1.25rem; /* 12px 20px - custom spacing */
-    background: var(--color-success);
-    color: white;
-    text-decoration: none;
-    border-radius: 6px; /* Custom radius - no token available */
-    font-weight: 700;
-    font-size: 0.9375rem; /* 15px - no token available */
-    text-align: center;
-    min-height: 44px; /* Touch target - exception allowed */
-  }
+.general-main-column section > table tbody td:nth-child(5) a,
+.courses-sea-column section > table tbody td:nth-child(5) a,
+.courses-river-column section > table tbody td:nth-child(5) a,
+.courses-training-column section > table tbody td:nth-child(5) a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-success);
+  color: white;
+  text-decoration: none;
+  border-radius: 0;
+  font-weight: 700;
+  font-size: var(--font-base);
+  text-align: center;
+  min-height: 44px; /* Touch target - exception allowed */
+}
 
   /* ========================================
      AVAILABILITY BADGES
@@ -461,9 +488,8 @@ section ~ p {
 
 section.accordion {
   background: var(--color-bg-white);
-  border-radius: var(--space-sm);
+  border-radius: 0;
   margin-bottom: var(--space-md);
-
   overflow: hidden;
 }
 
@@ -574,7 +600,7 @@ section.accordion .images-wrapper {
 
 section.accordion .images-wrapper a {
   display: block;
-  border-radius: var(--space-sm);
+  border-radius: 0;
   overflow: hidden;
 
 }
@@ -594,7 +620,7 @@ section.accordion iframe {
   height: auto;
   aspect-ratio: 16 / 9;
   border: none;
-  border-radius: var(--space-sm);
+  border-radius: 0;
   margin: var(--space-md) 0;
 }
 
@@ -604,7 +630,7 @@ section.accordion iframe {
 
 section > article {
   background: var(--color-bg-white);
-  border-radius: var(--space-sm);
+  border-radius: 0;
   padding: var(--space-md);
   margin-bottom: var(--space-md);
 
@@ -641,16 +667,16 @@ section > article p {
 /* Contact form section styling */
 .courses-contact-form section.contact-form {
   background: var(--color-bg-white);
-  border-radius: 8px;
+  border-radius: 0;
   padding: var(--space-lg);
 }
 
 .courses-contact-form section.contact-form h2 {
-  font-size: var(--font-lg);
+  font-size: 28px;
+  font-weight: bold;
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
-  padding-left: var(--space-md);
-  border-left: 4px solid var(--color-secondary);
+  line-height: 1;
 }
 
 /* Form field containers */
@@ -681,7 +707,7 @@ section > article p {
   min-height: 44px;
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: 6px;
+  border-radius: 0;
   font-size: var(--font-base);
   font-family: inherit;
   background: var(--color-bg-white);
@@ -708,7 +734,7 @@ section > article p {
   font-weight: 700;
   font-size: var(--font-lg);
   border: none;
-  border-radius: 6px;
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -741,7 +767,7 @@ section:has(> h2:first-child + article) > h2 {
 /* Team member articles */
 section:has(> h2:first-child + article) > article {
   background: var(--color-bg-white);
-  border-radius: var(--space-sm);
+  border-radius: 0;
   padding: var(--space-md);
   text-align: center;
 }
@@ -750,7 +776,7 @@ section:has(> h2:first-child + article) > article img {
   width: 100%;
   max-width: 192px;
   height: auto;
-  border-radius: var(--space-sm);
+  border-radius: 0;
   margin-bottom: var(--space-md);
 }
 
@@ -806,7 +832,7 @@ section:has(> h2:first-child + article) > article.isocer {
 .courses-contact-form section.contact-form form {
   width: 100%;
   background: var(--color-bg-white);
-  border-radius: var(--space-sm);
+  border-radius: 0;
   padding: var(--space-md);
   margin-bottom: var(--space-md);
 }
@@ -919,7 +945,7 @@ section:has(> h2:first-child + article) > article.isocer {
   min-height: 44px; /* Touch target - exception allowed */
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: 6px; /* Custom radius - no token available */
+  border-radius: 0;
   font-size: var(--font-base);
   font-family: inherit;
   background: var(--color-bg-white);
@@ -990,7 +1016,7 @@ section:has(> h2:first-child + article) > article.isocer {
   font-weight: 700;
   font-size: var(--font-lg);
   border: none;
-  border-radius: 6px; /* Custom radius - no token available */
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -1058,23 +1084,13 @@ section:has(> h2:first-child + article) > article.isocer {
 .canalboats-main-column > section,
 .membership-main-column > section {
   background: var(--color-bg-white);
-  border-radius: var(--space-sm);
+  border-radius: 0;
   padding: var(--space-lg);
   margin-bottom: var(--space-md);
   border: 1px solid var(--color-border);
 }
 
-/* Section headings */
-.sailors-main-column > section > h2,
-.contact-main-column > section > h2,
-.canalboats-main-column > section > h2,
-.membership-main-column > section > h2 {
-  font-size: var(--font-lg);
-  color: var(--color-primary);
-  margin: 0 0 var(--space-md) 0;
-  padding-left: var(--space-md);
-  border-left: 4px solid var(--color-secondary);
-}
+/* Section headings - already defined above with desktop h2 style */
 
 /* Article cards (like on sailors/pro-jachtare page) */
 .sailors-main-column > section > article,
@@ -1082,7 +1098,7 @@ section:has(> h2:first-child + article) > article.isocer {
 .canalboats-main-column > section > article,
 .membership-main-column > section > article {
   background: var(--color-bg-white);
-  border-radius: var(--space-sm);
+  border-radius: 0;
   padding: var(--space-md);
   margin-bottom: var(--space-md);
   border: 1px solid var(--color-border);
@@ -1141,7 +1157,7 @@ section:has(> h2:first-child + article) > article.isocer {
 /* Base article styles - first section only */
 .courses-main-column > section:first-of-type > article {
   position: relative;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   margin-bottom: var(--space-md);
   min-height: 180px;

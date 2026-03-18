@@ -1,115 +1,148 @@
 /* ========================================
    SEARCH FORM - SUMOSELECT BASE
+   Handles CaptionCont duplication - hides server-rendered, shows JS-created
    ======================================== */
 
 /* Main select box container */
 .SumoSelect {
   width: 100%;
   position: relative;
+  display: inline-block;
+  vertical-align: middle;
   margin: var(--space-xs) 0 0 0;
 }
 
-/* Hide server-rendered CaptionCont, show JS-created one */
-.SumoSelect > .CaptionCont:not(:has(> label)) {
+/* ========================================
+   CAPTION CONTAINER - Handle Duplication
+   ======================================== */
+
+/* Hide ALL CaptionCont by default */
+.SumoSelect > p.CaptionCont,
+.SumoSelect > .CaptionCont {
   display: none !important;
 }
 
-/* SumoSelect library override - The clickable caption/display area */
-.SumoSelect > .CaptionCont:has(> label) {
-  width: 100%;
-  height: 40px;
-  padding: 0 44px 0 18px;
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
-  background: var(--color-bg-input);
-  cursor: pointer;
+/* Show ONLY the one with label (JS-created) */
+.SumoSelect > p.CaptionCont.SlectBox:has(> label),
+.SumoSelect > .CaptionCont.SlectBox:has(> label),
+.SumoSelect > p.CaptionCont.SlectBox[style*="display: block"],
+.SumoSelect > .CaptionCont.SlectBox[style*="display: block"] {
   display: flex !important;
   align-items: center;
-  transition: all 0.2s ease;
   position: relative;
-}
-
-.SumoSelect > .CaptionCont:has(> label):hover {
-  border-color: var(--color-border-hover);
-  background: var(--color-bg-light);
-}
-
-.SumoSelect.open > .CaptionCont:has(> label),
-.SumoSelect > .CaptionCont:has(> label):focus-visible {
-  border-color: var(--color-primary);
+  width: 100%;
+  min-height: 30px;
+  padding: 6px 44px 6px 16px;
   background: var(--color-bg-white);
-  outline: 2px dashed var(--color-primary);
-  outline-offset: 2px;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  cursor: pointer;
+  user-select: none;
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+  margin-bottom: 0.3rem;
 }
 
 /* Selected value text */
-.SumoSelect > .CaptionCont > span {
+.SumoSelect > .CaptionCont.SlectBox > span,
+.SumoSelect > p.CaptionCont.SlectBox > span {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   font-size: var(--font-base);
   color: var(--color-text);
-  font-weight: 500;
+  flex: 1;
 }
 
-/* Placeholder text color */
-.SumoSelect > .CaptionCont > span.placeholder {
-  color: var(--color-text-muted);
-  font-style: normal;
+/* Placeholder text */
+.SumoSelect > .CaptionCont.SlectBox > span.placeholder,
+.SumoSelect > p.CaptionCont.SlectBox > span.placeholder {
+  color: var(--color-text-light);
+  font-style: italic;
 }
 
-/* SumoSelect library override - Dropdown arrow */
-.SumoSelect > .CaptionCont > label {
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
+/* Dropdown arrow button (the <label>) */
+.SumoSelect > .CaptionCont.SlectBox > label,
+.SumoSelect > p.CaptionCont.SlectBox > label {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  background: var(--color-bg);
   cursor: pointer;
-  background: transparent !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--color-border);
+  z-index: 2;
 }
 
-.SumoSelect > .CaptionCont > label > i {
-  background-image: none !important;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid var(--color-text-light);
+/* Arrow icon (CSS triangle inside <i>) */
+.SumoSelect > .CaptionCont.SlectBox > label > i,
+.SumoSelect > p.CaptionCont.SlectBox > label > i {
+  display: block;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-top: 5px solid var(--color-primary);
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
   transition: transform 0.2s ease;
 }
 
-.SumoSelect > .CaptionCont.opened > label > i {
-  transform: translate(-50%, -50%) rotate(180deg);
-  border-top-color: var(--color-primary);
+/* Arrow when dropdown is open */
+.SumoSelect > .CaptionCont.SlectBox.opened > label > i,
+.SumoSelect > p.CaptionCont.SlectBox.opened > label > i {
+  border-top: 0;
+  border-bottom: 5px solid var(--color-primary);
 }
 
-/* SumoSelect library override - Dropdown options container */
+/* Hover state */
+.SumoSelect:hover > .CaptionCont.SlectBox,
+.SumoSelect:hover > p.CaptionCont.SlectBox {
+  border-color: var(--color-border-hover);
+}
+
+.SumoSelect:hover > .CaptionCont.SlectBox > label,
+.SumoSelect:hover > p.CaptionCont.SlectBox > label {
+  background: var(--color-bg-hover);
+}
+
+/* ========================================
+   OPTIONS WRAPPER (The dropdown)
+   ======================================== */
+
 .SumoSelect > .optWrapper {
   position: absolute;
-  top: calc(100% + var(--space-sm));
+  top: calc(100% + 4px);
   left: 0;
-  right: 0;
   width: 100%;
+  max-height: 300px;
   background: var(--color-bg-white);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
-
-  z-index: -100;
-  max-height: 280px;
-  overflow-y: auto;
+  border-top: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
   opacity: 0;
   visibility: hidden;
+  overflow: hidden;
+  margin-top: 0;
+  pointer-events: none; /* Prevent clicks when closed */
 }
 
+/* Open state */
 .SumoSelect > .optWrapper.open {
-  top: 55px;
-  z-index: 100;
   opacity: 1;
   visibility: visible;
+  pointer-events: auto; /* Allow clicks when open */
   animation: slideDown 0.2s ease;
+  top: 38px;
 }
 
 @keyframes slideDown {
@@ -123,16 +156,22 @@
   }
 }
 
-/* Options list */
+/* ========================================
+   OPTIONS LIST
+   ======================================== */
+
 .SumoSelect > .optWrapper > .options {
   list-style: none;
   margin: 0;
   padding: var(--space-xs) 0;
+  overflow: auto;
+  max-height: 250px;
 }
 
 .SumoSelect > .optWrapper > .options li {
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 .SumoSelect > .optWrapper > .options li label {
@@ -142,6 +181,9 @@
   color: var(--color-text);
   cursor: pointer;
   transition: background 0.15s ease;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .SumoSelect > .optWrapper > .options li:hover label {
@@ -154,22 +196,56 @@
   font-weight: 600;
 }
 
+.SumoSelect > .optWrapper > .options li.disabled {
+  display: none;
+}
+
 .SumoSelect > .optWrapper > .options li:focus-visible {
   outline: 2px dashed var(--color-primary);
   outline-offset: -2px;
 }
 
-/* Disabled State */
+/* ========================================
+   DISABLED STATE
+   ======================================== */
+
 .SumoSelect.disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-.SumoSelect.disabled > .CaptionCont {
+.SumoSelect.disabled > .CaptionCont.SlectBox,
+.SumoSelect.disabled > p.CaptionCont.SlectBox {
   background: var(--color-bg-light);
   cursor: not-allowed;
 }
 
-.SumoSelect.disabled > .CaptionCont:hover {
+.SumoSelect.disabled > .CaptionCont.SlectBox:hover,
+.SumoSelect.disabled > p.CaptionCont.SlectBox:hover {
   border-color: var(--color-border);
+}
+
+/* ========================================
+   FLOATING MODE (Mobile full-screen)
+   ======================================== */
+
+.SumoSelect > .optWrapper.isFloating {
+  position: fixed;
+  top: 10%;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  max-height: 80%;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+}
+
+.SumoSelect > .optWrapper.isFloating > .options {
+  max-height: 100%;
+}
+
+.SumoSelect > .optWrapper.isFloating > .options li {
+  padding: var(--space-md);
 }

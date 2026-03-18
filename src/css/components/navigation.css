@@ -5,16 +5,17 @@
 
 .main-nav {
   position: fixed;
-  top: 0;
+  top: 35px; /* Below header (35px height) */
   left: 0;
   right: 0;
-  height: var(--navbar-height);
+  height: var(--navbar-height); /* 70px */
   background: var(--color-bg-white);
   z-index: 999;
   padding: 0 var(--space-md);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Visual separation */
 }
 
 /* Hamburger Menu Button - only visible on mobile */
@@ -39,7 +40,7 @@
   width: 24px;
   height: 2px;
   background: var(--color-text);
-  border-radius: 2px;
+  border-radius: 0;
   transition: all 0.3s ease;
 }
 
@@ -59,7 +60,7 @@
 /* Mobile menu overlay */
 .main-nav > ul {
   position: fixed;
-  top: var(--navbar-height);
+  top: 105px; /* 35px header + 70px nav */
   left: 0;
   right: 0;
   bottom: 0;
@@ -106,11 +107,13 @@
 .main-menu-item {
   display: block;
   color: var(--color-text);
-  font-size: var(--font-base);
+  font-size: var(--font-sm);
   font-weight: 600;
   text-decoration: none;
   padding: var(--space-md) var(--space-sm);
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 /* Active/current page indicator */

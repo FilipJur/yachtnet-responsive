@@ -37,7 +37,7 @@
   text-align: center;
 }
 
-/* Year styling */
+/* Year styling - sprite icon */
 .search-result-table .search-result-built {
   display: flex;
   flex-direction: column;
@@ -52,11 +52,12 @@
   display: block;
   width: 20px;
   height: 20px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23006ab2' stroke-width='2'%3E%3Cpath d='M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'/%3E%3C/svg%3E")
-    center/contain no-repeat;
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0 -317px;
 }
 
-/* Charter company styling */
+/* Charter company styling - sprite icon */
 .search-result-table .search-result-category {
   display: flex;
   flex-direction: column;
@@ -71,11 +72,12 @@
   display: block;
   width: 20px;
   height: 20px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23006ab2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 6v16'/%3E%3Cpath d='m19 13 2-1a9 9 0 0 1-18 0l2 1'/%3E%3Cpath d='M9 11h6'/%3E%3Ccircle cx='12' cy='4' r='2'/%3E%3C/svg%3E")
-    center/contain no-repeat;
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0 -335px;
 }
 
-/* People count styling */
+/* People count styling - sprite icon */
 .search-result-table div[title="počet osob"] {
   display: flex;
   flex-direction: column;
@@ -90,11 +92,12 @@
   display: block;
   width: 20px;
   height: 20px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23006ab2' stroke-width='2'%3E%3Cpath d='M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2'/%3E%3Ccircle cx='9' cy='7' r='4'/%3E%3Cpath d='M22 21v-2a4 4 0 0 0-3-3.87'/%3E%3Cpath d='M16 3.13a4 4 0 0 1 0 7.75'/%3E%3C/svg%3E")
-    center/contain no-repeat;
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0 -360px;
 }
 
-/* Cabins count styling */
+/* Cabins count styling - sprite icon */
 .search-result-table div[title="počet kajut"] {
   display: flex;
   flex-direction: column;
@@ -109,8 +112,20 @@
   display: block;
   width: 20px;
   height: 20px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23006ab2' stroke-width='2'%3E%3Cpath d='M2 20V12a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8'/%3E%3Cpath d='M4 16h16'/%3E%3Cpath d='M6 12V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4'/%3E%3C/svg%3E")
-    center/contain no-repeat;
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0 -378px;
+}
+
+/* Retina support for specs icons */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .search-result-table .search-result-built::before,
+  .search-result-table .search-result-category::before,
+  .search-result-table div[title="počet osob"]::before,
+  .search-result-table div[title="počet kajut"]::before {
+    background-image: url("../img/icon-sprite2x.png");
+    background-size: 25px 612px;
+  }
 }
 
 /* ========================================

@@ -34,7 +34,7 @@
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-xs);
 }
 
 /* Map pin icon for location links */
@@ -53,9 +53,8 @@
 .boat-condition-wrapper,
 .boat-recap-wrapper {
   background: var(--color-bg-white);
-  border-radius: 8px;
+  border-radius: 0;
   margin-bottom: var(--space-md);
-
   overflow: hidden;
 }
 
@@ -91,12 +90,12 @@
 }
 
 .boat-tech-wrapper dt {
-  font-size: 0.75rem; /* 12px - smaller labels */
+  font-size: var(--font-xs);
   color: var(--color-text-light);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 500;
-  margin-bottom: 4px;
+  margin-bottom: var(--space-xs);
 }
 
 .boat-tech-wrapper dd {
@@ -196,12 +195,12 @@
 }
 
 .boat-recap-wrapper dt {
-  font-size: 0.75rem; /* 12px - smaller labels */
+  font-size: var(--font-xs);
   color: var(--color-text-light);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   font-weight: 500;
-  margin-bottom: 4px;
+  margin-bottom: var(--space-xs);
 }
 
 .boat-recap-wrapper dd {
@@ -215,7 +214,7 @@
 /* Price section - styled as highlight box */
 .boat-recap-wrapper .price-section {
   background: var(--color-bg-light);
-  border-radius: 8px;
+  border-radius: 0;
   padding: var(--space-md);
   margin: var(--space-md);
   text-align: center;
@@ -231,13 +230,13 @@
 .boat-recap-wrapper .discount-wrapper {
   color: var(--color-secondary);
   font-weight: 700;
-  font-size: 1.125rem; /* 18px */
+  font-size: var(--font-lg);
   margin-bottom: var(--space-xs);
 }
 
 .boat-recap-wrapper .price-final {
   color: var(--color-success);
-  font-size: 1.5rem; /* 24px - larger for final price */
+  font-size: var(--font-2xl);
   font-weight: 700;
   margin-bottom: var(--space-xs);
 }
@@ -262,7 +261,7 @@
 
 .boat-recap-wrapper > p:has(strong) {
   background: var(--color-bg-light);
-  border-radius: 8px;
+  border-radius: 0;
   padding: var(--space-md);
   margin: var(--space-md);
   text-align: center;
@@ -271,11 +270,10 @@
 /* Booking form */
 .booking-form {
   background: var(--color-bg-white);
-  border-radius: 8px;
+  border-radius: 0;
   padding: var(--space-lg);
   margin-top: var(--space-md);
   margin-bottom: var(--space-md);
-
 }
 
 .booking-form div {
@@ -298,8 +296,8 @@
   min-height: 44px;
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: 6px;
-  font-size: var(--font-base); /* 16px - content always 16px */
+  border-radius: 0;
+  font-size: var(--font-base);
   font-family: inherit;
   background: var(--color-bg-white);
   box-sizing: border-box;
@@ -314,7 +312,6 @@
 .booking-form textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-
 }
 
 /* Fix duplicate message - hide the second one */
@@ -331,7 +328,7 @@
   gap: var(--space-xs);
   padding: var(--space-md);
   background: rgba(68, 157, 9, 0.1);
-  border-radius: 6px;
+  border-radius: 0;
   margin: var(--space-md) 0;
   text-align: center;
 }
@@ -378,9 +375,9 @@
   background: var(--color-success);
   color: white;
   font-weight: 700;
-  font-size: 1.125rem; /* 18px */
+  font-size: var(--font-lg);
   border: none;
-  border-radius: 6px;
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;

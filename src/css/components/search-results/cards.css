@@ -69,7 +69,7 @@
   justify-content: center;
   font-size: var(--font-sm);
   font-weight: 500;
-  border-radius: var(--space-xs);
+  border-radius: 0;
   cursor: pointer;
   text-decoration: none;
 }

@@ -38,7 +38,7 @@
   --font-xs: 0.75rem; /* 12px */
   --font-base: 1rem; /* 16px */
   --font-sm: 0.875rem; /* 14px */
-  --font-lg: 1.125rem; /* 18px */
+  --font-lg: 1.25rem; /* 20px - compromise between desktop 28px and mobile 18px */
   --font-xl: 1.25rem; /* 20px */
   --font-2xl: 1.5rem; /* 24px */
 }

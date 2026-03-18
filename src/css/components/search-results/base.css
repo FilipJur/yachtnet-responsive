@@ -15,8 +15,8 @@
 /* Main container styling */
 .search-main-column > div {
   background: var(--color-bg-white);
-  border-radius: var(--space-md);
-  padding: var(--space-lg);
+  border-radius: 0;
+  padding: var(--space-md);
   margin-bottom: var(--space-md);
 }
 
@@ -29,11 +29,11 @@
     "specs specs specs specs"
     "status status status status"
     "actions actions actions actions";
-  gap: var(--space-md);
+  gap: var(--space-sm);
   background: var(--color-bg-white);
-  border-radius: var(--space-md);
-  padding: var(--space-md);
-  margin-bottom: calc(var(--space-md) * 2);
+  border-radius: 0;
+  padding: var(--space-sm);
+  margin-bottom: var(--space-md);
 
   position: relative;
   width: 100% !important;
@@ -59,7 +59,7 @@
   background: var(--color-secondary);
   color: var(--color-bg-white);
   letter-spacing: 0.5px;
-  border-radius: var(--space-xs);
+  border-radius: 0;
   padding: 6px 12px;
   font-size: var(--font-xs);
   font-weight: 700;

@@ -17,7 +17,11 @@ h6 {
 }
 
 h1 { font-size: var(--font-2xl); }
-h2 { font-size: var(--font-lg); }
+h2 {
+  font-size: var(--font-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
 h3 { font-size: var(--font-lg); }
 h4 { font-size: var(--font-base); }
 h5,
@@ -42,6 +46,7 @@ b {
     "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica,
     sans-serif;
   font-weight: normal;
+  font-size: 1.05em; /* Desktop uses 105% */
 }
 
 em,

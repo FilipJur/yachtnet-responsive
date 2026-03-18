@@ -44,7 +44,7 @@
 /* Fieldset styling - white card with border */
 .crew-insurance-main-column .fieldset {
   background: var(--color-bg-white);
-  border-radius: var(--space-sm);
+  border-radius: 0;
   border: 1px solid var(--color-border);
   padding: var(--space-md);
   margin-bottom: var(--space-md);
@@ -78,7 +78,7 @@
   width: 100%;
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: var(--space-xs);
+  border-radius: 0;
   font-size: var(--font-base);
   background: var(--color-bg-input);
   color: var(--color-text);
@@ -209,7 +209,7 @@
   max-width: 200px;
   padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border);
-  border-radius: var(--space-xs);
+  border-radius: 0;
   font-size: var(--font-base);
   background: var(--color-bg-input);
   color: var(--color-text);
@@ -220,7 +220,7 @@
 .crew-insurance-check .agreement {
   background: var(--color-bg-light);
   padding: var(--space-md);
-  border-radius: var(--space-xs);
+  border-radius: 0;
   margin: var(--space-md) 0;
 }
 
@@ -249,7 +249,7 @@
   font-weight: 700;
   font-size: var(--font-lg);
   border: none;
-  border-radius: 6px;
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;

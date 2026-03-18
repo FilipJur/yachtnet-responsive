@@ -26,7 +26,7 @@
   height: 36px;
   padding: 0 var(--space-sm);
   font-size: var(--font-sm);
-  border-radius: var(--space-xs);
+  border-radius: 0;
   text-decoration: none;
 }
 

@@ -5,28 +5,34 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
-  margin: 0 0 var(--space-lg) 0;
+  margin: 0 0 0.3rem 0;
   padding: 0;
   list-style: none;
+  width: 100%;
 }
 
 .search-form-tabs li {
-  flex: 0 0 auto;
+  flex: 1 1 auto;
+  min-width: auto;
 }
 
 .search-form-tabs a {
   display: block;
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-sm) var(--space-xs);
   text-align: center;
-  font-size: var(--font-sm);
+  font-size: var(--font-xs);
   font-weight: 600;
   color: var(--color-text);
-  background: var(--color-bg-light);
-  border-radius: var(--space-xl);
+  background: var(--color-bg);
+  border-radius: 0;
   border: 1px solid transparent;
+  text-transform: uppercase;
   transition: all 0.2s ease;
-  white-space: nowrap;
+  white-space: normal;
+  overflow: visible;
   text-decoration: none;
+  width: 100%;
+  line-height: 1.2;
 }
 
 .search-form-tabs a:hover {
@@ -38,7 +44,6 @@
   background: var(--color-primary);
   color: var(--color-bg-white);
   border-color: var(--color-primary);
-
 }
 
 .search-form-tabs a:focus-visible {

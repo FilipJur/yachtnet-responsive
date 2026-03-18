@@ -8,13 +8,12 @@
   width: 100%;
   margin-top: var(--space-md);
   background: var(--color-bg-white);
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
-
 }
 
 .aside-gallery h3 {
-  font-size: 1.125rem; /* 18px */
+  font-size: var(--font-lg);
   background-color: var(--color-primary);
   color: var(--color-bg-white);
   padding: var(--space-sm) var(--space-md);
@@ -44,7 +43,7 @@
   display: block;
   width: 100%;
   margin: 0;
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
 }
 
