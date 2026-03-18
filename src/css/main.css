@@ -35,5 +35,8 @@
 @import url("components/crew-insurance.css");
 @import url("components/footer.css");
 
+/* Sprite icons */
+@import url("components/icons.css");
+
 /* Utility classes */
 @import url("utilities.css");

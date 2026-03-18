@@ -1,0 +1,103 @@
+/* ========================================
+   SPRITE ICONS - From Desktop CSS
+   ======================================== */
+
+/* Icon base class */
+.icon-sprite {
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  content: "";
+  position: absolute;
+  display: inline-block;
+}
+
+/* Retina support */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .icon-sprite {
+    background-image: url("../img/icon-sprite2x.png");
+    background-size: 25px 612px;
+  }
+}
+
+/* Sidebar header icons */
+.icon-news { 
+  background-position: 0 0;
+  width: 20px; 
+  height: 19px; 
+  right: 0;
+  top: 50%;
+  margin-top: -9.5px;
+}
+
+.icon-tips { 
+  background-position: 0 -40px;
+  width: 21px; 
+  height: 21px;
+  right: 0;
+  top: 50%;
+  margin-top: -10.5px;
+}
+
+.icon-newsletter { 
+  background-position: 0 -61px;
+  width: 21px; 
+  height: 21px;
+  right: 0;
+  top: 50%;
+  margin-top: -10.5px;
+}
+
+/* Search result icons */
+.icon-locality { 
+  background-position: 0 -297px;
+  width: 15px; 
+  height: 20px;
+  left: 0;
+  top: 50%;
+  margin-top: -10px;
+}
+
+.icon-built { 
+  background-position: 0 -317px;
+  width: 18px; 
+  height: 18px;
+  left: 0;
+  top: 50%;
+  margin-top: -9px;
+}
+
+.icon-category-sail { 
+  background-position: 0 -335px;
+  width: 17px; 
+  height: 25px;
+  left: 0;
+  top: 50%;
+  margin-top: -12.5px;
+}
+
+.icon-berth { 
+  background-position: 0 -360px;
+  width: 22px; 
+  height: 18px;
+  left: 0;
+  top: 50%;
+  margin-top: -9px;
+}
+
+.icon-cabin { 
+  background-position: 0 -378px;
+  width: 16px; 
+  height: 23px;
+  left: 0;
+  top: 50%;
+  margin-top: -11.5px;
+}
+
+.icon-price { 
+  background-position: 0 -401px;
+  width: 21px; 
+  height: 21px;
+  left: 0;
+  top: 50%;
+  margin-top: -10.5px;
+}
