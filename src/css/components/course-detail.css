@@ -87,7 +87,7 @@
   margin-bottom: var(--space-md);
 }
 
-/* Featured testimonial */
+/* Featured testimonial - override inline margins */
 .general-main-column > div:has(> i),
 .courses-sea-column > div:has(> i),
 .courses-river-column > div:has(> i),
@@ -102,9 +102,18 @@
 .membership-main-column > div:has(> i) {
   background: var(--color-bg-white);
   border-radius: 0;
-  padding: var(--space-lg);
-  margin: var(--space-md) 0;
+  padding: var(--space-md);
+  margin: var(--space-md) 0 !important;
   border-left: var(--space-xs) solid var(--color-primary);
+}
+
+/* Override inline margins on divs with style attribute */
+.general-main-column > div[style*="margin"],
+.courses-sea-column > div[style*="margin"],
+.courses-river-column > div[style*="margin"],
+.courses-training-column > div[style*="margin"] {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 /* ========================================
@@ -126,7 +135,7 @@ aside > section > h2,
   border-radius: 0;
 }
 
-/* Page content headings - desktop h2 style (28px blue text, no background) */
+/* Page content headings - override inline styles for mobile */
 .general-main-column > section > h2,
 .courses-sea-column > section > h2,
 .courses-river-column > section > h2,
@@ -139,11 +148,11 @@ aside > section > h2,
 .comparison-main-column > section > h2,
 .canalboats-main-column > section > h2,
 .membership-main-column > section > h2 {
-  font-size: 28px;
-  color: var(--color-primary);
-  margin: 0 0 var(--space-md) 0;
-  line-height: 1;
-  font-weight: 700;
+  font-size: 20px !important;
+  color: var(--color-primary) !important;
+  margin: 0 0 var(--space-md) 0 !important;
+  line-height: 1.2 !important;
+  font-weight: 700 !important;
   /* NO background color */
   /* NO uppercase */
   /* NO border-left */
@@ -155,12 +164,12 @@ aside > section > h2,
    ======================================== */
 
 @media only screen and (max-width: 949px) {
-  /* Container for course dates section - transparent so gray page bg shows as gaps */
+  /* Container for course dates section - compact spacing */
   .general-main-column section:has(> table),
   .courses-sea-column section:has(> table),
   .courses-river-column section:has(> table),
   .courses-training-column section:has(> table) {
-    margin-bottom: var(--space-lg);
+    margin-bottom: 1.25rem;
   }
 
   /* Hide table structure entirely, rebuild as cards */
@@ -170,6 +179,7 @@ aside > section > h2,
   .courses-training-column section > table {
     display: block;
     width: 100%;
+    margin-bottom: var(--space-md);
   }
 
   .general-main-column section > table thead,
@@ -183,29 +193,26 @@ aside > section > h2,
   .courses-sea-column section > table tbody,
   .courses-river-column section > table tbody,
   .courses-training-column section > table tbody {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
+    display: block;
   }
 
-  /* Each row becomes a card */
+  /* Each row becomes ultra-compact grid - 2 rows layout */
   .general-main-column section > table tbody tr,
   .courses-sea-column section > table tbody tr,
   .courses-river-column section > table tbody tr,
   .courses-training-column section > table tbody tr {
     display: block;
-    background: var(--color-bg-white);
-    border-radius: 0;
-    border: 1px solid var(--color-border);
-    overflow: hidden;
-    margin-bottom: var(--space-sm);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0;
   }
 
   .general-main-column section > table tbody tr:last-child,
   .courses-sea-column section > table tbody tr:last-child,
   .courses-river-column section > table tbody tr:last-child,
   .courses-training-column section > table tbody tr:last-child {
-    margin-bottom: 0;
+    border-bottom: none;
   }
 
   /* VIP rows - orange accent on left border
@@ -216,10 +223,10 @@ aside > section > h2,
   .courses-sea-column section > table tbody tr.vip-row,
   .courses-river-column section > table tbody tr.vip-row,
   .courses-training-column section > table tbody tr.vip-row {
-    border-left: var(--space-xs) solid var(--color-secondary);
+    border-left: 3px solid var(--color-secondary);
   }
 
-  /* Card header - Date */
+  /* Row 1: Date - compact, smaller padding */
   .general-main-column section > table tbody td:nth-child(1),
   .courses-sea-column section > table tbody td:nth-child(1),
   .courses-river-column section > table tbody td:nth-child(1),
@@ -227,130 +234,110 @@ aside > section > h2,
     display: block;
     background: var(--color-primary);
     color: white;
-    padding: var(--space-sm) var(--space-md);
+    padding: 3px 8px;
     font-weight: 600;
-    font-size: var(--font-sm);
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    white-space: nowrap;
   }
 
-  /* Card content area */
-  .general-main-column section > table tbody td:nth-child(2),
-  .general-main-column section > table tbody td:nth-child(3),
-  .general-main-column section > table tbody td:nth-child(4),
-  .general-main-column section > table tbody td:nth-child(5),
-  .courses-sea-column section > table tbody td:nth-child(2),
-  .courses-sea-column section > table tbody td:nth-child(3),
-  .courses-sea-column section > table tbody td:nth-child(4),
-  .courses-sea-column section > table tbody td:nth-child(5),
-  .courses-river-column section > table tbody td:nth-child(2),
-  .courses-river-column section > table tbody td:nth-child(3),
-  .courses-river-column section > table tbody td:nth-child(4),
-  .courses-river-column section > table tbody td:nth-child(5),
-  .courses-training-column section > table tbody td:nth-child(2),
-  .courses-training-column section > table tbody td:nth-child(3),
-  .courses-training-column section > table tbody td:nth-child(4),
-  .courses-training-column section > table tbody td:nth-child(5) {
-    display: block;
-    padding: var(--space-sm) var(--space-md);
-  }
-
-  /* Price row */
+  /* Content row - ultra compact inline layout */
   .general-main-column section > table tbody td:nth-child(2),
   .courses-sea-column section > table tbody td:nth-child(2),
   .courses-river-column section > table tbody td:nth-child(2),
   .courses-training-column section > table tbody td:nth-child(2) {
-    border-bottom: 1px solid var(--color-border);
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 4px 3px 8px;
     font-weight: 700;
-    font-size: var(--font-lg);
+    font-size: 0.875rem;
     color: var(--color-text);
+    white-space: nowrap;
+    vertical-align: middle;
   }
 
+  /* Price cell - NO label, just the value */
   .general-main-column section > table tbody td:nth-child(2)::before,
   .courses-sea-column section > table tbody td:nth-child(2)::before,
   .courses-river-column section > table tbody td:nth-child(2)::before,
   .courses-training-column section > table tbody td:nth-child(2)::before {
-    content: 'Cena';
-    display: block;
-    font-size: 0.625rem; /* 10px - no token available */
-    text-transform: uppercase;
-    color: var(--color-text-light);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px; /* Micro spacing - exception allowed */
+    display: none;
   }
 
-  /* Availability row */
+  /* Availability - inline with price, NO label */
   .general-main-column section > table tbody td:nth-child(3),
   .courses-sea-column section > table tbody td:nth-child(3),
   .courses-river-column section > table tbody td:nth-child(3),
   .courses-training-column section > table tbody td:nth-child(3) {
-    border-bottom: 1px solid var(--color-border);
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 4px;
+    font-size: 0.8125rem;
+    border-left: 1px solid var(--color-border);
+    white-space: nowrap;
+    vertical-align: middle;
   }
 
   .general-main-column section > table tbody td:nth-child(3)::before,
   .courses-sea-column section > table tbody td:nth-child(3)::before,
   .courses-river-column section > table tbody td:nth-child(3)::before,
   .courses-training-column section > table tbody td:nth-child(3)::before {
-    content: 'Volná místa';
-    display: block;
-    font-size: 0.625rem; /* 10px - no token available */
-    text-transform: uppercase;
-    color: var(--color-text-light);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px; /* Micro spacing - exception allowed */
+    display: none;
   }
 
-  /* Boat type row (shows on tablet+) */
+  /* Boat type - hidden on mobile */
   .general-main-column section > table tbody td:nth-child(4),
   .courses-sea-column section > table tbody td:nth-child(4),
   .courses-river-column section > table tbody td:nth-child(4),
   .courses-training-column section > table tbody td:nth-child(4) {
-    border-bottom: 1px solid var(--color-border);
-    display: none; /* Hidden on mobile */
+    display: none;
   }
 
-  .general-main-column section > table tbody td:nth-child(4)::before,
-  .courses-sea-column section > table tbody td:nth-child(4)::before,
-  .courses-river-column section > table tbody td:nth-child(4)::before,
-  .courses-training-column section > table tbody td:nth-child(4)::before {
-    content: 'Loď';
-    display: block;
-    font-size: 0.625rem; /* 10px - no token available */
-    text-transform: uppercase;
-    color: var(--color-text-light);
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    margin-bottom: 2px; /* Micro spacing - exception allowed */
-  }
-
-  /* Action button row */
+  /* Action button - inline, same row as price/status */
   .general-main-column section > table tbody td:nth-child(5),
   .courses-sea-column section > table tbody td:nth-child(5),
   .courses-river-column section > table tbody td:nth-child(5),
   .courses-training-column section > table tbody td:nth-child(5) {
-    padding: var(--space-md);
-    background: white;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px 3px 4px;
+    background: transparent;
+    vertical-align: middle;
+    margin-left: auto;
   }
 
-  /* Reserve button */
-.general-main-column section > table tbody td:nth-child(5) a,
-.courses-sea-column section > table tbody td:nth-child(5) a,
-.courses-river-column section > table tbody td:nth-child(5) a,
-.courses-training-column section > table tbody td:nth-child(5) a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: var(--space-sm) var(--space-md);
-  background: var(--color-success);
-  color: white;
-  text-decoration: none;
-  border-radius: 0;
-  font-weight: 700;
-  font-size: var(--font-base);
-  text-align: center;
-  min-height: 44px; /* Touch target - exception allowed */
-}
+  /* Reserve button - small, inline */
+  .general-main-column section > table tbody td:nth-child(5) a,
+  .courses-sea-column section > table tbody td:nth-child(5) a,
+  .courses-river-column section > table tbody td:nth-child(5) a,
+  .courses-training-column section > table tbody td:nth-child(5) a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    padding: 3px 10px;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-align: center;
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  /* Hide button for booked/past rows */
+  .general-main-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
+  .general-main-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
+  .courses-sea-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
+  .courses-sea-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
+  .courses-river-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
+  .courses-river-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
+  .courses-training-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
+  .courses-training-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5) {
+    display: none;
+  }
 
   /* ========================================
      AVAILABILITY BADGES
@@ -383,14 +370,58 @@ aside > section > h2,
     color: var(--color-text-muted);
     font-weight: 600;
   }
+
+  /* ========================================
+     WIDER MOBILE LAYOUT (400px+)
+     Keep ultra-compact layout
+     ======================================== */
+  @media only screen and (min-width: 400px) {
+    .general-main-column section > table tbody td:nth-child(1),
+    .courses-sea-column section > table tbody td:nth-child(1),
+    .courses-river-column section > table tbody td:nth-child(1),
+    .courses-training-column section > table tbody td:nth-child(1) {
+      display: block;
+      width: 100%;
+    }
+
+    /* Keep compact padding for wider screens too */
+    .general-main-column section > table tbody td:nth-child(2),
+    .courses-sea-column section > table tbody td:nth-child(2),
+    .courses-river-column section > table tbody td:nth-child(2),
+    .courses-training-column section > table tbody td:nth-child(2) {
+      padding: 3px 6px 3px 8px;
+    }
+
+    .general-main-column section > table tbody td:nth-child(3),
+    .courses-sea-column section > table tbody td:nth-child(3),
+    .courses-river-column section > table tbody td:nth-child(3),
+    .courses-training-column section > table tbody td:nth-child(3) {
+      padding: 3px 6px;
+    }
+
+    .general-main-column section > table tbody td:nth-child(5),
+    .courses-sea-column section > table tbody td:nth-child(5),
+    .courses-river-column section > table tbody td:nth-child(5),
+    .courses-training-column section > table tbody td:nth-child(5) {
+      padding: 3px 8px 3px 6px;
+    }
+
+    .general-main-column section > table tbody td:nth-child(5) a,
+    .courses-sea-column section > table tbody td:nth-child(5) a,
+    .courses-river-column section > table tbody td:nth-child(5) a,
+    .courses-training-column section > table tbody td:nth-child(5) a {
+      padding: 6px 14px;
+    }
+  }
 }
 
 /* ========================================
    TABLET+ LAYOUT (600px+)
+   Compact horizontal table-like layout
    ======================================== */
 
 @media only screen and (min-width: 600px) and (max-width: 949px) {
-  /* True horizontal table-like layout */
+  /* Horizontal table-like layout - compact */
   .general-main-column section > table tbody tr,
   .courses-sea-column section > table tbody tr,
   .courses-river-column section > table tbody tr,
@@ -400,9 +431,10 @@ aside > section > h2,
     grid-template-rows: auto;
     align-items: center;
     gap: 0;
+    padding: 4px 0;
   }
 
-  /* All in one row */
+  /* All in one row - compact styling */
   .general-main-column section > table tbody td:nth-child(1),
   .courses-sea-column section > table tbody td:nth-child(1),
   .courses-river-column section > table tbody td:nth-child(1),
@@ -411,7 +443,8 @@ aside > section > h2,
     grid-row: 1;
     background: transparent;
     color: var(--color-text);
-    font-size: var(--font-sm);
+    font-size: 0.875rem;
+    padding: 4px 8px;
   }
 
   .general-main-column section > table tbody td:nth-child(2),
@@ -423,6 +456,7 @@ aside > section > h2,
     border-right: 1px solid var(--color-border);
     text-align: right;
     border-bottom: none;
+    padding: 4px 8px;
   }
 
   .general-main-column section > table tbody td:nth-child(3),
@@ -433,6 +467,7 @@ aside > section > h2,
     grid-row: 1;
     border-right: 1px solid var(--color-border);
     border-bottom: none;
+    padding: 4px 8px;
   }
 
   .general-main-column section > table tbody td:nth-child(4),
@@ -444,6 +479,8 @@ aside > section > h2,
     grid-row: 1;
     text-align: right;
     border-bottom: none;
+    padding: 4px 8px;
+    font-size: 0.8125rem;
   }
 
   .general-main-column section > table tbody td:nth-child(5),
@@ -453,20 +490,40 @@ aside > section > h2,
     grid-column: 5;
     grid-row: 1;
     background: transparent;
+    padding: 4px 8px;
   }
 
-  /* Add labels back for tablet+ */
-  .general-main-column section > table tbody td:nth-child(1)::before,
-  .courses-sea-column section > table tbody td:nth-child(1)::before,
-  .courses-river-column section > table tbody td:nth-child(1)::before,
-  .courses-training-column section > table tbody td:nth-child(1)::before {
-    content: 'Termín';
-    display: block;
-    font-size: 0.625rem; /* 10px - no token available */
-    text-transform: uppercase;
-    color: var(--color-text-light);
-    font-weight: 600;
-    margin-bottom: var(--space-xs);
+  /* Compact button for tablet */
+  .general-main-column section > table tbody td:nth-child(5) a,
+  .courses-sea-column section > table tbody td:nth-child(5) a,
+  .courses-river-column section > table tbody td:nth-child(5) a,
+  .courses-training-column section > table tbody td:nth-child(5) a {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Remove labels for tablet+ - use header instead */
+  .general-main-column section > table tbody td:nth-child(2)::before,
+  .courses-sea-column section > table tbody td:nth-child(2)::before,
+  .courses-river-column section > table tbody td:nth-child(2)::before,
+  .courses-training-column section > table tbody td:nth-child(2)::before,
+  .general-main-column section > table tbody td:nth-child(3)::before,
+  .courses-sea-column section > table tbody td:nth-child(3)::before,
+  .courses-river-column section > table tbody td:nth-child(3)::before,
+  .courses-training-column section > table tbody td:nth-child(3)::before {
+    display: none;
+  }
+
+  /* Hide button for booked/past rows in tablet layout */
+  .general-main-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
+  .general-main-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
+  .courses-sea-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
+  .courses-sea-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
+  .courses-river-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
+  .courses-river-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
+  .courses-training-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
+  .courses-training-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5) {
+    display: none;
   }
 }
 
