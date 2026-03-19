@@ -41,17 +41,11 @@
   gap: var(--space-sm);
 }
 
-/* Termín group - stacked by default, side by side on larger screens */
+/* Termín group - ALWAYS side by side (2 columns) */
 .search-form-period {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--space-sm);
-}
-
-@media (min-width: 440px) {
-  .search-form-period {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 .search-form-period .group-label {
