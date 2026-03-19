@@ -49,3 +49,26 @@ article iframe[height] {
   height: auto !important;
   aspect-ratio: 16 / 9;
 }
+
+/* Force ALL iframes in main content columns to be responsive */
+/* Targets iframes that are direct children of column containers, not wrapped in section/article */
+.general-main-column iframe,
+.courses-main-column iframe,
+.courses-sea-column iframe,
+.courses-river-column iframe,
+.courses-training-column iframe,
+.canalboats-main-column iframe,
+.contact-main-column iframe,
+.sailors-main-column iframe,
+.sailors-insurance-column iframe,
+.sailors-links-column iframe,
+.sailors-weather-column iframe,
+.comparison-main-column iframe {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  display: block;
+  margin: var(--space-md) 0;
+  border: none;
+}
