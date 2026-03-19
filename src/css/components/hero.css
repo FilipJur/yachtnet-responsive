@@ -7,7 +7,6 @@
   position: relative;
   width: 100%;
   height: 280px;
-  margin-top: 105px; /* 35px header + 70px nav */
   overflow: hidden;
 }
 

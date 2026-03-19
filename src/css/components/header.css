@@ -3,17 +3,12 @@
    ======================================== */
 
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
   display: block;
   min-height: 35px;
-  line-height: 35px;
+  line-height: 1.4;
   background-color: var(--color-primary);
   color: var(--color-bg-white);
-  padding: 0 var(--space-md);
+  padding: var(--space-xs) var(--space-md);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -22,30 +17,29 @@ header > div {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 100%;
+  height: auto;
   max-width: 100%;
-  overflow: hidden;
 }
 
 /* Header list */
 header > div > ul {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   margin: 0;
   padding: 0;
   list-style: none;
-  height: 100%;
-  flex-wrap: nowrap;
-  overflow: hidden;
+  height: auto;
+  flex-wrap: wrap;
 }
 
 /* Header list items */
 header > div > ul > li {
   font-size: 13px;
   color: var(--color-bg-white);
-  white-space: nowrap;
+  white-space: normal;
   flex-shrink: 0;
+  line-height: 1.6;
 }
 
 /* Header links */
@@ -66,28 +60,27 @@ header .wrapper {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  height: 100%;
+  height: auto;
   max-width: 100%;
-  overflow: hidden;
 }
 
 header .wrapper > ul {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   margin: 0;
   padding: 0;
   list-style: none;
-  height: 100%;
-  flex-wrap: nowrap;
-  overflow: hidden;
+  height: auto;
+  flex-wrap: wrap;
 }
 
 header .wrapper > ul > li {
   font-size: 13px;
   color: var(--color-bg-white);
-  white-space: nowrap;
+  white-space: normal;
   flex-shrink: 0;
+  line-height: 1.6;
 }
 
 header .wrapper > ul > li > a {
