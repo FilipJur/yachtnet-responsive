@@ -4,10 +4,7 @@
    ======================================== */
 
 .main-nav {
-  position: fixed;
-  top: 35px; /* Below header (35px height) */
-  left: 0;
-  right: 0;
+  position: relative;
   height: var(--navbar-height); /* 70px */
   background: var(--color-bg-white);
   z-index: 999;
@@ -16,6 +13,22 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Visual separation */
+}
+
+/* Sticky state - activated via JS on mobile */
+.main-nav.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Placeholder to prevent layout shift */
+.nav-placeholder {
+  display: block;
+  height: var(--navbar-height);
 }
 
 /* Hamburger Menu Button - only visible on mobile */
@@ -32,7 +45,7 @@
   cursor: pointer;
   gap: 5px;
   order: 2;
-  z-index: 1001;
+  z-index: 1003;
 }
 
 .hamburger-menu span {
@@ -60,7 +73,7 @@
 /* Mobile menu overlay */
 .main-nav > ul {
   position: fixed;
-  top: 105px; /* 35px header + 70px nav */
+  top: var(--navbar-height); /* Below sticky navbar (70px) */
   left: 0;
   right: 0;
   bottom: 0;
@@ -71,7 +84,7 @@
   margin: 0;
   padding: var(--space-md);
   overflow-y: auto;
-  z-index: 998;
+  z-index: 1002; /* Above sticky nav */
   /* Animation properties */
   opacity: 0;
   visibility: hidden;
