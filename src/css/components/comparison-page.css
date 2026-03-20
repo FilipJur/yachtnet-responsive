@@ -430,7 +430,7 @@
 
 .compare-send-to-email-form section h2,
 .batch-option-form section h2 {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: bold;
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
