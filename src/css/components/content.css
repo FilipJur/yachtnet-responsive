@@ -282,7 +282,7 @@ aside.hp-aside li strong {
 aside.hp-aside li strong a {
   color: var(--color-primary);
   text-decoration: none;
-  font-size: var(--font-lg);
+  font-size: 16px;
   font-weight: 600;
   line-height: 1.4;
 }
