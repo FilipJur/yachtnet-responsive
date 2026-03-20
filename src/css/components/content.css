@@ -21,7 +21,7 @@
 
 /* Section headings - desktop h2 style */
 .hp-main-column > section h2 {
-  font-size: 28px;
+  font-size: var(--font-2xl);
   font-weight: bold;
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;

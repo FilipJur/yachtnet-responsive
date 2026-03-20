@@ -63,9 +63,9 @@
 .boat-condition-wrapper h3,
 .boat-recap-wrapper h3 {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-bg-white);
   padding: var(--space-sm) var(--space-md);
-  font-size: 0.875rem; /* 14px - slightly larger for headers */
+  font-size: var(--font-sm); /* 14px - slightly larger for headers */
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -256,9 +256,10 @@
 
 .boat-recap-wrapper > p strong {
   color: var(--color-success);
-  font-size: 1.25rem;
+  font-size: var(--font-xl);
 }
 
+/* Note: Using :has() for specific parent-child relationship - specificity 0,4,0 acceptable for this complex selector */
 .boat-recap-wrapper > p:has(strong) {
   background: var(--color-bg-light);
   border-radius: 0;
@@ -327,7 +328,7 @@
   justify-content: center;
   gap: var(--space-xs);
   padding: var(--space-md);
-  background: rgba(68, 157, 9, 0.1);
+  background: color-mix(in srgb, var(--color-success) 10%, transparent);
   border-radius: 0;
   margin: var(--space-md) 0;
   text-align: center;
@@ -373,7 +374,7 @@
   width: 100%;
   min-height: 48px;
   background: var(--color-success);
-  color: white;
+  color: var(--color-bg-white);
   font-weight: 700;
   font-size: var(--font-lg);
   border: none;
@@ -419,3 +420,43 @@
  * fixed at the top when scrolling, based on boat-recap-wrapper data
  * Skipping for now as per requirements
  */
+
+/* ========================================
+   BOAT DETAIL - SECTION REORDERING
+   Moves Recap above Conditions
+   ======================================== */
+@media only screen and (max-width: 949px) {
+  .boat-main-column {
+    display: flex;
+    flex-direction: column;
+  }
+  /* Boat title and subtitle - natural order */
+  .boat-main-column > h2 {
+    order: 0;
+    margin-bottom: var(--space-xs);
+  }
+  .boat-main-column > p {
+    order: 0;
+    margin-bottom: var(--space-md);
+  }
+  /* Technical specs - keep early */
+  .boat-tech-wrapper {
+    order: 1;
+    margin-bottom: var(--space-md);
+  }
+  /* RECAP - MOVE UP (was after conditions) */
+  .boat-recap-wrapper {
+    order: 2;
+    margin-bottom: var(--space-md);
+  }
+  /* CONDITIONS - MOVE DOWN (was before recap) */
+  .boat-condition-wrapper {
+    order: 3;
+    margin-bottom: var(--space-md);
+  }
+  /* Booking form - keep last */
+  .booking-form {
+    order: 4;
+    margin-top: var(--space-md);
+  }
+}

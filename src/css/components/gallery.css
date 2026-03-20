@@ -59,3 +59,45 @@
 .aside-gallery .gallery h5.hidden {
   display: none;
 }
+
+/* ========================================
+   GALLERY REPOSITIONING - Mobile Layout
+   Moves gallery to top of viewport
+   ======================================== */
+@media only screen and (max-width: 949px) {
+  /* Parent container becomes flex column - ONLY when gallery is present */
+  /* Use :has() to avoid affecting homepage and other pages without galleries */
+  .page-content-wrapper:has(.aside-gallery) {
+    display: flex;
+    flex-direction: column;
+  }
+  /* Move gallery to top with negative order */
+  .aside-gallery {
+    order: -1;
+    width: 100%;
+    margin: 0 0 var(--space-md) 0;
+    /* Reset any conflicting margins */
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  /* Ensure main content follows gallery - only when gallery is present */
+  .page-content-wrapper:has(.aside-gallery) > [role="main"],
+  .page-content-wrapper:has(.aside-gallery) > .main-column {
+    order: 1;
+    width: 100%;
+  }
+  /* Handle course page contact form placement - only when gallery is present */
+  .page-content-wrapper:has(.aside-gallery) > .courses-contact-form {
+    order: 2;
+    width: 100%;
+  }
+  /* Hide desktop sidebar h4 (boat name) on mobile - redundant */
+  .aside-gallery h4 {
+    display: none;
+  }
+  /* Adjust gallery heading for mobile prominence */
+  .aside-gallery h3 {
+    margin-bottom: var(--space-sm);
+  }
+}
