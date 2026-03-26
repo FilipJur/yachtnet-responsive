@@ -7,7 +7,7 @@
 .aside-gallery {
   width: 100%;
   margin-top: var(--space-md);
-  background: var(--color-bg-white);
+  background: var(--color-bg);
   border-radius: 0;
   overflow: hidden;
 }
@@ -99,6 +99,6 @@
   }
   /* Adjust gallery heading for mobile prominence */
   .aside-gallery h3 {
-    margin-bottom: var(--space-sm);
+    margin-bottom: 0;
   }
 }

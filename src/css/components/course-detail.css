@@ -153,6 +153,7 @@ aside > section > h2,
   margin: 0 0 var(--space-md) 0 !important;
   line-height: 1.2 !important;
   font-weight: 700 !important;
+  text-align: center;
   /* NO background color */
   /* NO uppercase */
   /* NO border-left */

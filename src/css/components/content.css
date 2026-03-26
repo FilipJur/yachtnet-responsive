@@ -189,7 +189,7 @@
 .hp-main-column > section article p {
   background: var(--color-bg) !important;
   margin: 0 !important;
-  padding: var(--space-md) !important;
+  padding: 0 var(--space-md) var(--space-md) var(--space-md) !important;
 }
 
 .hp-main-column > section article p a {
