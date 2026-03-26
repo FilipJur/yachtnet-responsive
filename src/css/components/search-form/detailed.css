@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-md);
+  margin-bottom: 1rem;
 }
 
 .detailed-search-wrapper .search-form-built-sign,

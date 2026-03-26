@@ -116,6 +116,13 @@
   width: auto;
 }
 
+/* Menu items with submenu - flex container for link + toggle */
+.main-nav > ul > li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 /* Menu links */
 .main-menu-item {
   display: block;
@@ -127,6 +134,8 @@
   white-space: nowrap;
   text-transform: uppercase;
   letter-spacing: 0.3px;
+  flex: 1;
+  order: 1; /* First in flex row */
 }
 
 /* Active/current page indicator */
@@ -139,4 +148,64 @@
   .hamburger-menu {
     display: none !important;
   }
+}
+
+/* ========================================
+   SUBMENU TOGGLE BUTTON
+   ======================================== */
+.submenu-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  order: 2; /* Second in flex row */
+}
+
+.submenu-toggle span {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid currentColor;
+  transition: transform 0.2s ease;
+}
+
+.submenu-toggle.is-active span {
+  transform: rotate(180deg);
+}
+
+/* ========================================
+   SUBMENU DISPLAY
+   ======================================== */
+/* Override the display: none !important when open */
+.main-nav ul ul.is-open {
+  display: block !important;
+  padding: 0 0 0 var(--space-md);
+  background: none; /* No gray background */
+  margin-top: 0;
+  list-style: none !important; /* Remove bullets */
+  flex-basis: 100%; /* Force to new line in flex container */
+  width: 100%;
+  order: 3; /* Come after link and toggle */
+}
+
+/* Submenu items styling - simple clean look */
+.main-nav ul ul li {
+  margin: var(--space-xs) 0;
+  list-style: none !important; /* Remove bullet */
+}
+
+.main-nav ul ul li a {
+  font-size: var(--font-sm);
+  padding: var(--space-xs) 0;
+  display: block;
+  color: var(--color-text); /* Gray text, not blue */
+  text-decoration: none;
 }

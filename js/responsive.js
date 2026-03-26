@@ -185,3 +185,84 @@
 
 // Note: Detailed search toggle is handled by original desktop JS
 // We style both states (closed/open) in the CSS
+
+// ========================================
+// SUBMENU TOGGLE (Mobile Only)
+// ========================================
+(function() {
+  'use strict';
+
+  const MOBILE_BREAKPOINT = 950;
+
+  function initSubmenus() {
+    // Only on mobile
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+
+    const menuItems = document.querySelectorAll('.main-nav > ul > li');
+
+    menuItems.forEach(function(item) {
+      const submenu = item.querySelector('ul');
+      const link = item.querySelector('a.main-menu-item');
+
+      if (!submenu || !link) return;
+
+      // Skip if already has toggle
+      if (item.querySelector('.submenu-toggle')) return;
+
+      // Create toggle button
+      const toggle = document.createElement('button');
+      toggle.className = 'submenu-toggle';
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Rozbalit menu');
+      toggle.innerHTML = '<span></span>';
+
+      // Insert after link
+      link.parentNode.insertBefore(toggle, link.nextSibling);
+
+      // Toggle click handler
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isExpanded = submenu.classList.toggle('is-open');
+        toggle.classList.toggle('is-active');
+        toggle.setAttribute('aria-expanded', isExpanded);
+
+        // Close other submenus
+        menuItems.forEach(function(otherItem) {
+          if (otherItem !== item) {
+            const otherSubmenu = otherItem.querySelector('ul');
+            const otherToggle = otherItem.querySelector('.submenu-toggle');
+            if (otherSubmenu) otherSubmenu.classList.remove('is-open');
+            if (otherToggle) {
+              otherToggle.classList.remove('is-active');
+              otherToggle.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+      });
+    });
+  }
+
+  // Initialize
+  initSubmenus();
+
+  // Re-init on resize (clean up and rebuild)
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      // Remove existing toggles
+      document.querySelectorAll('.submenu-toggle').forEach(function(t) {
+        t.remove();
+      });
+      // Reset submenus
+      document.querySelectorAll('.main-nav ul ul').forEach(function(u) {
+        u.classList.remove('is-open');
+        u.style.display = ''; // Reset inline styles
+      });
+      // Re-init
+      initSubmenus();
+    }, 100);
+  });
+})();

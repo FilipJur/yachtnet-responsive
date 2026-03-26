@@ -5,7 +5,7 @@ footer {
   width: 100%;
   background: var(--color-bg);
   color: var(--color-text);
-  padding: var(--space-xl) var(--space-md);
+  padding: var(--space-xl) var(--space-md) 0 var(--space-md);
   margin-top: var(--space-md);
 }
 
@@ -73,6 +73,7 @@ footer img#ypchlogo {
 /* Copyright wrapper */
 .footer-copyright-wrapper {
   margin-top: var(--space-lg);
+  margin-inline: -1rem;
   padding: var(--space-md);
   background: var(--color-primary);
   text-align: center;

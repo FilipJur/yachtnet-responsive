@@ -18,11 +18,11 @@ h6 {
 
 h1 { font-size: var(--font-2xl); }
 h2 {
-  font-size: var(--font-lg);
+  font-size: var(--font-2xl); /* 28px - match desktop */
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
-h3 { font-size: var(--font-lg); }
+h3 { font-size: 1rem; /* 16px - mobile hierarchy */ }
 h4 { font-size: var(--font-base); }
 h5,
 h6 { font-size: var(--font-sm); }

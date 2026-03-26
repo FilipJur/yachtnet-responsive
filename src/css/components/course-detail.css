@@ -835,6 +835,7 @@ section:has(> h2:first-child + article) > article img {
   height: auto;
   border-radius: 0;
   margin-bottom: var(--space-md);
+  margin-inline: auto;
 }
 
 section:has(> h2:first-child + article) > article h3 {
@@ -1158,7 +1159,7 @@ section:has(> h2:first-child + article) > article.isocer {
   border-radius: 0;
   padding: var(--space-md);
   margin-bottom: var(--space-md);
-  border: 1px solid var(--color-border);
+  border: none;
 }
 
 .sailors-main-column > section > article:last-child,
@@ -1280,3 +1281,90 @@ section:has(> h2:first-child + article) > article.isocer {
 }
 
 /* Note: Comparison page styles moved to comparison-page.css */
+
+/* ========================================
+   COURSE ARTICLES - MOBILE OVERRIDE TO MATCH HOMEPAGE
+   Remove gradients, use ::before images, gray cards
+   ======================================== */
+@media (max-width: 949px) {
+  /* Override the gradient backgrounds */
+  .courses-main-column > section:first-of-type > article:first-of-type,
+  .courses-main-column > section:first-of-type > article:nth-of-type(2),
+  .courses-main-column > section:first-of-type > article:nth-of-type(3) {
+    background: var(--color-bg) !important; /* Gray #eceded */
+  }
+
+  /* Remove flex positioning, use block like homepage */
+  .courses-main-column > section:first-of-type > article {
+    min-height: auto;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background: var(--color-bg) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 0 var(--space-md) 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Add ::before pseudo-element for images (matching homepage pattern) */
+  .courses-main-column > section:first-of-type > article::before {
+    content: '';
+    display: block;
+    height: 160px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* Individual article images */
+  .courses-main-column > section:first-of-type > article:nth-of-type(1)::before {
+    background-image: url("../img/responsive/bg-ricni-lode.jpg");
+  }
+
+  .courses-main-column > section:first-of-type > article:nth-of-type(2)::before {
+    background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
+  }
+
+  .courses-main-column > section:first-of-type > article:nth-of-type(3)::before {
+    background-image: url("../img/responsive/bg-plavba.jpg");
+  }
+
+  /* Article headings - gray bg, blue text (not white on gradient) */
+  .courses-main-column > section:first-of-type > article h3 {
+    margin: 0;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-bg);
+    position: static;
+    z-index: auto;
+    text-align: center;
+  }
+
+  .courses-main-column > section:first-of-type > article h3 a {
+    color: var(--color-primary); /* Blue text */
+    text-decoration: none;
+    font-size: var(--font-base);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: none; /* Remove text shadow */
+    display: block;
+  }
+
+  /* Article paragraphs - gray bg */
+  .courses-main-column > section:first-of-type > article p {
+    margin: 0;
+    padding: 0 var(--space-md) var(--space-md);
+    background: var(--color-bg);
+    position: static;
+    z-index: auto;
+    text-align: center;
+  }
+
+  .courses-main-column > section:first-of-type > article p a {
+    color: var(--color-text); /* Gray text */
+    text-decoration: none;
+    font-size: var(--font-base);
+    line-height: 1.5;
+    display: block;
+  }
+}

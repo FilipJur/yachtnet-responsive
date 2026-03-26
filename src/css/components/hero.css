@@ -110,7 +110,7 @@
 /* Carousel Pager Container */
 .carousel-pager {
   padding: var(--space-md);
-  background: var(--color-bg-light);
+  background: var(--color-bg-white);
 }
 
 /* Pager list */

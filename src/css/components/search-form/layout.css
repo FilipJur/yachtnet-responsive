@@ -5,14 +5,16 @@
 
 /* Form Container - overlaps hero section */
 .hp-main-column > section:first-child {
-  background: var(--color-bg-white);
+  background: var(--color-primary); /* Blue: #006ab2 */
   border-radius: 0;
   padding: var(--space-md);
   margin-bottom: var(--space-sm);
-  border: 1px solid var(--color-border);
+  border: none; /* Remove border on blue background */
   margin-top: -5rem;
   z-index: 111;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Hide section heading */
@@ -52,32 +54,84 @@
   grid-column: 1 / -1;
   font-size: var(--font-sm);
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-bg-white); /* White text for contrast on blue background */
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin-bottom: var(--space-xs);
 }
 
-/* Počet osob group - Min/Max/Cabin */
+/* Počet osob group - Min/Cabin (Max hidden) using CSS Subgrid */
 .search-form-pax {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto; /* Row 1: headers, Row 2: inputs */
   gap: var(--space-sm);
 }
 
-.search-form-pax .group-label {
-  grid-column: 1 / -1;
+/* Headers row */
+.search-form-pax > .group-label {
+  grid-column: 1;
+  grid-row: 1;
   font-size: var(--font-sm);
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-bg-white);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: var(--space-xs);
+  margin: 0;
 }
 
-/* Cabin field - full width */
+/* Hide Max field completely */
+.search-form-pax .search-form-pax-max {
+  display: none !important;
+}
+
+/* Cabin field using subgrid to align with parent grid */
 .search-form-cabin {
-  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+  grid-column: 2;
+  grid-row: 1 / span 2; /* Span both rows */
+}
+
+/* Cabin header aligns with osob header */
+.search-form-cabin .group-label {
+  grid-row: 1;
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-bg-white);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Cabin input aligns with min input */
+.search-form-cabin .SumoSelect {
+  grid-row: 2;
+  margin: 0;
+}
+
+/* Min field in row 2 */
+.search-form-label.search-form-pax-min {
+  grid-row: 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-bg-white);
+  font-size: var(--font-sm);
+}
+
+.search-form-pax-min .SumoSelect {
+  flex: 1;
+  margin: 0;
+}
+
+/* Cabin field - justify content space between */
+.search-form-label.search-form-cabin {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Right column - destination and base */
@@ -87,7 +141,7 @@
   gap: var(--space-sm);
 }
 
-/* Form labels */
+/* Form labels - white text for contrast on blue background */
 .search-form-label {
   display: flex;
   flex-direction: column;
@@ -97,24 +151,44 @@
 .search-form-label .group-label {
   font-size: var(--font-sm);
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-bg-white); /* White text for contrast */
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-/* Small helper text (Od, Do, Min., Max.) */
+/* Small helper text (Od, Do, Min., Max.) - white text on blue */
 .search-form-from,
 .search-form-till,
 .search-form-pax-min,
 .search-form-pax-max {
   font-size: var(--font-sm);
-  color: var(--color-text-light);
+  color: var(--color-bg-white); /* White text for contrast */
+}
+
+/* Keep inputs readable - SumoSelect dropdowns */
+.hp-main-column > section:first-child .SlectBox,
+.hp-main-column > section:first-child .CaptionCont {
+  color: var(--color-text); /* Dark text for readability */
+  background: var(--color-bg-white);
 }
 
 /* SumoSelect full width */
 .search-form-wrapper .SumoSelect {
   width: 100%;
   margin: var(--space-xs) 0 0 0;
+}
+
+/* ========================================
+   WIDER MOBILE (500-629px)
+   Flex column layout for awkward range
+   ======================================== */
+
+@media (min-width: 500px) and (max-width: 629px) {
+  .search-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
 }
 
 /* ========================================
@@ -126,7 +200,7 @@
   .search-form-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
+    gap: var(--space-lg);
   }
 
   .search-form-left-column {
@@ -139,21 +213,21 @@
 }
 
 /* ========================================
-   TABLET (600px - 949px)
+   TABLET (750px - 949px)
    Better proportions
    ======================================== */
 
-@media (min-width: 600px) {
+@media (min-width: 750px) {
   .search-form-wrapper {
     grid-template-columns: 3fr 2fr;
   }
-  
-  /* Pax - Min, Max, Cabin in one row */
+
+  /* Pax - Min and Cabin side by side (Max hidden) */
   .search-form-pax {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
-  
+
   .search-form-cabin {
-    grid-column: 3;
+    grid-column: auto;
   }
 }

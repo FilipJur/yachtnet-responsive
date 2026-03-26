@@ -41,7 +41,7 @@
   opacity: 1;
   visibility: visible;
   z-index: 1;
-  margin-bottom: 0.3rem;
+  margin: 0;
 }
 
 /* Selected value text */

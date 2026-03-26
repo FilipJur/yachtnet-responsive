@@ -12,11 +12,11 @@
    SECTION CARDS (in hp-main-column)
    ======================================== */
 .hp-main-column > section {
-  background: var(--color-bg-white);
+  background: transparent; /* No white box around sections */
   border-radius: 0;
-  padding: var(--space-md);
-  margin-bottom: var(--space-md);
-  border: 1px solid var(--color-border);
+  padding: 0;
+  margin-bottom: 0;
+  border: none; /* No border */
 }
 
 /* Section headings - desktop h2 style */
@@ -24,8 +24,15 @@
   font-size: var(--font-2xl);
   font-weight: bold;
   color: var(--color-primary);
-  margin: 0 0 var(--space-md) 0;
+  margin: 0;
   line-height: 1;
+  background: var(--color-primary);
+  color: var(--color-bg-white);
+  padding: var(--space-md);
+}
+
+.hp-main-column > section h2 a {
+  color: var(--color-bg-white);
 }
 
 /* ========================================
@@ -98,82 +105,97 @@
 
 /* ========================================
    ARTICLES SECTION - "Mohlo by vás zajímat"
+   Desktop pattern: White page background, gray cards, image at top
    ======================================== */
 .hp-main-column > section:nth-child(3) {
   margin-bottom: var(--space-md);
   display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  background: transparent; /* No white box around section */
+  border: none;
+  padding: 0;
 }
 
 /* Make h2 span full width in the grid */
 .hp-main-column > section:nth-child(3) > h2 {
   grid-column: 1 / -1;
   margin-bottom: 0;
+  font-size: var(--font-2xl); /* 28px - match desktop */
 }
 
-.hp-main-column article {
-  position: relative;
-  border-radius: 0;
+/* Article - desktop pattern with gray background */
+/* Increased specificity to override desktop selector section:has(>h2:first-child+article)>article */
+.hp-main-column > section article {
+  background: var(--color-bg) !important; /* Gray background #eceded */
+  border-radius: 0 !important;
   overflow: hidden;
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-/* Individual background images for each article */
-.hp-main-column article:nth-of-type(1) {
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 30, 60, 0.85) 100%),
-    url("../img/responsive/bg-kapitanske-kurzy.jpg") center/cover no-repeat;
-}
-
-.hp-main-column article:nth-of-type(2) {
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 30, 60, 0.85) 100%),
-    url("../img/responsive/bg-ricni-lode.jpg") center/cover no-repeat;
-}
-
-.hp-main-column article:nth-of-type(3) {
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 30, 60, 0.85) 100%),
-    url("../img/responsive/bg-plavba.jpg") center/cover no-repeat;
-}
-
-.hp-main-column article:nth-of-type(4) {
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 30, 60, 0.85) 100%),
-    url("../img/responsive/bg-chartrovky.jpg") center/cover no-repeat;
-}
-
-/* Article content */
-.hp-main-column article h3 {
-  margin: 0;
-  padding: 60px var(--space-md) var(--space-sm);
+  min-height: auto;
+  display: block; /* Remove flex */
   position: relative;
-  z-index: 2;
+  border: none !important; /* No border on cards */
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
-.hp-main-column article h3 a {
-  color: var(--color-bg-white);
+/* Image area using ::before pseudo-element */
+.hp-main-column article::before {
+  content: '';
+  display: block;
+  height: 160px; /* Desktop-style image height */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Individual images for each article */
+.hp-main-column > section article:nth-of-type(1)::before {
+  background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
+}
+
+.hp-main-column > section article:nth-of-type(2)::before {
+  background-image: url("../img/responsive/bg-ricni-lode.jpg");
+}
+
+.hp-main-column > section article:nth-of-type(3)::before {
+  background-image: url("../img/responsive/bg-plavba.jpg");
+}
+
+.hp-main-column > section article:nth-of-type(4)::before {
+  background-image: url("../img/responsive/bg-chartrovky.jpg");
+}
+
+/* Heading - desktop style with blue text on gray background */
+/* Increased specificity to override desktop styles */
+.hp-main-column > section article h3 {
+  background: var(--color-bg) !important; /* Gray background */
+  margin: 0 !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  position: static; /* Remove absolute positioning */
+}
+
+.hp-main-column > section article h3 a {
+  color: var(--color-primary); /* Blue text */
+  text-shadow: none; /* Remove overlay shadow */
   text-decoration: none;
-  font-size: var(--font-base);
+  font-size: var(--font-base); /* 14px */
   font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  text-transform: uppercase;
   display: block;
 }
 
-.hp-main-column article p {
-  margin: 0;
-  position: relative;
-  z-index: 2;
+/* Description paragraph */
+/* Increased specificity to override desktop selector section:has(>h2:first-child+article)>article p */
+.hp-main-column > section article p {
+  background: var(--color-bg) !important;
+  margin: 0 !important;
+  padding: var(--space-md) !important;
 }
 
-.hp-main-column article p a {
-  color: rgba(255, 255, 255, 0.9); /* Semi-transparent white - OK for overlay text */
+.hp-main-column > section article p a {
+  color: var(--color-text); /* Gray text */
   text-decoration: none;
-  font-size: var(--font-base);
+  font-size: var(--font-sm); /* 13px */
   line-height: 1.5;
   display: block;
 }

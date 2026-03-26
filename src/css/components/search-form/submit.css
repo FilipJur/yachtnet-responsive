@@ -31,10 +31,10 @@
 
 .submit-wrapper a:hover,
 .submit-wrapper a:focus-visible {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  background: rgba(0, 106, 178, 0.03);
-  outline: 2px dashed var(--color-primary);
+  border-color: var(--color-bg-white);
+  color: var(--color-bg-white);
+  background: rgba(255, 255, 255, 0.1);
+  outline: 2px dashed var(--color-bg-white);
   outline-offset: 2px;
 }
 
@@ -45,9 +45,9 @@
 }
 
 .submit-wrapper a.active {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  background: rgba(0, 106, 178, 0.05);
+  border-color: var(--color-bg-white);
+  color: var(--color-bg-white);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .submit-wrapper a.active::after {
