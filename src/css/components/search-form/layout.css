@@ -193,22 +193,92 @@
 
 /* ========================================
    WIDER MOBILE (> 630px)
-   Side by side columns
+   Side by side columns with aligned rows
    ======================================== */
 
 @media (min-width: 630px) {
   .search-form-wrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-lg);
+    grid-template-rows: auto auto auto auto; /* 4 rows for alignment */
+    gap: var(--space-sm) var(--space-lg);
   }
 
+  /* Flatten left column so children participate in parent grid */
   .search-form-left-column {
     grid-column: 1;
+    grid-row: 1 / span 4;
+    display: contents;
   }
 
+  /* Flatten right column so children participate in parent grid */
   .search-form-right-column {
     grid-column: 2;
+    grid-row: 1 / span 4;
+    display: contents;
+  }
+
+  /* Period section - spans rows 1-2 */
+  .search-form-period {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  /* Pax section - spans rows 3-4 */
+  .search-form-pax {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+  }
+
+  /* Destination field - row 1-2 */
+  .search-form-label.search-form-destination {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    display: grid;
+    grid-template-rows: subgrid;
+  }
+
+  /* Base field - row 3-4 */
+  .search-form-label.search-form-base {
+    grid-column: 2;
+    grid-row: 3 / span 2;
+    display: grid;
+    grid-template-rows: subgrid;
+  }
+
+  /* Ensure headers are in row 1 and 3 */
+  .search-form-destination .group-label {
+    grid-row: 1;
+  }
+
+  .search-form-destination .SumoSelect {
+    grid-row: 2;
+    margin: 0;
+    display: flex;
+    align-items: end;
+    height: fit-content;
+    margin-top: auto;
+  }
+
+  .search-form-base .group-label {
+    grid-row: 1;
+  }
+
+  .search-form-base .SumoSelect {
+    grid-row: 2;
+    margin: 0;
+    display: flex;
+    align-items: end;
+    height: fit-content;
+    margin-top: auto;
+  }
+
+  /* Inline layout for Od/Do fields */
+  .search-form-label.search-form-from,
+  .search-form-label.search-form-till {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-xs);
   }
 }
 
