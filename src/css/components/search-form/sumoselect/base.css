@@ -32,7 +32,7 @@
   position: relative;
   width: 100%;
   min-height: 30px;
-  padding: 6px 32px 6px 10px;
+  padding: var(--space-xs) 32px var(--space-xs) 10px; /* 6px 32px 6px 10px - SumoSelect visual balance */
   background: var(--color-bg-white);
   border: 1px solid var(--color-border);
   border-radius: 0;
@@ -122,7 +122,7 @@
 
 .SumoSelect > .optWrapper {
   position: absolute;
-  top: calc(100% + 4px);
+  top: calc(100% + var(--space-xs)); /* 4px gap below trigger */
   left: 0;
   width: 100%;
   max-height: 300px;

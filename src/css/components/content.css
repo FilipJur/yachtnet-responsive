@@ -35,20 +35,39 @@
   color: var(--color-bg-white);
 }
 
+/* Hide reviews section heading to match desktop */
+.hp-main-column > section:nth-child(2) h2 {
+  display: none;
+}
+
 /* ========================================
-   RATINGS SECTION
+   REVIEWS SECTION (section:nth-child(2))
+   Desktop: Side-by-side layout
    ======================================== */
-.rating-stars-wrapper {
+/* Container - flex row for side-by-side */
+.hp-main-column > section:nth-child(2) {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Stars wrapper - left side */
+.hp-main-column > section:nth-child(2) .rating-stars-wrapper {
+  flex: 0 0 40%; /* ~206px equivalent */
+  background: var(--color-bg); /* Desktop style - solid gray */
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: var(--space-md);
-  background: var(--color-bg); /* Desktop style - solid gray */
+  min-height: 86px;
   border-radius: 0;
-  margin-bottom: var(--space-sm);
+  margin-bottom: 0;
 }
 
-/* Star rating - Desktop CSS ported to mobile */
+/* Star rating display - keep existing but ensure it's centered */
 .star-rating-wrapper {
   font-size: 0;
   height: 26px;
@@ -66,17 +85,10 @@
   display: block;
   float: left;
   height: 26px;
+  width: 93%; /* 4.84/5 ≈ 93% */
 }
 
-/* Retina display support */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .star-rating-wrapper,
-  .star-rating-wrapper .star-rating {
-    background-image: url("../img/star-sprite2x.png");
-    background-size: 30px 52px;
-  }
-}
-
+/* Rating text */
 .rating-stars-wrapper p {
   margin: 0;
   text-align: center;
@@ -84,13 +96,21 @@
   color: var(--color-text-muted);
 }
 
-.rating-claim-wrapper {
+/* Claim wrapper - right side */
+.hp-main-column > section:nth-child(2) .rating-claim-wrapper {
+  flex: 0 0 60%; /* ~416px equivalent */
+  background: var(--color-bg); /* Same gray as stars */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
   text-align: center;
-  padding: var(--space-sm);
-  background: var(--color-bg-light);
+  min-height: 86px;
   border-radius: 0;
 }
 
+/* Large percentage text */
 .rating-claim-wrapper p {
   margin: 0;
   font-size: var(--font-sm);
@@ -99,8 +119,35 @@
 }
 
 .rating-claim-wrapper strong {
+  font-size: 1.6875rem; /* 27px - rating percentage large display */
   color: var(--color-primary);
-  font-weight: 700;
+  display: block;
+  padding: var(--space-sm) 0 var(--space-xs) 0;
+  font-family: "texgyreadventorregular", sans-serif;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+/* Retina star sprite - keep existing */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .star-rating-wrapper,
+  .star-rating-wrapper .star-rating {
+    background-image: url("../img/star-sprite2x.png");
+    background-size: 30px 52px;
+  }
+}
+
+/* Mobile: Stack vertically on very small screens */
+@media (max-width: 480px) {
+  .hp-main-column > section:nth-child(2) {
+    flex-direction: column;
+  }
+
+  .hp-main-column > section:nth-child(2) .rating-stars-wrapper,
+  .hp-main-column > section:nth-child(2) .rating-claim-wrapper {
+    flex: 0 0 auto;
+    width: 100%;
+  }
 }
 
 /* ========================================
@@ -117,88 +164,107 @@
   padding: 0;
 }
 
-/* Make h2 span full width in the grid */
+/* Hide H2 to match desktop */
 .hp-main-column > section:nth-child(3) > h2 {
-  grid-column: 1 / -1;
-  margin-bottom: -1rem;
-  margin-top: 1rem;
-  font-size: var(--font-2xl); /* 28px - match desktop */
+  display: none;
 }
 
-/* Article - desktop pattern with gray background */
-/* Increased specificity to override desktop selector section:has(>h2:first-child+article)>article */
+/* ========================================
+   ROZCESTNÍK ARTICLES - Desktop Pattern
+   ======================================== */
+
+/* Article container */
 .hp-main-column > section article {
   background: var(--color-bg) !important; /* Gray background #eceded */
   border-radius: 0 !important;
   overflow: hidden;
   min-height: auto;
-  display: block; /* Remove flex */
+  display: block;
   position: relative;
-  border: none !important; /* No border on cards */
+  border: none !important;
   padding: 0 !important;
   margin: 0 !important;
 }
 
-/* Image area using ::before pseudo-element */
-.hp-main-column article::before {
-  content: '';
-  display: block;
-  height: 160px; /* Desktop-style image height */
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Individual images for each article */
-.hp-main-column > section article:nth-of-type(1)::before {
-  background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
-}
-
-.hp-main-column > section article:nth-of-type(2)::before {
-  background-image: url("../img/responsive/bg-ricni-lode.jpg");
-}
-
-.hp-main-column > section article:nth-of-type(3)::before {
-  background-image: url("../img/responsive/bg-plavba.jpg");
-}
-
-.hp-main-column > section article:nth-of-type(4)::before {
-  background-image: url("../img/responsive/bg-chartrovky.jpg");
-}
-
-/* Heading - desktop style with blue text on gray background */
-/* Increased specificity to override desktop styles */
+/* Heading - FIRST in visual order */
+/* Blue background, white text, centered, uppercase */
 .hp-main-column > section article h3 {
-  background: var(--color-bg) !important; /* Gray background */
+  background: var(--color-primary) !important;
+  color: var(--color-bg-white) !important;
   margin: 0 !important;
   padding: var(--space-sm) var(--space-md) !important;
-  position: static; /* Remove absolute positioning */
+  text-align: center;
+  text-transform: uppercase;
+  position: static;
+  font-size: 1.1875rem;
 }
 
 .hp-main-column > section article h3 a {
-  color: var(--color-primary); /* Blue text */
-  text-shadow: none; /* Remove overlay shadow */
+  color: var(--color-bg-white) !important;
   text-decoration: none;
-  font-size: var(--font-base); /* 14px */
-  font-weight: 700;
+  font-size: 1.1875rem;
+  font-weight: normal;
   text-transform: uppercase;
   display: block;
 }
 
-/* Description paragraph */
-/* Increased specificity to override desktop selector section:has(>h2:first-child+article)>article p */
+/* Remove the old ::before on article (we'll move it to p::before) */
+.hp-main-column article::before {
+  display: none !important;
+}
+
+/* Paragraph - THIRD in visual order */
+/* Contains the image via ::before and text below */
 .hp-main-column > section article p {
   background: var(--color-bg) !important;
   margin: 0 !important;
-  padding: 0 var(--space-md) var(--space-md) var(--space-md) !important;
+  padding: 12.25rem 0 0 0 !important;
+  position: relative;
+  height: auto;
+  min-height: 46px;
+  text-align: center;
 }
 
+/* Image - SECOND in visual order (positioned absolutely) */
+.hp-main-column > section article p::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 11.6875rem; /* 187px - Desktop image height */
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+}
+
+/* Individual images for each article */
+.hp-main-column > section article:nth-of-type(1) p::before {
+  background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
+}
+
+.hp-main-column > section article:nth-of-type(2) p::before {
+  background-image: url("../img/responsive/bg-ricni-lode.jpg");
+}
+
+.hp-main-column > section article:nth-of-type(3) p::before {
+  background-image: url("../img/responsive/bg-plavba.jpg");
+}
+
+.hp-main-column > section article:nth-of-type(4) p::before {
+  background-image: url("../img/responsive/bg-chartrovky.jpg");
+}
+
+/* Description link inside paragraph */
 .hp-main-column > section article p a {
-  color: var(--color-text); /* Gray text */
+  color: var(--color-text);
   text-decoration: none;
-  font-size: var(--font-sm); /* 13px */
+  font-size: var(--font-sm);
   line-height: 1.5;
   display: block;
+  padding: var(--space-sm) var(--space-md);
+  position: static; /* Remove absolute positioning from mobile */
 }
 
 /* ========================================
@@ -210,27 +276,26 @@ aside.hp-aside {
   margin-top: var(--space-md);
 }
 
-/* News and Tips sections - card styling */
+/* News and Tips sections - no card container */
 aside.hp-aside > section {
-  background: var(--color-bg-white);
+  background: transparent; /* No white card */
   border-radius: 0;
-  padding: var(--space-md);
+  padding: 0;
   margin-bottom: var(--space-md);
-  border: 1px solid var(--color-border);
+  border: none;
 }
 
 /* Aside headings - Desktop style with blue background */
 aside.hp-aside h4 {
-  margin: 0 0 var(--space-md) 0;
-  font-size: 15px;
+  margin: 0;
+  font-size: 0.9375rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 6px 0 6px 18px;
+  padding: var(--space-xs) 0 var(--space-xs) 1.125rem;
   background-color: var(--color-primary);
   color: var(--color-bg-white);
-  position: relative;
   border-right: solid 14px transparent;
+  position: relative;
 }
 
 aside.hp-aside h4 a {
@@ -278,34 +343,28 @@ aside.hp-aside > section:nth-child(2) h4:before {
 aside.hp-aside ul {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: var(--space-sm) 0.625rem; /* 8px 10px - Match desktop padding */
+  background: var(--color-bg); /* Gray background #eceded */
+  min-height: auto; /* Remove fixed height if any */
 }
 
 /* List items */
 aside.hp-aside li {
-  padding: var(--space-md) 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: 0 0 var(--space-sm) 0; /* 8px - Match desktop padding */
+  border-bottom: none; /* Remove separator lines */
+  list-style: none;
 }
 
+/* Last item has no bottom padding */
 aside.hp-aside li:last-child {
-  border-bottom: none;
   padding-bottom: 0;
 }
 
-aside.hp-aside li:first-child {
-  padding-top: 0;
-}
-
 /* News item titles */
-aside.hp-aside li strong {
-  display: block;
-  margin-bottom: var(--space-sm);
-}
-
 aside.hp-aside li strong a {
   color: var(--color-primary);
   text-decoration: none;
-  font-size: 16px;
+  font-size: var(--font-base); /* 16px */
   font-weight: 600;
   line-height: 1.4;
 }
@@ -329,12 +388,27 @@ aside.hp-aside li p a {
   text-decoration: none;
 }
 
-/* "More news/tips" link */
+/* "More news/tips" link with arrow */
 aside.hp-aside li:last-child a {
-  display: block;
-  text-align: center;
+  display: inline-block;
+  line-height: 10px; /* Arrow alignment - exact value required */
+  padding-right: 13px; /* Space for arrow - exact value required */
+  position: relative;
+  text-decoration: none;
   color: var(--color-primary);
   font-weight: 600;
   font-size: var(--font-base);
-  padding: var(--space-sm);
+}
+
+/* Arrow after "více novinek" link - desktop border trick */
+aside.hp-aside li:last-child a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-top: 6px solid transparent; /* Triangle sizing - exact value required */
+  border-bottom: 6px solid transparent; /* Triangle sizing - exact value required */
+  border-left: 6px solid var(--color-primary); /* Triangle sizing - exact value required */
 }

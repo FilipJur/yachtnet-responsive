@@ -14,12 +14,11 @@ header {
 header > div {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   height: auto;
   max-width: 100%;
 }
 
-/* Header list */
+/* Header list - full width with flex layout */
 header > div > ul {
   display: flex;
   align-items: center;
@@ -29,11 +28,17 @@ header > div > ul {
   list-style: none;
   height: auto;
   flex-wrap: wrap;
+  width: 100%;
+}
+
+/* First list item (CZ flag) - push to left, everything else to right */
+header > div > ul > li:first-child {
+  margin-right: auto;
 }
 
 /* Header list items */
 header > div > ul > li {
-  font-size: 13px;
+  font-size: var(--font-sm);
   color: var(--color-bg-white);
   white-space: normal;
   flex-shrink: 0;
@@ -41,14 +46,15 @@ header > div > ul > li {
   margin: 0;
 }
 
-/* Font size 11px on small screens */
+/* Font size 0.6875rem (11px) on small screens - intentionally smaller than --font-xs (12px) for space constraints */
 @media (max-width: 499px) {
   header > div > ul > li {
-    font-size: 11px;
+    font-size: 0.6875rem; /* 11px - compact header text */
   }
 }
 
 /* Bold email (:nth-child(2)) and phone (:nth-child(3)) */
+/* HTML Structure: li:nth-child(1)=CZ, li:nth-child(2)=Email, li:nth-child(3)=Phone, li:nth-child(4)=Hours */
 header > div > ul > li:nth-child(2) a,
 header > div > ul > li:nth-child(3) {
   font-family: "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica, sans-serif;
@@ -89,7 +95,7 @@ header .wrapper > ul {
 }
 
 header .wrapper > ul > li {
-  font-size: 13px;
+  font-size: var(--font-sm);
   color: var(--color-bg-white);
   white-space: normal;
   flex-shrink: 0;
@@ -97,14 +103,15 @@ header .wrapper > ul > li {
   margin: 0;
 }
 
-/* Font size 11px on small screens for legacy wrapper */
+/* Font size 0.6875rem (11px) on small screens for legacy wrapper - intentionally smaller than --font-xs (12px) for space constraints */
 @media (max-width: 499px) {
   header .wrapper > ul > li {
-    font-size: 11px;
+    font-size: 0.6875rem; /* 11px - compact header text */
   }
 }
 
 /* Bold email (:nth-child(2)) and phone (:nth-child(3)) for legacy wrapper */
+/* HTML Structure: li:nth-child(1)=CZ, li:nth-child(2)=Email, li:nth-child(3)=Phone, li:nth-child(4)=Hours */
 header .wrapper > ul > li:nth-child(2) a,
 header .wrapper > ul > li:nth-child(3) {
   font-family: "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica, sans-serif;
@@ -118,4 +125,19 @@ header .wrapper > ul > li > a {
 
 header .wrapper > ul > li > a:hover {
   text-decoration: underline;
+}
+
+/* ========================================
+   OPENING HOURS - Mobile visibility
+   ======================================== */
+
+/* Opening hours - hidden on mobile by default, shown on tablet+ */
+header > div > ul > li:last-child {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  header > div > ul > li:last-child {
+    display: list-item;
+  }
 }

@@ -61,7 +61,7 @@
 
 .search-main-column aside p {
   background: var(--color-bg-white);
-  padding: 6px 12px;
+  padding: var(--space-xs) var(--space-sm); /* 6px 12px - filter pill padding */
   border-radius: 0;
   font-size: var(--font-sm);
   display: inline-flex;
@@ -101,7 +101,7 @@
 .search-main-column > section > div:first-of-type > p:first-of-type strong {
   background: var(--color-bg-white);
   border: 1px solid var(--color-border);
-  padding: 6px 14px;
+  padding: var(--space-xs) 0.875rem; /* 6px 14px - sort pill padding */
   border-radius: 0;
   font-size: var(--font-sm);
   white-space: nowrap;
@@ -129,4 +129,67 @@
 .sidebar,
 .complementary {
   display: none;
+}
+
+/* ========================================
+   SEARCH MAIN COLUMN - FORM STYLING
+   Mirrors homepage form (.hp-main-column > section:first-child)
+   ======================================== */
+
+/* Form Container - blue background like homepage */
+.search-main-column > div > section:first-child {
+  background: var(--color-primary); /* Blue: #006ab2 */
+  border-radius: 0;
+  padding: var(--space-md);
+  margin-bottom: var(--space-sm);
+  border: none;
+}
+
+/* Hide section heading */
+.search-main-column > div > section:first-child h2 {
+  display: none;
+}
+
+/* Main Form Layout */
+.search-main-column #searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Form labels - white text for contrast on blue background */
+.search-main-column .search-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.search-main-column .search-form-label .group-label {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  color: var(--color-bg-white); /* White text for contrast */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Small helper text (Od, Do, Min., Max.) - white text on blue */
+.search-main-column .search-form-from,
+.search-main-column .search-form-till,
+.search-main-column .search-form-pax-min,
+.search-main-column .search-form-pax-max {
+  font-size: var(--font-sm);
+  color: var(--color-bg-white); /* White text for contrast */
+}
+
+/* Keep inputs readable - SumoSelect dropdowns */
+.search-main-column section:first-child .SlectBox,
+.search-main-column section:first-child .CaptionCont {
+  color: var(--color-text); /* Dark text for readability */
+  background: var(--color-bg-white);
+}
+
+/* SumoSelect full width */
+.search-main-column .search-form-wrapper .SumoSelect {
+  width: 100%;
+  margin: var(--space-xs) 0 0 0;
 }

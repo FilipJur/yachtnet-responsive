@@ -4,7 +4,8 @@
    ======================================== */
 
 /* Form Container - overlaps hero section */
-.hp-main-column > section:first-child {
+.hp-main-column > section:first-child,
+.search-main-column > div > section:first-child {
   background: var(--color-primary); /* Blue: #006ab2 */
   border-radius: 0;
   padding: var(--space-md);
@@ -18,7 +19,8 @@
 }
 
 /* Hide section heading */
-.hp-main-column > section:first-child h2 {
+.hp-main-column > section:first-child h2,
+.search-main-column > div > section:first-child h2 {
   display: none;
 }
 
@@ -167,7 +169,9 @@
 
 /* Keep inputs readable - SumoSelect dropdowns */
 .hp-main-column > section:first-child .SlectBox,
-.hp-main-column > section:first-child .CaptionCont {
+.hp-main-column > section:first-child .CaptionCont,
+.search-main-column > div > section:first-child .SlectBox,
+.search-main-column > div > section:first-child .CaptionCont {
   color: var(--color-text); /* Dark text for readability */
   background: var(--color-bg-white);
 }

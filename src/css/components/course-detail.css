@@ -125,7 +125,7 @@
 aside > section > h2,
 .newsletter-section > h2 {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-bg-white);
   padding: var(--space-sm) var(--space-md);
   font-size: var(--font-base);
   font-weight: 700;
@@ -148,17 +148,17 @@ aside > section > h2,
 .comparison-main-column > section > h2,
 .canalboats-main-column > section > h2,
 .membership-main-column > section > h2 {
-  font-size: 20px !important;
-  color: var(--color-primary) !important;
-  margin: 0 0 var(--space-md) 0 !important;
-  line-height: 1.2 !important;
-  font-weight: 700 !important;
-  text-align: center;
-  /* NO background color */
-  /* NO uppercase */
-  /* NO border-left */
-  /* NO white text */
-}
+    font-size: 1.25rem !important; /* 20px - page heading size */
+    color: var(--color-primary) !important;
+    margin: 0 0 var(--space-md) 0 !important;
+    line-height: 1.2 !important;
+    font-weight: 700 !important;
+    text-align: center;
+    /* NO background color */
+    /* NO uppercase */
+    /* NO border-left */
+    /* NO white text */
+  }
 
 /* ========================================
    TABLE → CARD TRANSFORMATION
@@ -234,10 +234,10 @@ aside > section > h2,
   .courses-training-column section > table tbody td:nth-child(1) {
     display: block;
     background: var(--color-primary);
-    color: white;
-    padding: 3px 8px;
+    color: var(--color-bg-white);
+    padding: var(--space-xs) var(--space-sm); /* 4px 8px */
     font-weight: 600;
-    font-size: 0.8125rem;
+    font-size: var(--font-sm); /* 13px = 0.8125rem */
     line-height: 1.2;
     white-space: nowrap;
   }
@@ -249,9 +249,9 @@ aside > section > h2,
   .courses-training-column section > table tbody td:nth-child(2) {
     display: inline-flex;
     align-items: center;
-    padding: 3px 4px 3px 8px;
+    padding: var(--space-xs) 4px var(--space-xs) var(--space-sm); /* 4px 4px 4px 8px */
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: var(--font-base); /* 14px = 0.875rem */
     color: var(--color-text);
     white-space: nowrap;
     vertical-align: middle;
@@ -272,8 +272,8 @@ aside > section > h2,
   .courses-training-column section > table tbody td:nth-child(3) {
     display: inline-flex;
     align-items: center;
-    padding: 3px 4px;
-    font-size: 0.8125rem;
+    padding: var(--space-xs) 4px; /* 4px 4px */
+    font-size: var(--font-sm); /* 13px = 0.8125rem */
     border-left: 1px solid var(--color-border);
     white-space: nowrap;
     vertical-align: middle;
@@ -301,7 +301,7 @@ aside > section > h2,
   .courses-training-column section > table tbody td:nth-child(5) {
     display: inline-flex;
     align-items: center;
-    padding: 3px 8px 3px 4px;
+    padding: var(--space-xs) var(--space-sm) var(--space-xs) 4px; /* 4px 8px 4px 4px */
     background: transparent;
     vertical-align: middle;
     margin-left: auto;
@@ -316,13 +316,13 @@ aside > section > h2,
     align-items: center;
     justify-content: center;
     width: auto;
-    padding: 3px 10px;
+    padding: var(--space-xs) 10px; /* 4px 10px */
     background: var(--color-primary);
-    color: white;
+    color: var(--color-bg-white);
     text-decoration: none;
     border-radius: 0;
     font-weight: 600;
-    font-size: 0.75rem;
+    font-size: var(--font-xs); /* 12px = 0.75rem */
     text-align: center;
     line-height: 1.1;
     white-space: nowrap;
@@ -730,7 +730,7 @@ section > article p {
 }
 
 .courses-contact-form section.contact-form h2 {
-  font-size: 20px;
+  font-size: 1.25rem; /* 20px - form heading size */
   font-weight: bold;
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
@@ -788,7 +788,7 @@ section > article p {
   width: 100%;
   min-height: 48px;
   background: var(--color-success);
-  color: white;
+  color: var(--color-bg-white);
   font-weight: 700;
   font-size: var(--font-lg);
   border: none;
@@ -1071,7 +1071,7 @@ section:has(> h2:first-child + article) > article.isocer {
   width: 100%;
   min-height: 48px; /* Touch target - exception allowed */
   background: var(--color-success);
-  color: white;
+  color: var(--color-bg-white);
   font-weight: 700;
   font-size: var(--font-lg);
   border: none;
@@ -1284,88 +1284,95 @@ section:has(> h2:first-child + article) > article.isocer {
 /* Note: Comparison page styles moved to comparison-page.css */
 
 /* ========================================
-   COURSE ARTICLES - MOBILE OVERRIDE TO MATCH HOMEPAGE
-   Remove gradients, use ::before images, gray cards
+   COURSE ARTICLES - MOBILE OVERRIDE TO MATCH HOMEPAGE 100%
    ======================================== */
 @media (max-width: 949px) {
-  /* Override the gradient backgrounds */
-  .courses-main-column > section:first-of-type > article:first-of-type,
-  .courses-main-column > section:first-of-type > article:nth-of-type(2),
-  .courses-main-column > section:first-of-type > article:nth-of-type(3) {
-    background: var(--color-bg) !important; /* Gray #eceded */
-  }
-
-  /* Remove flex positioning, use block like homepage */
+  /* Article container - mirrors .hp-main-column > section article */
   .courses-main-column > section:first-of-type > article {
+    background: var(--color-bg) !important;
+    border-radius: 0 !important;
+    overflow: hidden;
     min-height: auto;
     display: block;
     position: relative;
-    overflow: hidden;
-    background: var(--color-bg) !important;
     border: none !important;
-    border-radius: 0 !important;
-    margin: 0 0 var(--space-md) 0 !important;
     padding: 0 !important;
+    margin: 0 0 var(--space-md) 0 !important;
   }
 
-  /* Add ::before pseudo-element for images (matching homepage pattern) */
-  .courses-main-column > section:first-of-type > article::before {
-    content: '';
-    display: block;
-    height: 160px;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-
-  /* Individual article images */
-  .courses-main-column > section:first-of-type > article:nth-of-type(1)::before {
-    background-image: url("../img/responsive/bg-ricni-lode.jpg");
-  }
-
-  .courses-main-column > section:first-of-type > article:nth-of-type(2)::before {
-    background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
-  }
-
-  .courses-main-column > section:first-of-type > article:nth-of-type(3)::before {
-    background-image: url("../img/responsive/bg-plavba.jpg");
-  }
-
-  /* Article headings - gray bg, blue text (not white on gradient) */
+  /* Heading - FIRST in visual order */
+  /* Blue background, white text, centered, uppercase */
   .courses-main-column > section:first-of-type > article h3 {
-    margin: 0;
-    padding: var(--space-sm) var(--space-md);
-    background: var(--color-bg);
-    position: static;
-    z-index: auto;
+    background: var(--color-primary) !important;
+    color: var(--color-bg-white) !important;
+    margin: 0 !important;
+    padding: var(--space-sm) var(--space-md) !important;
     text-align: center;
+    text-transform: uppercase;
+    position: static;
+    font-size: 1.1875rem;
   }
 
   .courses-main-column > section:first-of-type > article h3 a {
-    color: var(--color-primary); /* Blue text */
+    color: var(--color-bg-white) !important;
     text-decoration: none;
-    font-size: var(--font-base);
-    font-weight: 700;
+    font-size: 1.1875rem;
+    font-weight: normal;
     text-transform: uppercase;
-    text-shadow: none; /* Remove text shadow */
     display: block;
   }
 
-  /* Article paragraphs - gray bg */
+  /* Remove any ::before on article (homepage uses p::before) */
+  .courses-main-column > section:first-of-type > article::before {
+    display: none !important;
+  }
+
+  /* Paragraph - THIRD in visual order */
+  /* Contains the image via ::before and text below */
   .courses-main-column > section:first-of-type > article p {
-    margin: 0;
-    padding: 0 var(--space-md) var(--space-md);
-    background: var(--color-bg);
-    position: static;
-    z-index: auto;
+    background: var(--color-bg) !important;
+    margin: 0 !important;
+    padding: 12.25rem 0 0 0 !important;
+    position: relative;
+    height: auto;
+    min-height: 46px;
     text-align: center;
   }
 
+  /* Image - SECOND in visual order (positioned absolutely) */
+  .courses-main-column > section:first-of-type > article p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 11.6875rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+  }
+
+  /* Individual images for each article */
+  .courses-main-column > section:first-of-type > article:nth-of-type(1) p::before {
+    background-image: url("../img/responsive/bg-ricni-lode.jpg");
+  }
+
+  .courses-main-column > section:first-of-type > article:nth-of-type(2) p::before {
+    background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
+  }
+
+  .courses-main-column > section:first-of-type > article:nth-of-type(3) p::before {
+    background-image: url("../img/responsive/bg-plavba.jpg");
+  }
+
+  /* Description link inside paragraph */
   .courses-main-column > section:first-of-type > article p a {
-    color: var(--color-text); /* Gray text */
+    color: var(--color-text);
     text-decoration: none;
-    font-size: var(--font-base);
+    font-size: var(--font-sm);
     line-height: 1.5;
     display: block;
+    padding: var(--space-sm) var(--space-md);
   }
 }

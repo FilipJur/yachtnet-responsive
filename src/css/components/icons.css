@@ -101,3 +101,73 @@
   top: 50%;
   margin-top: -10.5px;
 }
+
+/* ========================================
+   HEADER ICONS - Sprite-based
+   ======================================== */
+/* HTML Structure:
+   <ul>
+     <li><a href="">CZ</a></li>           - li:nth-child(1) - Flag icon
+     <li><a href="mailto:...">...</a></li> - li:nth-child(2) - Envelope icon
+     <li>+420...</li>                      - li:nth-child(3) - Phone icon
+     <li>Hours...</li>                     - li:nth-child(4) - No icon
+   </ul>
+*/
+
+/* CZ Flag - position: 0 -139px, size: 24x16px */
+/* Targets: li:nth-child(1) = first <li> containing CZ link */
+header .icon-flag::before,
+header li:nth-child(1) a::before {
+  content: '';
+  display: inline-block;
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: 6px;
+  background-position: 0 -139px;
+  width: 24px;
+  height: 16px;
+}
+
+/* Envelope - position: 0 -103px, size: 24x17px */
+/* Targets: li:nth-child(2) = second <li> containing email link */
+header .icon-envelope::before,
+header li:nth-child(2) a::before {
+  content: '';
+  display: inline-block;
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: 6px;
+  background-position: 0 -103px;
+  width: 24px;
+  height: 17px;
+}
+
+/* Phone - position: 0 -120px, size: 19x19px */
+/* Targets: li:nth-child(3) = third <li> containing phone number (no <a> tag) */
+header .icon-phone::before,
+header li:nth-child(3)::before {
+  content: '';
+  display: inline-block;
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  vertical-align: middle;
+  margin-right: 6px;
+  background-position: 0 -120px;
+  width: 19px;
+  height: 19px;
+}
+
+/* Retina/HiDPI support for header icons */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  header .icon-flag::before,
+  header .icon-envelope::before,
+  header .icon-phone::before,
+  header li:nth-child(1) a::before,
+  header li:nth-child(2) a::before,
+  header li:nth-child(3)::before {
+    background-image: url("../img/icon-sprite2x.png");
+    background-size: 25px 612px;
+  }
+}

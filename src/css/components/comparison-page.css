@@ -305,7 +305,7 @@
 
 .comp-control-wrapper button.comp-remove:active {
   background: var(--color-error);
-  color: white;
+  color: var(--color-bg-white);
 }
 
 /* ========================================
@@ -317,7 +317,7 @@
   width: 100%;
   min-height: 48px;
   background: var(--color-success);
-  color: white;
+  color: var(--color-bg-white);
   text-align: center;
   line-height: 48px;
   font-size: var(--font-base);
@@ -401,7 +401,7 @@
 
 .comparison-main-column aside.tool-box .send-to-email a {
   background: var(--color-primary);
-  color: white;
+  color: var(--color-bg-white);
   border-color: var(--color-primary);
 }
 
@@ -430,7 +430,7 @@
 
 .compare-send-to-email-form section h2,
 .batch-option-form section h2 {
-  font-size: 20px;
+  font-size: 1.25rem; /* 20px - form heading size */
   font-weight: bold;
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
@@ -495,7 +495,7 @@
   width: 100%;
   min-height: 48px;
   background: var(--color-success);
-  color: white;
+  color: var(--color-bg-white);
   font-weight: 700;
   font-size: var(--font-lg);
   border: none;

@@ -11,7 +11,7 @@
 /* SumoSelect library override - Custom CSS checkboxes */
 .SumoSelect > .optWrapper.multiple > .options > li > span {
   position: absolute;
-  left: 14px;
+  left: 0.875rem; /* 14px - checkbox positioning */
   top: 50%;
   transform: translateY(-50%);
   width: 20px;

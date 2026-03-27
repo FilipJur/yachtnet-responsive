@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   background: var(--color-primary);
-  color: white;
+  color: var(--color-bg-white);
   padding: var(--space-sm) var(--space-md);
   display: none;
   align-items: center;
@@ -41,7 +41,7 @@
 .dock p {
   margin: 0;
   font-size: var(--font-sm);
-  color: white;
+  color: var(--color-bg-white);
   flex: 1;
   white-space: nowrap;
 }
@@ -53,7 +53,7 @@
 
 /* Compare button */
 .dock a {
-  background: white;
+  background: var(--color-bg-white);
   color: var(--color-primary);
   padding: var(--space-xs) var(--space-md);
   border-radius: 0;

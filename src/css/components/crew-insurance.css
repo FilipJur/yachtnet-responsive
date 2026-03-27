@@ -245,7 +245,7 @@
   width: 100%;
   min-height: 48px;
   background: var(--color-success);
-  color: white;
+  color: var(--color-bg-white);
   font-weight: 700;
   font-size: var(--font-lg);
   border: none;
