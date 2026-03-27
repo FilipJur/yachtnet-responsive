@@ -116,7 +116,6 @@
 
 /* CZ Flag - position: 0 -139px, size: 24x16px */
 /* Targets: li:nth-child(1) = first <li> containing CZ link */
-header .icon-flag::before,
 header li:nth-child(1) a::before {
   content: '';
   display: inline-block;
@@ -131,7 +130,6 @@ header li:nth-child(1) a::before {
 
 /* Envelope - position: 0 -103px, size: 24x17px */
 /* Targets: li:nth-child(2) = second <li> containing email link */
-header .icon-envelope::before,
 header li:nth-child(2) a::before {
   content: '';
   display: inline-block;
@@ -146,7 +144,6 @@ header li:nth-child(2) a::before {
 
 /* Phone - position: 0 -120px, size: 19x19px */
 /* Targets: li:nth-child(3) = third <li> containing phone number (no <a> tag) */
-header .icon-phone::before,
 header li:nth-child(3)::before {
   content: '';
   display: inline-block;
@@ -161,9 +158,6 @@ header li:nth-child(3)::before {
 
 /* Retina/HiDPI support for header icons */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  header .icon-flag::before,
-  header .icon-envelope::before,
-  header .icon-phone::before,
   header li:nth-child(1) a::before,
   header li:nth-child(2) a::before,
   header li:nth-child(3)::before {
