@@ -157,6 +157,15 @@ aside > section > h2,
   }
 
 /* ========================================
+   SAILORS WEATHER COLUMN - Link wrapping
+   ======================================== */
+
+.sailors-weather-column section p a {
+  word-break: break-all;
+  overflow-wrap: anywhere;
+}
+
+/* ========================================
    COURSE TABLES - RESPONSIVE
    Uses exact selectors from desktop CSS
    Simple horizontal scroll approach
