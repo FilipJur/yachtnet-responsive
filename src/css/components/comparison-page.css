@@ -446,10 +446,10 @@
 .compare-send-to-email-form section form label,
 .batch-option-form section form label {
   display: block;
-  font-size: var(--font-base);
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-xs);
+  font-size: var(--font-form-label);
+  color: var(--color-primary);
+  margin-bottom: 0.4375rem;
+  text-transform: uppercase;
 }
 
 .compare-send-to-email-form section form input,

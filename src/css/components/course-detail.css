@@ -744,13 +744,13 @@ section > article p {
   margin-bottom: var(--space-md);
 }
 
-/* Labels */
+/* Labels - match desktop */
 .courses-contact-form section.contact-form form label {
   display: block;
-  font-size: var(--font-base);
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-xs);
+  font-size: var(--font-form-label);
+  color: var(--color-primary);
+  margin-bottom: 0.4375rem;
+  text-transform: uppercase;
 }
 
 .courses-contact-form section.contact-form form label.required::after {
@@ -926,10 +926,10 @@ section:has(> h2:first-child + article) > article.isocer {
 .canalboats-main-column form label,
 .membership-main-column form label {
   display: block;
-  font-size: var(--font-base);
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-xs);
+  font-size: var(--font-form-label);
+  color: var(--color-primary);
+  margin-bottom: 0.4375rem;
+  text-transform: uppercase;
 }
 
 .general-main-column form label.required::after,

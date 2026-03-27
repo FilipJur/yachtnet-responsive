@@ -38,6 +38,7 @@
   --font-xs: 0.75rem; /* 12px */
   --font-base: 0.875rem; /* 14px - closer to desktop 13px */
   --font-sm: 0.8125rem; /* 13px */
+  --font-form-label: 0.9375rem; /* 15px - form labels to match desktop */
   --font-lg: 1.125rem; /* 18px */
   --font-xl: 1.25rem; /* 20px */
   --font-2xl: 1.25rem;      /* 20px - Mobile H2 size */
