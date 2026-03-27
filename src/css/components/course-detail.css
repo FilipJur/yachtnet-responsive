@@ -199,7 +199,7 @@ aside > section > h2,
   .sailors-insurance-column table th {
     background-color: var(--color-primary);
     color: var(--color-bg-white);
-    padding: var(--space-sm) var(--space-md);
+    padding: var(--space-sm);
     text-transform: uppercase;
     font-weight: normal;
     text-align: center;
