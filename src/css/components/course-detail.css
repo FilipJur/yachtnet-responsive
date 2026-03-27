@@ -69,15 +69,6 @@
   line-height: 1.4;
 }
 
-/* Main page heading h2 - keep desktop styling */
-.general-main-column > h2:first-of-type {
-  font-size: var(--font-2xl) !important;
-  color: var(--color-primary) !important;
-  font-weight: 400 !important;
-  margin: var(--space-md) 0 var(--space-xs) !important;
-  line-height: 1.2 !important;
-}
-
 /* Intro paragraphs */
 .general-main-column > p,
 .courses-sea-column > p,
@@ -158,16 +149,11 @@ aside > section > h2,
 .comparison-main-column > section > h2,
 .canalboats-main-column > section > h2,
 .membership-main-column > section > h2 {
-    font-size: 1.25rem !important; /* 20px - page heading size */
-    color: var(--color-primary) !important;
-    margin: 0 0 var(--space-md) 0 !important;
-    line-height: 1.2 !important;
-    font-weight: 700 !important;
+    font-size: 1.25rem;
+    color: var(--color-primary);
+    margin: 0 0 var(--space-md) 0;
+    line-height: 1.2;
     text-align: center;
-    /* NO background color */
-    /* NO uppercase */
-    /* NO border-left */
-    /* NO white text */
   }
 
 /* ========================================

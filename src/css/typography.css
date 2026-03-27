@@ -11,21 +11,33 @@ h6 {
     "texgyreadventorregular", "Arial CE", "Helvetica CE", Arial, Helvetica,
     sans-serif;
   color: var(--color-primary);
-  line-height: 1.2;
-  margin: 0 0 var(--space-md) 0;
   font-weight: normal;
+  margin: 0;
+  padding: 0;
 }
 
-h1 { font-size: var(--font-2xl); }
+h1 { 
+  font-size: var(--font-2xl);
+  margin-bottom: var(--space-md);
+}
 h2 {
   font-size: var(--font-2xl); /* 28px - match desktop */
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  line-height: 1;
+  margin-bottom: var(--space-md);
 }
-h3 { font-size: 1rem; /* 16px - mobile hierarchy */ }
-h4 { font-size: var(--font-base); }
+h3 { 
+  font-size: 1rem; /* 16px - mobile hierarchy */
+  margin-bottom: var(--space-md);
+}
+h4 { 
+  font-size: var(--font-base);
+  margin-bottom: var(--space-md);
+}
 h5,
-h6 { font-size: var(--font-sm); }
+h6 { 
+  font-size: var(--font-sm);
+  margin-bottom: var(--space-md);
+}
 
 p {
   margin: 0 0 var(--space-md) 0;
