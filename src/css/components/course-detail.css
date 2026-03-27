@@ -1376,3 +1376,91 @@ section:has(> h2:first-child + article) > article.isocer {
     padding: var(--space-sm) var(--space-md);
   }
 }
+
+/* ========================================
+   SAILORS MAIN COLUMN - PRO JACHTAŘE CARDS
+   Replicating homepage card pattern
+   ======================================== */
+
+/* Override the white card styling for sailors page articles */
+.sailors-main-column > section {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.sailors-main-column > section > h2 {
+  display: none;
+}
+
+/* Article container - matches homepage hp-main-column pattern */
+.sailors-main-column > section > article {
+  background: var(--color-bg) !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  min-height: auto;
+  display: block;
+  position: relative;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: var(--space-md) !important;
+}
+
+/* Heading - blue bar with white text */
+.sailors-main-column > section > article h3 {
+  background: var(--color-primary) !important;
+  color: var(--color-bg-white) !important;
+  margin: 0 !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  text-align: center;
+  text-transform: uppercase;
+  position: static;
+  font-size: 1.1875rem;
+  font-weight: normal;
+}
+
+.sailors-main-column > section > article h3 a {
+  color: var(--color-bg-white) !important;
+  text-decoration: none;
+  font-size: 1.1875rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  display: block;
+}
+
+/* Paragraph - gray background */
+.sailors-main-column > section > article p {
+  background: var(--color-bg) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Description link - contains the image as background */
+.sailors-main-column > section > article p a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--font-sm);
+  line-height: 1.5;
+  display: block;
+  padding: 12.25rem 1rem 0.5rem 1rem; /* 196px top padding for image + text padding */
+  background-color: var(--color-bg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% 11.6875rem; /* 100% width, 187px height */
+  text-align: center;
+}
+
+/* Article 1: Pojištění (Insurance) - orange life preserver */
+.sailors-main-column > section > article:nth-of-type(1) p a {
+  background-image: url("../img/sailors-insurence.jpg");
+}
+
+/* Article 2: Počasí (Weather) - weather/cloud graphic */
+.sailors-main-column > section > article:nth-of-type(2) p a {
+  background-image: url("../img/sailors-weather.jpg");
+}
+
+/* Article 3: Užitečné odkazy (Links) - web/links graphic */
+.sailors-main-column > section > article:nth-of-type(3) p a {
+  background-image: url("../img/sailors-links.jpg");
+}
