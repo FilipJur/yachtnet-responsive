@@ -1,6 +1,6 @@
 /* Course Detail Page - Mobile Responsive Styles
- * Transforms desktop course pages into mobile-friendly card layouts
- * Pattern: White cards with blue headers, similar to boat-detail
+ * Transforms desktop course pages into mobile-friendly layouts
+ * Consolidated table styling for all breakpoints
  */
 
 /* ========================================
@@ -42,8 +42,8 @@
 .comparison-main-column > h1,
 .canalboats-main-column > h1,
 .membership-main-column > h1 {
-  font-size: var(--font-2xl) !important;
-  color: var(--color-primary) !important;
+  font-size: var(--font-2xl);
+  color: var(--color-primary);
   font-weight: normal;
   margin: var(--space-md) 0 var(--space-xs);
   line-height: 1.2;
@@ -62,8 +62,8 @@
 .comparison-main-column > section > h2,
 .canalboats-main-column > section > h2,
 .membership-main-column > section > h2 {
-  font-size: var(--font-base) !important;
-  color: var(--color-text) !important;
+  font-size: var(--font-base);
+  color: var(--color-text);
   font-weight: normal;
   margin: 0 0 var(--space-md);
   line-height: 1.4;
@@ -149,7 +149,7 @@ aside > section > h2,
 .comparison-main-column > section > h2,
 .canalboats-main-column > section > h2,
 .membership-main-column > section > h2 {
-    font-size: 1.25rem;
+    font-size: var(--font-xl);
     color: var(--color-primary);
     margin: 0 0 var(--space-md) 0;
     line-height: 1.2;
@@ -157,372 +157,121 @@ aside > section > h2,
   }
 
 /* ========================================
-   TABLE → CARD TRANSFORMATION
+   COURSE TABLES - RESPONSIVE
+   Uses exact selectors from desktop CSS
+   Simple horizontal scroll approach
    ======================================== */
 
 @media only screen and (max-width: 949px) {
-  /* Container for course dates section - compact spacing */
-  .general-main-column section:has(> table),
-  .courses-sea-column section:has(> table),
-  .courses-river-column section:has(> table),
-  .courses-training-column section:has(> table) {
-    margin-bottom: 1.25rem;
+  /* Wrap table in scrollable container */
+  .courses-river-column,
+  .courses-sea-column,
+  .courses-training-column,
+  .sailors-insurance-column {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
-  /* Hide table structure entirely, rebuild as cards */
-  .general-main-column section > table,
-  .courses-sea-column section > table,
-  .courses-river-column section > table,
-  .courses-training-column section > table {
+  /* Keep table layout intact - just ensure minimum width */
+  .courses-river-column table,
+  .courses-sea-column table,
+  .courses-training-column table,
+  .sailors-insurance-column table {
+    min-width: 600px;
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-md) 0;
+  }
+
+  /* Desktop styling preserved */
+  .courses-river-column table th,
+  .courses-sea-column table th,
+  .courses-training-column table th,
+  .sailors-insurance-column table th {
+    background-color: var(--color-primary);
+    color: var(--color-bg-white);
+    padding: var(--space-sm) var(--space-md);
+    text-transform: uppercase;
+    font-weight: normal;
+    text-align: center;
+  }
+
+  .courses-river-column table th:first-child,
+  .courses-sea-column table th:first-child,
+  .courses-training-column table th:first-child,
+  .sailors-insurance-column table th:first-child {
+    text-align: left;
+  }
+
+  .courses-river-column table td,
+  .courses-sea-column table td,
+  .courses-training-column table td,
+  .sailors-insurance-column table td {
+    padding: var(--space-sm) var(--space-md);
+    text-align: center;
+  }
+
+  .courses-river-column table td:first-child,
+  .courses-sea-column table td:first-child,
+  .courses-training-column table td:first-child,
+  .sailors-insurance-column table td:first-child {
+    text-align: left;
+  }
+
+  /* Even rows */
+  .courses-river-column table tr:nth-child(even),
+  .courses-sea-column table tr:nth-child(even),
+  .courses-training-column table tr:nth-child(even),
+  .sailors-insurance-column table tr:nth-child(even) {
+    background-color: var(--color-bg);
+  }
+
+  /* Status color */
+  .courses-river-column table td span,
+  .courses-sea-column table td span,
+  .courses-training-column table td span,
+  .sailors-insurance-column table td span {
+    color: var(--color-success);
+  }
+
+  /* Reserve button */
+  .courses-river-column table td a,
+  .courses-sea-column table td a,
+  .courses-training-column table td a,
+  .sailors-insurance-column table td a {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background-color: var(--color-success);
+    color: var(--color-bg-white);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  /* Sailors insurance specific */
+  .sailors-insurance-column table th:first-child,
+  .sailors-insurance-column table td:first-child {
+    text-align: center;
+  }
+
+  /* ========================================
+     REVIEWS TABLES (inside accordion)
+     ======================================== */
+  section.accordion > table,
+  section.accordion > div > table {
     display: block;
     width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-collapse: collapse;
     margin-bottom: var(--space-md);
   }
 
-  .general-main-column section > table thead,
-  .courses-sea-column section > table thead,
-  .courses-river-column section > table thead,
-  .courses-training-column section > table thead {
-    display: none;
+  section.accordion > table tbody,
+  section.accordion > div > table tbody {
+    min-width: 500px;
+    display: table;
+    width: 100%;
   }
-
-  .general-main-column section > table tbody,
-  .courses-sea-column section > table tbody,
-  .courses-river-column section > table tbody,
-  .courses-training-column section > table tbody {
-    display: block;
-  }
-
-  /* Each row becomes ultra-compact grid - 2 rows layout */
-  .general-main-column section > table tbody tr,
-  .courses-sea-column section > table tbody tr,
-  .courses-river-column section > table tbody tr,
-  .courses-training-column section > table tbody tr {
-    display: block;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: 0;
-  }
-
-  .general-main-column section > table tbody tr:last-child,
-  .courses-sea-column section > table tbody tr:last-child,
-  .courses-river-column section > table tbody tr:last-child,
-  .courses-training-column section > table tbody tr:last-child {
-    border-bottom: none;
-  }
-
-  /* VIP rows - orange accent on left border
-   * NOTE: Requires .vip-row class on tr elements in HTML
-   * Cannot use :has-text() - not valid CSS
-   */
-  .general-main-column section > table tbody tr.vip-row,
-  .courses-sea-column section > table tbody tr.vip-row,
-  .courses-river-column section > table tbody tr.vip-row,
-  .courses-training-column section > table tbody tr.vip-row {
-    border-left: 3px solid var(--color-secondary);
-  }
-
-  /* Row 1: Date - compact, smaller padding */
-  .general-main-column section > table tbody td:nth-child(1),
-  .courses-sea-column section > table tbody td:nth-child(1),
-  .courses-river-column section > table tbody td:nth-child(1),
-  .courses-training-column section > table tbody td:nth-child(1) {
-    display: block;
-    background: var(--color-primary);
-    color: var(--color-bg-white);
-    padding: var(--space-xs) var(--space-sm); /* 4px 8px */
-    font-weight: 600;
-    font-size: var(--font-sm); /* 13px = 0.8125rem */
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-
-  /* Content row - ultra compact inline layout */
-  .general-main-column section > table tbody td:nth-child(2),
-  .courses-sea-column section > table tbody td:nth-child(2),
-  .courses-river-column section > table tbody td:nth-child(2),
-  .courses-training-column section > table tbody td:nth-child(2) {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-xs) 4px var(--space-xs) var(--space-sm); /* 4px 4px 4px 8px */
-    font-weight: 700;
-    font-size: var(--font-base); /* 14px = 0.875rem */
-    color: var(--color-text);
-    white-space: nowrap;
-    vertical-align: middle;
-  }
-
-  /* Price cell - NO label, just the value */
-  .general-main-column section > table tbody td:nth-child(2)::before,
-  .courses-sea-column section > table tbody td:nth-child(2)::before,
-  .courses-river-column section > table tbody td:nth-child(2)::before,
-  .courses-training-column section > table tbody td:nth-child(2)::before {
-    display: none;
-  }
-
-  /* Availability - inline with price, NO label */
-  .general-main-column section > table tbody td:nth-child(3),
-  .courses-sea-column section > table tbody td:nth-child(3),
-  .courses-river-column section > table tbody td:nth-child(3),
-  .courses-training-column section > table tbody td:nth-child(3) {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-xs) 4px; /* 4px 4px */
-    font-size: var(--font-sm); /* 13px = 0.8125rem */
-    border-left: 1px solid var(--color-border);
-    white-space: nowrap;
-    vertical-align: middle;
-  }
-
-  .general-main-column section > table tbody td:nth-child(3)::before,
-  .courses-sea-column section > table tbody td:nth-child(3)::before,
-  .courses-river-column section > table tbody td:nth-child(3)::before,
-  .courses-training-column section > table tbody td:nth-child(3)::before {
-    display: none;
-  }
-
-  /* Boat type - hidden on mobile */
-  .general-main-column section > table tbody td:nth-child(4),
-  .courses-sea-column section > table tbody td:nth-child(4),
-  .courses-river-column section > table tbody td:nth-child(4),
-  .courses-training-column section > table tbody td:nth-child(4) {
-    display: none;
-  }
-
-  /* Action button - inline, same row as price/status */
-  .general-main-column section > table tbody td:nth-child(5),
-  .courses-sea-column section > table tbody td:nth-child(5),
-  .courses-river-column section > table tbody td:nth-child(5),
-  .courses-training-column section > table tbody td:nth-child(5) {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-xs) var(--space-sm) var(--space-xs) 4px; /* 4px 8px 4px 4px */
-    background: transparent;
-    vertical-align: middle;
-    margin-left: auto;
-  }
-
-  /* Reserve button - small, inline */
-  .general-main-column section > table tbody td:nth-child(5) a,
-  .courses-sea-column section > table tbody td:nth-child(5) a,
-  .courses-river-column section > table tbody td:nth-child(5) a,
-  .courses-training-column section > table tbody td:nth-child(5) a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: auto;
-    padding: var(--space-xs) 10px; /* 4px 10px */
-    background: var(--color-primary);
-    color: var(--color-bg-white);
-    text-decoration: none;
-    border-radius: 0;
-    font-weight: 600;
-    font-size: var(--font-xs); /* 12px = 0.75rem */
-    text-align: center;
-    line-height: 1.1;
-    white-space: nowrap;
-  }
-
-  /* Hide button for booked/past rows */
-  .general-main-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
-  .general-main-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
-  .courses-sea-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
-  .courses-sea-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
-  .courses-river-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
-  .courses-river-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
-  .courses-training-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
-  .courses-training-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5) {
-    display: none;
-  }
-
-  /* ========================================
-     AVAILABILITY BADGES
-     ======================================== */
-
-  /* Available - green badge
-   * NOTE: Requires .available class on td elements in HTML
-   * Cannot use :has-text() - not valid CSS
-   */
-  .general-main-column section > table tbody td:nth-child(3).available,
-  .courses-sea-column section > table tbody td:nth-child(3).available,
-  .courses-river-column section > table tbody td:nth-child(3).available,
-  .courses-training-column section > table tbody td:nth-child(3).available {
-    color: var(--color-success);
-    font-weight: 600;
-  }
-
-  /* Booked/Past - gray
-   * NOTE: Requires .booked or .past class on td elements in HTML
-   * Cannot use :has-text() - not valid CSS
-   */
-  .general-main-column section > table tbody td:nth-child(3).booked,
-  .general-main-column section > table tbody td:nth-child(3).past,
-  .courses-sea-column section > table tbody td:nth-child(3).booked,
-  .courses-sea-column section > table tbody td:nth-child(3).past,
-  .courses-river-column section > table tbody td:nth-child(3).booked,
-  .courses-river-column section > table tbody td:nth-child(3).past,
-  .courses-training-column section > table tbody td:nth-child(3).booked,
-  .courses-training-column section > table tbody td:nth-child(3).past {
-    color: var(--color-text-muted);
-    font-weight: 600;
-  }
-
-  /* ========================================
-     WIDER MOBILE LAYOUT (400px+)
-     Keep ultra-compact layout
-     ======================================== */
-  @media only screen and (min-width: 400px) {
-    .general-main-column section > table tbody td:nth-child(1),
-    .courses-sea-column section > table tbody td:nth-child(1),
-    .courses-river-column section > table tbody td:nth-child(1),
-    .courses-training-column section > table tbody td:nth-child(1) {
-      display: block;
-      width: 100%;
-    }
-
-    /* Keep compact padding for wider screens too */
-    .general-main-column section > table tbody td:nth-child(2),
-    .courses-sea-column section > table tbody td:nth-child(2),
-    .courses-river-column section > table tbody td:nth-child(2),
-    .courses-training-column section > table tbody td:nth-child(2) {
-      padding: 3px 6px 3px 8px;
-    }
-
-    .general-main-column section > table tbody td:nth-child(3),
-    .courses-sea-column section > table tbody td:nth-child(3),
-    .courses-river-column section > table tbody td:nth-child(3),
-    .courses-training-column section > table tbody td:nth-child(3) {
-      padding: 3px 6px;
-    }
-
-    .general-main-column section > table tbody td:nth-child(5),
-    .courses-sea-column section > table tbody td:nth-child(5),
-    .courses-river-column section > table tbody td:nth-child(5),
-    .courses-training-column section > table tbody td:nth-child(5) {
-      padding: 3px 8px 3px 6px;
-    }
-
-    .general-main-column section > table tbody td:nth-child(5) a,
-    .courses-sea-column section > table tbody td:nth-child(5) a,
-    .courses-river-column section > table tbody td:nth-child(5) a,
-    .courses-training-column section > table tbody td:nth-child(5) a {
-      padding: 6px 14px;
-    }
-  }
-}
-
-/* ========================================
-   TABLET+ LAYOUT (600px+)
-   Compact horizontal table-like layout
-   ======================================== */
-
-@media only screen and (min-width: 600px) and (max-width: 949px) {
-  /* Horizontal table-like layout - compact */
-  .general-main-column section > table tbody tr,
-  .courses-sea-column section > table tbody tr,
-  .courses-river-column section > table tbody tr,
-  .courses-training-column section > table tbody tr {
-    display: grid;
-    grid-template-columns: 2fr auto auto 1fr auto;
-    grid-template-rows: auto;
-    align-items: center;
-    gap: 0;
-    padding: 4px 0;
-  }
-
-  /* All in one row - compact styling */
-  .general-main-column section > table tbody td:nth-child(1),
-  .courses-sea-column section > table tbody td:nth-child(1),
-  .courses-river-column section > table tbody td:nth-child(1),
-  .courses-training-column section > table tbody td:nth-child(1) {
-    grid-column: 1;
-    grid-row: 1;
-    background: transparent;
-    color: var(--color-text);
-    font-size: 0.875rem;
-    padding: 4px 8px;
-  }
-
-  .general-main-column section > table tbody td:nth-child(2),
-  .courses-sea-column section > table tbody td:nth-child(2),
-  .courses-river-column section > table tbody td:nth-child(2),
-  .courses-training-column section > table tbody td:nth-child(2) {
-    grid-column: 2;
-    grid-row: 1;
-    border-right: 1px solid var(--color-border);
-    text-align: right;
-    border-bottom: none;
-    padding: 4px 8px;
-  }
-
-  .general-main-column section > table tbody td:nth-child(3),
-  .courses-sea-column section > table tbody td:nth-child(3),
-  .courses-river-column section > table tbody td:nth-child(3),
-  .courses-training-column section > table tbody td:nth-child(3) {
-    grid-column: 3;
-    grid-row: 1;
-    border-right: 1px solid var(--color-border);
-    border-bottom: none;
-    padding: 4px 8px;
-  }
-
-  .general-main-column section > table tbody td:nth-child(4),
-  .courses-sea-column section > table tbody td:nth-child(4),
-  .courses-river-column section > table tbody td:nth-child(4),
-  .courses-training-column section > table tbody td:nth-child(4) {
-    display: block;
-    grid-column: 4;
-    grid-row: 1;
-    text-align: right;
-    border-bottom: none;
-    padding: 4px 8px;
-    font-size: 0.8125rem;
-  }
-
-  .general-main-column section > table tbody td:nth-child(5),
-  .courses-sea-column section > table tbody td:nth-child(5),
-  .courses-river-column section > table tbody td:nth-child(5),
-  .courses-training-column section > table tbody td:nth-child(5) {
-    grid-column: 5;
-    grid-row: 1;
-    background: transparent;
-    padding: 4px 8px;
-  }
-
-  /* Compact button for tablet */
-  .general-main-column section > table tbody td:nth-child(5) a,
-  .courses-sea-column section > table tbody td:nth-child(5) a,
-  .courses-river-column section > table tbody td:nth-child(5) a,
-  .courses-training-column section > table tbody td:nth-child(5) a {
-    padding: 4px 10px;
-    font-size: 0.75rem;
-  }
-
-  /* Remove labels for tablet+ - use header instead */
-  .general-main-column section > table tbody td:nth-child(2)::before,
-  .courses-sea-column section > table tbody td:nth-child(2)::before,
-  .courses-river-column section > table tbody td:nth-child(2)::before,
-  .courses-training-column section > table tbody td:nth-child(2)::before,
-  .general-main-column section > table tbody td:nth-child(3)::before,
-  .courses-sea-column section > table tbody td:nth-child(3)::before,
-  .courses-river-column section > table tbody td:nth-child(3)::before,
-  .courses-training-column section > table tbody td:nth-child(3)::before {
-    display: none;
-  }
-
-  /* Hide button for booked/past rows in tablet layout */
-  .general-main-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
-  .general-main-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
-  .courses-sea-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
-  .courses-sea-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
-  .courses-river-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
-  .courses-river-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5),
-  .courses-training-column section > table tbody tr:has(td:nth-child(3).booked) td:nth-child(5),
-  .courses-training-column section > table tbody tr:has(td:nth-child(3).past) td:nth-child(5) {
-    display: none;
-  }
-}
 
 /* ========================================
    INFO SECTIONS AFTER TABLE
@@ -542,40 +291,34 @@ section ~ p {
 
 section.accordion {
   background: var(--color-bg-white);
-  border-radius: 0;
-  margin-bottom: var(--space-md);
-  overflow: hidden;
+  margin-bottom: var(--space-sm);
 }
 
 section.accordion > h3 {
-  background: var(--color-bg-white);
+  background: var(--color-bg);
   color: var(--color-primary);
-  padding: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  padding-right: 42px;
   margin: 0;
-  font-size: var(--font-base);
+  font-size: 14px;
   font-weight: normal;
+  text-transform: uppercase;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid transparent;
+  position: relative;
 }
 
 section.accordion > h3::after {
   content: '';
-  display: inline-block;
-  width: 24px; /* Icon size - exception allowed */
-  height: 24px; /* Icon size - exception allowed */
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23006ab2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
-  transition: transform 0.2s ease;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+  height: 100%;
+  background: var(--color-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center no-repeat;
 }
 
 section.accordion > h3.collapsed::after {
-  transform: rotate(-90deg);
-}
-
-section.accordion > h3:not(.collapsed) {
-  border-bottom-color: var(--color-border);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='m9 6 6 6-6 6'/%3E%3C/svg%3E");
 }
 
 section.accordion > div {
@@ -633,49 +376,47 @@ section.accordion > div > div[style*="divider"] {
    INFO CONTENT IN ACCORDIONS
    ======================================== */
 
+section.accordion > div > h4 {
+  font-size: var(--font-base);
+  color: var(--color-primary);
+  margin: var(--space-md) 0 var(--space-sm);
+  font-weight: normal;
+}
+
+section.accordion > div > h4:first-child {
+  margin-top: 0;
+}
+
+section.accordion > div > ul {
+  margin: 0 0 var(--space-md) 0;
+  padding-left: var(--space-lg);
+}
+
+section.accordion > div > ul li {
+  margin-bottom: var(--space-xs);
+  font-size: var(--font-base);
+  color: var(--color-text);
+}
+
 section.accordion > div > p {
   font-size: var(--font-base);
   color: var(--color-text);
   line-height: 1.6;
-  margin: 0 0 var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
 section.accordion > div > p:last-child {
   margin-bottom: 0;
 }
 
-section.accordion .images-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  margin: var(--space-md) 0;
-  justify-content: center;
+/* Links in accordion content */
+section.accordion > div a {
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
-section.accordion .images-wrapper a {
-  display: block;
-  border-radius: 0;
-  overflow: hidden;
-
-}
-
-section.accordion .images-wrapper img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ========================================
-   YOUTUBE VIDEOS
-   ======================================== */
-
-section.accordion iframe {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
-  border: none;
-  border-radius: 0;
-  margin: var(--space-md) 0;
+section.accordion > div a:hover {
+  text-decoration: none;
 }
 
 /* ========================================
@@ -726,7 +467,7 @@ section > article p {
 }
 
 .courses-contact-form section.contact-form h2 {
-  font-size: 1.25rem; /* 20px - form heading size */
+  font-size: var(--font-xl);
   font-weight: normal;
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
@@ -744,12 +485,12 @@ section > article p {
   margin-bottom: var(--space-md);
 }
 
-/* Labels - match desktop */
+/* Labels - match desktop form label styling */
 .courses-contact-form section.contact-form form label {
   display: block;
   font-size: var(--font-form-label);
   color: var(--color-primary);
-  margin-bottom: 0.4375rem;
+  margin-bottom: var(--space-xs);
   text-transform: uppercase;
 }
 
@@ -791,7 +532,7 @@ section > article p {
   min-height: 48px;
   background: var(--color-success);
   color: var(--color-bg-white);
-  font-weight: 700;
+  font-weight: normal;
   font-size: var(--font-lg);
   border: none;
   border-radius: 0;
@@ -811,398 +552,11 @@ section > article p {
    TEAM SECTION - Grid Layout
    ======================================== */
 
-/* Team section container - responsive 2-col to 1-col grid */
+/* Team section container - smart auto-resizing grid */
 section:has(> h2:first-child + article) {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-md);
-}
-
-/* Section heading - full width */
-section:has(> h2:first-child + article) > h2 {
-  grid-column: 1 / -1;
-  margin: 0 0 var(--space-md) 0;
-}
-
-/* Team member articles */
-section:has(> h2:first-child + article) > article {
-  background: var(--color-bg-white);
-  border-radius: 0;
-  padding: var(--space-md);
-  text-align: center;
-}
-
-section:has(> h2:first-child + article) > article img {
-  width: 100%;
-  max-width: 192px;
-  height: auto;
-  border-radius: 0;
-  margin-bottom: var(--space-md);
-  margin-inline: auto;
-}
-
-section:has(> h2:first-child + article) > article h3 {
-  font-size: var(--font-lg);
-  color: var(--color-primary);
-  margin: 0 0 var(--space-sm) 0;
-}
-
-section:has(> h2:first-child + article) > article p {
-  font-size: var(--font-sm);
-  color: var(--color-text);
-  margin: 0 0 var(--space-xs) 0;
-  line-height: 1.5;
-}
-
-/* Only apply to team section on contact page, not course grids */
-.general-main-column section:has(> h2:first-child + article) > article p a {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-/* ISO certification article - spans 2 columns */
-section:has(> h2:first-child + article) > article.isocer {
-  grid-column: 1 / -1;
-  background: var(--color-bg-light);
-  text-align: left;
-}
-
-@media only screen and (min-width: 600px) {
-  section:has(> h2:first-child + article) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  section:has(> h2:first-child + article) > article.isocer {
-    grid-column: 1 / -1;
-  }
-}
-
-/* ========================================
-   CONTACT FORM
-   ======================================== */
-
-.general-main-column form,
-.courses-sea-column form,
-.courses-river-column form,
-.courses-training-column form,
-.sailors-main-column form,
-.sailors-insurance-column form,
-.sailors-links-column form,
-.sailors-weather-column form,
-.contact-main-column form,
-.courses-contact-form section.contact-form form {
-  width: 100%;
-  background: transparent;
-  border-radius: 0;
-  padding: 0;
-  margin-bottom: var(--space-md);
-}
-
-.general-main-column form > div,
-.courses-sea-column form > div,
-.courses-river-column form > div,
-.courses-training-column form > div,
-.sailors-main-column form > div,
-.sailors-insurance-column form > div,
-.sailors-links-column form > div,
-.sailors-weather-column form > div,
-.contact-main-column form > div,
-.comparison-main-column form > div,
-.canalboats-main-column form > div,
-.membership-main-column form > div {
-  margin-bottom: var(--space-md);
-}
-
-.general-main-column form label,
-.courses-sea-column form label,
-.courses-river-column form label,
-.courses-training-column form label,
-.sailors-main-column form label,
-.sailors-insurance-column form label,
-.sailors-links-column form label,
-.sailors-weather-column form label,
-.contact-main-column form label,
-.comparison-main-column form label,
-.canalboats-main-column form label,
-.membership-main-column form label {
-  display: block;
-  font-size: var(--font-form-label);
-  color: var(--color-primary);
-  margin-bottom: 0.4375rem;
-  text-transform: uppercase;
-}
-
-.general-main-column form label.required::after,
-.courses-sea-column form label.required::after,
-.courses-river-column form label.required::after,
-.courses-training-column form label.required::after,
-.sailors-main-column form label.required::after,
-.sailors-insurance-column form label.required::after,
-.sailors-links-column form label.required::after,
-.sailors-weather-column form label.required::after,
-.contact-main-column form label.required::after,
-.comparison-main-column form label.required::after,
-.canalboats-main-column form label.required::after,
-.membership-main-column form label.required::after {
-  content: '*';
-  color: var(--color-secondary);
-  margin-left: var(--space-xs);
-}
-
-.general-main-column form input[type="text"],
-.general-main-column form input[type="email"],
-.general-main-column form input[type="tel"],
-.general-main-column form textarea,
-.courses-sea-column form input[type="text"],
-.courses-sea-column form input[type="email"],
-.courses-sea-column form input[type="tel"],
-.courses-sea-column form textarea,
-.courses-river-column form input[type="text"],
-.courses-river-column form input[type="email"],
-.courses-river-column form input[type="tel"],
-.courses-river-column form textarea,
-.courses-training-column form input[type="text"],
-.courses-training-column form input[type="email"],
-.courses-training-column form input[type="tel"],
-.courses-training-column form textarea,
-.sailors-main-column form input[type="text"],
-.sailors-main-column form input[type="email"],
-.sailors-main-column form input[type="tel"],
-.sailors-main-column form textarea,
-.sailors-insurance-column form input[type="text"],
-.sailors-insurance-column form input[type="email"],
-.sailors-insurance-column form input[type="tel"],
-.sailors-insurance-column form textarea,
-.sailors-links-column form input[type="text"],
-.sailors-links-column form input[type="email"],
-.sailors-links-column form input[type="tel"],
-.sailors-links-column form textarea,
-.sailors-weather-column form input[type="text"],
-.sailors-weather-column form input[type="email"],
-.sailors-weather-column form input[type="tel"],
-.sailors-weather-column form textarea,
-.contact-main-column form input[type="text"],
-.contact-main-column form input[type="email"],
-.contact-main-column form input[type="tel"],
-.contact-main-column form textarea,
-.comparison-main-column form input[type="text"],
-.comparison-main-column form input[type="email"],
-.comparison-main-column form input[type="tel"],
-.comparison-main-column form textarea,
-.canalboats-main-column form input[type="text"],
-.canalboats-main-column form input[type="email"],
-.canalboats-main-column form input[type="tel"],
-.canalboats-main-column form textarea,
-.membership-main-column form input[type="text"],
-.membership-main-column form input[type="email"],
-.membership-main-column form input[type="tel"],
-.membership-main-column form textarea {
-  width: 100%;
-  min-height: 44px; /* Touch target - exception allowed */
-  padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--color-border);
-  border-radius: 0;
-  font-size: var(--font-base);
-  font-family: inherit;
-  background: transparent;
-  box-sizing: border-box;
-}
-
-.general-main-column form textarea,
-.courses-sea-column form textarea,
-.courses-river-column form textarea,
-.courses-training-column form textarea,
-.sailors-main-column form textarea,
-.sailors-insurance-column form textarea,
-.sailors-links-column form textarea,
-.sailors-weather-column form textarea,
-.contact-main-column form textarea,
-.comparison-main-column form textarea,
-.canalboats-main-column form textarea,
-.membership-main-column form textarea {
-  min-height: 120px; /* Custom height for textarea - exception allowed */
-  resize: vertical;
-}
-
-.general-main-column form input:focus,
-.general-main-column form textarea:focus,
-.courses-sea-column form input:focus,
-.courses-sea-column form textarea:focus,
-.courses-river-column form input:focus,
-.courses-river-column form textarea:focus,
-.courses-training-column form input:focus,
-.courses-training-column form textarea:focus,
-.sailors-main-column form input:focus,
-.sailors-main-column form textarea:focus,
-.sailors-insurance-column form input:focus,
-.sailors-insurance-column form textarea:focus,
-.sailors-links-column form input:focus,
-.sailors-links-column form textarea:focus,
-.sailors-weather-column form input:focus,
-.sailors-weather-column form textarea:focus,
-.contact-main-column form input:focus,
-.contact-main-column form textarea:focus,
-.comparison-main-column form input:focus,
-.comparison-main-column form textarea:focus,
-.canalboats-main-column form input:focus,
-.canalboats-main-column form textarea:focus,
-.membership-main-column form input:focus,
-.membership-main-column form textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-
-}
-
-.general-main-column form button[type="submit"],
-.courses-sea-column form button[type="submit"],
-.courses-river-column form button[type="submit"],
-.courses-training-column form button[type="submit"],
-.sailors-main-column form button[type="submit"],
-.sailors-insurance-column form button[type="submit"],
-.sailors-links-column form button[type="submit"],
-.sailors-weather-column form button[type="submit"],
-.contact-main-column form button[type="submit"],
-.comparison-main-column form button[type="submit"],
-.canalboats-main-column form button[type="submit"],
-.membership-main-column form button[type="submit"] {
-  width: 100%;
-  min-height: 48px; /* Touch target - exception allowed */
-  background: var(--color-success);
-  color: var(--color-bg-white);
-  font-weight: 700;
-  font-size: var(--font-lg);
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  margin: var(--space-md) 0;
-}
-
-.general-main-column form button[type="submit"]:active,
-.courses-sea-column form button[type="submit"]:active,
-.courses-river-column form button[type="submit"]:active,
-.courses-training-column form button[type="submit"]:active,
-.sailors-main-column form button[type="submit"]:active,
-.sailors-insurance-column form button[type="submit"]:active,
-.sailors-links-column form button[type="submit"]:active,
-.sailors-weather-column form button[type="submit"]:active,
-.contact-main-column form button[type="submit"]:active,
-.comparison-main-column form button[type="submit"]:active,
-.canalboats-main-column form button[type="submit"]:active,
-.membership-main-column form button[type="submit"]:active {
-  transform: scale(0.98);
-}
-
-.general-main-column form .hint,
-.courses-sea-column form .hint,
-.courses-river-column form .hint,
-.courses-training-column form .hint,
-.sailors-main-column form .hint,
-.sailors-insurance-column form .hint,
-.sailors-links-column form .hint,
-.sailors-weather-column form .hint,
-.contact-main-column form .hint,
-.comparison-main-column form .hint,
-.canalboats-main-column form .hint,
-.membership-main-column form .hint {
-  font-size: var(--font-xs);
-  color: var(--color-text-light);
-  text-align: center;
-  margin: 0;
-}
-
-.general-main-column form .hint a,
-.courses-sea-column form .hint a,
-.courses-river-column form .hint a,
-.courses-training-column form .hint a,
-.sailors-main-column form .hint a,
-.sailors-insurance-column form .hint a,
-.sailors-links-column form .hint a,
-.sailors-weather-column form .hint a,
-.contact-main-column form .hint a,
-.comparison-main-column form .hint a,
-.canalboats-main-column form .hint a,
-.membership-main-column form .hint a {
-  color: var(--color-primary);
-  text-decoration: underline;
-}
-
-/* ========================================
-   SECTION & ARTICLE STYLES FOR ALL COLUMN TYPES
-   ======================================== */
-
-/* Section containers */
-.sailors-main-column > section,
-.contact-main-column > section,
-.canalboats-main-column > section,
-.membership-main-column > section {
-  background: var(--color-bg-white);
-  border-radius: 0;
-  padding: var(--space-lg);
-  margin-bottom: var(--space-md);
-  border: 1px solid var(--color-border);
-}
-
-/* Section headings - already defined above with desktop h2 style */
-
-/* Article cards (like on sailors/pro-jachtare page) */
-.sailors-main-column > section > article,
-.contact-main-column > section > article,
-.canalboats-main-column > section > article,
-.membership-main-column > section > article {
-  background: var(--color-bg-white);
-  border-radius: 0;
-  padding: var(--space-md);
-  margin-bottom: var(--space-md);
-  border: none;
-}
-
-.sailors-main-column > section > article:last-child,
-.contact-main-column > section > article:last-child,
-.canalboats-main-column > section > article:last-child,
-.membership-main-column > section > article:last-child {
-  margin-bottom: 0;
-}
-
-/* Article headings */
-.sailors-main-column > section > article h3,
-.contact-main-column > section > article h3,
-.canalboats-main-column > section > article h3,
-.membership-main-column > section > article h3 {
-  font-size: var(--font-lg);
-  color: var(--color-primary);
-  margin: 0 0 var(--space-sm) 0;
-  font-weight: normal;
-}
-
-.sailors-main-column > section > article h3 a,
-.contact-main-column > section > article h3 a,
-.canalboats-main-column > section > article h3 a,
-.membership-main-column > section > article h3 a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-/* Article paragraphs */
-.sailors-main-column > section > article p,
-.contact-main-column > section > article p,
-.canalboats-main-column > section > article p,
-.membership-main-column > section > article p {
-  font-size: var(--font-base);
-  color: var(--color-text);
-  margin: 0;
-  line-height: 1.6;
-}
-
-.sailors-main-column > section > article p a,
-.contact-main-column > section > article p a,
-.canalboats-main-column > section > article p a,
-.membership-main-column > section > article p a {
-  color: var(--color-text);
-  text-decoration: none;
 }
 
 /* ========================================
@@ -1223,42 +577,43 @@ section:has(> h2:first-child + article) > article.isocer {
 }
 
 /* First section only - articles with background images */
+@media only screen and (min-width: 768px) {
+  .courses-main-column > section:first-of-type {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
 
-/* First article: River licenses */
-.courses-main-column > section:first-of-type > article:nth-of-type(1) {
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 30, 60, 0.85) 100%),
-    url("../img/responsive/bg-ricni-lode.jpg") center/cover no-repeat;
+  .courses-main-column > section:first-of-type > h2 {
+    grid-column: 1 / -1;
+  }
 }
 
-/* Second article: Sea licenses */
-.courses-main-column > section:first-of-type > article:nth-of-type(2) {
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 30, 60, 0.85) 100%),
-    url("../img/responsive/bg-kapitanske-kurzy.jpg") center/cover no-repeat;
+@media only screen and (min-width: 1024px) {
+  .courses-main-column > section:first-of-type {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-/* Third article: Improvement cruises */
-.courses-main-column > section:first-of-type > article:nth-of-type(3) {
-  background:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 30, 60, 0.85) 100%),
-    url("../img/responsive/bg-plavba.jpg") center/cover no-repeat;
-}
-
-/* Article headings - white text for overlay (first section only) */
+/* Article heading overlay - always visible at bottom */
 .courses-main-column > section:first-of-type > article h3 {
   margin: 0;
-  padding: 60px var(--space-md) var(--space-sm);
+  padding: var(--space-md);
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  color: var(--color-bg-white);
+  font-size: var(--font-lg);
+  font-weight: normal;
+  text-align: left;
   position: relative;
   z-index: 2;
 }
 
+/* Article links - full coverage */
 .courses-main-column > section:first-of-type > article h3 a {
   color: var(--color-bg-white);
   text-decoration: none;
   font-size: var(--font-base);
   font-weight: normal;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   display: block;
 }
 
@@ -1270,15 +625,314 @@ section:has(> h2:first-child + article) > article.isocer {
   z-index: 2;
 }
 
+/* Paragraph links - white text */
 .courses-main-column > section:first-of-type > article p a {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-bg-white);
   text-decoration: none;
-  font-size: var(--font-base);
-  line-height: 1.5;
+  font-size: var(--font-sm);
+}
+
+/* ========================================
+   CANALBOATS CATALOGUE GRID
+   Grid layout for catalogue items only
+   ======================================== */
+
+.canalboats-main-column section .catalogue {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-md);
+}
+
+.canalboats-main-column section .catalogue a {
   display: block;
 }
 
-/* Note: Comparison page styles moved to comparison-page.css */
+.canalboats-main-column section .catalogue img {
+  width: 100%;
+  max-height: 300px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========================================
+   SAILORS MAIN COLUMN - PRO JACHTAŘE CARDS
+   Replicating homepage card pattern
+   ======================================== */
+
+/* Override the white card styling for sailors page articles */
+.sailors-main-column > section {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.sailors-main-column > section > h2 {
+  display: none;
+}
+
+/* Article container - matches homepage hp-main-column pattern */
+.sailors-main-column > section > article {
+  background: var(--color-bg) !important;
+  border-radius: 0 !important;
+  overflow: hidden;
+  min-height: auto;
+  display: block;
+  position: relative;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: var(--space-md) !important;
+}
+
+/* Heading - blue bar with white text */
+.sailors-main-column > section > article h3 {
+  background: var(--color-primary) !important;
+  color: var(--color-bg-white) !important;
+  margin: 0 !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  text-align: center;
+  text-transform: uppercase;
+  position: static;
+  font-size: var(--font-lg);
+  font-weight: normal;
+}
+
+.sailors-main-column > section > article h3 a {
+  color: var(--color-bg-white) !important;
+  text-decoration: none;
+  font-size: var(--font-lg);
+  font-weight: normal;
+  text-transform: uppercase;
+  display: block;
+}
+
+/* Paragraph - gray background */
+.sailors-main-column > section > article p {
+  background: var(--color-bg) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Description link - contains the image as background */
+.sailors-main-column > section > article p a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--font-sm);
+  line-height: 1.5;
+  display: block;
+  padding: 12.25rem var(--space-md) var(--space-sm) var(--space-md);
+  background-color: var(--color-bg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% 11.6875rem;
+  text-align: center;
+}
+
+/* Article 1: Pojištění (Insurance) */
+.sailors-main-column > section > article:nth-of-type(1) p a {
+  background-image: url("../img/sailors-insurence.jpg");
+}
+
+/* Article 2: Počasí (Weather) */
+.sailors-main-column > section > article:nth-of-type(2) p a {
+  background-image: url("../img/sailors-weather.jpg");
+}
+
+/* Article 3: Užitečné odkazy (Links) */
+.sailors-main-column > section > article:nth-of-type(3) p a {
+  background-image: url("../img/sailors-links.jpg");
+}
+
+/* ========================================
+   CONTACT MAIN COLUMN - KONTAKT PAGE
+   Matching desktop design with gray headers
+   ======================================== */
+
+/* Override white card styling for contact page */
+.contact-main-column > section {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--color-bg) !important;
+  padding: 0 0 var(--space-lg) 0 !important;
+  margin-bottom: var(--space-lg) !important;
+}
+
+.contact-main-column > section:last-child {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+}
+
+/* Section headings */
+.contact-main-column > section > h2 {
+  text-align: center;
+  margin: 0 0 var(--space-md) 0 !important;
+  font-size: var(--font-2xl) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Articles - transparent background, stacked */
+.contact-main-column > section > article {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: var(--space-md) !important;
+  width: 100% !important;
+  float: none !important;
+}
+
+.contact-main-column > section > article:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* H3 headings - gray background like desktop */
+.contact-main-column > section > article > h3 {
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  font-size: var(--font-base) !important;
+  font-weight: normal !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  margin: 0 0 var(--space-md) 0 !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+}
+
+/* Article content paragraphs */
+.contact-main-column > section > article > p {
+  padding: 0 var(--space-md) var(--space-sm) var(--space-md) !important;
+  margin: 0 !important;
+  font-size: var(--font-base) !important;
+  line-height: 1.6 !important;
+}
+
+.contact-main-column > section > article > p:last-child {
+  padding-bottom: 0 !important;
+}
+
+/* Links in contact info */
+.contact-main-column > section > article > p a {
+  color: var(--color-primary) !important;
+  text-decoration: none !important;
+}
+
+/* Phone/email strong styling */
+.contact-main-column > section > article > p strong {
+  color: var(--color-text) !important;
+  font-weight: normal !important;
+}
+
+/* Section 1: Kontakt info - specific styling */
+.contact-main-column > section:first-of-type > article {
+  margin-bottom: var(--space-lg) !important;
+}
+
+/* Section 2: Map iframe - make responsive */
+.contact-main-column > section:nth-of-type(2) > iframe {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 950 / 393 !important;
+  border: none !important;
+  display: block !important;
+}
+
+/* Section 3: Bank info - articles with borders */
+.contact-main-column > section:nth-of-type(3) > article {
+  padding-bottom: var(--space-md) !important;
+  border-bottom: 1px solid var(--color-bg) !important;
+}
+
+.contact-main-column > section:nth-of-type(3) > article:last-child {
+  border-bottom: none !important;
+}
+
+/* Section 4: Team section - grid layout for team members */
+.contact-main-column > section:nth-of-type(4) {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: var(--space-md) !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > h2 {
+  grid-column: 1 / -1 !important;
+}
+
+/* Team member articles */
+.contact-main-column > section:nth-of-type(4) > article {
+  text-align: center !important;
+  margin-bottom: 0 !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > article img {
+  width: 100%;
+  max-width: 192px;
+  height: auto;
+  margin: 0 auto var(--space-sm);
+  display: block;
+}
+
+.contact-main-column > section:nth-of-type(4) > article h3 {
+  background: transparent !important;
+  color: var(--color-primary) !important;
+  padding: 0 !important;
+  margin: 0 0 var(--space-xs) 0 !important;
+  font-size: var(--font-lg) !important;
+  font-weight: normal !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > article p {
+  padding: 0 !important;
+  margin: 0 0 var(--space-xs) 0 !important;
+  font-size: var(--font-base) !important;
+}
+
+/* ISO certificate article - full width */
+.contact-main-column > section:nth-of-type(4) > article.isocer {
+  grid-column: 1 / -1 !important;
+  background: var(--color-bg) !important;
+  padding: var(--space-md) !important;
+  margin-top: var(--space-md) !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > article.isocer p {
+  padding: 0 0 var(--space-xs) 0 !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > article.isocer p:last-child {
+  padding-bottom: 0 !important;
+}
+
+/* Section 5: Contact form - gray background like desktop */
+.contact-main-column > section.contact-form {
+  background: var(--color-bg) !important;
+  padding: var(--space-lg) !important;
+  border-bottom: none !important;
+}
+
+.contact-main-column > section.contact-form > h2 {
+  margin-bottom: var(--space-md) !important;
+}
+
+/* Contact form specific styles */
+.contact-main-column > section.contact-form form {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Tablet+: 2-column grid for team members */
+@media only screen and (min-width: 600px) {
+  .contact-main-column > section:nth-of-type(4) {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .contact-main-column > section:nth-of-type(4) > article.isocer {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* ========================================
+   SECTION & ARTICLE STYLES FOR ALL COLUMN TYPES
+   ======================================== */
+
+/* Sections inherit natural flow like desktop - no card styling */
 
 /* ========================================
    COURSE ARTICLES - MOBILE OVERRIDE TO MATCH HOMEPAGE 100%
@@ -1307,13 +961,14 @@ section:has(> h2:first-child + article) > article.isocer {
     text-align: center;
     text-transform: uppercase;
     position: static;
-    font-size: 1.1875rem;
+    font-size: var(--font-lg);
+    font-weight: normal;
   }
 
   .courses-main-column > section:first-of-type > article h3 a {
     color: var(--color-bg-white) !important;
     text-decoration: none;
-    font-size: 1.1875rem;
+    font-size: var(--font-lg);
     font-weight: normal;
     text-transform: uppercase;
     display: block;
@@ -1371,285 +1026,5 @@ section:has(> h2:first-child + article) > article.isocer {
     line-height: 1.5;
     display: block;
     padding: var(--space-sm) var(--space-md);
-  }
-}
-
-/* ========================================
-   SAILORS MAIN COLUMN - PRO JACHTAŘE CARDS
-   Replicating homepage card pattern
-   ======================================== */
-
-/* Override the white card styling for sailors page articles */
-.sailors-main-column > section {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-}
-
-.sailors-main-column > section > h2 {
-  display: none;
-}
-
-/* Article container - matches homepage hp-main-column pattern */
-.sailors-main-column > section > article {
-  background: var(--color-bg) !important;
-  border-radius: 0 !important;
-  overflow: hidden;
-  min-height: auto;
-  display: block;
-  position: relative;
-  border: none !important;
-  padding: 0 !important;
-  margin-bottom: var(--space-md) !important;
-}
-
-/* Heading - blue bar with white text */
-.sailors-main-column > section > article h3 {
-  background: var(--color-primary) !important;
-  color: var(--color-bg-white) !important;
-  margin: 0 !important;
-  padding: var(--space-sm) var(--space-md) !important;
-  text-align: center;
-  text-transform: uppercase;
-  position: static;
-  font-size: 1.1875rem;
-  font-weight: normal;
-}
-
-.sailors-main-column > section > article h3 a {
-  color: var(--color-bg-white) !important;
-  text-decoration: none;
-  font-size: 1.1875rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  display: block;
-}
-
-/* Paragraph - gray background */
-.sailors-main-column > section > article p {
-  background: var(--color-bg) !important;
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-/* Description link - contains the image as background */
-.sailors-main-column > section > article p a {
-  color: var(--color-text);
-  text-decoration: none;
-  font-size: var(--font-sm);
-  line-height: 1.5;
-  display: block;
-  padding: 12.25rem 1rem 0.5rem 1rem; /* 196px top padding for image + text padding */
-  background-color: var(--color-bg);
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: 100% 11.6875rem; /* 100% width, 187px height */
-  text-align: center;
-}
-
-/* Article 1: Pojištění (Insurance) - orange life preserver */
-.sailors-main-column > section > article:nth-of-type(1) p a {
-  background-image: url("../img/sailors-insurence.jpg");
-}
-
-/* Article 2: Počasí (Weather) - weather/cloud graphic */
-.sailors-main-column > section > article:nth-of-type(2) p a {
-  background-image: url("../img/sailors-weather.jpg");
-}
-
-/* Article 3: Užitečné odkazy (Links) - web/links graphic */
-.sailors-main-column > section > article:nth-of-type(3) p a {
-  background-image: url("../img/sailors-links.jpg");
-}
-
-/* ========================================
-   CONTACT MAIN COLUMN - KONTAKT PAGE
-   Matching desktop design with gray headers
-   ======================================== */
-
-/* Override white card styling for contact page */
-.contact-main-column > section {
-  background: transparent !important;
-  border: none !important;
-  border-bottom: 1px solid var(--color-bg) !important;
-  padding: 0 0 var(--space-lg) 0 !important;
-  margin-bottom: var(--space-lg) !important;
-}
-
-.contact-main-column > section:last-child {
-  border-bottom: none !important;
-  margin-bottom: 0 !important;
-}
-
-/* Section headings */
-.contact-main-column > section > h2 {
-  text-align: center;
-  margin: 0 0 var(--space-md) 0 !important;
-  font-size: var(--font-2xl) !important;
-  color: var(--color-primary) !important;
-}
-
-/* Articles - transparent background, stacked */
-.contact-main-column > section > article {
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin-bottom: var(--space-md) !important;
-  width: 100% !important;
-  float: none !important;
-}
-
-.contact-main-column > section > article:last-child {
-  margin-bottom: 0 !important;
-}
-
-/* H3 headings - gray background like desktop */
-.contact-main-column > section > article > h3 {
-  background: var(--color-bg) !important;
-  color: var(--color-text) !important;
-  font-size: var(--font-base) !important;
-  font-weight: normal;
-  padding: var(--space-sm) var(--space-md) !important;
-  margin: 0 0 var(--space-md) 0 !important;
-  line-height: 1.4 !important;
-  text-transform: none !important;
-}
-
-/* Article content paragraphs */
-.contact-main-column > section > article > p {
-  padding: 0 var(--space-md) var(--space-sm) var(--space-md) !important;
-  margin: 0 !important;
-  font-size: var(--font-base) !important;
-  line-height: 1.6 !important;
-}
-
-.contact-main-column > section > article > p:last-child {
-  padding-bottom: 0 !important;
-}
-
-/* Links in contact info */
-.contact-main-column > section > article > p a {
-  color: var(--color-primary) !important;
-  text-decoration: none !important;
-}
-
-/* Phone/email strong styling */
-.contact-main-column > section > article > p strong {
-  color: var(--color-text) !important;
-  font-weight: normal;
-}
-
-/* Section 1: Kontakt info - specific styling */
-.contact-main-column > section:first-of-type > article {
-  margin-bottom: var(--space-lg) !important;
-}
-
-/* Section 2: Map iframe - make responsive */
-.contact-main-column > section:nth-of-type(2) > iframe {
-  width: 100% !important;
-  height: auto !important;
-  aspect-ratio: 950 / 393 !important;
-  border: none !important;
-  display: block !important;
-}
-
-/* Section 3: Bank info - articles with borders */
-.contact-main-column > section:nth-of-type(3) > article {
-  padding-bottom: var(--space-md) !important;
-  border-bottom: 1px solid var(--color-bg) !important;
-}
-
-.contact-main-column > section:nth-of-type(3) > article:last-child {
-  border-bottom: none !important;
-}
-
-/* Section 4: Team section - grid layout for team members */
-.contact-main-column > section:nth-of-type(4) {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: var(--space-md) !important;
-}
-
-.contact-main-column > section:nth-of-type(4) > h2 {
-  grid-column: 1 / -1 !important;
-}
-
-.contact-main-column > section:nth-of-type(4) > article {
-  background: var(--color-bg-white) !important;
-  padding: var(--space-md) !important;
-  text-align: center !important;
-  margin-bottom: 0 !important;
-}
-
-/* Team member images */
-.contact-main-column > section:nth-of-type(4) > article > img {
-  width: 100% !important;
-  max-width: 192px !important;
-  height: auto !important;
-  margin: 0 auto var(--space-md) auto !important;
-  display: block !important;
-}
-
-/* Team member names */
-.contact-main-column > section:nth-of-type(4) > article > h3 {
-  background: transparent !important;
-  color: var(--color-primary) !important;
-  font-size: var(--font-lg) !important;
-  padding: 0 !important;
-  margin-bottom: var(--space-sm) !important;
-  text-align: center !important;
-}
-
-/* Team member info */
-.contact-main-column > section:nth-of-type(4) > article > p {
-  padding: 0 !important;
-  text-align: center !important;
-  font-size: var(--font-sm) !important;
-}
-
-/* ISO certification article - full width with blue background */
-.contact-main-column > section:nth-of-type(4) > article.isocer {
-  background: var(--color-primary) !important;
-  color: var(--color-bg-white) !important;
-  padding: var(--space-lg) !important;
-  grid-column: 1 / -1 !important;
-  margin-top: var(--space-md) !important;
-}
-
-.contact-main-column > section:nth-of-type(4) > article.isocer > p {
-  color: var(--color-bg-white) !important;
-  text-align: center !important;
-}
-
-.contact-main-column > section:nth-of-type(4) > article.isocer > p a {
-  color: var(--color-bg-white) !important;
-  text-decoration: underline !important;
-}
-
-/* Section 5: Contact form - gray background like desktop */
-.contact-main-column > section.contact-form {
-  background: var(--color-bg) !important;
-  padding: var(--space-lg) !important;
-  border-bottom: none !important;
-}
-
-.contact-main-column > section.contact-form > h2 {
-  margin-bottom: var(--space-md) !important;
-}
-
-/* Contact form specific styles */
-.contact-main-column > section.contact-form form {
-  background: transparent !important;
-  padding: 0 !important;
-}
-
-/* Tablet+: 2-column grid for team members */
-@media only screen and (min-width: 600px) {
-  .contact-main-column > section:nth-of-type(4) {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  .contact-main-column > section:nth-of-type(4) > article.isocer {
-    grid-column: 1 / -1 !important;
   }
 }

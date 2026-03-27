@@ -52,16 +52,15 @@ footer li {
   font-size: var(--font-base);
 }
 
-/* Footer links */
-footer a {
-  color: var(--color-primary);
+/* Footer links - match desktop */
+.footer-section-wrapper section ul li a {
+  color: var(--color-text);
   text-decoration: none;
   font-size: var(--font-sm);
-  transition: color 0.2s;
 }
 
-footer a:hover {
-  color: var(--color-text);
+.footer-section-wrapper section ul li a:hover {
+  text-decoration: underline;
 }
 
 /* Certification image */
