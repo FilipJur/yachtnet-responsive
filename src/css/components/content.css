@@ -22,7 +22,7 @@
 /* Section headings - desktop h2 style */
 .hp-main-column > section h2 {
   font-size: var(--font-2xl);
-  font-weight: bold;
+  font-weight: normal;
   color: var(--color-primary);
   margin: 0;
   line-height: 1;
@@ -289,7 +289,7 @@ aside.hp-aside > section {
 aside.hp-aside h4 {
   margin: 0;
   font-size: 0.9375rem;
-  font-weight: 800;
+  font-weight: normal;
   text-transform: uppercase;
   padding: var(--space-xs) 0 var(--space-xs) 1.125rem;
   background-color: var(--color-primary);
@@ -365,7 +365,7 @@ aside.hp-aside li strong a {
   color: var(--color-primary);
   text-decoration: none;
   font-size: var(--font-base); /* 16px */
-  font-weight: 600;
+  font-weight: normal;
   line-height: 1.4;
 }
 
@@ -379,7 +379,7 @@ aside.hp-aside li p {
 
 aside.hp-aside li p strong {
   display: inline;
-  font-weight: 600;
+  font-weight: normal;
   color: var(--color-text);
 }
 

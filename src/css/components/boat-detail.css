@@ -12,7 +12,7 @@
 /* Boat title - h2 should be larger on mobile */
 .boat-main-column > h2 {
   font-size: var(--font-2xl); /* 24px */
-  font-weight: 700;
+  font-weight: normal;
   color: var(--color-primary);
   margin: var(--space-md) 0 var(--space-sm);
   line-height: 1.2;
@@ -66,7 +66,7 @@
   color: var(--color-bg-white);
   padding: var(--space-sm) var(--space-md);
   font-size: var(--font-sm); /* 14px - slightly larger for headers */
-  font-weight: 700;
+  font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   margin: 0;
