@@ -49,23 +49,33 @@
   line-height: 1.2;
 }
 
-.general-main-column > h2,
-.courses-sea-column > h2,
-.courses-river-column > h2,
-.courses-training-column > h2,
-.sailors-main-column > h2,
-.sailors-insurance-column > h2,
-.sailors-links-column > h2,
-.sailors-weather-column > h2,
-.contact-main-column > h2,
-.comparison-main-column > h2,
-.canalboats-main-column > h2,
-.membership-main-column > h2 {
+/* Subheading h2 styles - for h2s inside sections only, NOT the main page heading */
+.general-main-column > section > h2,
+.courses-sea-column > section > h2,
+.courses-river-column > section > h2,
+.courses-training-column > section > h2,
+.sailors-main-column > section > h2,
+.sailors-insurance-column > section > h2,
+.sailors-links-column > section > h2,
+.sailors-weather-column > section > h2,
+.contact-main-column > section > h2,
+.comparison-main-column > section > h2,
+.canalboats-main-column > section > h2,
+.membership-main-column > section > h2 {
   font-size: var(--font-base) !important;
   color: var(--color-text) !important;
   font-weight: 600 !important;
   margin: 0 0 var(--space-md);
   line-height: 1.4;
+}
+
+/* Main page heading h2 - keep desktop styling */
+.general-main-column > h2:first-of-type {
+  font-size: var(--font-2xl) !important;
+  color: var(--color-primary) !important;
+  font-weight: 400 !important;
+  margin: var(--space-md) 0 var(--space-xs) !important;
+  line-height: 1.2 !important;
 }
 
 /* Intro paragraphs */
@@ -722,9 +732,9 @@ section > article p {
   margin-top: var(--space-lg);
 }
 
-/* Contact form section styling */
+/* Contact form section styling - gray background like desktop */
 .courses-contact-form section.contact-form {
-  background: var(--color-bg-white);
+  background: var(--color-bg);
   border-radius: 0;
   padding: var(--space-lg);
 }
@@ -735,6 +745,12 @@ section > article p {
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;
   line-height: 1;
+}
+
+/* Form wrapper should be transparent on gray background */
+.courses-contact-form section.contact-form form {
+  background: transparent;
+  padding: 0;
 }
 
 /* Form field containers */
@@ -757,7 +773,7 @@ section > article p {
   margin-left: var(--space-xs);
 }
 
-/* Input fields */
+/* Input fields - white backgrounds for contrast on gray form */
 .courses-contact-form section.contact-form form input[type="text"],
 .courses-contact-form section.contact-form form input[type="email"],
 .courses-contact-form section.contact-form form textarea {
@@ -890,15 +906,10 @@ section:has(> h2:first-child + article) > article.isocer {
 .contact-main-column form,
 .courses-contact-form section.contact-form form {
   width: 100%;
-  background: var(--color-bg-white);
+  background: transparent;
   border-radius: 0;
-  padding: var(--space-md);
-  margin-bottom: var(--space-md);
-}
-
-/* Remove padding for contactForm specifically */
-#contactForm {
   padding: 0;
+  margin-bottom: var(--space-md);
 }
 
 .general-main-column form > div,
@@ -1007,7 +1018,7 @@ section:has(> h2:first-child + article) > article.isocer {
   border-radius: 0;
   font-size: var(--font-base);
   font-family: inherit;
-  background: var(--color-bg-white);
+  background: transparent;
   box-sizing: border-box;
 }
 
@@ -1463,4 +1474,196 @@ section:has(> h2:first-child + article) > article.isocer {
 /* Article 3: Užitečné odkazy (Links) - web/links graphic */
 .sailors-main-column > section > article:nth-of-type(3) p a {
   background-image: url("../img/sailors-links.jpg");
+}
+
+/* ========================================
+   CONTACT MAIN COLUMN - KONTAKT PAGE
+   Matching desktop design with gray headers
+   ======================================== */
+
+/* Override white card styling for contact page */
+.contact-main-column > section {
+  background: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid var(--color-bg) !important;
+  padding: 0 0 var(--space-lg) 0 !important;
+  margin-bottom: var(--space-lg) !important;
+}
+
+.contact-main-column > section:last-child {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+}
+
+/* Section headings */
+.contact-main-column > section > h2 {
+  text-align: center;
+  margin: 0 0 var(--space-md) 0 !important;
+  font-size: var(--font-2xl) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Articles - transparent background, stacked */
+.contact-main-column > section > article {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: var(--space-md) !important;
+  width: 100% !important;
+  float: none !important;
+}
+
+.contact-main-column > section > article:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* H3 headings - gray background like desktop */
+.contact-main-column > section > article > h3 {
+  background: var(--color-bg) !important;
+  color: var(--color-text) !important;
+  font-size: var(--font-base) !important;
+  font-weight: 700 !important;
+  padding: var(--space-sm) var(--space-md) !important;
+  margin: 0 0 var(--space-md) 0 !important;
+  line-height: 1.4 !important;
+  text-transform: none !important;
+}
+
+/* Article content paragraphs */
+.contact-main-column > section > article > p {
+  padding: 0 var(--space-md) var(--space-sm) var(--space-md) !important;
+  margin: 0 !important;
+  font-size: var(--font-base) !important;
+  line-height: 1.6 !important;
+}
+
+.contact-main-column > section > article > p:last-child {
+  padding-bottom: 0 !important;
+}
+
+/* Links in contact info */
+.contact-main-column > section > article > p a {
+  color: var(--color-primary) !important;
+  text-decoration: none !important;
+}
+
+/* Phone/email strong styling */
+.contact-main-column > section > article > p strong {
+  color: var(--color-text) !important;
+  font-weight: 700 !important;
+}
+
+/* Section 1: Kontakt info - specific styling */
+.contact-main-column > section:first-of-type > article {
+  margin-bottom: var(--space-lg) !important;
+}
+
+/* Section 2: Map iframe - make responsive */
+.contact-main-column > section:nth-of-type(2) > iframe {
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 950 / 393 !important;
+  border: none !important;
+  display: block !important;
+}
+
+/* Section 3: Bank info - articles with borders */
+.contact-main-column > section:nth-of-type(3) > article {
+  padding-bottom: var(--space-md) !important;
+  border-bottom: 1px solid var(--color-bg) !important;
+}
+
+.contact-main-column > section:nth-of-type(3) > article:last-child {
+  border-bottom: none !important;
+}
+
+/* Section 4: Team section - grid layout for team members */
+.contact-main-column > section:nth-of-type(4) {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: var(--space-md) !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > h2 {
+  grid-column: 1 / -1 !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > article {
+  background: var(--color-bg-white) !important;
+  padding: var(--space-md) !important;
+  text-align: center !important;
+  margin-bottom: 0 !important;
+}
+
+/* Team member images */
+.contact-main-column > section:nth-of-type(4) > article > img {
+  width: 100% !important;
+  max-width: 192px !important;
+  height: auto !important;
+  margin: 0 auto var(--space-md) auto !important;
+  display: block !important;
+}
+
+/* Team member names */
+.contact-main-column > section:nth-of-type(4) > article > h3 {
+  background: transparent !important;
+  color: var(--color-primary) !important;
+  font-size: var(--font-lg) !important;
+  padding: 0 !important;
+  margin-bottom: var(--space-sm) !important;
+  text-align: center !important;
+}
+
+/* Team member info */
+.contact-main-column > section:nth-of-type(4) > article > p {
+  padding: 0 !important;
+  text-align: center !important;
+  font-size: var(--font-sm) !important;
+}
+
+/* ISO certification article - full width with blue background */
+.contact-main-column > section:nth-of-type(4) > article.isocer {
+  background: var(--color-primary) !important;
+  color: var(--color-bg-white) !important;
+  padding: var(--space-lg) !important;
+  grid-column: 1 / -1 !important;
+  margin-top: var(--space-md) !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > article.isocer > p {
+  color: var(--color-bg-white) !important;
+  text-align: center !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > article.isocer > p a {
+  color: var(--color-bg-white) !important;
+  text-decoration: underline !important;
+}
+
+/* Section 5: Contact form - gray background like desktop */
+.contact-main-column > section.contact-form {
+  background: var(--color-bg) !important;
+  padding: var(--space-lg) !important;
+  border-bottom: none !important;
+}
+
+.contact-main-column > section.contact-form > h2 {
+  margin-bottom: var(--space-md) !important;
+}
+
+/* Contact form specific styles */
+.contact-main-column > section.contact-form form {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Tablet+: 2-column grid for team members */
+@media only screen and (min-width: 600px) {
+  .contact-main-column > section:nth-of-type(4) {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .contact-main-column > section:nth-of-type(4) > article.isocer {
+    grid-column: 1 / -1 !important;
+  }
 }
