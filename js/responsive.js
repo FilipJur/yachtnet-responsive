@@ -126,17 +126,19 @@
   
   function stickNav() {
     if (nav.classList.contains('is-sticky')) return;
-    
+
     // Close mobile menu before sticking
     closeMobileMenu();
-    
+
     createPlaceholder();
     nav.classList.add('is-sticky');
+    nav.classList.remove('is-at-top');
   }
-  
+
   function unstickNav() {
     if (!nav.classList.contains('is-sticky')) return;
     nav.classList.remove('is-sticky');
+    nav.classList.add('is-at-top');
     removePlaceholder();
   }
   
@@ -149,7 +151,17 @@
     }
   }
   
+  function setHeaderHeight() {
+    // Set CSS custom property for header height (used for menu positioning)
+    if (header) {
+      document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
+    }
+  }
+
   function initStickyNav() {
+    // Update header height whenever we reinitialize
+    setHeaderHeight();
+
     // Only on mobile
     if (window.innerWidth >= MOBILE_BREAKPOINT) {
       if (observer) {
@@ -159,19 +171,22 @@
       unstickNav();
       return;
     }
-    
+
     // Already initialized
     if (observer) return;
-    
+
+    // Set initial state: nav is at top (not sticky)
+    nav.classList.add('is-at-top');
+
     observer = new IntersectionObserver(handleIntersection, {
       root: null,
       threshold: 0,
       rootMargin: '0px'
     });
-    
+
     observer.observe(header);
   }
-  
+
   // Initialize
   initStickyNav();
   
@@ -185,6 +200,61 @@
 
 // Note: Detailed search toggle is handled by original desktop JS
 // We style both states (closed/open) in the CSS
+
+// ========================================
+// TABLE SCROLL WRAPPER (Mobile Only)
+// Wraps course tables in scrollable div to prevent section overflow
+// ========================================
+(function() {
+  'use strict';
+
+  const MOBILE_BREAKPOINT = 950;
+
+  function wrapTables() {
+    // Only on mobile and only if not already wrapped
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+
+    // Select tables within course columns (specific selector to avoid wrapping all tables)
+    const tables = document.querySelectorAll(`
+      .courses-river-column > section > table,
+      .courses-sea-column > section > table,
+      .courses-training-column > section > table,
+      .sailors-insurance-column > section > table,
+      section.accordion > table,
+      section.accordion > div > table,
+      .form-accordion-wrapper > table
+    `);
+
+    tables.forEach(function(table) {
+      // Skip if already wrapped
+      if (table.parentElement.classList.contains('table-scroll-wrapper')) return;
+
+      // Create wrapper
+      const wrapper = document.createElement('div');
+      wrapper.className = 'table-scroll-wrapper';
+
+      // Insert wrapper before table
+      table.parentNode.insertBefore(wrapper, table);
+
+      // Move table into wrapper
+      wrapper.appendChild(table);
+    });
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', wrapTables);
+  } else {
+    wrapTables();
+  }
+
+  // Re-wrap on resize (in case tables get unwrapped somehow)
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(wrapTables, 100);
+  });
+})();
 
 // ========================================
 // SUBMENU TOGGLE (Mobile Only)

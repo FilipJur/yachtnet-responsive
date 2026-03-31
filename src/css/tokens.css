@@ -25,7 +25,8 @@
   --color-dark-blue: #1a3a5c; /* Footer, headings */
 
   /* Layout */
-  --navbar-height: 70px;
+  --navbar-height: 56px;
+  --header-height: 0px; /* Set dynamically via JS based on actual header height */
 
   /* Spacing scale (16px base) */
   --space-xs: 0.25rem; /* 4px */
