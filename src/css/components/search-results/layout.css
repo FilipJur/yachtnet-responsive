@@ -191,5 +191,5 @@
 /* SumoSelect full width */
 .search-main-column .search-form-wrapper .SumoSelect {
   width: 100%;
-  margin: var(--space-xs) 0 0 0;
+  margin: 0;
 }

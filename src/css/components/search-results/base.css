@@ -16,7 +16,7 @@
 .search-main-column > div {
   background: var(--color-bg-white);
   border-radius: 0;
-  padding: var(--space-md);
+  padding: 0;
   margin-bottom: var(--space-md);
 }
 
@@ -29,12 +29,11 @@
     "specs specs specs specs"
     "status status status status"
     "actions actions actions actions";
-  gap: var(--space-sm);
-  background: var(--color-bg-white);
+  gap: var(--space-xs);
+  background: var(--color-bg);
   border-radius: 0;
   padding: var(--space-sm);
   margin-bottom: var(--space-md);
-
   position: relative;
   width: 100% !important;
   max-width: 100% !important;
@@ -45,24 +44,25 @@
   display: none;
 }
 
-/* Recommended badge using :has() */
+/* Recommended badge using :has() - bottom banner style */
 .search-result-table tr:has(.recommended-company) {
-  border: 2px solid rgba(238, 127, 0, 0.3);
-  padding-top: calc(var(--space-md) + 32px);
+  padding-top: 30px;
 }
 
 .search-result-table tr:has(.recommended-company)::before {
   content: "DOPORUČUJEME";
   position: absolute;
-  top: var(--space-md);
-  left: var(--space-md);
+  top: 0;
+  right: 0;
+  width: fit-content;
   background: var(--color-secondary);
   color: var(--color-bg-white);
   letter-spacing: 0.5px;
   border-radius: 0;
-  padding: 6px 12px;
+  padding: 4px 6px;
   font-size: var(--font-xs);
-  font-weight: 700;
+  font-weight: 600;
+  text-align: center;
 }
 
 /* Hide the original SSR recommended-company element to avoid duplication */

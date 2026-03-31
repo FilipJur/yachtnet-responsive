@@ -63,10 +63,10 @@
 .search-result-table td:nth-child(5) button,
 .search-result-table td:nth-child(5) a {
   flex: 1;
-  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: var(--space-sm) var(--space-md);
   font-size: var(--font-sm);
   font-weight: 500;
   border-radius: 0;

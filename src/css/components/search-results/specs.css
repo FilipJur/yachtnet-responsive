@@ -3,14 +3,15 @@
    Year, charter, people, cabins icons
    ======================================== */
 
-/* Second & Third cells: Specs layout */
+/* Second & Third cells: Specs layout - single line */
 .search-result-table td:nth-child(2) {
   grid-column: 1 / 3;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  gap: var(--space-sm);
-  padding: 0;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-xs) 0;
   border: none;
 }
 
@@ -18,103 +19,92 @@
   grid-column: 3 / 5;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  gap: var(--space-sm);
-  padding: 0;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-xs) 0;
   border: none;
 }
 
-/* Style all spec items */
+/* Style all spec items - inline icon + text */
 .search-result-table td:nth-child(2) > *,
 .search-result-table td:nth-child(3) > * {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-xs);
-  min-width: 60px;
-  text-align: center;
+  font-size: var(--font-sm);
+  white-space: nowrap;
+  width: 100%;
 }
 
-/* Year styling - sprite icon */
+/* Year styling - sprite icon 18x18px at -317px */
 .search-result-table .search-result-built {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-xs);
   font-size: var(--font-sm);
   color: var(--color-text);
 }
 
 .search-result-table .search-result-built::before {
   content: "";
-  display: block;
-  width: 20px;
-  height: 20px;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -317px;
+  flex-shrink: 0;
 }
 
-/* Charter company styling - sprite icon */
+/* Charter company styling - sprite icon 17x25px at -335px */
 .search-result-table .search-result-category {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-xs);
   font-size: var(--font-sm);
   color: var(--color-text);
 }
 
 .search-result-table .search-result-category::before {
   content: "";
-  display: block;
-  width: 20px;
-  height: 20px;
+  display: inline-block;
+  width: 17px;
+  height: 25px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -335px;
+  flex-shrink: 0;
 }
 
-/* People count styling - sprite icon */
+/* People count styling - sprite icon 22x18px at -360px */
 .search-result-table div[title="počet osob"] {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-xs);
   font-size: var(--font-sm);
   color: var(--color-text);
 }
 
 .search-result-table div[title="počet osob"]::before {
   content: "";
-  display: block;
-  width: 20px;
-  height: 20px;
+  display: inline-block;
+  width: 22px;
+  height: 18px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -360px;
+  flex-shrink: 0;
 }
 
-/* Cabins count styling - sprite icon */
+/* Cabins count styling - sprite icon 16x23px at -378px */
 .search-result-table div[title="počet kajut"] {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-xs);
   font-size: var(--font-sm);
   color: var(--color-text);
 }
 
 .search-result-table div[title="počet kajut"]::before {
   content: "";
-  display: block;
-  width: 20px;
-  height: 20px;
+  display: inline-block;
+  width: 16px;
+  height: 23px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -378px;
+  flex-shrink: 0;
 }
 
 /* Retina support for specs icons */
@@ -125,23 +115,5 @@
   .search-result-table div[title="počet kajut"]::before {
     background-image: url("../img/icon-sprite2x.png");
     background-size: 25px 612px;
-  }
-}
-
-/* ========================================
-   RESPONSIVE BREAKPOINTS
-   ======================================== */
-
-/* Small screens: 2 columns for specs */
-@media (max-width: 420px) {
-  .search-result-table td:nth-child(2),
-  .search-result-table td:nth-child(3) {
-    flex-direction: column;
-  }
-
-  .search-result-table td:nth-child(2) > *,
-  .search-result-table td:nth-child(3) > * {
-    flex: 1;
-    min-width: auto;
   }
 }
