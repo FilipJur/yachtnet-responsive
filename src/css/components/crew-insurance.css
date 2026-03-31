@@ -41,23 +41,44 @@
   width: 100%;
 }
 
-/* Fieldset styling - white card with border */
+/* Fieldset styling - gray background with blue header (matches desktop) */
 .crew-insurance-main-column .fieldset {
-  background: var(--color-bg-white);
+  background: var(--color-bg);
   border-radius: 0;
-  border: 1px solid var(--color-border);
-  padding: var(--space-md);
+  border: none;
+  padding: 0;
   margin-bottom: var(--space-md);
 }
 
-/* Fieldset heading */
+.crew-insurance-main-column .fieldset.crew-insurance-contact,
+.crew-insurance-main-column .fieldset.crew-insurance-check > div {
+  padding: var(--space-md);
+}
+
+.crew-insurance-main-column .fieldset.crew-insurance-check > div:first-child {
+  padding-bottom: 0;
+}
+
+/* Fieldset heading - blue bar with white text (matches desktop) */
 .crew-insurance-main-column .fieldset > h3 {
-  font-size: var(--font-lg);
-  color: var(--color-primary);
-  font-weight: 700;
-  margin: 0 0 var(--space-md) 0;
-  padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--color-primary);
+  font-size: var(--font-base);
+  background: var(--color-primary);
+  color: var(--color-bg-white);
+  font-weight: normal;
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* Radio group h3 (second h3 inside fieldset) */
+.crew-insurance-main-column .fieldset > div > h3 {
+  background: transparent;
+  color: var(--color-text);
+  padding: var(--space-md);
+  margin: 0;
+  font-weight: normal;
+  text-transform: none;
 }
 
 /* Contact section - stacked inputs */
@@ -134,11 +155,9 @@
   cursor: pointer;
 }
 
-/* Accordion wrapper */
+/* Accordion wrapper - content area inside fieldset */
 .form-accordion-wrapper {
-  margin-top: var(--space-md);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border);
+  padding: var(--space-md);
 }
 
 .form-accordion-wrapper p {
@@ -146,6 +165,10 @@
   line-height: 1.6;
   margin-bottom: var(--space-md);
   color: var(--color-text);
+}
+
+.form-accordion-wrapper p:last-child {
+  margin-bottom: 0;
 }
 
 .form-accordion-wrapper a {
@@ -262,16 +285,19 @@
   transform: scale(0.98);
 }
 
-/* Table wrapper for horizontal scroll on mobile */
-.form-accordion-wrapper:has(table) {
+/* Make tables horizontally scrollable on mobile
+   JavaScript wraps tables in .table-scroll-wrapper */
+.table-scroll-wrapper {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin: 0 calc(-1 * var(--space-md));
   padding: 0 var(--space-md);
 }
 
-.form-accordion-wrapper table {
+.table-scroll-wrapper table {
   min-width: 600px;
+  width: 100%;
+  border-collapse: collapse;
 }
 
 /* Responsive adjustments */
@@ -279,24 +305,17 @@
   .crew-insurance-main-column table {
     font-size: var(--font-xs);
   }
-  
+
   .crew-insurance-main-column td {
     padding: var(--space-xs);
   }
-  
+
   .crew-insurance-skipper td {
     padding: var(--space-xs);
   }
-  
+
   .crew-insurance-main-column .radio {
     margin-right: var(--space-md);
-  }
-  
-  /* Make tables horizontally scrollable */
-  .form-accordion-wrapper:has(table) {
-    overflow-x: auto;
-    margin: 0 calc(-1 * var(--space-md));
-    padding: 0 var(--space-md);
   }
 }
 
@@ -307,11 +326,11 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-md);
   }
-  
+
   .crew-insurance-contact > div:has(#street) {
     grid-column: 1 / -1;
   }
-  
+
   .crew-insurance-contact > div:has(#city) {
     grid-column: 1 / -1;
   }

@@ -167,25 +167,20 @@ aside > section > h2,
 
 /* ========================================
    COURSE TABLES - RESPONSIVE
-   Uses exact selectors from desktop CSS
-   Simple horizontal scroll approach
+   Tables are wrapped by JavaScript in .table-scroll-wrapper
    ======================================== */
 
 @media only screen and (max-width: 949px) {
-  /* Wrap table in scrollable container */
-  .courses-river-column,
-  .courses-sea-column,
-  .courses-training-column,
-  .sailors-insurance-column {
+  /* Table scroll wrapper - only the table scrolls, not the section */
+  .table-scroll-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    margin: 0 calc(-1 * var(--space-md));
+    padding: 0 var(--space-md);
   }
 
-  /* Keep table layout intact - just ensure minimum width */
-  .courses-river-column table,
-  .courses-sea-column table,
-  .courses-training-column table,
-  .sailors-insurance-column table {
+  /* Tables need min-width to force scrolling on narrow screens */
+  .table-scroll-wrapper table {
     min-width: 600px;
     width: 100%;
     border-collapse: collapse;
@@ -264,22 +259,20 @@ aside > section > h2,
 
   /* ========================================
      REVIEWS TABLES (inside accordion)
+     JavaScript wraps these in .table-scroll-wrapper
      ======================================== */
-  section.accordion > table,
-  section.accordion > div > table {
-    display: block;
-    width: 100%;
+  .table-scroll-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    border-collapse: collapse;
-    margin-bottom: var(--space-md);
+    margin: 0 calc(-1 * var(--space-md));
+    padding: 0 var(--space-md);
   }
 
-  section.accordion > table tbody,
-  section.accordion > div > table tbody {
+  section.accordion .table-scroll-wrapper table {
     min-width: 500px;
-    display: table;
     width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--space-md);
   }
 
 /* ========================================
@@ -638,6 +631,11 @@ section:has(> h2:first-child + article) {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-md);
+}
+
+/* Break h2 out of grid to full width */
+section:has(> h2:first-child + article) > h2 {
+  grid-column: 1 / -1;
 }
 
 /* ========================================
