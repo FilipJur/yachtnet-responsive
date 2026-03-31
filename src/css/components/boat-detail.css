@@ -73,6 +73,7 @@
 }
 /* Tech specs - 2 column grid layout */
 .boat-tech-wrapper dl {
+  background: var(--color-bg);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-md) var(--space-lg);
@@ -108,6 +109,7 @@
 
 /* Rental conditions - improved layout matching mockup */
 .boat-condition-wrapper dl {
+  background: var(--color-bg);
   display: block;
   padding: var(--space-lg);
   margin: 0;
@@ -187,6 +189,7 @@
 
 /* Booking recap - improved layout matching mockup */
 .boat-recap-wrapper dl {
+  background: var(--color-bg);
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-md) var(--space-lg);
@@ -264,13 +267,12 @@
   background: var(--color-bg-light);
   border-radius: 0;
   padding: var(--space-md);
-  margin: var(--space-md);
   text-align: center;
 }
 
 /* Booking form */
 .booking-form {
-  background: var(--color-bg-white);
+  background: var(--color-bg);
   border-radius: 0;
   padding: var(--space-lg);
   margin-top: var(--space-md);
@@ -285,7 +287,7 @@
   display: block;
   font-size: var(--font-form-label);
   color: var(--color-primary);
-  margin-bottom: 0.4375rem;
+  margin-bottom: calc(var(--space-sm) - 1px); /* 7px - precise form label spacing */
   text-transform: uppercase;
 }
 
@@ -305,7 +307,7 @@
 }
 
 .booking-form textarea {
-  min-height: 100px;
+  min-height: 6.25rem; /* 100px - textarea default height */
   resize: vertical;
 }
 
@@ -372,7 +374,7 @@
 /* Submit button with shopping cart icon */
 .booking-form button[type="submit"] {
   width: 100%;
-  min-height: 48px;
+  min-height: 3rem; /* 48px - comfortable touch target */
   background: var(--color-success);
   color: var(--color-bg-white);
   font-weight: 700;

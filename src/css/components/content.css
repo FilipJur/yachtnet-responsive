@@ -61,8 +61,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--space-md);
-  min-height: 86px;
+  padding: var(--space-sm);
   border-radius: 0;
   margin-bottom: 0;
 }
@@ -104,9 +103,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: var(--space-md);
+  padding: var(--space-sm);
   text-align: center;
-  min-height: 86px;
   border-radius: 0;
 }
 
@@ -119,7 +117,7 @@
 }
 
 .rating-claim-wrapper strong {
-  font-size: 1.6875rem; /* 27px - rating percentage large display */
+  font-size: 1.25rem; /* 27px - rating percentage large display */
   color: var(--color-primary);
   display: block;
   padding: var(--space-sm) 0 var(--space-xs) 0;
