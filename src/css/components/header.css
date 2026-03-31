@@ -7,7 +7,7 @@ header {
   line-height: 1.4;
   background-color: var(--color-primary);
   color: var(--color-bg-white);
-  padding: var(--space-xs) var(--space-md);
+  padding: var(--space-sm) var(--space-md);
 }
 
 /* Container - using > div to match actual HTML */
@@ -57,7 +57,9 @@ header > div > ul > li {
 /* HTML Structure: li:nth-child(1)=CZ, li:nth-child(2)=Email, li:nth-child(3)=Phone, li:nth-child(4)=Hours */
 header > div > ul > li:nth-child(2) a,
 header > div > ul > li:nth-child(3) {
-  font-family: "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica, sans-serif;
+  font-family:
+    "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica,
+    sans-serif;
   font-weight: normal;
 }
 
@@ -114,7 +116,9 @@ header .wrapper > ul > li {
 /* HTML Structure: li:nth-child(1)=CZ, li:nth-child(2)=Email, li:nth-child(3)=Phone, li:nth-child(4)=Hours */
 header .wrapper > ul > li:nth-child(2) a,
 header .wrapper > ul > li:nth-child(3) {
-  font-family: "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica, sans-serif;
+  font-family:
+    "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica,
+    sans-serif;
   font-weight: normal;
 }
 
