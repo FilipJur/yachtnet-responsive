@@ -8,29 +8,66 @@
   width: 100%;
 }
 
-/* Search form area inherits from search-form.css */
-/* Sorting links */
-.main-column > div > p:first-of-type {
+/* Sorting links - styled like search-form-tabs but for light background */
+.search-main-column > section > div:first-of-type > p:first-of-type {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
-  align-items: center;
-  font-size: var(--font-sm);
-  margin-bottom: var(--space-md);
+  margin: 0 0 var(--space-md) 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  font-size: 0; /* Remove whitespace between inline elements */
 }
 
-.main-column > div > p:first-of-type a {
-  color: var(--color-primary);
+/* Remove the pipe separators */
+.search-main-column > section > div:first-of-type > p:first-of-type a,
+.search-main-column > section > div:first-of-type > p:first-of-type strong {
+  display: block;
+  flex: 1 1 auto;
+  min-width: auto;
+  padding: var(--space-sm) var(--space-xs);
+  text-align: center;
+  font-size: var(--font-xs);
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-bg-light);
+  border-radius: 0;
+  border: 1px solid var(--color-border);
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  white-space: normal;
+  overflow: visible;
   text-decoration: none;
+  line-height: 1.2;
 }
 
-.main-column > div > p:first-of-type a:hover {
-  text-decoration: underline;
+.search-main-column > section > div:first-of-type > p:first-of-type a:hover {
+  background: var(--color-bg);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
-/* Active sort indicator */
-.main-column > div > p:first-of-type strong {
-  color: var(--color-secondary);
+.search-main-column > section > div:first-of-type > p:first-of-type a.active,
+.search-main-column > section > div:first-of-type > p:first-of-type strong {
+  background: var(--color-primary);
+  color: var(--color-bg-white);
+  border-color: var(--color-primary);
+}
+
+/* Remove pipe characters */
+.search-main-column > section > div:first-of-type > p:first-of-type {
+  color: transparent;
+}
+
+.search-main-column > section > div:first-of-type > p:first-of-type a,
+.search-main-column > section > div:first-of-type > p:first-of-type strong {
+  color: var(--color-text);
+}
+
+.search-main-column > section > div:first-of-type > p:first-of-type a.active,
+.search-main-column > section > div:first-of-type > p:first-of-type strong {
+  color: var(--color-bg-white);
 }
 
 /* ========================================
@@ -75,54 +112,6 @@
   color: var(--color-text-muted);
   font-size: var(--font-xs);
   font-weight: 500;
-}
-
-/* Sorting links as scrollable filter bar */
-.search-main-column > section > div:first-of-type > p:first-of-type {
-  display: flex;
-  gap: var(--space-xs);
-  overflow-x: auto;
-  padding-bottom: var(--space-xs);
-  margin-bottom: var(--space-md);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  font-size: 0;
-}
-
-.search-main-column
-  > section
-  > div:first-of-type
-  > p:first-of-type::-webkit-scrollbar {
-  display: none;
-}
-
-.search-main-column > section > div:first-of-type > p:first-of-type a,
-.search-main-column > section > div:first-of-type > p:first-of-type strong {
-  background: var(--color-bg-white);
-  border: 1px solid var(--color-border);
-  padding: var(--space-xs) 0.875rem; /* 6px 14px - sort pill padding */
-  border-radius: 0;
-  font-size: var(--font-sm);
-  white-space: nowrap;
-  text-decoration: none;
-  color: var(--color-text);
-  font-weight: 400;
-  display: inline-flex;
-  align-items: center;
-}
-
-.search-main-column > section > div:first-of-type > p:first-of-type a.active,
-.search-main-column > section > div:first-of-type > p:first-of-type strong {
-  background: var(--color-primary);
-  color: var(--color-bg-white);
-  border-color: var(--color-primary);
-  font-weight: 500;
-}
-
-.search-main-column > section > div:first-of-type > p:first-of-type a:hover {
-  border-color: var(--color-primary);
-  background: var(--color-bg-light);
 }
 
 /* Hide sidebar on mobile (override for search-main-column aside) */

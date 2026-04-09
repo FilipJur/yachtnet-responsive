@@ -8,57 +8,113 @@
   display: none;
 }
 
-/* Pagination container */
+/* "Další lodě" button - blue, full width, centered */
+.next-page {
+  display: block;
+  background: var(--color-primary);
+  color: var(--color-bg-white);
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-sm);
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  margin: var(--space-md) 0;
+  position: relative;
+}
+
+.next-page::after {
+  content: "";
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 9px solid var(--color-bg-white);
+  margin-left: var(--space-sm);
+  display: inline-block;
+}
+
+.next-page:hover {
+  background: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+/* Pagination container - centered, wrapped */
 .pagination-control {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: var(--space-xs);
   padding: var(--space-md) 0;
 }
 
-.pagination-control a,
-.pagination-control span {
+/* Page numbers - gray squares like desktop */
+.pagination-control .page-number {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 36px;
-  height: 36px;
-  padding: 0 var(--space-sm);
+  min-width: 25px;
+  height: 25px;
   font-size: var(--font-sm);
-  border-radius: 0;
+  font-weight: 700;
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: none;
   text-decoration: none;
+  text-align: center;
 }
 
-.pagination-control a {
-  background: var(--color-bg-white);
-  color: var(--color-primary);
-  border: 1px solid var(--color-border);
+/* Active/disabled page number - blue like desktop */
+.pagination-control .page-number.disabled {
+  background: var(--color-primary);
+  color: var(--color-bg-white);
 }
 
-.pagination-control span.disabled {
-  background: var(--color-bg-light);
-  color: var(--color-text-muted);
+/* Step arrows - blue squares with CSS triangle arrows (match desktop) */
+.pagination-control .step {
+  display: block;
+  width: 25px;
+  height: 25px;
+  background: var(--color-primary);
+  color: var(--color-bg-white);
+  border: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
 }
 
-.pagination-control a.step {
-  padding: 0 var(--space-md);
+/* Base arrow setup */
+.pagination-control .step::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 0;
+  width: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+/* Previous arrow (left) - first .step */
+.pagination-control .step:first-child::before {
+  border-left: none;
+  border-right: 5px solid var(--color-bg-white);
+  transform: translate(-60%, -50%);
+}
+
+/* Next arrow (right) - last .step */
+.pagination-control .step:last-child::before {
+  border-right: none;
+  border-left: 5px solid var(--color-bg-white);
+  transform: translate(-40%, -50%);
 }
 
 /* Ellipsis styling */
 .pagination-control .ellipses {
   color: var(--color-text-muted);
   pointer-events: none;
-}
-
-
-
-/* "Další lodě" button - primary style, full width, first in order */
-.pagination-control a:last-child {
-  background: var(--color-primary);
-  color: var(--color-bg-white);
-  border-color: var(--color-primary);
-  order: -1;
-  width: 100%;
-  margin-bottom: var(--space-sm);
+  padding: 0 var(--space-xs);
+  font-size: var(--font-sm);
 }

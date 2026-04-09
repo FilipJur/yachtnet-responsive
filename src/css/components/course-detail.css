@@ -166,12 +166,285 @@ aside > section > h2,
 }
 
 /* ========================================
-   COURSE TABLES - RESPONSIVE
-   Tables are wrapped by JavaScript in .table-scroll-wrapper
+   COURSE TABLES - STACKED CARDS (Mobile)
+   Converts 4-5 column tables to stacked cards
    ======================================== */
 
 @media only screen and (max-width: 949px) {
-  /* Table scroll wrapper - only the table scrolls, not the section */
+  /* Course tables: convert to stacked cards */
+  .courses-sea-column > section table,
+  .courses-training-column > section table,
+  .courses-river-column > section table,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) {
+    display: block;
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-md) 0;
+  }
+
+  /* Hide table head on mobile */
+  .courses-sea-column > section table thead,
+  .courses-training-column > section table thead,
+  .courses-river-column > section table thead,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) thead {
+    display: none;
+  }
+
+  /* Table body becomes flex column */
+  .courses-sea-column > section table tbody,
+  .courses-training-column > section table tbody,
+  .courses-river-column > section table tbody,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  /* Each row becomes a card */
+  .courses-sea-column > section table tbody tr,
+  .courses-training-column > section table tbody tr,
+  .courses-river-column > section table tbody tr,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody tr {
+    display: block;
+    background: var(--color-bg);
+    padding: var(--space-md);
+    position: relative;
+  }
+
+  /* Each cell becomes a flex row with label */
+  .courses-sea-column > section table tbody td,
+  .courses-training-column > section table tbody td,
+  .courses-river-column > section table tbody td,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    text-align: left;
+  }
+
+  .courses-sea-column > section table tbody td:last-child,
+  .courses-training-column > section table tbody td:last-child,
+  .courses-river-column > section table tbody td:last-child,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child {
+    border-bottom: none;
+  }
+
+  /* Labels - auto width, left aligned */
+  .courses-sea-column > section table tbody td::before,
+  .courses-training-column > section table tbody td::before,
+  .courses-river-column > section table tbody td::before,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td::before {
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 0 0 auto;
+    text-align: left;
+    margin-right: var(--space-sm);
+  }
+
+  /* Labels using ::before pseudo-element with nth-child selectors */
+  .courses-sea-column > section table tbody td:nth-child(1)::before,
+  .courses-training-column > section table tbody td:nth-child(1)::before,
+  .courses-river-column > section table tbody td:nth-child(1)::before,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:nth-child(1)::before {
+    content: "Termín:";
+  }
+
+  .courses-sea-column > section table tbody td:nth-child(2)::before,
+  .courses-training-column > section table tbody td:nth-child(2)::before,
+  .courses-river-column > section table tbody td:nth-child(2)::before,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:nth-child(2)::before {
+    content: "Cena:";
+  }
+
+  .courses-sea-column > section table tbody td:nth-child(3)::before,
+  .courses-training-column > section table tbody td:nth-child(3)::before,
+  .courses-river-column > section table tbody td:nth-child(3)::before,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:nth-child(3)::before {
+    content: "Volná místa:";
+  }
+
+  .courses-sea-column > section table tbody td:nth-child(4)::before,
+  .courses-training-column > section table tbody td:nth-child(4)::before,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:nth-child(4)::before {
+    content: "Loď:";
+  }
+
+  /* Value text styling - right aligned */
+  .courses-sea-column > section table tbody td > *,
+  .courses-training-column > section table tbody td > *,
+  .courses-river-column > section table tbody td > *,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td > * {
+    flex: 0 0 auto;
+    text-align: right;
+  }
+
+  /* CTA cell styling - full width button */
+  .courses-sea-column > section table tbody td:last-child,
+  .courses-training-column > section table tbody td:last-child,
+  .courses-river-column > section table tbody td:last-child,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child {
+    display: block;
+    padding: var(--space-md) 0 0 0;
+    margin-top: var(--space-xs);
+  }
+
+  .courses-sea-column > section table tbody td:last-child::before,
+  .courses-training-column > section table tbody td:last-child::before,
+  .courses-river-column > section table tbody td:last-child::before,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child::before {
+    display: none;
+  }
+
+  .courses-sea-column > section table tbody td:last-child,
+  .courses-training-column > section table tbody td:last-child,
+  .courses-river-column > section table tbody td:last-child,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child {
+    border-bottom: none;
+  }
+
+  /* Labels using ::before pseudo-element with nth-child selectors */
+  /* For tables with 4 columns (no boat/location): Termín, Cena, Volná místa, [CTA] */
+  .courses-river-column > section table tbody td:nth-child(1)::before,
+  .general-main-column > section table tbody td:nth-child(1)::before {
+    content: "Termín:";
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 0 0 35%;
+  }
+
+  .courses-river-column > section table tbody td:nth-child(2)::before,
+  .general-main-column > section table tbody td:nth-child(2)::before {
+    content: "Cena:";
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 0 0 35%;
+  }
+
+  .courses-river-column > section table tbody td:nth-child(3)::before,
+  .general-main-column > section table tbody td:nth-child(3)::before {
+    content: "Volná místa:";
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 0 0 35%;
+  }
+
+  /* For tables with 5 columns (includes boat/kapitán): Termín, Cena, Volná místa, Loď/Kapitán, [CTA] */
+  .courses-sea-column > section table tbody td:nth-child(1)::before,
+  .courses-training-column > section table tbody td:nth-child(1)::before {
+    content: "Termín:";
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 0 0 35%;
+  }
+
+  .courses-sea-column > section table tbody td:nth-child(2)::before,
+  .courses-training-column > section table tbody td:nth-child(2)::before {
+    content: "Cena:";
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 0 0 35%;
+  }
+
+  .courses-sea-column > section table tbody td:nth-child(3)::before,
+  .courses-training-column > section table tbody td:nth-child(3)::before {
+    content: "Volná místa:";
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 0 0 35%;
+  }
+
+  .courses-sea-column > section table tbody td:nth-child(4)::before,
+  .courses-training-column > section table tbody td:nth-child(4)::before {
+    content: "Loď:";
+    font-weight: 600;
+    color: var(--color-text);
+    flex: 0 0 35%;
+  }
+
+  /* CTA cell styling - full width button */
+  .courses-sea-column > section table tbody td:last-child,
+  .courses-training-column > section table tbody td:last-child,
+  .courses-river-column > section table tbody td:last-child,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child {
+    display: block;
+    padding: var(--space-md) 0 0 0;
+    margin-top: var(--space-sm);
+  }
+
+  .courses-sea-column > section table tbody td:last-child::before,
+  .courses-training-column > section table tbody td:last-child::before,
+  .courses-river-column > section table tbody td:last-child::before,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child::before {
+    display: none;
+  }
+
+  /* CTA Button styling */
+  .courses-sea-column > section table tbody td:last-child a,
+  .courses-training-column > section table tbody td:last-child a,
+  .courses-river-column > section table tbody td:last-child a,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child a {
+    display: block;
+    width: 100%;
+    padding: var(--space-sm) var(--space-md);
+    background: var(--color-success);
+    color: var(--color-bg-white);
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: var(--font-base);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: none;
+  }
+
+  /* Hide empty rows */
+  .courses-sea-column > section table tbody tr:empty,
+  .courses-training-column > section table tbody tr:empty,
+  .courses-river-column > section table tbody tr:empty,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody tr:empty,
+  .courses-sea-column > section table tbody tr[id="tr1"],
+  .courses-training-column > section table tbody tr[id="tr1"],
+  .courses-river-column > section table tbody tr[id="tr1"],
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody tr[id="tr1"] {
+    display: none;
+  }
+
+  /* Status color for "VOLNÁ MÍSTA" / "OBSAZENO" */
+  .courses-sea-column > section table tbody td span,
+  .courses-training-column > section table tbody td span,
+  .courses-river-column > section table tbody td span,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td span {
+    color: var(--color-success);
+    font-weight: 600;
+  }
+
+  /* Value text alignment */
+  .courses-sea-column > section table tbody td,
+  .courses-training-column > section table tbody td,
+  .courses-river-column > section table tbody td,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td {
+    text-align: right;
+  }
+
+  /* Ensure proper spacing in card content */
+  .courses-sea-column > section table tbody td > *,
+  .courses-training-column > section table tbody td > *,
+  .courses-river-column > section table tbody td > *,
+  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td > * {
+    flex: 1;
+    text-align: right;
+  }
+}
+
+/* ========================================
+   TABLE SCROLL WRAPPER (Insurance/Accordion)
+   Horizontal scroll for wide pricing matrices
+   ======================================== */
+
+@media only screen and (max-width: 949px) {
+  /* Table scroll wrapper - only for insurance/accordion tables */
   .table-scroll-wrapper {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -187,10 +460,7 @@ aside > section > h2,
     margin: var(--space-md) 0;
   }
 
-  /* Desktop styling preserved */
-  .courses-river-column table th,
-  .courses-sea-column table th,
-  .courses-training-column table th,
+  /* Insurance table styling (horizontal scroll tables) */
   .sailors-insurance-column table th {
     background-color: var(--color-primary);
     color: var(--color-bg-white);
@@ -200,80 +470,43 @@ aside > section > h2,
     text-align: center;
   }
 
-  .courses-river-column table th:first-child,
-  .courses-sea-column table th:first-child,
-  .courses-training-column table th:first-child,
   .sailors-insurance-column table th:first-child {
-    text-align: left;
+    text-align: center;
   }
 
-  .courses-river-column table td,
-  .courses-sea-column table td,
-  .courses-training-column table td,
   .sailors-insurance-column table td {
     padding: var(--space-sm) var(--space-md);
     text-align: center;
   }
 
-  .courses-river-column table td:first-child,
-  .courses-sea-column table td:first-child,
-  .courses-training-column table td:first-child,
   .sailors-insurance-column table td:first-child {
-    text-align: left;
+    text-align: center;
   }
 
   /* Even rows */
-  .courses-river-column table tr:nth-child(even),
-  .courses-sea-column table tr:nth-child(even),
-  .courses-training-column table tr:nth-child(even),
   .sailors-insurance-column table tr:nth-child(even) {
     background-color: var(--color-bg);
   }
 
   /* Status color */
-  .courses-river-column table td span,
-  .courses-sea-column table td span,
-  .courses-training-column table td span,
   .sailors-insurance-column table td span {
     color: var(--color-success);
   }
 
-  /* Reserve button */
-  .courses-river-column table td a,
-  .courses-sea-column table td a,
-  .courses-training-column table td a,
-  .sailors-insurance-column table td a {
+  /* Insurance radio button cells */
+  .sailors-insurance-column table td .radio {
     display: inline-block;
-    padding: var(--space-xs) var(--space-sm);
-    background-color: var(--color-success);
-    color: var(--color-bg-white);
-    text-decoration: none;
-    white-space: nowrap;
+    margin: 0;
   }
 
-  /* Sailors insurance specific */
-  .sailors-insurance-column table th:first-child,
-  .sailors-insurance-column table td:first-child {
-    text-align: center;
-  }
-
-  /* ========================================
-     REVIEWS TABLES (inside accordion)
-     JavaScript wraps these in .table-scroll-wrapper
-     ======================================== */
-  .table-scroll-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 0 calc(-1 * var(--space-md));
-    padding: 0 var(--space-md);
-  }
-
+  /* Accordion tables */
   section.accordion .table-scroll-wrapper table {
     min-width: 500px;
     width: 100%;
     border-collapse: collapse;
     margin-bottom: var(--space-md);
   }
+}
 
 /* ========================================
    INFO SECTIONS AFTER TABLE
@@ -969,17 +1202,26 @@ section:has(> h2:first-child + article) > h2 {
 /* ISO certificate article - full width */
 .contact-main-column > section:nth-of-type(4) > article.isocer {
   grid-column: 1 / -1 !important;
-  background: var(--color-bg) !important;
-  padding: var(--space-md) !important;
+  background: url("../img/iso.png") center 25px no-repeat var(--color-primary) !important;
+  background-size: 143px 55px !important;
+  color: var(--color-bg-white) !important;
+  padding: 100px var(--space-md) var(--space-md) !important;
+  text-align: center !important;
   margin-top: var(--space-md) !important;
 }
 
 .contact-main-column > section:nth-of-type(4) > article.isocer p {
   padding: 0 0 var(--space-xs) 0 !important;
+  color: var(--color-bg-white) !important;
 }
 
 .contact-main-column > section:nth-of-type(4) > article.isocer p:last-child {
   padding-bottom: 0 !important;
+}
+
+.contact-main-column > section:nth-of-type(4) > article.isocer a {
+  color: var(--color-bg-white) !important;
+  text-decoration: underline !important;
 }
 
 /* Section 5: Contact form - gray background like desktop */
