@@ -292,6 +292,59 @@
   -webkit-overflow-scrolling: touch;
   margin: 0 calc(-1 * var(--space-md));
   padding: 0 var(--space-md);
+  /* Scroll hint - prominent fade on both edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 60%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 60%,
+    transparent
+  );
+}
+
+/* At start: no left fade */
+.table-scroll-wrapper.scroll-start {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 60%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    black 0%,
+    black 60%,
+    transparent
+  );
+}
+
+/* At end: no right fade */
+.table-scroll-wrapper.scroll-end {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 100%
+  );
+}
+
+/* At both start and end: no fade at all */
+.table-scroll-wrapper.scroll-start.scroll-end {
+  -webkit-mask-image: none;
+  mask-image: none;
 }
 
 .table-scroll-wrapper table {

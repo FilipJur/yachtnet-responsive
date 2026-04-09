@@ -130,6 +130,48 @@
 })();
 
 // ========================================
+// TABLE SCROLL HINT (Mobile Only)
+// Shows/hides scroll fade hint based on scroll position
+// ========================================
+(() => {
+  const MOBILE_BREAKPOINT = 950;
+  const SCROLL_THRESHOLD = 10;
+
+  const updateHints = () => {
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+
+    document.querySelectorAll('.table-scroll-wrapper').forEach((wrapper) => {
+      const { scrollLeft, scrollWidth, clientWidth } = wrapper;
+      const atStart = scrollLeft <= SCROLL_THRESHOLD;
+      const atEnd = scrollLeft + clientWidth >= scrollWidth - SCROLL_THRESHOLD;
+
+      wrapper.classList.toggle('scroll-start', atStart);
+      wrapper.classList.toggle('scroll-end', atEnd);
+    });
+  };
+
+  const observe = () => {
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+    document.querySelectorAll('.table-scroll-wrapper').forEach((wrapper) => {
+      wrapper.addEventListener('scroll', updateHints, { passive: true });
+    });
+    updateHints();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', observe);
+  } else {
+    observe();
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(observe, 100);
+  });
+})();
+
+// ========================================
 // DOCK AUTO-HIDE (Mobile Only)
 // Hides comparison dock near page bottom and when menu is open
 // ========================================
