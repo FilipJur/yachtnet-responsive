@@ -129,3 +129,9 @@ screenshots/
 !img/stmalo_yachtnet.jpg
 !img/Radiostanice_rozhovor-Yacht-1.jpg
 !img/Radiostanice_rozhovor-Yacht-2.jpg
+
+# Playwright MCP artifacts
+.playwright-mcp/
+
+# Sourcemap fix script
+fix-sourcemap.sh

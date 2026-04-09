@@ -4,7 +4,8 @@
    ======================================== */
 
 .main-nav {
-  position: relative;
+  position: sticky;
+  top: 0;
   height: var(--navbar-height); /* 70px */
   background: var(--color-bg-white);
   z-index: 999;
@@ -15,20 +16,13 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Visual separation */
 }
 
-/* Sticky state - activated via JS on mobile */
-.main-nav.is-sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* Placeholder to prevent layout shift */
-.nav-placeholder {
+.hamburger-menu span {
   display: block;
-  height: var(--navbar-height);
+  width: 24px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 0;
+  transition: all 0.3s ease;
 }
 
 /* Hamburger Menu Button - only visible on mobile */
@@ -73,7 +67,6 @@
 /* Mobile menu overlay */
 .main-nav > ul {
   position: fixed;
-  /* Default: menu positioned below sticky nav (at top of viewport) */
   top: var(--navbar-height);
   left: 0;
   right: 0;
@@ -86,7 +79,7 @@
   padding: var(--space-md);
   overflow-y: auto;
   overscroll-behavior: contain;
-  z-index: 1002; /* Above sticky nav */
+  z-index: 1002;
   /* Animation properties */
   opacity: 0;
   visibility: hidden;
@@ -94,11 +87,6 @@
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   display: flex;
   pointer-events: none;
-}
-
-/* When nav is not sticky (both header + nav visible), position menu below header+nav */
-.main-nav.is-at-top > ul {
-  top: calc(var(--header-height, 0px) + var(--navbar-height));
 }
 
 /* Show menu when open */

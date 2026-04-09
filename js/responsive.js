@@ -47,9 +47,17 @@
           hamburger.classList.toggle('is-active');
           hamburger.setAttribute('aria-expanded', isOpen);
           
-          // Prevent body scroll when menu is open
-          document.body.style.overflow = isOpen ? 'hidden' : '';
-        });
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+
+        // Smooth scroll to ensure nav sticks at top for correct menu positioning
+        if (isOpen) {
+          const header = document.querySelector('header');
+          if (header && window.scrollY < header.offsetHeight) {
+            window.scrollTo({ top: header.offsetHeight, behavior: 'smooth' });
+          }
+        }
+      });
       }
       hamburger.style.display = '';
     } else {
@@ -84,124 +92,6 @@
       // Reset body scroll
       document.body.style.overflow = '';
     }
-  });
-})();
-
-// ========================================
-// STICKY NAVIGATION (Mobile Only)
-// Nav becomes sticky after scrolling past header
-// ========================================
-(function() {
-  'use strict';
-  
-  const MOBILE_BREAKPOINT = 950;
-  const header = document.querySelector('header');
-  const nav = document.querySelector('.main-nav');
-  
-  if (!header || !nav) return;
-  
-  let placeholder = null;
-  let observer = null;
-  const menu = nav.querySelector('ul');
-  const hamburger = nav.querySelector('.hamburger-menu');
-  
-  function createPlaceholder() {
-    if (placeholder) return;
-    placeholder = document.createElement('div');
-    placeholder.className = 'nav-placeholder';
-    placeholder.style.height = nav.offsetHeight + 'px';
-    placeholder.style.display = 'block';
-    nav.parentNode.insertBefore(placeholder, nav);
-  }
-  
-  function removePlaceholder() {
-    if (placeholder && placeholder.parentNode) {
-      placeholder.parentNode.removeChild(placeholder);
-      placeholder = null;
-    }
-  }
-  
-  function closeMobileMenu() {
-    if (menu && menu.classList.contains('is-open')) {
-      menu.classList.remove('is-open');
-      if (hamburger) {
-        hamburger.classList.remove('is-active');
-        hamburger.setAttribute('aria-expanded', 'false');
-      }
-    }
-  }
-  
-  function stickNav() {
-    if (nav.classList.contains('is-sticky')) return;
-
-    // Close mobile menu before sticking
-    closeMobileMenu();
-
-    createPlaceholder();
-    nav.classList.add('is-sticky');
-    nav.classList.remove('is-at-top');
-  }
-
-  function unstickNav() {
-    if (!nav.classList.contains('is-sticky')) return;
-    nav.classList.remove('is-sticky');
-    nav.classList.add('is-at-top');
-    removePlaceholder();
-  }
-  
-  function handleIntersection(entries) {
-    const [entry] = entries;
-    if (!entry.isIntersecting) {
-      stickNav();
-    } else {
-      unstickNav();
-    }
-  }
-  
-  function setHeaderHeight() {
-    // Set CSS custom property for header height (used for menu positioning)
-    if (header) {
-      document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
-    }
-  }
-
-  function initStickyNav() {
-    // Update header height whenever we reinitialize
-    setHeaderHeight();
-
-    // Only on mobile
-    if (window.innerWidth >= MOBILE_BREAKPOINT) {
-      if (observer) {
-        observer.disconnect();
-        observer = null;
-      }
-      unstickNav();
-      return;
-    }
-
-    // Already initialized
-    if (observer) return;
-
-    // Set initial state: nav is at top (not sticky)
-    nav.classList.add('is-at-top');
-
-    observer = new IntersectionObserver(handleIntersection, {
-      root: null,
-      threshold: 0,
-      rootMargin: '0px'
-    });
-
-    observer.observe(header);
-  }
-
-  // Initialize
-  initStickyNav();
-  
-  // Handle resize
-  let resizeTimer;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(initStickyNav, 100);
   });
 })();
 
@@ -262,6 +152,56 @@
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(wrapTables, 100);
   });
+})();
+
+// ========================================
+// DOCK AUTO-HIDE ON SCROLL (Mobile Only)
+// Hides the comparison dock when user scrolls near page bottom
+// so it doesn't cover pagination or footer content
+// ========================================
+(function() {
+  'use strict';
+
+  var MOBILE_BREAKPOINT = 950;
+  var ticking = false;
+
+  function updateDockVisibility() {
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+
+    var dock = document.querySelector('.dock');
+    if (!dock || dock.classList.contains('is-empty')) return;
+
+    var dockHeight = dock.offsetHeight || 60;
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var windowHeight = window.innerHeight;
+    var docHeight = document.documentElement.scrollHeight;
+    var distanceFromBottom = docHeight - scrollTop - windowHeight;
+    var footer = document.querySelector('footer');
+    var footerHeight = footer ? footer.offsetHeight : 0;
+    var hideDistance = dockHeight + footerHeight + 40;
+
+    if (distanceFromBottom < hideDistance) {
+      dock.classList.add('is-hidden');
+    } else {
+      dock.classList.remove('is-hidden');
+    }
+  }
+
+  window.addEventListener('scroll', function() {
+    if (!ticking) {
+      window.requestAnimationFrame(function() {
+        updateDockVisibility();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateDockVisibility);
+  } else {
+    updateDockVisibility();
+  }
 })();
 
 // ========================================

@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run css:build && concurrently \"npm run css:watch\" \"npm run serve\"",
     "serve": "browser-sync start --server --port 3000 --startPath \"index.html\" --files \"css/*.css,*.html\" --no-notify",
-    "css:build": "lightningcss --minify --bundle src/css/main.css -o css/responsive-mobile.css",
+    "css:build": "lightningcss --minify --bundle --sourcemap src/css/main.css -o css/responsive-mobile.css && bash fix-sourcemap.sh",
     "css:watch": "nodemon --watch src/css --ext css --delay 0.5 --exec \"npm run css:build\""
   },
   "devDependencies": {

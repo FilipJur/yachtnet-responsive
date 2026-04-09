@@ -73,6 +73,7 @@
   }
   /* Gallery at natural position - client wants it at bottom */
   .aside-gallery {
+    order: 99; /* Push gallery to end of flex container */
     width: 100%;
     margin: 0 0 var(--space-md) 0;
     /* Reset any conflicting margins */

@@ -35,15 +35,14 @@
   display: none;
 }
 
-/* Each boat card - 85% viewport width for peek effect */
+/* Each boat card - no border, no background (like desktop) */
 .comparison-main-column ul.comp-wrapper > li {
   flex: 0 0 85vw;
   max-width: 340px;
   scroll-snap-align: start;
-  background: var(--color-bg-white);
+  background: transparent;
   border-radius: 0;
-  border: 1px solid var(--color-border);
-  padding: var(--space-md);
+  border: none;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -60,7 +59,6 @@
   text-align: center;
   font-size: var(--font-sm);
   color: var(--color-text-light);
-  padding: var(--space-sm);
   background: linear-gradient(
     90deg,
     transparent,
@@ -98,12 +96,11 @@
 .comp-header {
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-md);
-  border-bottom: 2px solid var(--color-border);
 }
 
 .comp-header h2 {
   font-size: var(--font-xl);
-  font-weight: normal;
+  font-weight: bold;
   color: var(--color-primary);
   margin: 0 0 var(--space-xs) 0;
   line-height: 1.2;
@@ -132,7 +129,7 @@
 }
 
 /* ========================================
-   SECTIONS WITHIN CARDS
+   SECTIONS WITHIN CARDS - Desktop style headers
    ======================================== */
 
 .comparison-main-column section {
@@ -142,24 +139,25 @@
 .comparison-main-column section h4 {
   font-size: var(--font-sm);
   font-weight: normal;
-  color: var(--color-primary);
+  color: var(--color-bg-white);
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin: 0 0 var(--space-md) 0;
   padding: var(--space-sm) var(--space-md);
-  background: var(--color-bg-selected);
+  margin-bottom: 0;
+  background: var(--color-primary);
   border-radius: 0;
-  border-left: var(--space-xs) solid var(--color-primary);
 }
 
 /* ========================================
-   DEFINITION LISTS (Specs)
+   DEFINITION LISTS (Specs) - Desktop style
    ======================================== */
 
 .comparison-main-column section dl {
   margin: 0;
   display: grid;
   gap: var(--space-xs) 0;
+  background: var(--color-bg);
+  padding: var(--space-md);
 }
 
 .comparison-main-column section dl::before,
@@ -169,36 +167,29 @@
 
 .comparison-main-column section dl dt {
   font-size: var(--font-xs);
-  font-weight: 600;
+  font-weight: 500;
   color: var(--color-text-light);
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
   padding: var(--space-xs) 0;
-  padding-inline: var(--space-sm);
   margin: 0;
   width: auto;
   float: none;
   background: none;
-}
-
-/* Alternating row backgrounds for readability */
-.comparison-main-column section dl > *:nth-child(4n + 1),
-.comparison-main-column section dl > *:nth-child(4n + 2) {
-  background: var(--color-bg-light);
 }
 
 .comparison-main-column section dl dd {
   font-size: var(--font-base);
   color: var(--color-text);
+  font-weight: 700;
   padding: 0 0 var(--space-sm) 0;
-  padding-inline: var(--space-sm);
   margin: 0;
   width: auto;
   float: none;
   background: none;
 }
 
-/* Style nested lists in dd (fees/extras) */
+/* Style nested lists in dd (fees/extras) - Desktop separator style */
 .comparison-main-column section dl dd ul {
   list-style: none;
   padding: 0;
@@ -208,13 +199,18 @@
 .comparison-main-column section dl dd ul li {
   display: block;
   width: auto;
-  margin: 0 0 var(--space-sm) 0;
-  padding: var(--space-sm);
-  background: var(--color-bg-white);
+  margin: 0;
+  padding: var(--space-sm) 0;
+  background: transparent;
   border-radius: 0;
-  border: 1px solid var(--color-border);
+  border: none;
+  border-bottom: 1px solid var(--color-border);
   font-size: var(--font-sm);
   line-height: 1.5;
+}
+
+.comparison-main-column section dl dd ul li:last-child {
+  border-bottom: none;
 }
 
 .comparison-main-column section dl dd ul li::before {
@@ -247,7 +243,6 @@
   gap: var(--space-sm);
   padding: var(--space-md) 0;
   border-top: 1px solid var(--color-border);
-  margin-top: auto;
   position: relative;
 }
 
@@ -287,13 +282,13 @@
   border-color: transparent transparent transparent var(--color-primary);
 }
 
-/* Remove button */
+/* Remove button - Desktop style (gray, not red outlined) */
 .comp-control-wrapper button.comp-remove {
   flex: 1;
   min-height: 44px;
-  background: var(--color-bg-white);
-  border: 1px solid var(--color-error);
-  color: var(--color-error);
+  background: var(--color-text);
+  border: none;
+  color: var(--color-bg-white);
   font-size: var(--font-sm);
   font-weight: 600;
   border-radius: 0;
@@ -304,8 +299,7 @@
 }
 
 .comp-control-wrapper button.comp-remove:active {
-  background: var(--color-error);
-  color: var(--color-bg-white);
+  opacity: 0.9;
 }
 
 /* ========================================
@@ -349,10 +343,9 @@
   flex-direction: row !important;
   gap: var(--space-sm);
   margin: 0 !important;
-  padding: var(--space-md);
-  background: var(--color-bg-white);
+  background: transparent;
   border-radius: 0;
-  border: 1px solid var(--color-border);
+  border: none;
   position: relative !important;
   width: 100%;
   float: none !important;
@@ -422,10 +415,10 @@
 
 .compare-send-to-email-form section,
 .batch-option-form section {
-  background: var(--color-bg-white);
+  background: var(--color-bg);
   border-radius: 0;
   padding: var(--space-lg);
-  border: 1px solid var(--color-border);
+  border: none;
 }
 
 .compare-send-to-email-form section h2,
@@ -514,9 +507,9 @@
   padding: var(--space-xl) var(--space-md);
   font-size: var(--font-lg);
   color: var(--color-text);
-  background: var(--color-bg-white);
+  background: var(--color-bg);
   border-radius: 0;
-  border: 1px solid var(--color-border);
+  border: none;
   margin: var(--space-lg) 0;
 }
 

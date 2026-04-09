@@ -10,7 +10,7 @@
   right: 0;
   background: var(--color-primary);
   color: var(--color-bg-white);
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--space-md) var(--space-md);
   display: none;
   align-items: center;
   justify-content: space-between;
@@ -22,14 +22,13 @@
   width: 100%;
   margin: 0;
   text-align: left;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Show dock when displayed class is added */
 .dock.displayed {
   display: flex;
 }
 
-/* Scale icon */
 .dock img {
   width: 32px;
   height: 32px;
@@ -37,10 +36,10 @@
   flex-shrink: 0;
 }
 
-/* Comparison count text */
 .dock p {
   margin: 0;
   font-size: var(--font-sm);
+  padding-block: 0.5rem;
   color: var(--color-bg-white);
   flex: 1;
   white-space: nowrap;
@@ -51,7 +50,6 @@
   font-size: var(--font-lg);
 }
 
-/* Compare button */
 .dock a {
   background: var(--color-bg-white);
   color: var(--color-primary);
@@ -69,24 +67,6 @@
   background: var(--color-bg-light);
 }
 
-/* Adjust page content padding when dock is visible */
-body:has(.dock.displayed:not(.is-empty)) #page-content,
-body:has(.dock:not(.is-empty)) #page-content {
-  padding-bottom: 80px;
-}
-
-/* Override desktop dock styles */
-.dock {
-  margin-left: 0 !important;
-  padding-left: var(--space-md) !important;
-  padding-top: var(--space-sm) !important;
-  height: auto !important;
-}
-
-/* Dock is now enabled on mobile for comparison functionality */
-@media only screen and (max-width: 949px) {
-  /* Keep page content padding when dock is displayed */
-  body:has(.dock.displayed:not(.is-empty)) #page-content {
-    padding-bottom: 80px;
-  }
+.dock.is-hidden {
+  transform: translateX(100%);
 }

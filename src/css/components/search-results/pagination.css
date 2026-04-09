@@ -51,10 +51,7 @@
   pointer-events: none;
 }
 
-/* Dock spacing - prevent overlap with pagination */
-body:has(.dock.displayed) .pagination-control {
-  margin-bottom: 80px;
-}
+
 
 /* "Další lodě" button - primary style, full width, first in order */
 .pagination-control a:last-child {
