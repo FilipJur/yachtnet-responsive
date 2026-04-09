@@ -121,7 +121,6 @@ header li:nth-child(1) a::before {
   display: inline-block;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
-  vertical-align: middle;
   margin-right: 6px;
   background-position: 0 -139px;
   width: 24px;
@@ -149,7 +148,6 @@ header li:nth-child(3)::before {
   display: inline-block;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
-  vertical-align: middle;
   margin-right: 6px;
   background-position: 0 -120px;
   width: 19px;
