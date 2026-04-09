@@ -446,19 +446,20 @@
     order: 1;
     margin-bottom: var(--space-md);
   }
-  /* RECAP - MOVE UP (was after conditions) */
+  /* RECAP - keep as order 2 */
   .boat-recap-wrapper {
     order: 2;
     margin-bottom: var(--space-md);
   }
-  /* CONDITIONS - MOVE DOWN (was before recap) */
-  .boat-condition-wrapper {
+  /* BOOKING FORM - move to order 3 (before conditions) */
+  .booking-form {
     order: 3;
+    margin-top: var(--space-md);
     margin-bottom: var(--space-md);
   }
-  /* Booking form - keep last */
-  .booking-form {
+  /* CONDITIONS - move to order 4 (after booking form) */
+  .boat-condition-wrapper {
     order: 4;
-    margin-top: var(--space-md);
+    margin-bottom: var(--space-md);
   }
 }

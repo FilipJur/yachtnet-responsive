@@ -146,6 +146,16 @@
     flex: 0 0 auto;
     width: 100%;
   }
+
+  /* Hide entire rating claim wrapper on mobile - keep stars only */
+  .hp-main-column > section:nth-child(2) .rating-claim-wrapper {
+    display: none;
+  }
+
+  /* Stars take full width when claim is hidden */
+  .hp-main-column > section:nth-child(2) .rating-stars-wrapper {
+    flex: 0 0 100%;
+  }
 }
 
 /* ========================================

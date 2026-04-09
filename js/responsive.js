@@ -46,6 +46,9 @@
           const isOpen = menu.classList.toggle('is-open');
           hamburger.classList.toggle('is-active');
           hamburger.setAttribute('aria-expanded', isOpen);
+          
+          // Prevent body scroll when menu is open
+          document.body.style.overflow = isOpen ? 'hidden' : '';
         });
       }
       hamburger.style.display = '';
@@ -56,6 +59,8 @@
         menu.classList.remove('is-open');
         hamburger.classList.remove('is-active');
         hamburger.setAttribute('aria-expanded', 'false');
+        // Reset body scroll when switching to desktop
+        document.body.style.overflow = '';
       }
     }
   }
@@ -76,6 +81,8 @@
       menu.classList.remove('is-open');
       hamburger.classList.remove('is-active');
       hamburger.setAttribute('aria-expanded', 'false');
+      // Reset body scroll
+      document.body.style.overflow = '';
     }
   });
 })();
@@ -222,7 +229,8 @@
       .sailors-insurance-column > section > table,
       section.accordion > table,
       section.accordion > div > table,
-      .form-accordion-wrapper > table
+      .form-accordion-wrapper > table,
+      table.cenik-table
     `);
 
     tables.forEach(function(table) {

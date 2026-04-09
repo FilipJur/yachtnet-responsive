@@ -71,9 +71,8 @@
     display: flex;
     flex-direction: column;
   }
-  /* Move gallery to top with negative order */
+  /* Gallery at natural position - client wants it at bottom */
   .aside-gallery {
-    order: -1;
     width: 100%;
     margin: 0 0 var(--space-md) 0;
     /* Reset any conflicting margins */

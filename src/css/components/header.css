@@ -42,7 +42,9 @@ header > div > ul > li {
   color: var(--color-bg-white);
   white-space: normal;
   flex-shrink: 0;
-  line-height: 1.6;
+  line-height: 1;
+  display: flex;
+  align-items: center;
   margin: 0;
 }
 
@@ -101,7 +103,9 @@ header .wrapper > ul > li {
   color: var(--color-bg-white);
   white-space: normal;
   flex-shrink: 0;
-  line-height: 1.6;
+  line-height: 1;
+  display: flex;
+  align-items: center;
   margin: 0;
 }
 

@@ -30,7 +30,6 @@
     "status status status status"
     "actions actions actions actions";
   gap: var(--space-xs);
-  background: var(--color-bg);
   border-radius: 0;
   padding: var(--space-sm);
   margin-bottom: var(--space-md);
@@ -39,22 +38,30 @@
   max-width: 100% !important;
 }
 
+/* Alternating row backgrounds */
+.search-result-table tr:nth-child(odd) {
+  background: var(--color-bg-white);
+}
+
+.search-result-table tr:nth-child(even) {
+  background: var(--color-bg);
+}
+
 /* Hide <br> tags inside cards */
 .search-result-table tr br {
   display: none;
 }
 
-/* Recommended badge using :has() - bottom banner style */
+/* Recommended badge using :has() - inline style */
 .search-result-table tr:has(.recommended-company) {
-  padding-top: 30px;
+  padding-top: 0;
 }
 
 .search-result-table tr:has(.recommended-company)::before {
   content: "DOPORUČUJEME";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: fit-content;
+  position: static;
+  display: inline-block;
+  width: auto;
   background: var(--color-secondary);
   color: var(--color-bg-white);
   letter-spacing: 0.5px;
@@ -63,6 +70,7 @@
   font-size: var(--font-xs);
   font-weight: 600;
   text-align: center;
+  margin-bottom: var(--space-xs);
 }
 
 /* Hide the original SSR recommended-company element to avoid duplication */

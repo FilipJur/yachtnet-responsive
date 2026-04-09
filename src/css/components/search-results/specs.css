@@ -8,9 +8,9 @@
   grid-column: 1 / 3;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   padding: var(--space-xs) 0;
   border: none;
 }
@@ -19,9 +19,9 @@
   grid-column: 3 / 5;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  gap: var(--space-md);
+  gap: var(--space-sm);
   padding: var(--space-xs) 0;
   border: none;
 }
@@ -37,6 +37,7 @@
   font-size: var(--font-sm);
   white-space: nowrap;
   width: 100%;
+  transform: scale(0.85);
 }
 
 /* Year styling - sprite icon 18x18px at -317px */
@@ -54,6 +55,7 @@
   background-repeat: no-repeat;
   background-position: 0 -317px;
   flex-shrink: 0;
+  transform: scale(0.8);
 }
 
 /* Charter company styling - sprite icon 17x25px at -335px */
@@ -71,6 +73,7 @@
   background-repeat: no-repeat;
   background-position: 0 -335px;
   flex-shrink: 0;
+  transform: scale(0.8);
 }
 
 /* People count styling - sprite icon 22x18px at -360px */
@@ -88,6 +91,7 @@
   background-repeat: no-repeat;
   background-position: 0 -360px;
   flex-shrink: 0;
+  transform: scale(0.8);
 }
 
 /* Cabins count styling - sprite icon 16x23px at -378px */
@@ -105,6 +109,7 @@
   background-repeat: no-repeat;
   background-position: 0 -378px;
   flex-shrink: 0;
+  transform: scale(0.8);
 }
 
 /* Retina support for specs icons */

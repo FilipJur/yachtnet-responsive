@@ -59,7 +59,7 @@
   color: var(--color-bg-white); /* White text for contrast on blue background */
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0.25rem;
 }
 
 /* Počet osob group - Min/Cabin (Max hidden) using CSS Subgrid */
@@ -167,6 +167,7 @@
 .search-form-pax-min,
 .search-form-pax-max {
   font-size: var(--font-sm);
+  font-weight: 600;
   color: var(--color-bg-white); /* White text for contrast */
 }
 

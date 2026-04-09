@@ -85,6 +85,7 @@
   margin: 0;
   padding: var(--space-md);
   overflow-y: auto;
+  overscroll-behavior: contain;
   z-index: 1002; /* Above sticky nav */
   /* Animation properties */
   opacity: 0;

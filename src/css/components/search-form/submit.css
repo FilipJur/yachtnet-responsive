@@ -10,14 +10,16 @@
   margin-top: var(--space-sm);
 }
 
-/* Toggle Link */
+/* Toggle Link - balanced height with submit button */
 .submit-wrapper a {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
   width: 100%;
-  padding: var(--space-sm);
+  min-height: 44px;
+  height: 44px;
+  padding: 0 var(--space-sm);
   background: transparent;
   border: 1px dashed var(--color-bg-light);
   border-radius: 0;
@@ -56,12 +58,13 @@
   font-weight: 400;
 }
 
-/* Submit Button */
+/* Submit Button - balanced height with toggle link */
 #searchForm button[type="submit"],
-#searchForm input[type="submit"] {
+#searchForm input[type="submit"],
+#searchForm .search-form-submit {
   width: 100%;
-  min-height: 30px;
-  height: 30px;
+  min-height: 44px;
+  height: 44px;
   background: var(--color-secondary);
   color: var(--color-bg-white);
   border: none;
@@ -71,12 +74,17 @@
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: var(--space-sm);
+  padding: 0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #searchForm button[type="submit"]:hover,
-#searchForm input[type="submit"]:hover {
+#searchForm input[type="submit"]:hover,
+#searchForm .search-form-submit:hover {
   background: var(--color-secondary-dark);
   transform: translateY(-1px);
 
@@ -84,8 +92,10 @@
 
 #searchForm button[type="submit"]:active,
 #searchForm input[type="submit"]:active,
+#searchForm .search-form-submit:active,
 #searchForm button[type="submit"]:focus-visible,
-#searchForm input[type="submit"]:focus-visible {
+#searchForm input[type="submit"]:focus-visible,
+#searchForm .search-form-submit:focus-visible {
   background: var(--color-secondary-darker);
   transform: translateY(0);
 
