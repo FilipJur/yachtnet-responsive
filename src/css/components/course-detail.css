@@ -149,12 +149,12 @@ aside > section > h2,
 .comparison-main-column > section > h2,
 .canalboats-main-column > section > h2,
 .membership-main-column > section > h2 {
-    font-size: var(--font-xl);
-    color: var(--color-primary);
-    margin: 0 0 var(--space-md) 0;
-    line-height: 1.2;
-    text-align: left;
-  }
+  font-size: var(--font-xl);
+  color: var(--color-primary);
+  margin: 0 0 var(--space-md) 0;
+  line-height: 1.2;
+  text-align: left;
+}
 
 /* ========================================
    SAILORS WEATHER COLUMN - Link wrapping
@@ -175,7 +175,9 @@ aside > section > h2,
   .courses-sea-column > section table,
   .courses-training-column > section table,
   .courses-river-column > section table,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table) {
     display: block;
     width: 100%;
     border-collapse: collapse;
@@ -186,7 +188,10 @@ aside > section > h2,
   .courses-sea-column > section table thead,
   .courses-training-column > section table thead,
   .courses-river-column > section table thead,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) thead {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    thead {
     display: none;
   }
 
@@ -194,7 +199,10 @@ aside > section > h2,
   .courses-sea-column > section table tbody,
   .courses-training-column > section table tbody,
   .courses-river-column > section table tbody,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
@@ -204,7 +212,11 @@ aside > section > h2,
   .courses-sea-column > section table tbody tr,
   .courses-training-column > section table tbody tr,
   .courses-river-column > section table tbody tr,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody tr {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    tr {
     display: block;
     background: var(--color-bg);
     padding: var(--space-md);
@@ -215,7 +227,11 @@ aside > section > h2,
   .courses-sea-column > section table tbody td,
   .courses-training-column > section table tbody td,
   .courses-river-column > section table tbody td,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -227,7 +243,11 @@ aside > section > h2,
   .courses-sea-column > section table tbody td:last-child,
   .courses-training-column > section table tbody td:last-child,
   .courses-river-column > section table tbody td:last-child,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td:last-child {
     border-bottom: none;
   }
 
@@ -235,7 +255,11 @@ aside > section > h2,
   .courses-sea-column > section table tbody td::before,
   .courses-training-column > section table tbody td::before,
   .courses-river-column > section table tbody td::before,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td::before {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td::before {
     font-weight: 600;
     color: var(--color-text);
     flex: 0 0 auto;
@@ -243,39 +267,28 @@ aside > section > h2,
     margin-right: var(--space-sm);
   }
 
-  /* Labels using ::before pseudo-element with nth-child selectors */
-  .courses-sea-column > section table tbody td:nth-child(1)::before,
-  .courses-training-column > section table tbody td:nth-child(1)::before,
-  .courses-river-column > section table tbody td:nth-child(1)::before,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:nth-child(1)::before {
-    content: "Termín:";
-  }
-
-  .courses-sea-column > section table tbody td:nth-child(2)::before,
-  .courses-training-column > section table tbody td:nth-child(2)::before,
-  .courses-river-column > section table tbody td:nth-child(2)::before,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:nth-child(2)::before {
-    content: "Cena:";
-  }
-
-  .courses-sea-column > section table tbody td:nth-child(3)::before,
-  .courses-training-column > section table tbody td:nth-child(3)::before,
-  .courses-river-column > section table tbody td:nth-child(3)::before,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:nth-child(3)::before {
-    content: "Volná místa:";
-  }
-
-  .courses-sea-column > section table tbody td:nth-child(4)::before,
-  .courses-training-column > section table tbody td:nth-child(4)::before,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:nth-child(4)::before {
-    content: "Loď:";
+  /* Labels using data-label attribute from JS */
+  .courses-sea-column > section table tbody td::before,
+  .courses-training-column > section table tbody td::before,
+  .courses-river-column > section table tbody td::before,
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td::before {
+    content: attr(data-label) ": ";
   }
 
   /* Value text styling - right aligned */
   .courses-sea-column > section table tbody td > *,
   .courses-training-column > section table tbody td > *,
   .courses-river-column > section table tbody td > *,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td > * {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td
+    > * {
     flex: 0 0 auto;
     text-align: right;
   }
@@ -284,99 +297,25 @@ aside > section > h2,
   .courses-sea-column > section table tbody td:last-child,
   .courses-training-column > section table tbody td:last-child,
   .courses-river-column > section table tbody td:last-child,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td:last-child {
     display: block;
     padding: var(--space-md) 0 0 0;
     margin-top: var(--space-xs);
-  }
-
-  .courses-sea-column > section table tbody td:last-child::before,
-  .courses-training-column > section table tbody td:last-child::before,
-  .courses-river-column > section table tbody td:last-child::before,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child::before {
-    display: none;
-  }
-
-  .courses-sea-column > section table tbody td:last-child,
-  .courses-training-column > section table tbody td:last-child,
-  .courses-river-column > section table tbody td:last-child,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child {
     border-bottom: none;
   }
 
-  /* Labels using ::before pseudo-element with nth-child selectors */
-  /* For tables with 4 columns (no boat/location): Termín, Cena, Volná místa, [CTA] */
-  .courses-river-column > section table tbody td:nth-child(1)::before,
-  .general-main-column > section table tbody td:nth-child(1)::before {
-    content: "Termín:";
-    font-weight: 600;
-    color: var(--color-text);
-    flex: 0 0 35%;
-  }
-
-  .courses-river-column > section table tbody td:nth-child(2)::before,
-  .general-main-column > section table tbody td:nth-child(2)::before {
-    content: "Cena:";
-    font-weight: 600;
-    color: var(--color-text);
-    flex: 0 0 35%;
-  }
-
-  .courses-river-column > section table tbody td:nth-child(3)::before,
-  .general-main-column > section table tbody td:nth-child(3)::before {
-    content: "Volná místa:";
-    font-weight: 600;
-    color: var(--color-text);
-    flex: 0 0 35%;
-  }
-
-  /* For tables with 5 columns (includes boat/kapitán): Termín, Cena, Volná místa, Loď/Kapitán, [CTA] */
-  .courses-sea-column > section table tbody td:nth-child(1)::before,
-  .courses-training-column > section table tbody td:nth-child(1)::before {
-    content: "Termín:";
-    font-weight: 600;
-    color: var(--color-text);
-    flex: 0 0 35%;
-  }
-
-  .courses-sea-column > section table tbody td:nth-child(2)::before,
-  .courses-training-column > section table tbody td:nth-child(2)::before {
-    content: "Cena:";
-    font-weight: 600;
-    color: var(--color-text);
-    flex: 0 0 35%;
-  }
-
-  .courses-sea-column > section table tbody td:nth-child(3)::before,
-  .courses-training-column > section table tbody td:nth-child(3)::before {
-    content: "Volná místa:";
-    font-weight: 600;
-    color: var(--color-text);
-    flex: 0 0 35%;
-  }
-
-  .courses-sea-column > section table tbody td:nth-child(4)::before,
-  .courses-training-column > section table tbody td:nth-child(4)::before {
-    content: "Loď:";
-    font-weight: 600;
-    color: var(--color-text);
-    flex: 0 0 35%;
-  }
-
-  /* CTA cell styling - full width button */
-  .courses-sea-column > section table tbody td:last-child,
-  .courses-training-column > section table tbody td:last-child,
-  .courses-river-column > section table tbody td:last-child,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child {
-    display: block;
-    padding: var(--space-md) 0 0 0;
-    margin-top: var(--space-sm);
-  }
-
   .courses-sea-column > section table tbody td:last-child::before,
   .courses-training-column > section table tbody td:last-child::before,
   .courses-river-column > section table tbody td:last-child::before,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child::before {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td:last-child::before {
     display: none;
   }
 
@@ -384,7 +323,12 @@ aside > section > h2,
   .courses-sea-column > section table tbody td:last-child a,
   .courses-training-column > section table tbody td:last-child a,
   .courses-river-column > section table tbody td:last-child a,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td:last-child a {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td:last-child
+    a {
     display: block;
     width: 100%;
     padding: var(--space-sm) var(--space-md);
@@ -403,11 +347,19 @@ aside > section > h2,
   .courses-sea-column > section table tbody tr:empty,
   .courses-training-column > section table tbody tr:empty,
   .courses-river-column > section table tbody tr:empty,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody tr:empty,
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    tr:empty,
   .courses-sea-column > section table tbody tr[id="tr1"],
   .courses-training-column > section table tbody tr[id="tr1"],
   .courses-river-column > section table tbody tr[id="tr1"],
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody tr[id="tr1"] {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    tr[id="tr1"] {
     display: none;
   }
 
@@ -415,24 +367,26 @@ aside > section > h2,
   .courses-sea-column > section table tbody td span,
   .courses-training-column > section table tbody td span,
   .courses-river-column > section table tbody td span,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td span {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td
+    span {
     color: var(--color-success);
     font-weight: 600;
-  }
-
-  /* Value text alignment */
-  .courses-sea-column > section table tbody td,
-  .courses-training-column > section table tbody td,
-  .courses-river-column > section table tbody td,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td {
-    text-align: right;
   }
 
   /* Ensure proper spacing in card content */
   .courses-sea-column > section table tbody td > *,
   .courses-training-column > section table tbody td > *,
   .courses-river-column > section table tbody td > *,
-  .general-main-column > section table:not(.sailors-insurance-column > section table) tbody td > * {
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    td
+    > * {
     flex: 1;
     text-align: right;
   }
@@ -543,13 +497,15 @@ section.accordion > h3 {
 }
 
 section.accordion > h3::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 0;
   top: 0;
   width: 32px;
   height: 100%;
-  background: var(--color-primary) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center no-repeat;
+  background: var(--color-primary)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")
+    center no-repeat;
 }
 
 section.accordion > h3.collapsed::after {
@@ -663,7 +619,6 @@ section > article {
   border-radius: 0;
   padding: var(--space-md);
   margin-bottom: var(--space-md);
-
 }
 
 section > article h3 {
@@ -730,7 +685,7 @@ section > article p {
 }
 
 .courses-contact-form section.contact-form form label.required::after {
-  content: '*';
+  content: "*";
   color: var(--color-secondary);
   margin-left: var(--space-xs);
 }
@@ -824,7 +779,7 @@ section.contact-form form button[type="submit"]:active {
   }
 
   section.contact-form form label.required::after {
-    content: '*';
+    content: "*";
     color: var(--color-secondary);
     margin-left: var(--space-xs);
   }
@@ -911,7 +866,12 @@ section:has(> h2:first-child + article) > h2 {
 .courses-main-column > section:first-of-type > article h3 {
   margin: 0;
   padding: var(--space-md);
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 60%, transparent 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 60%,
+    transparent 100%
+  );
   color: var(--color-bg-white);
   font-size: var(--font-lg);
   font-weight: normal;
@@ -1317,7 +1277,7 @@ section:has(> h2:first-child + article) > h2 {
 
   /* Image - SECOND in visual order (positioned absolutely) */
   .courses-main-column > section:first-of-type > article p::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -1330,15 +1290,24 @@ section:has(> h2:first-child + article) > h2 {
   }
 
   /* Individual images for each article */
-  .courses-main-column > section:first-of-type > article:nth-of-type(1) p::before {
+  .courses-main-column
+    > section:first-of-type
+    > article:nth-of-type(1)
+    p::before {
     background-image: url("../img/responsive/bg-ricni-lode.jpg");
   }
 
-  .courses-main-column > section:first-of-type > article:nth-of-type(2) p::before {
+  .courses-main-column
+    > section:first-of-type
+    > article:nth-of-type(2)
+    p::before {
     background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
   }
 
-  .courses-main-column > section:first-of-type > article:nth-of-type(3) p::before {
+  .courses-main-column
+    > section:first-of-type
+    > article:nth-of-type(3)
+    p::before {
     background-image: url("../img/responsive/bg-plavba.jpg");
   }
 

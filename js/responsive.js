@@ -172,6 +172,55 @@
 })();
 
 // ========================================
+// COURSE TABLE DATA-LABELS (Mobile Only)
+// Reads table headers and sets data-label attributes on cells
+// ========================================
+(() => {
+  const MOBILE_BREAKPOINT = 950;
+
+  const SELECTORS = [
+    '.courses-river-column > section table',
+    '.courses-sea-column > section table',
+    '.courses-training-column > section table',
+    '.general-main-column > section table'
+  ].join(',');
+
+  const setLabels = () => {
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+
+    document.querySelectorAll(SELECTORS).forEach((table) => {
+      const thead = table.querySelector('thead');
+      if (!thead) return;
+
+      const headers = thead.querySelectorAll('th');
+      const labels = Array.from(headers).map((th) => th.textContent.trim());
+
+      table.querySelectorAll('tbody tr').forEach((row) => {
+        row.querySelectorAll('td').forEach((td, index) => {
+          const label = labels[index] || '';
+          // Skip empty labels (CTA column) and set data-label
+          if (label) {
+            td.setAttribute('data-label', label);
+          }
+        });
+      });
+    });
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setLabels);
+  } else {
+    setLabels();
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(setLabels, 100);
+  });
+})();
+
+// ========================================
 // DOCK AUTO-HIDE (Mobile Only)
 // Hides comparison dock near page bottom and when menu is open
 // ========================================
