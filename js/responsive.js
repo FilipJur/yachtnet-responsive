@@ -214,8 +214,11 @@
       if (!labels.length) return;
 
       table.querySelectorAll('tbody tr').forEach((row) => {
-        // Skip header rows inside tbody
-        if (row.querySelector('th')) return;
+        // Hide header rows inside tbody (fallback for browsers without :has() support)
+        if (row.querySelector('th')) {
+          row.style.display = 'none';
+          return;
+        }
 
         row.querySelectorAll('td').forEach((td, index) => {
           const label = labels[index] || '';

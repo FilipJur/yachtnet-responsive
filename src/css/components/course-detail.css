@@ -293,29 +293,29 @@ aside > section > h2,
     text-align: right;
   }
 
-  /* CTA cell styling - full width button */
-  .courses-sea-column table tbody td:last-child,
-  .courses-training-column table tbody td:last-child,
-  .courses-river-column table tbody td:last-child,
+  /* CTA cell styling - full width button (only when cell contains a link) */
+  .courses-sea-column table tbody td:last-child:has(a),
+  .courses-training-column table tbody td:last-child:has(a),
+  .courses-river-column table tbody td:last-child:has(a),
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
     tbody
-    td:last-child {
+    td:last-child:has(a) {
     display: block;
     padding: var(--space-md) 0 0 0;
     margin-top: var(--space-xs);
     border-bottom: none;
   }
 
-  .courses-sea-column table tbody td:last-child::before,
-  .courses-training-column table tbody td:last-child::before,
-  .courses-river-column table tbody td:last-child::before,
+  .courses-sea-column table tbody td:last-child:has(a)::before,
+  .courses-training-column table tbody td:last-child:has(a)::before,
+  .courses-river-column table tbody td:last-child:has(a)::before,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
     tbody
-    td:last-child::before {
+    td:last-child:has(a)::before {
     display: none;
   }
 
@@ -366,7 +366,12 @@ aside > section > h2,
   /* Hide pseudo-header rows that have <th> inside <tbody> (e.g. collapsed review tables) */
   .courses-sea-column table tbody tr:has(th),
   .courses-training-column table tbody tr:has(th),
-  .courses-river-column table tbody tr:has(th) {
+  .courses-river-column table tbody tr:has(th),
+  .general-main-column
+    > section
+    table:not(.sailors-insurance-column > section table)
+    tbody
+    tr:has(th) {
     display: none;
   }
 
@@ -396,6 +401,28 @@ aside > section > h2,
     > * {
     flex: 1;
     text-align: right;
+  }
+
+  /* Review tables inside accordions - allow long text to wrap and read left-aligned */
+  .courses-sea-column section.accordion table tbody td,
+  .courses-training-column section.accordion table tbody td,
+  .courses-river-column section.accordion table tbody td {
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+
+  .courses-sea-column section.accordion table tbody td::before,
+  .courses-training-column section.accordion table tbody td::before,
+  .courses-river-column section.accordion table tbody td::before {
+    flex: 0 0 auto;
+  }
+
+  .courses-sea-column section.accordion table tbody td > *,
+  .courses-training-column section.accordion table tbody td > *,
+  .courses-river-column section.accordion table tbody td > * {
+    flex: 1 1 100%;
+    text-align: left;
+    min-width: 0;
   }
 }
 
@@ -521,6 +548,11 @@ section.accordion > h3.collapsed::after {
 
 section.accordion > div {
   padding: var(--space-md);
+}
+
+/* Remove padding from accordion divs that contain stacked-card tables (review tables) */
+section.accordion > div:has(> table) {
+  padding: 0;
 }
 
 section.accordion > h3.collapsed + div {
