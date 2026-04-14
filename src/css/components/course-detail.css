@@ -172,9 +172,9 @@ aside > section > h2,
 
 @media only screen and (max-width: 949px) {
   /* Course tables: convert to stacked cards */
-  .courses-sea-column > section table,
-  .courses-training-column > section table,
-  .courses-river-column > section table,
+  .courses-sea-column table,
+  .courses-training-column table,
+  .courses-river-column table,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table) {
@@ -185,9 +185,9 @@ aside > section > h2,
   }
 
   /* Hide table head on mobile */
-  .courses-sea-column > section table thead,
-  .courses-training-column > section table thead,
-  .courses-river-column > section table thead,
+  .courses-sea-column table thead,
+  .courses-training-column table thead,
+  .courses-river-column table thead,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -196,9 +196,9 @@ aside > section > h2,
   }
 
   /* Table body becomes flex column */
-  .courses-sea-column > section table tbody,
-  .courses-training-column > section table tbody,
-  .courses-river-column > section table tbody,
+  .courses-sea-column table tbody,
+  .courses-training-column table tbody,
+  .courses-river-column table tbody,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -209,9 +209,9 @@ aside > section > h2,
   }
 
   /* Each row becomes a card */
-  .courses-sea-column > section table tbody tr,
-  .courses-training-column > section table tbody tr,
-  .courses-river-column > section table tbody tr,
+  .courses-sea-column table tbody tr,
+  .courses-training-column table tbody tr,
+  .courses-river-column table tbody tr,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -224,9 +224,9 @@ aside > section > h2,
   }
 
   /* Each cell becomes a flex row with label */
-  .courses-sea-column > section table tbody td,
-  .courses-training-column > section table tbody td,
-  .courses-river-column > section table tbody td,
+  .courses-sea-column table tbody td,
+  .courses-training-column table tbody td,
+  .courses-river-column table tbody td,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -240,9 +240,9 @@ aside > section > h2,
     text-align: left;
   }
 
-  .courses-sea-column > section table tbody td:last-child,
-  .courses-training-column > section table tbody td:last-child,
-  .courses-river-column > section table tbody td:last-child,
+  .courses-sea-column table tbody td:last-child,
+  .courses-training-column table tbody td:last-child,
+  .courses-river-column table tbody td:last-child,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -252,9 +252,9 @@ aside > section > h2,
   }
 
   /* Labels - auto width, left aligned */
-  .courses-sea-column > section table tbody td::before,
-  .courses-training-column > section table tbody td::before,
-  .courses-river-column > section table tbody td::before,
+  .courses-sea-column table tbody td::before,
+  .courses-training-column table tbody td::before,
+  .courses-river-column table tbody td::before,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -268,9 +268,9 @@ aside > section > h2,
   }
 
   /* Labels using data-label attribute from JS */
-  .courses-sea-column > section table tbody td::before,
-  .courses-training-column > section table tbody td::before,
-  .courses-river-column > section table tbody td::before,
+  .courses-sea-column table tbody td::before,
+  .courses-training-column table tbody td::before,
+  .courses-river-column table tbody td::before,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -280,9 +280,9 @@ aside > section > h2,
   }
 
   /* Value text styling - right aligned */
-  .courses-sea-column > section table tbody td > *,
-  .courses-training-column > section table tbody td > *,
-  .courses-river-column > section table tbody td > *,
+  .courses-sea-column table tbody td > *,
+  .courses-training-column table tbody td > *,
+  .courses-river-column table tbody td > *,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -294,9 +294,9 @@ aside > section > h2,
   }
 
   /* CTA cell styling - full width button */
-  .courses-sea-column > section table tbody td:last-child,
-  .courses-training-column > section table tbody td:last-child,
-  .courses-river-column > section table tbody td:last-child,
+  .courses-sea-column table tbody td:last-child,
+  .courses-training-column table tbody td:last-child,
+  .courses-river-column table tbody td:last-child,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -308,9 +308,9 @@ aside > section > h2,
     border-bottom: none;
   }
 
-  .courses-sea-column > section table tbody td:last-child::before,
-  .courses-training-column > section table tbody td:last-child::before,
-  .courses-river-column > section table tbody td:last-child::before,
+  .courses-sea-column table tbody td:last-child::before,
+  .courses-training-column table tbody td:last-child::before,
+  .courses-river-column table tbody td:last-child::before,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -320,9 +320,9 @@ aside > section > h2,
   }
 
   /* CTA Button styling */
-  .courses-sea-column > section table tbody td:last-child a,
-  .courses-training-column > section table tbody td:last-child a,
-  .courses-river-column > section table tbody td:last-child a,
+  .courses-sea-column table tbody td:last-child a,
+  .courses-training-column table tbody td:last-child a,
+  .courses-river-column table tbody td:last-child a,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -344,17 +344,17 @@ aside > section > h2,
   }
 
   /* Hide empty rows */
-  .courses-sea-column > section table tbody tr:empty,
-  .courses-training-column > section table tbody tr:empty,
-  .courses-river-column > section table tbody tr:empty,
+  .courses-sea-column table tbody tr:empty,
+  .courses-training-column table tbody tr:empty,
+  .courses-river-column table tbody tr:empty,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
     tbody
     tr:empty,
-  .courses-sea-column > section table tbody tr[id="tr1"],
-  .courses-training-column > section table tbody tr[id="tr1"],
-  .courses-river-column > section table tbody tr[id="tr1"],
+  .courses-sea-column table tbody tr[id="tr1"],
+  .courses-training-column table tbody tr[id="tr1"],
+  .courses-river-column table tbody tr[id="tr1"],
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -363,10 +363,17 @@ aside > section > h2,
     display: none;
   }
 
+  /* Hide pseudo-header rows that have <th> inside <tbody> (e.g. collapsed review tables) */
+  .courses-sea-column table tbody tr:has(th),
+  .courses-training-column table tbody tr:has(th),
+  .courses-river-column table tbody tr:has(th) {
+    display: none;
+  }
+
   /* Status color for "VOLNÁ MÍSTA" / "OBSAZENO" */
-  .courses-sea-column > section table tbody td span,
-  .courses-training-column > section table tbody td span,
-  .courses-river-column > section table tbody td span,
+  .courses-sea-column table tbody td span,
+  .courses-training-column table tbody td span,
+  .courses-river-column table tbody td span,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)
@@ -378,9 +385,9 @@ aside > section > h2,
   }
 
   /* Ensure proper spacing in card content */
-  .courses-sea-column > section table tbody td > *,
-  .courses-training-column > section table tbody td > *,
-  .courses-river-column > section table tbody td > *,
+  .courses-sea-column table tbody td > *,
+  .courses-training-column table tbody td > *,
+  .courses-river-column table tbody td > *,
   .general-main-column
     > section
     table:not(.sailors-insurance-column > section table)

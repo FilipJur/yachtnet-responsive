@@ -109,6 +109,11 @@
     document.querySelectorAll(SELECTORS).forEach((table) => {
       if (table.parentElement.classList.contains('table-scroll-wrapper')) return;
 
+      // Course pages use stacked cards - don't wrap their tables
+      if (table.closest('.courses-sea-column, .courses-training-column, .courses-river-column')) {
+        return;
+      }
+
       const wrapper = document.createElement('div');
       wrapper.className = 'table-scroll-wrapper';
       table.replaceWith(wrapper);
@@ -179,9 +184,9 @@
   const MOBILE_BREAKPOINT = 950;
 
   const SELECTORS = [
-    '.courses-river-column > section table',
-    '.courses-sea-column > section table',
-    '.courses-training-column > section table',
+    '.courses-river-column table',
+    '.courses-sea-column table',
+    '.courses-training-column table',
     '.general-main-column > section table'
   ].join(',');
 
@@ -190,12 +195,28 @@
 
     document.querySelectorAll(SELECTORS).forEach((table) => {
       const thead = table.querySelector('thead');
-      if (!thead) return;
+      let labels = [];
 
-      const headers = thead.querySelectorAll('th');
-      const labels = Array.from(headers).map((th) => th.textContent.trim());
+      if (thead) {
+        const headers = thead.querySelectorAll('th');
+        labels = Array.from(headers).map((th) => th.textContent.trim());
+      } else {
+        // Fallback for tables with header row inside tbody
+        const firstRow = table.querySelector('tbody tr');
+        if (firstRow) {
+          const headers = firstRow.querySelectorAll('th');
+          if (headers.length) {
+            labels = Array.from(headers).map((th) => th.textContent.trim());
+          }
+        }
+      }
+
+      if (!labels.length) return;
 
       table.querySelectorAll('tbody tr').forEach((row) => {
+        // Skip header rows inside tbody
+        if (row.querySelector('th')) return;
+
         row.querySelectorAll('td').forEach((td, index) => {
           const label = labels[index] || '';
           // Skip empty labels (CTA column) and set data-label
