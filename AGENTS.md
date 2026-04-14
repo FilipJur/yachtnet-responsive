@@ -122,6 +122,20 @@ yachtnet.cz/
 - Browser support: Chrome 105+, Safari 15.4+, Firefox 121+
 - Base font size: 16px (1rem = 16px for predictable calculations)
 
+### Hard Truth: Viewport-Scoped Stylesheets
+
+**Desktop and mobile styles NEVER overlap.** Every HTML page loads both stylesheets with mutually exclusive media queries:
+
+```html
+<link rel="stylesheet" href="../css/main.min.css" media="(min-width: 950px)">
+<link rel="stylesheet" href="../css/responsive-mobile.css" media="(max-width: 949px)">
+```
+
+- `main.min.css` is **only active** at ≥ 950px
+- `responsive-mobile.css` is **only active** at ≤ 949px
+
+**What this means:** When writing mobile CSS in `src/css/`, you do NOT need to worry about overriding or conflicting with desktop rules. You are writing into a completely separate stylesheet that only exists in a different viewport band. Specificity battles between desktop and mobile do not exist here. Treat the mobile stylesheet as a standalone design system that happens to share HTML markup.
+
 ## CSS Architecture (Atomic)
 
 ```
