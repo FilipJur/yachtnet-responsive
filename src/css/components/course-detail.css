@@ -523,7 +523,7 @@ section.accordion > h3 {
   padding: var(--space-sm) var(--space-md);
   padding-right: 42px;
   margin: 0;
-  font-size: 14px;
+  font-size: var(--font-base);
   font-weight: normal;
   text-transform: uppercase;
   cursor: pointer;
@@ -553,10 +553,6 @@ section.accordion > div {
 /* Remove padding from accordion divs that contain stacked-card tables (review tables) */
 section.accordion > div:has(> table) {
   padding: 0;
-}
-
-section.accordion > h3.collapsed + div {
-  display: none;
 }
 
 /* ========================================
@@ -600,6 +596,20 @@ section.accordion > div > div[style*="divider"] {
   background: var(--color-bg);
   margin: var(--space-md) 0;
   padding: 0;
+}
+
+.courses-sea-column section.accordion > div > div,
+.courses-training-column section.accordion > div > div,
+.courses-river-column section.accordion > div > div {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Remove excessive <br> tags between reviews/dividers */
+.courses-sea-column section.accordion > div > div + br,
+.courses-training-column section.accordion > div > div + br,
+.courses-river-column section.accordion > div > div + br {
+  display: none;
 }
 
 /* ========================================
@@ -792,7 +802,7 @@ section.contact-form form button[type="submit"]:active {
   }
 
   section.contact-form h2 {
-    font-size: 1.25rem;
+    font-size: var(--font-xl);
     font-weight: normal;
     color: var(--color-primary);
     margin: 0 0 var(--space-md) 0;

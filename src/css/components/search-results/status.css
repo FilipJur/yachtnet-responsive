@@ -34,7 +34,7 @@
 }
 
 .search-result-table .state-option {
-  color: var(--color-text-muted);
+  color: var(--color-secondary);
 }
 
 .search-result-table .state-option::before {

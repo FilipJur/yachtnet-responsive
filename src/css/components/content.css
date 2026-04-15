@@ -117,7 +117,7 @@
 }
 
 .rating-claim-wrapper strong {
-  font-size: 1.25rem; /* 27px - rating percentage large display */
+  font-size: var(--font-xl); /* 20px - rating percentage large display */
   color: var(--color-primary);
   display: block;
   padding: var(--space-sm) 0 var(--space-xs) 0;
@@ -305,7 +305,7 @@ aside.hp-aside > section {
 /* Aside headings - Desktop style with blue background */
 aside.hp-aside h4 {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: var(--font-form-label);
   font-weight: normal;
   text-transform: uppercase;
   padding: var(--space-xs) 0 var(--space-xs) 1.125rem;
@@ -434,3 +434,8 @@ aside.hp-aside li:last-child a::after {
    CONTACT PAGE - ISO CERTIFICATION BOX
    See course-detail.css for .isocer styles
    ======================================== */
+
+/* Hide desktop-only 600px dividers inside <center> tags */
+.main-column center > div[style*="width:600px"] {
+  display: none;
+}

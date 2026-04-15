@@ -228,10 +228,6 @@
   font-weight: 700;
 }
 
-.comparison-main-column section:nth-of-type(3) dl dd strong:contains("Sleva") {
-  color: var(--color-secondary);
-}
-
 /* ========================================
    CONTROL BUTTONS (Move/Remove)
    ======================================== */
@@ -423,7 +419,7 @@
 
 .compare-send-to-email-form section h2,
 .batch-option-form section h2 {
-  font-size: 1.25rem; /* 20px - form heading size */
+  font-size: var(--font-xl); /* 20px - form heading size */
   font-weight: bold;
   color: var(--color-primary);
   margin: 0 0 var(--space-md) 0;

@@ -44,7 +44,7 @@
 .search-result-table td:nth-child(4) strong:last-of-type {
   font-size: var(--font-2xl);
   font-weight: 700;
-  color: var(--color-secondary);
+  color: #000;
   display: block;
 }
 

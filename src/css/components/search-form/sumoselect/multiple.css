@@ -8,7 +8,7 @@
   position: relative;
 }
 
-/* SumoSelect library override - Custom CSS checkboxes */
+/* SumoSelect library override - requires high specificity */
 .SumoSelect > .optWrapper.multiple > .options > li > span {
   position: absolute;
   left: 0.875rem; /* 14px - checkbox positioning */
