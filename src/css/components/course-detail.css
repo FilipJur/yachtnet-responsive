@@ -866,23 +866,22 @@ section:has(> h2:first-child + article) > h2 {
 }
 
 /* ========================================
-   COURSE LISTING ARTICLES WITH BACKGROUND IMAGES
-   Matching index.html article style
+   COURSE LISTING ARTICLES
+   Replicating desktop main.min.css pattern
    ======================================== */
 
-/* Base article styles - first section only */
 .courses-main-column > section:first-of-type > article {
-  position: relative;
+  background: var(--color-bg);
   border-radius: 0;
   overflow: hidden;
+  min-height: auto;
+  display: block;
+  position: relative;
+  border: none;
+  padding: 0;
   margin-bottom: var(--space-md);
-  min-height: 180px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 }
 
-/* First section only - articles with background images */
 @media only screen and (min-width: 768px) {
   .courses-main-column > section:first-of-type {
     display: grid;
@@ -901,46 +900,69 @@ section:has(> h2:first-child + article) > h2 {
   }
 }
 
-/* Article heading overlay - always visible at bottom */
+/* Blue header bar - matches desktop */
 .courses-main-column > section:first-of-type > article h3 {
-  margin: 0;
-  padding: var(--space-md);
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.4) 60%,
-    transparent 100%
-  );
+  background: var(--color-primary);
   color: var(--color-bg-white);
+  margin: 0;
+  padding: var(--space-sm) var(--space-md);
+  text-align: center;
+  text-transform: uppercase;
+  position: static;
   font-size: var(--font-lg);
   font-weight: normal;
-  text-align: left;
-  position: relative;
-  z-index: 2;
 }
 
-/* Article links - full coverage */
 .courses-main-column > section:first-of-type > article h3 a {
   color: var(--color-bg-white);
   text-decoration: none;
-  font-size: var(--font-base);
+  font-size: var(--font-lg);
   font-weight: normal;
+  text-transform: uppercase;
   display: block;
 }
 
-/* Article paragraphs - white text for overlay (first section only) */
+/* Paragraph - gray background */
 .courses-main-column > section:first-of-type > article p {
+  background: var(--color-bg);
   margin: 0;
-  padding: 0 var(--space-md) var(--space-md);
-  position: relative;
-  z-index: 2;
+  padding: 0;
+  text-align: center;
 }
 
-/* Paragraph links - white text */
+/* Image rendered via ::before to reserve layout space */
+.courses-main-column > section:first-of-type > article p::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 303 / 187;
+  max-height: 11.6875rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* Individual images for each article */
+.courses-main-column > section:first-of-type > article:nth-of-type(1) p::before {
+  background-image: url("../img/courses-river.jpg");
+}
+
+.courses-main-column > section:first-of-type > article:nth-of-type(2) p::before {
+  background-image: url("../img/courses-sea.jpg");
+}
+
+.courses-main-column > section:first-of-type > article:nth-of-type(3) p::before {
+  background-image: url("../img/courses-sail.jpg");
+}
+
+/* Description link inside paragraph */
 .courses-main-column > section:first-of-type > article p a {
-  color: var(--color-bg-white);
+  color: var(--color-text);
   text-decoration: none;
   font-size: var(--font-sm);
+  line-height: 1.5;
+  display: block;
+  padding: var(--space-sm) var(--space-md);
 }
 
 /* ========================================
@@ -992,7 +1014,7 @@ section:has(> h2:first-child + article) > h2 {
   position: relative;
   border: none !important;
   padding: 0 !important;
-  margin-bottom: var(--space-md) !important;
+  margin-bottom: 0 !important;
 }
 
 /* Heading - blue bar with white text */
@@ -1022,36 +1044,44 @@ section:has(> h2:first-child + article) > h2 {
   background: var(--color-bg) !important;
   margin: 0 !important;
   padding: 0 !important;
+  text-align: center;
 }
 
-/* Description link - contains the image as background */
+/* Image rendered via ::before to reserve layout space */
+.sailors-main-column > section > article p::before {
+  content: "";
+  display: block;
+  width: 100%;
+  aspect-ratio: 303 / 187;
+  max-height: 11.6875rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* Article 1: Pojištění (Insurance) */
+.sailors-main-column > section > article:nth-of-type(1) p::before {
+  background-image: url("../img/sailors-insurence.jpg");
+}
+
+/* Article 2: Počasí (Weather) */
+.sailors-main-column > section > article:nth-of-type(2) p::before {
+  background-image: url("../img/sailors-weather.jpg");
+}
+
+/* Article 3: Užitečné odkazy (Links) */
+.sailors-main-column > section > article:nth-of-type(3) p::before {
+  background-image: url("../img/sailors-links.jpg");
+}
+
+/* Description link inside paragraph */
 .sailors-main-column > section > article p a {
   color: var(--color-text);
   text-decoration: none;
   font-size: var(--font-sm);
   line-height: 1.5;
   display: block;
-  padding: 12.25rem var(--space-md) var(--space-sm) var(--space-md);
-  background-color: var(--color-bg);
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: 100% 11.6875rem;
-  text-align: center;
-}
-
-/* Article 1: Pojištění (Insurance) */
-.sailors-main-column > section > article:nth-of-type(1) p a {
-  background-image: url("../img/sailors-insurence.jpg");
-}
-
-/* Article 2: Počasí (Weather) */
-.sailors-main-column > section > article:nth-of-type(2) p a {
-  background-image: url("../img/sailors-weather.jpg");
-}
-
-/* Article 3: Užitečné odkazy (Links) */
-.sailors-main-column > section > article:nth-of-type(3) p a {
-  background-image: url("../img/sailors-links.jpg");
+  padding: var(--space-sm) var(--space-md);
 }
 
 /* ========================================
@@ -1256,107 +1286,3 @@ section:has(> h2:first-child + article) > h2 {
    ======================================== */
 
 /* Sections inherit natural flow like desktop - no card styling */
-
-/* ========================================
-   COURSE ARTICLES - MOBILE OVERRIDE TO MATCH HOMEPAGE 100%
-   ======================================== */
-@media (max-width: 949px) {
-  /* Article container - mirrors .hp-main-column > section article */
-  .courses-main-column > section:first-of-type > article {
-    background: var(--color-bg) !important;
-    border-radius: 0 !important;
-    overflow: hidden;
-    min-height: auto;
-    display: block;
-    position: relative;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 0 var(--space-md) 0 !important;
-  }
-
-  /* Heading - FIRST in visual order */
-  /* Blue background, white text, centered, uppercase */
-  .courses-main-column > section:first-of-type > article h3 {
-    background: var(--color-primary) !important;
-    color: var(--color-bg-white) !important;
-    margin: 0 !important;
-    padding: var(--space-sm) var(--space-md) !important;
-    text-align: center;
-    text-transform: uppercase;
-    position: static;
-    font-size: var(--font-lg);
-    font-weight: normal;
-  }
-
-  .courses-main-column > section:first-of-type > article h3 a {
-    color: var(--color-bg-white) !important;
-    text-decoration: none;
-    font-size: var(--font-lg);
-    font-weight: normal;
-    text-transform: uppercase;
-    display: block;
-  }
-
-  /* Remove any ::before on article (homepage uses p::before) */
-  .courses-main-column > section:first-of-type > article::before {
-    display: none !important;
-  }
-
-  /* Paragraph - THIRD in visual order */
-  /* Contains the image via ::before and text below */
-  .courses-main-column > section:first-of-type > article p {
-    background: var(--color-bg) !important;
-    margin: 0 !important;
-    padding: 12.25rem 0 0 0 !important;
-    position: relative;
-    height: auto;
-    min-height: 46px;
-    text-align: center;
-  }
-
-  /* Image - SECOND in visual order (positioned absolutely) */
-  .courses-main-column > section:first-of-type > article p::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 11.6875rem;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: block;
-  }
-
-  /* Individual images for each article */
-  .courses-main-column
-    > section:first-of-type
-    > article:nth-of-type(1)
-    p::before {
-    background-image: url("../img/responsive/bg-ricni-lode.jpg");
-  }
-
-  .courses-main-column
-    > section:first-of-type
-    > article:nth-of-type(2)
-    p::before {
-    background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
-  }
-
-  .courses-main-column
-    > section:first-of-type
-    > article:nth-of-type(3)
-    p::before {
-    background-image: url("../img/responsive/bg-plavba.jpg");
-  }
-
-  /* Description link inside paragraph */
-  .courses-main-column > section:first-of-type > article p a {
-    color: var(--color-text);
-    text-decoration: none;
-    font-size: var(--font-sm);
-    line-height: 1.5;
-    display: block;
-    padding: var(--space-sm) var(--space-md);
-  }
-}

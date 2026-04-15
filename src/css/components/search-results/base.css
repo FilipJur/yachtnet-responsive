@@ -29,7 +29,6 @@
     "specs specs specs specs"
     "status status status status"
     "actions actions actions actions";
-  gap: var(--space-xs);
   border-radius: 0;
   padding: var(--space-sm);
   margin-bottom: var(--space-md);

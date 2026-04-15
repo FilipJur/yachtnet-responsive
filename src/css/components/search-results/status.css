@@ -10,7 +10,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: var(--space-xs);
   font-size: var(--font-base); /* 16px - content always 16px */
   font-weight: 600;
   padding: var(--space-xs) 0;

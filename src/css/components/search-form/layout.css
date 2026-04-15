@@ -229,7 +229,6 @@
   .search-form-period {
     grid-column: 1;
     grid-row: 1 / span 2;
-    column-gap: 0;
   }
 
   /* Pax section - spans rows 3-4 */
@@ -287,6 +286,12 @@
     flex-direction: row;
     align-items: center;
     gap: var(--space-xs);
+    position: relative;
+  }
+
+  .search-form-label.search-form-from > .SumoSelect,
+  .search-form-label.search-form-till > .SumoSelect {
+    position: absolute;
   }
 }
 

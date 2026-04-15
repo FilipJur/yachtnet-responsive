@@ -226,42 +226,51 @@
 .hp-main-column > section article p {
   background: var(--color-bg) !important;
   margin: 0 !important;
-  padding: 12.25rem 0 0 0 !important;
-  position: relative;
+  padding: 0 !important;
   height: auto;
   min-height: 46px;
   text-align: center;
 }
 
-/* Image - SECOND in visual order (positioned absolutely) */
+/* Image - SECOND in visual order (flowing in document) */
 .hp-main-column > section article p::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 11.6875rem; /* 187px - Desktop image height */
-  background-position: center center;
+  aspect-ratio: 304 / 187;
+  background-image: url("../img/hp-banner-sprite.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
-  display: block;
+  background-size: 200% 200%;
 }
 
-/* Individual images for each article */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (-o-min-device-pixel-ratio: 3/2),
+  only screen and (min-device-pixel-ratio: 1.5),
+  only screen and (min-resolution: 2dppx),
+  only screen and (min-resolution: 192dpi) {
+  .hp-main-column > section article p::before {
+    background-image: url("../img/hp-banner-sprite2x.jpg");
+  }
+}
+
+/* Individual sprite positions - matching desktop main.min.css */
 .hp-main-column > section article:nth-of-type(1) p::before {
-  background-image: url("../img/responsive/bg-kapitanske-kurzy.jpg");
+  background-position: 100% 0%;
 }
 
 .hp-main-column > section article:nth-of-type(2) p::before {
-  background-image: url("../img/responsive/bg-ricni-lode.jpg");
+  background-position: 0% 0%;
 }
 
 .hp-main-column > section article:nth-of-type(3) p::before {
-  background-image: url("../img/responsive/bg-plavba.jpg");
+  background-position: 0% 100%;
 }
 
 .hp-main-column > section article:nth-of-type(4) p::before {
-  background-image: url("../img/responsive/bg-chartrovky.jpg");
+  background-position: 100% 100%;
 }
 
 /* Description link inside paragraph */
