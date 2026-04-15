@@ -135,3 +135,6 @@ screenshots/
 
 # Sourcemap fix script
 fix-sourcemap.sh
+
+# Root-level test screenshots
+plachetnice-*.png
