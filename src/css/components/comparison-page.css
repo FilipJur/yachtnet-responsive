@@ -90,9 +90,6 @@
   z-index: 10;
 }
 
-.comp-header.is-sticky {
-  border-bottom: 1px solid var(--color-primary) !important;
-}
 
 .comp-header h2 {
   font-size: var(--font-xl);
