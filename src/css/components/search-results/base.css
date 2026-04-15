@@ -51,11 +51,6 @@
   display: none;
 }
 
-/* Recommended badge using :has() - inline style */
-.search-result-table tr:has(.recommended-company) {
-  padding-top: 0;
-}
-
 .search-result-table tr:has(.recommended-company)::before {
   content: "DOPORUČUJEME";
   position: static;

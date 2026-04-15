@@ -26,18 +26,17 @@
   border: none;
 }
 
-/* Style all spec items - inline icon + text */
+/* Style all spec items - icon + text in aligned rows */
 .search-result-table td:nth-child(2) > *,
 .search-result-table td:nth-child(3) > * {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 25px auto;
   align-items: center;
-  justify-content: flex-start;
+  justify-items: center;
   gap: var(--space-xs);
   font-size: var(--font-sm);
   white-space: nowrap;
   width: 100%;
-  transform: scale(0.85);
 }
 
 /* Year styling - sprite icon 18x18px at -317px */
@@ -48,15 +47,13 @@
 
 .search-result-table .search-result-built::before {
   content: "";
-  display: inline-block;
+  display: block;
   width: 18px;
   height: 18px;
-  min-height: 25px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -317px;
   flex-shrink: 0;
-  transform: scale(0.8);
 }
 
 /* Charter company styling - sprite icon 17x25px at -335px */
@@ -67,15 +64,13 @@
 
 .search-result-table .search-result-category::before {
   content: "";
-  display: inline-block;
+  display: block;
   width: 17px;
   height: 25px;
-  min-height: 25px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -335px;
   flex-shrink: 0;
-  transform: scale(0.8);
 }
 
 /* People count styling - sprite icon 22x18px at -360px */
@@ -86,15 +81,13 @@
 
 .search-result-table div[title="počet osob"]::before {
   content: "";
-  display: inline-block;
+  display: block;
   width: 22px;
   height: 18px;
-  min-height: 25px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -360px;
   flex-shrink: 0;
-  transform: scale(0.8);
 }
 
 /* Cabins count styling - sprite icon 16x23px at -378px */
@@ -105,15 +98,13 @@
 
 .search-result-table div[title="počet kajut"]::before {
   content: "";
-  display: inline-block;
+  display: block;
   width: 16px;
   height: 23px;
-  min-height: 25px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
   background-position: 0 -378px;
   flex-shrink: 0;
-  transform: scale(0.8);
 }
 
 /* Retina support for specs icons */
