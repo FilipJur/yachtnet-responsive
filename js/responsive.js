@@ -394,3 +394,59 @@ const updateDockVisibility = (() => {
     resizeTimer = setTimeout(reorderPagination, 100);
   });
 })();
+
+// ========================================
+// COMPARISON STICKY HEADERS (Mobile Only)
+// Replicates desktop sticky header behavior for mobile viewport
+// ========================================
+(() => {
+  const MOBILE_BREAKPOINT = 950;
+
+  const updateStickyHeaders = () => {
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+
+    const pageContent = document.querySelector('.page-content-wrapper');
+    const headers = document.querySelectorAll('.comp-header');
+    if (!pageContent || !headers.length) return;
+
+    const scrollTop = window.scrollY;
+    const pageContentTop = pageContent.getBoundingClientRect().top + scrollTop;
+    const stickyThreshold = pageContentTop + 80;
+
+    if (scrollTop >= stickyThreshold) {
+      const offset = scrollTop - stickyThreshold;
+      headers.forEach((header) => {
+        header.style.transform = `translateY(${offset}px)`;
+        header.classList.add('is-sticky');
+      });
+    } else {
+      headers.forEach((header) => {
+        header.style.transform = '';
+        header.classList.remove('is-sticky');
+      });
+    }
+  };
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateStickyHeaders();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateStickyHeaders);
+  } else {
+    updateStickyHeaders();
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(updateStickyHeaders, 100);
+  });
+})();

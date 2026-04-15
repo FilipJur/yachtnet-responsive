@@ -86,6 +86,12 @@
 .comp-header {
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-md);
+  background-color: var(--color-bg-white);
+  z-index: 10;
+}
+
+.comp-header.is-sticky {
+  border-bottom: 1px solid var(--color-primary) !important;
 }
 
 .comp-header h2 {
