@@ -230,14 +230,13 @@
   height: auto;
   min-height: 46px;
   text-align: center;
+  position: relative;
 }
 
 /* Image - SECOND in visual order (flowing in document) */
 .hp-main-column > section article p::before {
   content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: block;
   width: 100%;
   aspect-ratio: 304 / 187;
   background-image: url("../img/hp-banner-sprite.jpg");
@@ -281,7 +280,13 @@
   line-height: 1.5;
   display: block;
   padding: var(--space-sm) var(--space-md);
-  position: static; /* Remove absolute positioning from mobile */
+}
+
+/* Stretch invisible clickable layer over entire p (covers p::before image) */
+.hp-main-column > section article p a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 /* ========================================
