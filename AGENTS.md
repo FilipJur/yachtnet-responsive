@@ -209,6 +209,15 @@ Mobile menu toggle functionality for hamburger navigation:
 | 2024-03-05 | Detailed search toggle | ~10726 | Styled existing link for both states ("podrobné vyhledávání" and "základní vyhledávání"); preserves desktop JS toggle behavior |
 | 2025-03-06 | Hamburger auto-injection | ~97 | **REMOVED** hardcoded hamburger button; now dynamically created by `js/responsive.js` if not present |
 
+### dekujeme-za-rezervaci.html
+
+| Date | Change | Line(s) | Description |
+|------|--------|---------|-------------|
+| 2025-04-15 | Viewport meta | 8 | Changed `width=950` to `width=device-width, initial-scale=1.0` for mobile responsiveness |
+| 2025-04-15 | Desktop CSS media query | 21 | Added `media="(min-width: 950px)"` to desktop CSS link to block it on mobile |
+| 2025-04-15 | Responsive CSS link | After 21 | Added `<link rel="stylesheet" href="/css/responsive-mobile.css" media="(max-width: 949px)">` |
+| 2025-04-15 | Responsive JS | Before 26 | Added `<script src="/js/responsive.js" defer></script>` before Google Tag Manager |
+
 ## Implementation Strategy
 
 1. **Desktop CSS blocked** for mobile viewports via media query

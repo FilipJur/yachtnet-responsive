@@ -1,0 +1,105 @@
+/* ========================================
+   THANK YOU PAGE - Děkujeme za rezervaci
+   ======================================== */
+
+.thanks-main-column {
+  width: 100%;
+  text-align: center;
+  padding: var(--space-md) 0;
+}
+
+.thanks-main-column h2 {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.thanks-main-column p {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+/* Online option status box */
+.thanks-main-column .online-option-wrapper {
+  display: inline-block;
+  margin: var(--space-xl) auto 0 auto;
+  padding-left: 23px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.thanks-main-column .online-option-wrapper:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -9px;
+  width: 17px;
+  height: 18px;
+  background-image: url("../img/icon-sprite.png");
+  background-repeat: no-repeat;
+  background-position: 0 -455px;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .thanks-main-column .online-option-wrapper:before {
+    background-image: url("../img/icon-sprite2x.png");
+    background-size: 25px 612px;
+  }
+}
+
+.thanks-main-column .online-option-wrapper:after {
+  content: "";
+  position: absolute;
+  top: -11px;
+  left: -11px;
+  right: -11px;
+  height: 40px;
+  background-color: var(--color-bg-white);
+  border: solid 1px var(--color-primary);
+  z-index: -1;
+}
+
+.online-option-wrapper.loading:before {
+  background: none;
+  content: "...";
+}
+
+.online-option-wrapper.unverified:before {
+  background: none;
+  content: "X";
+}
+
+/* Animated loader bar */
+.thanks-main-column .online-option-loader {
+  background-color: var(--color-primary);
+  height: 1px;
+  margin: -7px auto 34px auto;
+  max-width: 243px;
+  width: 90%;
+}
+
+.thanks-main-column .online-option-loader.animate {
+  animation: search-loader 2.5s infinite;
+}
+
+/* Note below the loader */
+.thanks-main-column .online-option-note {
+  margin-top: 25px;
+  text-align: center;
+}
+
+/* Back to search CTA */
+.back-to-search-link {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-bg-white);
+  padding: var(--space-sm) var(--space-md);
+  text-decoration: none;
+  font-weight: 600;
+  margin-top: var(--space-md);
+}
+
+.back-to-search-link:hover {
+  background-color: var(--color-primary-dark);
+}
