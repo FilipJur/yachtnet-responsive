@@ -30,8 +30,8 @@
 }
 
 .dock img {
-  width: 32px;
-  height: 32px;
+  width: var(--space-xl);
+  height: var(--space-xl);
   object-fit: contain;
   flex-shrink: 0;
 }

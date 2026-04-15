@@ -213,8 +213,8 @@
 }
 
 .crew-insurance-main-column table input[type="radio"] {
-  width: 24px;
-  height: 24px;
+  width: var(--space-lg);
+  height: var(--space-lg);
 }
 
 /* Skipper table specific - 8 columns */

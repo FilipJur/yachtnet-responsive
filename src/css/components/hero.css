@@ -126,8 +126,8 @@
 
 /* Individual pager dots */
 .carousel-pager li {
-  width: 8px;
-  height: 8px;
+  width: var(--space-sm);
+  height: var(--space-sm);
   border-radius: 0;
   background: rgba(0, 106, 178, 0.3);
   cursor: pointer;
@@ -136,7 +136,7 @@
 
 /* Active pager dot */
 .carousel-pager li.cycle-pager-active {
-  width: 32px;
+  width: var(--space-xl);
   border-radius: 0;
   background: var(--color-primary);
 }

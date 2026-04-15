@@ -316,5 +316,5 @@
 }
 .checkbox-row-wrapper {
   margin-top: 10px;
-  color: white;
+  color: var(--color-bg-white);
 }

@@ -12,7 +12,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto auto;
   gap: var(--space-xs) var(--space-sm);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-md);
   align-items: end;
 }
 
