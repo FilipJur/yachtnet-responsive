@@ -97,7 +97,7 @@
   }
 }
 .boat-tech-wrapper dt {
-  font-size: var(--font-xs);
+  font-size: var(--font-base);
   color: var(--color-primary);
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -204,7 +204,7 @@
 }
 
 .boat-recap-wrapper dt {
-  font-size: var(--font-xs);
+  font-size: var(--font-base);
   color: var(--color-primary);
   text-transform: uppercase;
 }
@@ -217,16 +217,23 @@
 }
 
 .boat-recap-wrapper > p {
-  padding: var(--space-xs) 0;
+  padding: var(--space-xs) var(--space-sm);
   margin: 0;
   font-size: var(--font-base);
   color: var(--color-primary);
-  text-align: center;
+  text-align: left;
   text-transform: uppercase;
 }
 
 .boat-recap-wrapper > p.discount-wrapper {
   text-transform: none;
+}
+
+/* Final price line - gray box like desktop */
+.boat-recap-wrapper > p:last-child {
+  background-color: var(--color-bg);
+  padding: var(--space-sm) var(--space-md);
+  margin-top: var(--space-xs);
 }
 
 /* Booking form */
@@ -246,7 +253,9 @@
   display: block;
   font-size: var(--font-form-label);
   color: var(--color-primary);
-  margin-bottom: calc(var(--space-sm) - 1px); /* 7px - precise form label spacing */
+  margin-bottom: calc(
+    var(--space-sm) - 1px
+  ); /* 7px - precise form label spacing */
   text-transform: uppercase;
 }
 

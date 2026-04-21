@@ -30,7 +30,7 @@
 .search-result-table td:nth-child(2) > *,
 .search-result-table td:nth-child(3) > * {
   display: grid;
-  grid-template-rows: 25px auto;
+  grid-template-rows: 20px auto;
   align-items: center;
   justify-items: center;
   gap: var(--space-xs);
@@ -48,11 +48,12 @@
 .search-result-table .search-result-built::before {
   content: "";
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 14px;
+  height: 14px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
-  background-position: 0 -317px;
+  background-position: 0 calc(-317px * 0.75);
+  background-size: 19px auto;
   flex-shrink: 0;
 }
 
@@ -65,11 +66,12 @@
 .search-result-table .search-result-category::before {
   content: "";
   display: block;
-  width: 17px;
-  height: 25px;
+  width: 13px;
+  height: 19px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
-  background-position: 0 -335px;
+  background-position: 0 calc(-335px * 0.75);
+  background-size: 19px auto;
   flex-shrink: 0;
 }
 
@@ -82,11 +84,12 @@
 .search-result-table div[title="počet osob"]::before {
   content: "";
   display: block;
-  width: 22px;
-  height: 18px;
+  width: 16px;
+  height: 14px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
-  background-position: 0 -360px;
+  background-position: 0 calc(-360px * 0.75);
+  background-size: 19px auto;
   flex-shrink: 0;
 }
 
@@ -99,11 +102,12 @@
 .search-result-table div[title="počet kajut"]::before {
   content: "";
   display: block;
-  width: 16px;
-  height: 23px;
+  width: 12px;
+  height: 17px;
   background-image: url("../img/icon-sprite.png");
   background-repeat: no-repeat;
-  background-position: 0 -378px;
+  background-position: 0 calc(-378px * 0.75);
+  background-size: 19px auto;
   flex-shrink: 0;
 }
 
@@ -114,6 +118,6 @@
   .search-result-table div[title="počet osob"]::before,
   .search-result-table div[title="počet kajut"]::before {
     background-image: url("../img/icon-sprite2x.png");
-    background-size: 25px 612px;
+    background-size: 19px 459px;
   }
 }

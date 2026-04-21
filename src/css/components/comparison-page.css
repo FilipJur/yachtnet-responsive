@@ -168,7 +168,7 @@
 }
 
 .comparison-main-column section dl dt {
-  font-size: var(--font-xs);
+  font-size: var(--font-base);
   font-weight: 500;
   color: var(--color-text-light);
   text-transform: uppercase;
@@ -176,7 +176,7 @@
 }
 
 .comparison-main-column section dl dd {
-  font-size: var(--font-sm);
+  font-size: var(--font-base);
   color: var(--color-text);
   font-weight: 700;
   text-align: right;
