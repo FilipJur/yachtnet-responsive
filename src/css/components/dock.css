@@ -11,7 +11,7 @@
   background: var(--color-primary);
   color: var(--color-bg-white);
   padding: var(--space-md) var(--space-md);
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
@@ -23,10 +23,11 @@
   margin: 0;
   text-align: left;
   transition: transform 0.3s ease-in-out;
+  transform: translateX(100%);
 }
 
 .dock.displayed {
-  display: flex;
+  transform: translateX(0);
 }
 
 .dock img {
@@ -68,5 +69,5 @@
 }
 
 .dock.is-hidden {
-  transform: translateX(100%);
+  transform: translateX(100%) !important;
 }
