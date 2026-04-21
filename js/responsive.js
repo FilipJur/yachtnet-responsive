@@ -10,8 +10,6 @@
 
   const isMobile = () => window.innerWidth < MOBILE_BREAKPOINT;
 
-  const getDock = () => document.querySelector('.dock:not(.is-empty)');
-
   const createHamburger = () => {
     const btn = document.createElement('button');
     btn.className = 'hamburger-menu';
@@ -21,15 +19,6 @@
       btn.appendChild(document.createElement('span'));
     }
     return btn;
-  };
-
-  const hideDock = () => getDock()?.classList.add('is-hidden');
-  const showDock = () => {
-    const dock = getDock();
-    if (dock) {
-      dock.classList.remove('is-hidden');
-      updateDockVisibility();
-    }
   };
 
   const updateHamburger = () => {
@@ -47,13 +36,10 @@
           document.body.style.overflow = isOpen ? 'hidden' : '';
 
           if (isOpen) {
-            hideDock();
             const header = document.querySelector('header');
             if (header && window.scrollY < header.offsetHeight) {
               window.scrollTo({ top: header.offsetHeight, behavior: 'smooth' });
             }
-          } else {
-            showDock();
           }
         });
       }
@@ -65,7 +51,6 @@
         hamburger.classList.remove('is-active');
         hamburger.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
-        showDock();
       }
     }
   };
@@ -84,7 +69,6 @@
       hamburger.classList.remove('is-active');
       hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
-      showDock();
     }
   });
 })();
