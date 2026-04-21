@@ -129,6 +129,10 @@
   margin-bottom: var(--space-lg);
 }
 
+.comparison-main-column ul.comp-wrapper > li > section:first-of-type {
+  height: 100%;
+}
+
 .comparison-main-column section h4 {
   font-size: var(--font-sm);
   font-weight: normal;

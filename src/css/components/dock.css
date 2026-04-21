@@ -22,12 +22,8 @@
   width: 100%;
   margin: 0;
   text-align: left;
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(100%);
-}
-
-.dock.displayed {
   transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
 }
 
 .dock img {
@@ -69,5 +65,5 @@
 }
 
 .dock.is-hidden {
-  transform: translateX(100%) !important;
+  transform: translateX(100%);
 }

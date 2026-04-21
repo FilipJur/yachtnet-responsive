@@ -244,7 +244,57 @@
   });
 })();
 
-// ========================================\n// DOCK AUTO-HIDE (Mobile Only)\n// Hides comparison dock near page bottom and when menu is open\n// ========================================\nconst updateDockVisibility = (() => {\n  const MOBILE_BREAKPOINT = 950;\n  let ticking = false;\n  let lastShouldHide = null;\n  let scrollTimeout = null;\n\n  const update = () => {\n    if (window.innerWidth >= MOBILE_BREAKPOINT) return;\n\n    const dock = document.querySelector('.dock');\n    if (!dock || dock.classList.contains('is-empty')) return;\n\n    const menu = document.querySelector('.main-nav ul.is-open');\n    if (menu) {\n      if (lastShouldHide !== true) {\n        dock.classList.add('is-hidden');\n        lastShouldHide = true;\n      }\n      return;\n    }\n\n    // Use cached dimensions to avoid forced reflows\n    const dockHeight = 60;\n    const scrollTop = window.scrollY;\n    const windowHeight = window.innerHeight;\n    const docHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);\n    const distanceFromBottom = docHeight - scrollTop - windowHeight;\n    const hideDistance = dockHeight + 100;\n\n    const shouldHide = distanceFromBottom < hideDistance;\n    \n    if (shouldHide !== lastShouldHide) {\n      dock.classList.toggle('is-hidden', shouldHide);\n      lastShouldHide = shouldHide;\n    }\n  };\n\n  window.addEventListener('scroll', () => {\n    if (scrollTimeout) clearTimeout(scrollTimeout);\n    \n    if (!ticking) {\n      window.requestAnimationFrame(() => {\n        update();\n        ticking = false;\n      });\n      ticking = true;\n    }\n    \n    // Update one final time after scroll settles\n    scrollTimeout = setTimeout(update, 150);\n  }, { passive: true });\n\n  if (document.readyState === 'loading') {\n    document.addEventListener('DOMContentLoaded', update);\n  } else {\n    update();\n  }\n\n  return update;\n})();
+// ========================================
+// DOCK AUTO-HIDE (Mobile Only)
+// Hides comparison dock near page bottom and when menu is open
+// ========================================
+const updateDockVisibility = (() => {
+  const MOBILE_BREAKPOINT = 950;
+  let ticking = false;
+
+  const update = () => {
+    if (window.innerWidth >= MOBILE_BREAKPOINT) return;
+
+    const dock = document.querySelector('.dock');
+    if (!dock) return;
+
+    if (dock.classList.contains('is-empty')) return;
+
+    const menu = document.querySelector('.main-nav ul.is-open');
+    if (menu) {
+      dock.classList.add('is-hidden');
+      return;
+    }
+
+    const dockHeight = dock.offsetHeight || 60;
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.documentElement.scrollHeight;
+    const distanceFromBottom = docHeight - scrollTop - windowHeight;
+    const footerHeight = document.querySelector('footer')?.offsetHeight ?? 0;
+    const hideDistance = dockHeight + footerHeight + 40;
+
+    dock.classList.toggle('is-hidden', distanceFromBottom < hideDistance);
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', update);
+  } else {
+    update();
+  }
+
+  return update;
+})();
 
 // ========================================
 // SUBMENU TOGGLE (Mobile Only)
