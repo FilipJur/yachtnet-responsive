@@ -37,8 +37,7 @@
 
 /* Each boat card - no border, no background (like desktop) */
 .comparison-main-column ul.comp-wrapper > li {
-  flex: 0 0 85vw;
-  max-width: 340px;
+  flex: 0 0 80%;
   scroll-snap-align: start;
   background: transparent;
   border-radius: 0;
@@ -129,7 +128,7 @@
   margin-bottom: var(--space-lg);
 }
 
-.comparison-main-column ul.comp-wrapper > li > section:first-of-type {
+.comparison-main-column ul.comp-wrapper > li > section:last-of-type {
   height: 100%;
 }
 
@@ -192,8 +191,8 @@
   background-color: var(--color-bg);
 }
 
-/* Rental conditions uniform height with scroll like desktop */
-.comparison-main-column section:nth-of-type(n + 2) dl {
+/* All spec sections uniform height with scroll like desktop */
+.comparison-main-column section dl {
   max-height: 300px;
   overflow-y: auto;
 }
