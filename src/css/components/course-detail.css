@@ -547,12 +547,24 @@ section.accordion > h3.collapsed::after {
 }
 
 section.accordion > div {
+  display: none;
   padding: var(--space-md);
 }
 
 /* Remove padding from accordion divs that contain stacked-card tables (review tables) */
 section.accordion > div:has(> table) {
   padding: 0;
+}
+
+section.accordion > h3:not(.collapsed) + div,
+section.accordion > h3.visible + div {
+  display: block;
+}
+
+/* Override inline display:none on inner divs when accordion is open */
+section.accordion > h3:not(.collapsed) + div > div,
+section.accordion > h3.visible + div > div {
+  display: block !important;
 }
 
 /* ========================================

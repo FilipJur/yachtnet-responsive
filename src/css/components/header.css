@@ -31,8 +31,13 @@ header > div > ul {
   width: 100%;
 }
 
-/* First list item (CZ flag) - push to left, everything else to right */
-header > div > ul > li:first-child {
+/* Hide empty first <li> spacer (prod HTML has <li></li> before CZ) */
+header > div > ul > li:first-child:empty {
+  display: none;
+}
+
+/* Second list item (CZ flag) - push to left, everything else to right */
+header > div > ul > li:nth-child(2) {
   margin-right: auto;
 }
 
@@ -55,10 +60,10 @@ header > div > ul > li {
   }
 }
 
-/* Bold email (:nth-child(2)) and phone (:nth-child(3)) */
-/* HTML Structure: li:nth-child(1)=CZ, li:nth-child(2)=Email, li:nth-child(3)=Phone, li:nth-child(4)=Hours */
-header > div > ul > li:nth-child(2) a,
-header > div > ul > li:nth-child(3) {
+/* Bold email (:nth-child(3)) and phone (:nth-child(4)) */
+/* HTML Structure: li:nth-child(1)=Empty, li:nth-child(2)=CZ, li:nth-child(3)=Email, li:nth-child(4)=Phone, li:nth-child(5)=Hours */
+header > div > ul > li:nth-child(3) a,
+header > div > ul > li:nth-child(4) {
   font-family:
     "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica,
     sans-serif;
@@ -118,10 +123,20 @@ header .wrapper > ul > li {
   }
 }
 
-/* Bold email (:nth-child(2)) and phone (:nth-child(3)) for legacy wrapper */
-/* HTML Structure: li:nth-child(1)=CZ, li:nth-child(2)=Email, li:nth-child(3)=Phone, li:nth-child(4)=Hours */
-header .wrapper > ul > li:nth-child(2) a,
-header .wrapper > ul > li:nth-child(3) {
+/* Hide empty first <li> spacer for legacy wrapper */
+header .wrapper > ul > li:first-child:empty {
+  display: none;
+}
+
+/* Second list item (CZ flag) - push to left for legacy wrapper */
+header .wrapper > ul > li:nth-child(2) {
+  margin-right: auto;
+}
+
+/* Bold email (:nth-child(3)) and phone (:nth-child(4)) for legacy wrapper */
+/* HTML Structure: li:nth-child(1)=Empty, li:nth-child(2)=CZ, li:nth-child(3)=Email, li:nth-child(4)=Phone, li:nth-child(5)=Hours */
+header .wrapper > ul > li:nth-child(3) a,
+header .wrapper > ul > li:nth-child(4) {
   font-family:
     "texgyreadventorbold", "Arial CE", "Helvetica CE", Arial, Helvetica,
     sans-serif;

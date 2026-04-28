@@ -105,18 +105,19 @@
 /* ========================================
    HEADER ICONS - Sprite-based
    ======================================== */
-/* HTML Structure:
+/* HTML Structure (matching prod with empty first <li>):
    <ul>
-     <li><a href="">CZ</a></li>           - li:nth-child(1) - Flag icon
-     <li><a href="mailto:...">...</a></li> - li:nth-child(2) - Envelope icon
-     <li>+420...</li>                      - li:nth-child(3) - Phone icon
-     <li>Hours...</li>                     - li:nth-child(4) - No icon
+     <li></li>                             - li:nth-child(1) - Empty (spacer)
+     <li><a href="">CZ</a></li>           - li:nth-child(2) - Flag icon
+     <li><a href="mailto:...">...</a></li> - li:nth-child(3) - Envelope icon
+     <li>+420...</li>                      - li:nth-child(4) - Phone icon
+     <li>Hours...</li>                     - li:nth-child(5) - No icon
    </ul>
 */
 
 /* CZ Flag - position: 0 -139px, size: 24x16px */
-/* Targets: li:nth-child(1) = first <li> containing CZ link */
-header li:nth-child(1) a::before {
+/* Targets: li:nth-child(2) = CZ link (first empty <li> is nth-child(1)) */
+header li:nth-child(2) a::before {
   content: '';
   display: inline-block;
   background-image: url("../img/icon-sprite.png");
@@ -128,8 +129,8 @@ header li:nth-child(1) a::before {
 }
 
 /* Envelope - position: 0 -103px, size: 24x17px */
-/* Targets: li:nth-child(2) = second <li> containing email link */
-header li:nth-child(2) a::before {
+/* Targets: li:nth-child(3) = email link */
+header li:nth-child(3) a::before {
   content: '';
   display: inline-block;
   background-image: url("../img/icon-sprite.png");
@@ -142,8 +143,8 @@ header li:nth-child(2) a::before {
 }
 
 /* Phone - position: 0 -120px, size: 19x19px */
-/* Targets: li:nth-child(3) = third <li> containing phone number (no <a> tag) */
-header li:nth-child(3)::before {
+/* Targets: li:nth-child(4) = phone number (no <a> tag) */
+header li:nth-child(4)::before {
   content: '';
   display: inline-block;
   background-image: url("../img/icon-sprite.png");
@@ -156,9 +157,9 @@ header li:nth-child(3)::before {
 
 /* Retina/HiDPI support for header icons */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  header li:nth-child(1) a::before,
   header li:nth-child(2) a::before,
-  header li:nth-child(3)::before {
+  header li:nth-child(3) a::before,
+  header li:nth-child(4)::before {
     background-image: url("../img/icon-sprite2x.png");
     background-size: 25px 612px;
   }
