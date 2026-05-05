@@ -145,7 +145,8 @@
   visibility: visible;
   pointer-events: auto; /* Allow clicks when open */
   animation: slideDown 0.2s ease;
-  top: 38px;
+  top: 30px !important;
+  border-radius: 0;
 }
 
 @keyframes slideDown {
@@ -178,7 +179,8 @@
 
 .SumoSelect > .optWrapper > .options li label {
   display: block;
-  padding: var(--space-sm) var(--space-md);
+  padding: 0.2rem;
+  padding-left: 0.2rem;
   font-size: var(--font-base);
   color: var(--color-text);
   cursor: pointer;
