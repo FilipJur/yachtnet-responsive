@@ -69,16 +69,30 @@
   padding: var(--space-sm) var(--space-md);
   text-transform: uppercase;
   line-height: 1.4;
+  white-space: normal;
+  height: auto;
 }
 
-/* Radio group h3 (second h3 inside fieldset) */
-.crew-insurance-main-column .fieldset > div > h3 {
-  background: transparent;
+/* Radio buttons wrapper inside h3 heading - original production HTML structure */
+.crew-insurance-main-column .fieldset > h3 > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Radio button labels inside h3 heading - original production HTML structure */
+.crew-insurance-main-column .fieldset > h3 > div label.radio {
   color: var(--color-text);
-  padding: var(--space-md);
+  background: var(--color-bg-white);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
   margin: 0;
-  font-weight: normal;
-  text-transform: none;
 }
 
 /* Contact section - stacked inputs */
