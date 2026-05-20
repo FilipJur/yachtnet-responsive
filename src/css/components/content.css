@@ -444,3 +444,7 @@ aside.hp-aside li:last-child a::after {
 .main-column center > div[style*="width:600px"] {
   display: none;
 }
+#mapCanvas {
+  height: 480px;
+  width: 750px;
+}

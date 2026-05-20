@@ -85,8 +85,8 @@
 
 /* Radio button labels inside h3 heading - original production HTML structure */
 .crew-insurance-main-column .fieldset > h3 > div label.radio {
-  color: var(--color-text);
-  background: var(--color-bg-white);
+  color: var(--color-bg-white);
+  background: var(--color-primary);
   padding: var(--space-xs) var(--space-sm);
   border-radius: 0;
   display: inline-flex;
@@ -171,6 +171,7 @@
 
 /* Accordion wrapper - content area inside fieldset */
 .form-accordion-wrapper {
+  display: none;
   padding: var(--space-md);
 }
 
