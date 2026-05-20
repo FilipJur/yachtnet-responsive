@@ -71,3 +71,46 @@
 .dock.is-hidden {
   transform: translateX(100%);
 }
+
+/* ========================================
+   COMPARISON ANIMATIONS - Counter feedback
+   Required by main.min.js comparison logic.
+   JS adds .animate class then waits for
+   animationend event to update counter text.
+   Without these, counter stays at 0 on mobile.
+   ======================================== */
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  99% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(25deg);
+  }
+  50% {
+    transform: rotate(-25deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.dock img.animate {
+  animation: shake 0.4s;
+}
+
+.dock p span.animate {
+  animation: bounceIn 0.4s;
+}
